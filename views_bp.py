@@ -8,8 +8,14 @@ from werkzeug.utils import secure_filename
 views_bp = Blueprint('views', __name__)
 import uuid
 from sqlalchemy import func
+from flask import Blueprint, render_template, request, redirect, url_for, flash
+from models import db, StudentRegistration
+from werkzeug.utils import secure_filename
+from datetime import datetime
+import os
+
 ADMISSION_FEE = 1500
-ESEWA_MERCHANT_ID = "9769296077"  # your eSewa ID
+ESEWA_MERCHANT_ID = "9769296077"  
 
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'pdf'}
@@ -22,7 +28,6 @@ def homepage():
     return render_template("homepage.html")
 
 
-# ================= DASHBOARDS =================
 @views_bp.route("/admin-dashboard")
 @login_required
 def admin_dashboard():
@@ -55,18 +60,12 @@ def teacher_dashboard():
 @views_bp.route("/student-dashboard")
 @login_required
 def student_dashboard():
-    # Only block non-students
     if current_user.is_authenticated and current_user.role != 'student':
         flash("Access denied!", "danger")
         return redirect(url_for('views.homepage'))
 
-    # Render template normally
-    return render_template("student_dashboard.html")
-from flask import Blueprint, render_template, request, redirect, url_for, flash
-from models import db, StudentRegistration
-from werkzeug.utils import secure_filename
-from datetime import datetime
-import os
+
+return render_template("student_dashboard.html")
 
 UPLOAD_FOLDER = "static/uploads/certificates"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
@@ -77,7 +76,6 @@ def admissions():
 
     if request.method == "POST":
         try:
-            # -------- GET FORM DATA --------
             name = request.form.get("name").strip()
             email = request.form.get("email").strip().lower()
             address = request.form.get("address").strip()
@@ -85,7 +83,6 @@ def admissions():
             applying_class = request.form.get("applying_class").strip()
             previous_batch_year = int(request.form.get("batch"))
 
-            # -------- VALIDATIONS --------
             if not re.match(r'^[a-zA-Z ]{3,}$', name):
                 flash("Enter a valid full name.", "danger")
                 return redirect(url_for("views.admissions"))
@@ -102,7 +99,7 @@ def admissions():
                 flash("Enter a valid 10-digit Nepali mobile number.", "danger")
                 return redirect(url_for("views.admissions"))
 
-            # -------- FILE UPLOAD --------
+
             certificate = request.files.get("certificate")
             if not certificate or certificate.filename == "":
                 flash("Upload previous certificate.", "danger")
@@ -112,13 +109,11 @@ def admissions():
                 flash("Only PDF, JPG, PNG allowed.", "danger")
                 return redirect(url_for("views.admissions"))
 
-            # Save file
             ext = certificate.filename.rsplit('.', 1)[1].lower()
             filename = f"{uuid.uuid4().hex}.{ext}"
             filepath = os.path.join(UPLOAD_FOLDER, filename)
             certificate.save(filepath)
 
-            # -------- CREATE STUDENT TRANSACTION --------
             transaction_uuid = str(uuid.uuid4())
             student = StudentRegistration(
                 name=name,
@@ -136,7 +131,6 @@ def admissions():
             db.session.add(student)
             db.session.commit()
 
-            # -------- REDIRECT TO ESEWA --------
             return render_template(
                 "esewa_payment.html",
                 tAmt=ADMISSION_FEE,

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Navbar with Back Button</title>
+<style>
+/* ===== GLOBAL RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+  
+body {
+    background: orangered;
+    color: #003366;
+    overflow-x: hidden;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg,#003366,#4b0082,#ff9800);
+    padding: 0.5rem 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    height: 70px;
+    transform: translateY(-100%);
+    opacity: 0;
+    animation: slideDown 0.7s forwards;
+}
+
+/* LEFT: LOGO + TITLE */
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.school-logo {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: 3px solid yellow;
+    object-fit: cover;
+}
+
+.school-title {
+    color: yellow;
+    font-weight: 800;
+    white-space: nowrap;
+    font-size: 1.5rem;
+    text-shadow: 1px 1px 2px black;
+}
+
+/* BACK BUTTON */
+.back-btn {
+    background-color: yellow;
+    color: #003366;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.back-btn:hover {
+    background-color: #ffd700;
+    transform: scale(1.1);
+}
+
+/* MARQUEE */
+.marquee-wrapper {
+    width: 100%;
+    background: yellow;
+    overflow: hidden;
+    border-top: 2px solid #003366;
+    border-bottom: 2px solid #003366;
+    position: fixed;
+    top: 70px; /* immediately below navbar */
+    left: 0;
+    z-index: 999;
+    transform: translateY(-100%);
+    opacity: 0;
+    animation: slideDown 0.7s forwards 0.2s; /* slight delay after navbar */
+}
+
+.marquee-content {
+    display: inline-block;
+    white-space: nowrap;
+    font-size: 1rem;
+    color: #003366;
+    font-weight: 700;
+    padding: 0.5rem 0;
+    animation: marqueeScroll 12s linear infinite;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes slideDown {
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes marqueeScroll {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width: 700px){
+    .navbar { height: 60px; padding: 0.4rem 0.8rem; }
+    .school-logo { width: 45px; height: 45px; }
+    .school-title { font-size: 1.2rem; }
+    .back-btn { width: 35px; height: 35px; font-size: 1.2rem; }
+    .marquee-wrapper { top: 60px; }
+    .marquee-content { font-size: 0.9rem; }
+}
+
+@media(max-width: 500px){
+    .navbar { height: 55px; padding: 0.3rem 0.6rem; }
+    .school-logo { width: 40px; height: 40px; }
+    .school-title { font-size: 1rem; }
+    .back-btn { width: 30px; height: 30px; font-size: 1rem; }
+    .marquee-wrapper { top: 55px; }
+    .marquee-content { font-size: 0.85rem; }
+}
+/* ===== TOUR SECTION ===== */
+.tour-section{
+    width:100%;
+    padding:120px 20px;
+    background: linear-gradient(120deg,#ff4500,#ff7300,#ff4800);
+    background-size:400% 400%;
+    animation: gradientMove 20s infinite ease-in-out;
+}
+
+.tour-title{
+    text-align:center;
+    font-size:3rem;
+    font-weight:900;
+    color:black;
+    margin-bottom:70px;
+    text-shadow:0 0 20px rgba(0,0,0,0.4);
+}
+
+.tour-wrapper{
+    max-width:1400px;
+    margin:auto;
+    display:flex;
+    flex-direction:column;
+    gap:100px;
+}
+
+.tour-row{
+    display:flex;
+    align-items:center;
+    gap:40px;
+}
+
+.tour-row.reverse{
+    flex-direction:row-reverse;
+}
+
+.tour-text{
+    width:50%;
+    color:white;
+}
+
+.tour-text h2{
+    font-size:2.3rem;
+    margin-bottom:10px;
+    color: antiquewhite;
+}
+
+.tour-text p{
+    font-size:1.2rem;
+    opacity:0.9;
+}
+
+.tour-img{
+    width:50%;
+    height:360px;
+    object-fit:cover;
+    border-radius:25px;
+    box-shadow:0 0 25px rgba(0,0,0,0.4);
+    transition:0.3s;
+}
+.tour-img:hover{
+    transform:scale(1.05);
+}
+
+/* Gallery Strip */
+.tour-gallery{
+    display:flex;
+    gap:20px;
+    overflow-x:auto;
+    padding:20px;
+}
+
+.tour-gallery img{
+    width:300px;
+    height:200px;
+    object-fit:cover;
+    border-radius:20px;
+    box-shadow:0 0 20px rgba(0,0,0,0.4);
+    flex-shrink:0;
+}
+
+/* Responsive */
+@media(max-width:800px){
+    .tour-row{
+        flex-direction:column;
+        text-align:center;
+    }
+    .tour-img, .tour-text{
+        width:100%;
+    }
+}
+.fade-in{
+    opacity:0;
+    transform:translateY(40px);
+    animation:fadeUp 1s forwards;
+}
+
+@keyframes fadeUp{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-left">
+        <img src="Images/logo.jpg" alt="School Logo" class="school-logo">
+        <h1 class="school-title">Shree Resunga Secondary School</h1>
+    </div>
+    <button class="back-btn" onclick="window.location.href='{{url_for('views.studentGallery')}}'">&#8592;</button>
+</nav>
+
+<div class="marquee-wrapper">
+    <div class="marquee-content">
+        📢 Welcome to Shree Resunga Secondary School | 🚀 Bright Futures | 🎓 Admissions Open
+    </div>
+</div>
+<!-- ================= SCHOOL TOUR SECTION ================= -->
+<section class="tour-section">
+
+    <h1 class="tour-title fade-in">🌄 School Virtual Tour</h1>
+
+    <div class="tour-wrapper">
+
+        <!-- Row 1 -->
+        <div class="tour-row slide-left">
+            <div class="tour-text">
+                <h2>🏫 Main School Building</h2>
+                <p>
+                    Explore our beautiful academic blocks, digital classrooms, 
+                    science labs, and well-maintained school environment.
+                </p>
+            </div>
+            <img src="Images/tour1.jpg" class="tour-img">
+        </div>
+
+        <!-- Row 2 -->
+        <div class="tour-row reverse slide-right">
+            <img src="Images/tour2.jpg" class="tour-img">
+            <div class="tour-text">
+                <h2>📚 Library & Reading Hall</h2>
+                <p>
+                    A peaceful space with hundreds of books, magazines, digital learning 
+                    materials, and self-study environment.
+                </p>
+            </div>
+        </div>
+
+        <!-- Row 3 -->
+        <div class="tour-row slide-left">
+            <div class="tour-text">
+                <h2>⚽ Sports Ground</h2>
+                <p>
+                    Outdoor playground for football, volleyball, athletics and 
+                    morning fitness activities.
+                </p>
+            </div>
+            <img src="Images/tour3.jpg" class="tour-img">
+        </div>
+
+        <!-- Row 4 -->
+        <div class="tour-row reverse slide-right">
+            <img src="Images/tour4.jpg" class="tour-img">
+            <div class="tour-text">
+                <h2>🧪 Science & Computer Labs</h2>
+                <p>
+                    Equipped labs for Physics, Biology, Chemistry and Computer Science 
+                    for practical-based learning.
+                </p>
+            </div>
+        </div>
+
+        <!-- Gallery Strip -->
+        <div class="tour-gallery fade-in">
+            <img src="Images/tour5.jpg">
+            <img src="Images/tour6.jpg">
+            <img src="Images/tour7.jpg">
+            <img src="Images/tour8.jpg">
+            <img src="Images/tour9.jpg">
+        </div>
+
+    </div>
+</section>
+<script>
+function goBack() {
+    window.history.back();
+}
+const items = document.querySelectorAll(".tour-row, .tour-title, .tour-gallery");
+
+const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+        if(e.isIntersecting){
+            e.target.classList.add("fade-in");
+        }
+    });
+});
+
+items.forEach(i=>obs.observe(i));
+</script>
+
+</body>
+</html>

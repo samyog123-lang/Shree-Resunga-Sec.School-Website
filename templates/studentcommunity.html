@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Navbar with Back Button</title>
+<style>
+/* ===== GLOBAL RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+  
+body {
+    background: orangered;
+    color: #003366;
+    overflow-x: hidden;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg,#003366,#4b0082,#ff9800);
+    padding: 0.5rem 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    height: 70px;
+    transform: translateY(-100%);
+    opacity: 0;
+    animation: slideDown 0.7s forwards;
+}
+
+/* LEFT: LOGO + TITLE */
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.school-logo {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: 3px solid yellow;
+    object-fit: cover;
+}
+
+.school-title {
+    color: yellow;
+    font-weight: 800;
+    white-space: nowrap;
+    font-size: 1.5rem;
+    text-shadow: 1px 1px 2px black;
+}
+
+/* BACK BUTTON */
+.back-btn {
+    background-color: yellow;
+    color: #003366;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.back-btn:hover {
+    background-color: #ffd700;
+    transform: scale(1.1);
+}
+
+/* MARQUEE */
+.marquee-wrapper {
+    width: 100%;
+    background: yellow;
+    overflow: hidden;
+    border-top: 2px solid #003366;
+    border-bottom: 2px solid #003366;
+    position: fixed;
+    top: 70px; /* immediately below navbar */
+    left: 0;
+    z-index: 999;
+    transform: translateY(-100%);
+    opacity: 0;
+    animation: slideDown 0.7s forwards 0.2s; /* slight delay after navbar */
+}
+
+.marquee-content {
+    display: inline-block;
+    white-space: nowrap;
+    font-size: 1rem;
+    color: #003366;
+    font-weight: 700;
+    padding: 0.5rem 0;
+    animation: marqueeScroll 12s linear infinite;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes slideDown {
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes marqueeScroll {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width: 700px){
+    .navbar { height: 60px; padding: 0.4rem 0.8rem; }
+    .school-logo { width: 45px; height: 45px; }
+    .school-title { font-size: 1.2rem; }
+    .back-btn { width: 35px; height: 35px; font-size: 1.2rem; }
+    .marquee-wrapper { top: 60px; }
+    .marquee-content { font-size: 0.9rem; }
+}
+
+@media(max-width: 500px){
+    .navbar { height: 55px; padding: 0.3rem 0.6rem; }
+    .school-logo { width: 40px; height: 40px; }
+    .school-title { font-size: 1rem; }
+    .back-btn { width: 30px; height: 30px; font-size: 1rem; }
+    .marquee-wrapper { top: 55px; }
+    .marquee-content { font-size: 0.85rem; }
+}
+.community-impact-section {
+    padding: 120px 20px 80px;
+    max-width: 1200px;
+    margin: auto;
+    background: linear-gradient(120deg, #ffe0b2, #ffccbc);
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.community-impact-header {
+    text-align: center;
+    margin-bottom: 50px;
+    opacity: 0;
+    animation: fadeInDown 1s forwards;
+}
+
+.community-impact-header h1 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #b71c1c;
+    text-shadow: 2px 2px 6px #ff9800;
+    margin-bottom: 10px;
+}
+
+.community-impact-header p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: auto;
+    line-height: 1.6;
+    color: #3e2723;
+}
+
+.impact-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.impact-card {
+    background: #fff;
+    flex: 1;
+    min-width: 300px;
+    padding: 25px 20px;
+    border-left: 10px solid #b71c1c;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    transform: translateY(50px);
+    opacity: 0;
+    animation: slideFadeUp 1s forwards;
+}
+
+.impact-card:nth-child(2) { animation-delay: 0.3s; }
+.impact-card:nth-child(3) { animation-delay: 0.6s; }
+
+.impact-icon {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 15px;
+    color: #ff5722;
+    animation: bounceIcon 2s infinite;
+}
+
+.impact-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #b71c1c;
+    text-align: center;
+}
+
+.impact-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+    text-align: justify;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeInDown { to { opacity: 1; transform: translateY(0); } }
+@keyframes slideFadeUp { to { opacity:1; transform: translateY(0); } }
+@keyframes bounceIcon {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+    .impact-cards { flex-direction: column; }
+}
+
+@media(max-width:500px){
+    .community-impact-header h1{ font-size:2rem; }
+    .community-impact-header p{ font-size:1rem; }
+    .impact-card h2{ font-size:1.2rem; }
+    .impact-card p{ font-size:0.95rem; }
+}
+.cleaning-program-section {
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: auto;
+    background: #fff8e1;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    opacity: 0;
+    transform: translateY(50px);
+    animation: slideFadeUp 1s forwards;
+}
+
+.cleaning-program-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 30px;
+}
+
+.cleaning-img-box {
+    flex: 1;
+    min-width: 300px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.cleaning-img-box img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    transition: transform 0.5s, box-shadow 0.5s;
+}
+
+.cleaning-img-box img:hover {
+    transform: scale(1.05) rotateX(3deg) rotateY(-3deg);
+    box-shadow: 0 0 20px #ff9800;
+}
+
+.cleaning-text-box {
+    flex: 1;
+    min-width: 300px;
+}
+
+.cleaning-text-box h2 {
+    font-size: 2rem;
+    color: #b71c1c;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.cleaning-text-box p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+    text-align: justify;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes slideFadeUp { to { opacity: 1; transform: translateY(0); } }
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){ 
+    .cleaning-program-content { flex-direction: column; }
+    .cleaning-img-box img { height: 250px; }
+}
+
+@media(max-width:500px){
+    .cleaning-text-box h2{ font-size:1.5rem; }
+    .cleaning-text-box p{ font-size:0.95rem; }
+}
+
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-left">
+        <img src="{{ url_for('static', filename='Images/logo.jpg') }}" alt="School Logo" class="school-logo">
+        <h1 class="school-title">Shree Resunga Secondary School</h1>
+    </div>
+    <button class="back-btn" onclick="window.location.href='{{ url_for('views.studentabout_us') }}'">&#8592;</button>
+</nav>
+
+<div class="marquee-wrapper">
+    <div class="marquee-content">
+        📢 Welcome to Shree Resunga Secondary School | 🚀 Bright Futures | 🎓 Admissions Open
+    </div>
+</div>
+
+<section class="community-impact-section">
+    <div class="community-impact-header">
+        <h1>सामुदायिक प्रभाव / Community Impact</h1>
+        <p>विद्यार्थीहरूलाई समाजमा सकारात्मक योगदान गर्न प्रेरित गर्दै।<br>
+           Empowering students to contribute meaningfully to society.
+        </p>
+    </div>
+
+    <div class="impact-cards">
+        <div class="impact-card">
+            <div class="impact-icon">🌱</div>
+            <h2>पर्यावरण संरक्षण / Environmental Awareness</h2>
+            <p>विद्यार्थीहरूले वृक्षारोपण, सरसफाइ अभियान, र वातावरणीय शिक्षा गतिविधिहरूमा भाग लिन्छन्।<br>
+               Students participate in tree planting, cleanliness drives, and environmental education activities.
+            </p>
+        </div>
+
+        <div class="impact-card">
+            <div class="impact-icon">🤝</div>
+            <h2>सामाजिक सेवा / Social Service</h2>
+            <p>विद्यालयका विद्यार्थीहरूले वृद्धाश्रम, अनाथालय र स्थानीय समाजमा सेवा कार्यहरू गर्छन्।<br>
+               Students engage in volunteering at old age homes, orphanages, and local community programs.
+            </p>
+        </div>
+
+        <div class="impact-card">
+            <div class="impact-icon">📚</div>
+            <h2>शिक्षा र साक्षरता / Education & Literacy</h2>
+            <p>समाजका बच्चाहरूलाई पढाइ सहयोग, तालिम र साक्षरता अभियान मार्फत सशक्त बनाइन्छ।<br>
+               Children in the community are empowered through tutoring, workshops, and literacy programs.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="cleaning-program-section">
+    <div class="cleaning-program-content">
+        <div class="cleaning-img-box">
+            <img src="{{ url_for('static', filename='Images/ramro.jpg') }}" alt="Student Cleaning Program">
+        </div>
+        <div class="cleaning-text-box">
+            <h2>स्वच्छता कार्यक्रम / Cleaning Program</h2>
+            <p>हाम्रो विद्यार्थीहरूले समुदायमा स्वच्छता अभियानमा सक्रिय सहभागिता जनाउँछन्। सडक, विद्यालय र सार्वजनिक स्थानहरू सफा गर्ने कार्यमा उनीहरूको योगदान प्रेरणादायी छ।<br>
+               Our students actively participate in community cleaning programs. Their contribution to cleaning roads, school, and public spaces is inspiring.
+            </p>
+        </div>
+    </div>
+</section>
+
+<script>
+function goBack() {
+    window.academics.back();
+}
+
+</script>
+
+</body>
+</html>

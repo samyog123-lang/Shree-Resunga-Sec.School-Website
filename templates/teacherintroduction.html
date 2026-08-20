@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shree Resunga Secondary School | About & Services</title>
+
+<!-- SEO META -->
+<meta name="description" content="Shree Resunga Secondary School, Gulmi - ISO certified public institution providing high-quality education, academic excellence, extracurricular activities, and district awards.">
+<meta name="keywords" content="Shree Resunga, Secondary School, Gulmi, Nepal, Academic Excellence, Saraswati Puja, District Awards, Courses, Education">
+<meta name="author" content="Shree Resunga Secondary School">
+<meta name="robots" content="index, follow">
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/nextpage.css') }}">
+<style>
+/* ==================== GLOBAL RESET ==================== */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, Helvetica, sans-serif; }
+
+body{
+    background-color: orangered;
+}
+/* ==================== NAVBAR ==================== */
+.navbar {
+    width: 100%;
+    background: linear-gradient(135deg,#003366,#4b0082,#ff9800);
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    animation: navbarSlideDown 0.7s ease forwards;
+    height: 70px; 
+}
+
+@keyframes navbarSlideDown {
+    from { opacity: 0; transform: translateY(-25px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* LEFT SIDE */
+.nav-left { display: flex; align-items: center; gap: 10px; }
+.school-logo { width: 55px; height: 55px; border-radius: 50%; border: 3px solid yellow; object-fit: cover; }
+.school-title { font-weight: 800; color: yellow; letter-spacing: 0.5px; font-size: 1.5rem; white-space: nowrap; }
+
+/* NAV LINKS */
+.nav-links { display: flex; list-style: none; gap: 25px; }
+.nav-links li a { color: white; text-decoration: none; font-size: 1.1rem; font-weight: 600; position: relative; }
+.nav-links li a::after { content: ""; position: absolute; bottom: -4px; left: 0; width: 0%; height: 2px; background: yellow; transition: 0.3s; }
+.nav-links li a:hover::after { width: 100%; }
+
+/* ==================== HAMBURGER ==================== */
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+.hamburger span { width: 28px; height: 3px; background: white; border-radius: 3px; transition: 0.3s; }
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translateY(7px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translateY(-7px); }
+
+/* ==================== MOBILE MENU ==================== */
+.mobile-menu {
+    position: fixed;
+    top: 70px;
+    right: -220px;
+    width: 200px;
+    background: #003366;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+    border-radius: 0 0 8px 8px;
+    box-shadow: -3px 3px 10px rgba(0,0,0,0.3);
+    transition: right 0.4s ease;
+    z-index: 999;
+}
+
+.mobile-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 12px 15px;
+    transition: 0.3s;
+}
+
+.mobile-menu a:hover { background: rgba(255,255,255,0.1); }
+
+.mobile-menu.open { right: 10px; }
+
+/* ==================== MARQUEE (FINAL FIXED) ==================== */
+.marquee-wrapper {
+    margin-top: 70px;      
+    width: 100%;
+    background: yellow;
+}
+
+.marquee-content {
+    display: inline-block;
+    white-space: nowrap;
+    font-size: 1rem;
+    color: #003366;
+    font-weight: 700;
+    animation: marqueeScroll 13s linear infinite;
+}
+
+@keyframes marqueeScroll {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 900px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+}
+
+@media (max-width: 600px) {
+    .navbar { height: 60px; }
+    .mobile-menu { top: 60px; }
+    .marquee-wrapper { margin-top: 60px; }
+}
+
+@media (max-width: 500px) {
+    .school-title { font-size: 0.9rem; }
+    .school-logo { width: 45px; height: 45px; }
+}
+
+@media (max-width: 450px) {
+    .navbar { height: 55px; }
+    .mobile-menu { top: 55px; }
+    .marquee-wrapper { margin-top: 55px; }
+    .school-title { font-size: 0.8rem; }
+}
+
+/* ================= INTRODUCTION SECTION ================= */
+.introduction-section {
+    padding: 50px 20px;
+    background: orangered;
+}
+
+.section-title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 40px;
+    font-family: 'Preeti', 'Mangal', 'Kantipur', Arial, sans-serif;
+    color: #003366;
+    font-weight: bold;
+    background-color: yellow;
+}
+
+.intro-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.intro-box {
+    background: linear-gradient(90deg, #ffe066, #ffd43b, #ffa94d);
+    color:blue;
+    font-weight: 650;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    transition: transform 0.4s, box-shadow 0.4s;
+    font-family: 'Preeti', 'Mangal', 'Kantipur', Arial, sans-serif;
+}
+
+.intro-box h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+
+.intro-box p, .intro-box ul {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.intro-box ul {
+    list-style: disc inside;
+    padding-left: 0;
+}
+
+.intro-box ul li {
+    margin-bottom: 10px;
+}
+
+.intro-box .intro-img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+.intro-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+}
+
+/* Responsive */
+@media(max-width: 600px){
+    .intro-box { padding: 15px; }
+    .intro-box h3 { font-size: 1.2rem; }
+    .intro-box p, .intro-box ul li { font-size: 0.95rem; }
+}
+
+.preeti-text-section {
+    font-family: 'Preeti', 'Mangal', 'Kantipur', Arial, sans-serif;
+    color: white;
+    background-color: palevioletred;
+    padding: 25px 20px;
+    font-weight: 650;
+    border-radius: 15px;
+    margin-bottom: 40px;
+    line-height: 1.8;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.preeti-text-section p {
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+/* ================= FOOTER ================= */
+.footer {
+    background: #003366;
+    color: white;
+    padding: 30px 15px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.footer h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+.footer p {
+    margin-bottom: 5px;
+}
+
+.footer .copy {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+</style>
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar">
+    <div class="nav-left">
+        <img src="{{ url_for('static', filename='Images/logo.jpg') }}" alt="School Logo" class="school-logo">
+        <h1 class="school-title">Shree Resunga Secondary School</h1>
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="{{ url_for('views.teacher_dashboard') }}">Home</a></li>
+        <li><a href="{{ url_for('views.about_us') }}">About</a></li>
+        <li><a href="{{ url_for('views.Gallery') }}">Gallery</a></li>
+        <li><a href="{{ url_for('views.contact') }}">Contact</a></li>
+        <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
+    </ul>
+
+    <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div id="mobileMenu" class="mobile-menu">
+    <a href="{{ url_for('views.teacher_dashboard') }}">Home</a>
+    <a href="{{ url_for('views.teacherabout_us') }}">About</a>
+    <a href="{{ url_for('views.teacherGallery') }}">Gallery</a>
+    <a href="{{ url_for('views.teachercontact') }}">Contact</a>
+    <a href="{{ url_for('auth.logout') }}">Logout</a>
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee-wrapper">
+    <div class="marquee-content">
+        📢 Welcome to Shree Resunga Secondary School | 🚀 Bright Futures | 🎓 Admissions Open
+    </div>
+</div>
+
+<!-- PREETI TEXT SECTION -->
+<div class="preeti-text-section">
+    <p>श्री रेसुङ्गा माध्यमिक विद्यालय, गुल्मीमा अवस्थित, २०२५ बी.एस. मा स्थापित भएको सार्वजनिक ISO प्रमाणित शिक्षण संस्था हो। हाम्रो विद्यालयले शैक्षिक उत्कृष्टता, नैतिक मूल्य र नवीन शिक्षण प्रविधिको माध्यमबाट विद्यार्थीलाई उत्कृष्ट शिक्षा प्रदान गर्दै आएको छ।</p>
+    <p>हाम्रो लक्ष्य केवल ज्ञान दिन मात्र होइन, तर विद्यार्थीहरूमा नेतृत्व, सिर्जनशीलता र सामाजिक उत्तरदायित्वको भावना विकास गर्नु पनि हो। प्रत्येक विद्यार्थीलाई जिम्मेवार, दक्ष र समर्पित नागरिक बनाउन हाम्रो विद्यालय प्रतिबद्ध छ।</p>
+    <p>विद्यालयमा आधुनिक शिक्षण विधि, विज्ञान, प्राविधिक र व्यवस्थापन विषयहरूमा विशेष प्रशिक्षण प्रदान गरिन्छ। साथै, कला, खेलकुद र अन्य सह-पाठ्यक्रम गतिविधिहरूले विद्यार्थीको सम्पूर्ण विकासमा योगदान पुर्‍याउँछ।</p>
+    <p>हामीले सुरक्षापूर्ण, समावेशी र प्रेरणादायी वातावरण सिर्जना गरेका छौं, जहाँ विद्यार्थीहरू स्वतन्त्र रुपमा सिक्न, सोच्न र नयाँ आविष्कार गर्न सक्षम हुन्छन्। शिक्षक र कर्मचारीको समर्पणले यस वातावरणलाई अझ बलियो बनाउँछ।</p>
+    <p>श्री रेसुङ्गा माध्यमिक विद्यालयले दशकोंसम्म गुणस्तरीय शिक्षा प्रदान गर्दै आएको छ र भविष्यमा पनि उत्कृष्ट शिक्षा र मानवीय मूल्य विकासको क्षेत्रमा अग्रणी बन्ने प्रतिबद्धता जनाएको छ।</p>
+</div>
+
+<!-- INTRODUCTION SECTION -->
+<section class="introduction-section">
+    <h2 class="section-title">श्री रेसुङ्गा माध्यमिक विद्यालय</h2>
+    <div class="intro-grid">
+        <div class="intro-box">
+            <h3>📍 Location</h3>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!..." width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <div class="intro-box">
+            <h3>📅 Established</h3>
+            <p>Shree Resunga Secondary School was established in <strong>2025 BS</strong> and is an ISO-certified public institution providing high-quality education.</p>
+        </div>
+
+        <div class="intro-box">
+            <h3>🎓 Services & Courses</h3>
+            <img src="{{ url_for('static', filename='Images/03vision.jpg') }}" alt="Civil Engineering" class="intro-img">
+            <ul>
+                <li>Civil Engineering (Science & Technical)</li>
+                <li>Management & Accounting</li>
+                <li>Science (Biology & Computer)</li>
+                <li>Extracurricular Activities</li>
+            </ul>
+        </div>
+
+        <div class="intro-box">
+            <h3>🏫 Mission & Vision</h3>
+            <p>We aim to nurture students’ creativity, leadership, and moral character while ensuring academic excellence in a modern, safe, and inclusive environment.</p>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-content fade-up">
+        <h3>Shree Resunga Secondary School</h3>
+        <p>Resunga Municipality, Gulmi • Nepal</p>
+        <p>Contact: +977-9800000000 • Email: info@resunga.edu.np</p>
+        <p class="copy">© 2025 SRSS. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script>
+function toggleMenu() {
+    const menu = document.getElementById("mobileMenu");
+    menu.classList.toggle("open");
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Navbar with Back Button</title>
+
+<style>
+/* ===== GLOBAL RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+  
+body {
+    background: orangered;
+    color: #003366;
+    overflow-x: hidden;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg,#003366,#4b0082,#ff9800);
+    padding: 0.5rem 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    height: 70px;
+    transform: translateY(-100%);
+    opacity: 0;
+    animation: slideDown 0.7s forwards;
+}
+
+/* LEFT: LOGO + TITLE */
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.school-logo {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: 3px solid yellow;
+    object-fit: cover;
+}
+
+.school-title {
+    color: yellow;
+    font-weight: 800;
+    white-space: nowrap;
+    font-size: 1.5rem;
+    text-shadow: 1px 1px 2px black;
+}
+
+/* BACK BUTTON */
+.back-btn {
+    background-color: yellow;
+    color: #003366;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.back-btn:hover {
+    background-color: #ffd700;
+    transform: scale(1.1);
+}
+
+/* MARQUEE */
+.marquee-wrapper {
+    width: 100%;
+    background: yellow;
+    overflow: hidden;
+    border-top: 2px solid #003366;
+    border-bottom: 2px solid #003366;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    z-index: 999;
+    transform: translateY(-100%);
+    opacity: 0;
+    animation: slideDown 0.7s forwards 0.2s;
+}
+
+.marquee-content {
+    display: inline-block;
+    white-space: nowrap;
+    font-size: 1rem;
+    color: #003366;
+    font-weight: 700;
+    padding: 0.5rem 0;
+    animation: marqueeScroll 12s linear infinite;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes slideDown {
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes marqueeScroll {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width: 700px){
+    .navbar { height: 60px; padding: 0.4rem 0.8rem; }
+    .school-logo { width: 45px; height: 45px; }
+    .school-title { font-size: 1.2rem; }
+    .back-btn { width: 35px; height: 35px; font-size: 1.2rem; }
+    .marquee-wrapper { top: 60px; }
+    .marquee-content { font-size: 0.9rem; }
+}
+
+@media(max-width: 500px){
+    .navbar { height: 55px; padding: 0.3rem 0.6rem; }
+    .school-logo { width: 40px; height: 40px; }
+    .school-title { font-size: 1rem; }
+    .back-btn { width: 30px; height: 30px; font-size: 1rem; }
+    .marquee-wrapper { top: 55px; }
+    .marquee-content { font-size: 0.85rem; }
+}
+#members-container {
+    margin-top: 120px; /* Adjust depending on navbar + marquee height */
+}
+
+/* Member card styling */
+.members-wrapper {
+  max-width: 1280px;
+  margin: 40px auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.member-card {
+  background: greenyellow;
+  width: 260px;
+  padding: 20px;
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  opacity: 0;
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.member-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.15);
+}
+
+.photo-wrap {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 10px;
+  border: 5px solid rgba(255,255,255,0.6);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+}
+
+.photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.member-info h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 5px;
+}
+
+.member-info p {
+  font-size: 14px;
+  font-weight: 700;
+  color: #d8461a;
+  margin: 0;
+}
+
+.comitee-title {
+  font-size: 22px;
+  font-weight: 850;
+  color: rgb(40, 37, 212);
+  text-align: center;
+  margin: 40px 0 20px;
+  text-transform: uppercase;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+.footer {
+  width: 100%;
+  padding: 30px 10px;
+  background: blue;
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  margin-top: 40px;
+}
+
+</style>
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="nav-left">
+        <img src="Images/logo.jpg" alt="School Logo" class="school-logo">
+        <h1 class="school-title">Shree Resunga Secondary School</h1>
+    </div>
+<a href="{{ url_for('views.studentGallery') }}" class="back-btn">&#8592;</a>
+
+</nav>
+
+<div class="marquee-wrapper">
+    <div class="marquee-content">
+        📢 Welcome to Shree Resunga Secondary School | 🚀 Bright Futures | 🎓 Admissions Open
+    </div>
+</div>
+
+<div id="members-container" style="margin-top:120px;"></div>
+
+
+
+<script>
+function goBack() {
+    window.history.back();
+}
+// Data arrays (example: you can replace with real names and positions)
+const teachers = Array.from({length:50}, (_,i) => ({
+  name: `Teacher ${i+1}`,
+  post: `Subject Teacher`,
+  img: `Images/teachers/t${i+1}.jpg`
+}));
+
+const management = Array.from({length:50}, (_,i) => ({
+  name: `Member ${i+1}`,
+  post: `Position`,
+  img: `Images/management/m${i+1}.jpg`
+}));
+
+const guardians = Array.from({length:50}, (_,i) => ({
+  name: `Guardian ${i+1}`,
+  post: `Parent Representative`,
+  img: `Images/guardian/g${i+1}.jpg`
+}));
+
+// Helper function to generate HTML
+function generateSection(title, members) {
+  const container = document.createElement('div');
+  
+  // Committee title
+  const h2 = document.createElement('h2');
+  h2.className = 'comitee-title';
+  h2.textContent = title;
+  container.appendChild(h2);
+  
+  // Members wrapper
+  const wrapper = document.createElement('div');
+  wrapper.className = 'members-wrapper';
+  
+  members.forEach((m, idx) => {
+    const card = document.createElement('div');
+    card.className = 'member-card';
+    card.style.animationDelay = `${idx*0.05}s`; // staggered animation
+    
+    card.innerHTML = `
+      <div class="photo-wrap">
+        <img src="${m.img}" alt="${m.name}">
+      </div>
+      <div class="member-info">
+        <h3>${m.name}</h3>
+        <p>${m.post}</p>
+      </div>
+    `;
+    
+    wrapper.appendChild(card);
+  });
+  
+  container.appendChild(wrapper);
+  return container;
+}
+
+// Add all committees to the page
+const container = document.getElementById('members-container');
+container.appendChild(generateSection('Teachers Committee', teachers));
+container.appendChild(generateSection('School Management Committee', management));
+container.appendChild(generateSection('Guardian Teacher Committee', guardians));
+
+// Footer
+const footer = document.createElement('footer');
+footer.className = 'footer';
+footer.textContent = '© 2025 Your School Name — All rights reserved';
+container.appendChild(footer);
+
+</script>
+
+</body>
+</html>

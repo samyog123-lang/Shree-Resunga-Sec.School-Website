@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ===== SEO TAGS ===== -->
+<title>Creative Works | Shree Resunga Secondary School</title>
+<meta name="description" content="Explore the creative works of students at Shree Resunga Secondary School including art, crafts, photography, digital creations, and more.">
+<meta name="keywords" content="Shree Resunga, creative works, student art, school projects, photography, crafts, digital creations, school exhibitions">
+<meta name="author" content="Shree Resunga Secondary School">
+
+<!-- ===== STYLES ===== -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/creative.css') }}">
+
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar">
+    <div class="nav-left">
+        <img src="{{ url_for('static', filename='Images/logo.jpg') }}" alt="School Logo" class="school-logo">
+        <h1 class="school-title">Shree Resunga Secondary School</h1>
+    </div>
+    <!-- Back button dynamic with Flask -->
+    <button class="back-btn" onclick="window.location.href='{{ url_for('views.student_dashboard') }}'">&#8592;</button>
+</nav>
+
+<!-- ===== MARQUEE ===== -->
+<div class="marquee-wrapper">
+    <div class="marquee-content">
+        📢 Welcome to Shree Resunga Secondary School | 🚀 Bright Futures | 🎓 Admissions Open
+    </div>
+</div>
+
+<!-- ================= CREATIVE WORK SECTION ================= -->
+<section class="creative-section">
+    <h1 class="creative-title">✨ Creative Works of Our Students ✨</h1>
+
+    <div class="creative-wrapper">
+
+        <!-- ROW 1 -->
+        <div class="creative-row">
+            <img src="{{ url_for('static', filename='Images/art1.jpg') }}" class="creative-img" alt="Artistic Expression">
+            <div class="creative-text">
+                <h2>🎨 Artistic Expression</h2>
+                <p>Students explore their imagination through sketching, painting, and digital art. Every stroke tells a story.</p>
+            </div>
+        </div>
+
+        <!-- ROW 2 -->
+        <div class="creative-row reverse">
+            <div class="creative-text">
+                <h2>📸 Photography Skills</h2>
+                <p>Captured moments, emotions, nature, and school events — all through the students’ unique lens.</p>
+            </div>
+            <img src="{{ url_for('static', filename='Images/photo1.jpg') }}" class="creative-img" alt="Photography Skills">
+        </div>
+
+        <!-- ROW 3 -->
+        <div class="creative-row">
+            <img src="{{ url_for('static', filename='Images/craft1.jpg') }}" class="creative-img" alt="Handmade Crafts">
+            <div class="creative-text">
+                <h2>✂ Handmade Crafts</h2>
+                <p>From models to decorations, students bring creativity to life using simple materials and big ideas.</p>
+            </div>
+        </div>
+
+        <!-- ROW 4 -->
+        <div class="creative-row reverse">
+            <div class="creative-text">
+                <h2>💻 Digital Creations</h2>
+                <p>Graphics, animations, and digital presentations show the modern creativity of our learners.</p>
+            </div>
+            <img src="{{ url_for('static', filename='Images/digital1.jpg') }}" class="creative-img" alt="Digital Creations">
+        </div>
+
+        <!-- GALLERY STRIP -->
+        <div class="gallery-strip">
+            <img src="{{ url_for('static', filename='Images/g1.jpg') }}" alt="Gallery Image 1">
+            <img src="{{ url_for('static', filename='Images/g2.jpg') }}" alt="Gallery Image 2">
+            <img src="{{ url_for('static', filename='Images/g3.jpg') }}" alt="Gallery Image 3">
+            <img src="{{ url_for('static', filename='Images/g4.jpg') }}" alt="Gallery Image 4">
+            <img src="{{ url_for('static', filename='Images/g5.jpg') }}" alt="Gallery Image 5">
+            <img src="{{ url_for('static', filename='Images/g6.jpg') }}" alt="Gallery Image 6">
+        </div>
+
+        <!-- QUOTE -->
+        <div class="creative-quote">
+            “Creativity is intelligence having fun.”  
+            <br><span>— Showcasing 8000px of imagination</span>
+        </div>
+
+    </div>
+</section>
+
+<!-- ================= MORE CREATIVE CONTENT ================= -->
+<section class="creative-more">
+
+    <h1 class="more-title">🌟 More Creative Excellence 🌟</h1>
+
+    <div class="more-wrapper">
+
+        <div class="more-block">
+            <img src="{{ url_for('static', filename='Images/teamwork1.jpg') }}" class="more-img" alt="Team Collaboration Projects">
+            <div class="more-text">
+                <h2>🤝 Team Collaboration Projects</h2>
+                <p>Students work together to build remarkable projects — robotics, scientific models, architecture, and environmental prototypes.</p>
+            </div>
+        </div>
+
+        <div class="more-block reverse">
+            <div class="more-text">
+                <h2>🎭 Drama & Performing Arts</h2>
+                <p>Drama clubs showcase acting, script-writing, stage setup, and storytelling talent that mesmerizes audiences.</p>
+            </div>
+            <img src="{{ url_for('static', filename='Images/drama1.jpg') }}" class="more-img" alt="Drama & Performing Arts">
+        </div>
+
+        <div class="more-block">
+            <img src="{{ url_for('static', filename='Images/music1.jpg') }}" class="more-img" alt="Music & Instrument Practice">
+            <div class="more-text">
+                <h2>🎼 Music & Instrument Practice</h2>
+                <p>Music groups practice harmonium, guitar, madal, flute, and modern instruments — blending culture with creativity.</p>
+            </div>
+        </div>
+
+        <div class="show-wall">
+            <h2>🏆 Exhibition Wall</h2>
+            <div class="wall-grid">
+                <img src="{{ url_for('static', filename='Images/ex1.jpg') }}" alt="Exhibition Image 1">
+                <img src="{{ url_for('static', filename='Images/ex2.jpg') }}" alt="Exhibition Image 2">
+                <img src="{{ url_for('static', filename='Images/ex3.jpg') }}" alt="Exhibition Image 3">
+                <img src="{{ url_for('static', filename='Images/ex4.jpg') }}" alt="Exhibition Image 4">
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===== JS ===== -->
+<script>
+const items = document.querySelectorAll(".creative-row, .more-block, h1, h2, p, img, .final-quote");
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add("fade-in");
+    });
+});
+
+items.forEach(item => observer.observe(item));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Navbar with Back Button</title>
+<style>
+/* ===== GLOBAL RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+  
+body {
+    background: orangered;
+    color: #003366;
+    overflow-x: hidden;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg,#003366,#4b0082,#ff9800);
+    padding: 0.5rem 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    height: 70px;
+    transform: translateY(-100%);
+    opacity: 0;
+    animation: slideDown 0.7s forwards;
+}
+
+/* LEFT: LOGO + TITLE */
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.school-logo {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: 3px solid yellow;
+    object-fit: cover;
+}
+
+.school-title {
+    color: yellow;
+    font-weight: 800;
+    white-space: nowrap;
+    font-size: 1.5rem;
+    text-shadow: 1px 1px 2px black;
+}
+
+/* BACK BUTTON */
+.back-btn {
+    background-color: yellow;
+    color: #003366;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.back-btn:hover {
+    background-color: #ffd700;
+    transform: scale(1.1);
+}
+
+/* MARQUEE */
+.marquee-wrapper {
+    width: 100%;
+    background: yellow;
+    overflow: hidden;
+    border-top: 2px solid #003366;
+    border-bottom: 2px solid #003366;
+    position: fixed;
+    top: 70px; /* immediately below navbar */
+    left: 0;
+    z-index: 999;
+    transform: translateY(-100%);
+    opacity: 0;
+    animation: slideDown 0.7s forwards 0.2s; /* slight delay after navbar */
+}
+
+.marquee-content {
+    display: inline-block;
+    white-space: nowrap;
+    font-size: 1rem;
+    color: #003366;
+    font-weight: 700;
+    padding: 0.5rem 0;
+    animation: marqueeScroll 12s linear infinite;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes slideDown {
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes marqueeScroll {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width: 700px){
+    .navbar { height: 60px; padding: 0.4rem 0.8rem; }
+    .school-logo { width: 45px; height: 45px; }
+    .school-title { font-size: 1.2rem; }
+    .back-btn { width: 35px; height: 35px; font-size: 1.2rem; }
+    .marquee-wrapper { top: 60px; }
+    .marquee-content { font-size: 0.9rem; }
+}
+
+@media(max-width: 500px){
+    .navbar { height: 55px; padding: 0.3rem 0.6rem; }
+    .school-logo { width: 40px; height: 40px; }
+    .school-title { font-size: 1rem; }
+    .back-btn { width: 30px; height: 30px; font-size: 1rem; }
+    .marquee-wrapper { top: 55px; }
+    .marquee-content { font-size: 0.85rem; }
+}
+
+
+/* === FACILITIES SECTION === */
+.facilities-section {
+    padding:120px  20px 80px;
+    text-align: center;
+    background: linear-gradient(135deg, #ff5100, #ff8b00, #ff4800);
+    color: white;
+}
+
+.fac-title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 20px rgba(255,255,255,0.4);
+}
+
+/* Grid */
+.fac-grid {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+}
+
+/* Cards */
+.fac-card {
+    padding: 30px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 0 20px rgba(255,255,255,0.1);
+    transition: 0.4s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Neon border on hover */
+.fac-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    padding: 2px;
+    background: linear-gradient(45deg, #fff, #ffdfc4, #ffc68b, #ff7a2c);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, 
+                   linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity .4s;
+}
+
+.fac-card:hover::before {
+    opacity: 1;
+}
+
+.fac-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+/* Icons */
+.fac-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px rgba(255,255,255,0.6);
+}
+
+/* Text */
+.fac-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.fac-card p {
+    font-size: 1rem;
+    opacity: 0.85;
+}
+
+/* Importance Points */
+.fac-points {
+    margin-top: 15px;
+    text-align: left;
+    list-style: disc;
+    padding-left: 20px;
+}
+
+.fac-points li {
+    font-weight: bold;
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+    opacity: 0.95;
+}
+
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-left">
+        <img src="Images/logo.jpg" alt="School Logo" class="school-logo">
+        <h1 class="school-title">Shree Resunga Secondary School</h1>
+    </div>
+    <button class="back-btn" onclick="window.location.href='{{url_for('views.studentGallery')}}'">&#8592;</button>
+</nav>
+
+<div class="marquee-wrapper">
+    <div class="marquee-content">
+        📢 Welcome to Shree Resunga Secondary School | 🚀 Bright Futures | 🎓 Admissions Open
+    </div>
+</div>
+<section class="facilities-section">
+   <div class="fac-grid">
+
+        <div class="fac-card">
+            <div class="fac-icon">🏗️</div>
+            <h3>Civil Engineering Lab</h3>
+            <p>Advanced instruments, surveying tools, structural models & modern testing equipment.</p>
+            <ul class="fac-points">
+                <li>Hands-on practical learning</li>
+                <li>High-quality surveying tools</li>
+                <li>Real construction testing</li>
+                <li>Project-based activities</li>
+                <li>Industry-level exposure</li>
+            </ul>
+        </div>
+
+        <div class="fac-card">
+            <div class="fac-icon">💧</div>
+            <h3>Water Facilities</h3>
+            <p>Pure & safe drinking water, sanitation areas and well-maintained pipelines.</p>
+            <ul class="fac-points">
+                <li>Clean drinking water</li>
+                <li>Regular maintenance</li>
+                <li>Safe water storage</li>
+                <li>Accessible to all students</li>
+                <li>Health-first priority</li>
+            </ul>
+        </div>
+
+        <div class="fac-card">
+            <div class="fac-icon">🩸</div>
+            <h3>Pad Holder Facility</h3>
+            <p>Hygienic sanitary pad vending machines & disposal bins for girl students.</p>
+            <ul class="fac-points">
+                <li>Instant pad access</li>
+                <li>Safe disposal system</li>
+                <li>Privacy-focused design</li>
+                <li>Girls’ health support</li>
+                <li>Always available & clean</li>
+            </ul>
+        </div>
+
+        <div class="fac-card">
+            <div class="fac-icon">🏛️</div>
+            <h3>Multipurpose Hall</h3>
+            <p>Spacious hall for meetings, events, indoor games & cultural programs.</p>
+            <ul class="fac-points">
+                <li>Big event capacity</li>
+                <li>Stage & sound system</li>
+                <li>Indoor sports ready</li>
+                <li>Cultural program space</li>
+                <li>Comfortable seating</li>
+            </ul>
+        </div>
+
+        <div class="fac-card">
+            <div class="fac-icon">📚</div>
+            <h3>Digital Library</h3>
+            <p>Smart library with ebooks, computers and high-speed internet access.</p>
+            <ul class="fac-points">
+                <li>E-books & journals</li>
+                <li>Silent study area</li>
+                <li>Computer access</li>
+                <li>High-speed internet</li>
+                <li>Student-friendly system</li>
+            </ul>
+        </div>
+
+        <div class="fac-card">
+            <div class="fac-icon">🖥️</div>
+            <h3>Computer Lab</h3>
+            <p>Modern systems, high-speed internet and programming learning tools.</p>
+            <ul class="fac-points">
+                <li>Updated computers</li>
+                <li>High-speed WiFi</li>
+                <li>Programming lessons</li>
+                <li>Practical IT training</li>
+                <li>Teacher-guided learning</li>
+            </ul>
+        </div>
+
+   </div>
+</section>
+
+<script>
+function goBack() {
+    window.history.back();
+}
+
+
+</script>
+
+</body>
+</html>

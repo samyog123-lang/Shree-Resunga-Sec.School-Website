@@ -1,0 +1,230 @@
+/* ================= GLOBAL RESET ================= */
+* { margin:0; padding:0; box-sizing:border-box; font-family:"Poppins", sans-serif; }
+body { background:orangered; overflow-x:hidden; }
+
+/* ================= ANIMATIONS ================= */
+@keyframes slideDown { from{opacity:0; transform:translateY(-50px);} to{opacity:1; transform:translateY(0);} }
+@keyframes fadeInUp { from{opacity:0; transform:translateY(30px);} to{opacity:1; transform:translateY(0);} }
+@keyframes marqueeMove { 0%{transform:translateX(100%);} 100%{transform:translateX(-100%);} }
+
+/* ================= NAVBAR ================= */
+.navbar {
+    width: 100%;
+    background: linear-gradient(135deg,#003366,#4b0082,#ff9800);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top:0;
+    z-index:999;
+    box-shadow:0 5px 20px rgba(0,0,0,0.3);
+    animation:slideDown 1s ease forwards;
+}
+.nav-left { display:flex; align-items:center; gap:10px; }
+.navbar img { height:50px; width:50px; border-radius:50%; border:2px solid #ffe066; }
+.school-title { color:#ffe066; font-size:20px; font-weight:700; }
+.menu { display:flex; align-items:center; gap:20px; }
+.menu a {
+    color:#fff; font-size:14px; font-weight:500; text-decoration:none; position:relative; transition:0.3s ease;
+}
+.menu a::after {
+    content:""; position:absolute; width:0%; height:3px; background:#ffe066; left:0; bottom:-4px; transition:0.35s ease;
+}
+.menu a:hover::after { width:100%; }
+.hamburger { display:none; flex-direction:column; cursor:pointer; }
+.hamburger span { width:26px; height:3px; background:white; margin:3px 0; transition:0.3s; }
+
+/* MOBILE MENU */
+.mobile-menu {
+    position:fixed; top:70px; right:-300px; min-width:200px;
+    background:#003366; display:flex; flex-direction:column;
+    transition:0.35s ease; z-index:998;
+    border-radius:0 0 8px 8px;
+}
+.mobile-menu a { padding:14px 20px; color:white; text-decoration:none; font-weight:600; border-bottom:1px solid rgba(255,255,255,0.1);}
+.mobile-menu a:hover { background:rgba(255,255,255,0.15); }
+.mobile-menu.open { right:0; }
+.mobile-close { padding:14px; text-align:center; background:rgba(255,255,255,0.1); color:#fff; font-weight:700; cursor:pointer; }
+
+@media(max-width:900px) {
+    .menu { display:none; }
+    .hamburger { display:flex; }
+    .school-title { font-size:16px; }
+    .navbar img { height:40px; width:40px; }
+}
+
+/* ================= NEWS TICKER ================= */
+.news-ticker {
+    width: 100%;
+    overflow: hidden;
+    background: linear-gradient(90deg,#ffe066,#ffd43b,#ffa94d);
+    padding: 10px 0;
+    position: relative;
+}
+
+.ticker-wrapper {
+    display: flex;
+    animation: tickerScroll 20s linear infinite;
+}
+
+.ticker-item {
+    flex: 0 0 auto;
+    padding: 0 50px;
+    font-weight: 700;
+    color: #003366;
+    white-space: nowrap;
+    font-size: 16px;
+}
+
+/* Infinite scrolling animation */
+@keyframes tickerScroll {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Responsive font */
+@media(max-width:768px){
+    .ticker-item{
+        font-size: 14px;
+        padding: 0 30px;
+    }
+}
+
+
+/* ================= HERO ================= */
+.hero-wrapper {
+    display:flex;
+    justify-content:space-between;
+    background-color:#ff9800;
+    align-items:flex-start;
+    padding:40px 30px;
+    color:white;
+    font-weight:bold;
+    gap:30px;
+    flex-wrap:wrap;
+}
+
+.side-info-box h2 { color:#003366; font-size:clamp(28px,4vw,36px); font-weight:800; margin-bottom:20px; }
+.side-info-box p { font-size:clamp(16px,2vw,18px); line-height:28px; margin-bottom:20px; text-align:justify; }
+.side-info-box ul { list-style: disc inside; margin-bottom:25px; }
+.side-info-box ul li { margin-bottom:10px; }
+
+.learn-btn {
+    padding:14px 30px;
+    font-size:clamp(14px,2vw,16px);
+    font-weight:600;
+    color:#fff;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(135deg,#4b0082,#003366);
+    cursor:pointer;
+    transition: all 0.3s ease;
+}
+.learn-btn:hover { transform:translateY(-3px); }
+
+.hero-grid {
+    flex:1 1 48%;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+.grid-box { border-radius:20px; overflow:hidden; }
+.grid-box img { width:100%; height:100%; object-fit:cover; }
+
+/* ================= CARDS ================= */
+.section-title { text-align:center; font-size:clamp(2rem,3vw,2.5rem); margin:50px 0 30px; color:#003366; }
+.section-grid { display:flex; flex-wrap:wrap; justify-content:center; gap:30px; padding:20px 10px; }
+
+.card {
+    background:linear-gradient(135deg,#4b0082,#003366);
+    color:#fff;
+    padding:30px 20px 50px;
+    border-radius:20px;
+    width:clamp(250px,28%,300px);
+    text-align:center;
+}
+.card .circle { width:120px; height:120px; border-radius:50%; overflow:hidden; margin:0 auto 15px; }
+.card .circle img { width:100%; height:100%; object-fit:cover; }
+.card h3 { color:#ffd700; margin-bottom:10px; }
+.card .learn { background:#ffd700; padding:8px 20px; border-radius:25px; text-decoration:none; color:#003366; font-weight:bold; }
+
+/* ================= FOOTER ================= */
+.footer {
+    background: linear-gradient(135deg,#003366,#4b0082);
+    color: #fff;
+    padding: 50px 20px 20px;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;           /* allows items to wrap on smaller screens */
+    justify-content: space-between; 
+    gap: 30px;
+}
+
+/* ABOUT / LOGO SECTION */
+.footer-about {
+    flex: 1 1 250px;           /* grows and shrinks, min width 250px */
+    text-align: center;         /* centers logo and text */
+}
+
+.footer-about .footer-logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid #ffd700;
+    display: block;
+    margin: 0 auto 15px;       /* center horizontally + spacing below */
+}
+
+/* OTHER FOOTER SECTIONS (links, info) */
+.footer-links, .footer-contact {
+    flex: 1 1 200px;           /* adjust width for links and contact */
+}
+
+.footer-links ul, .footer-contact ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li, .footer-contact li {
+    margin-bottom: 10px;
+}
+
+.footer-links a, .footer-contact a {
+    color: #fff;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-links a:hover, .footer-contact a:hover {
+    color: #ffd700;
+}
+
+/* BOTTOM FOOTER TEXT */
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.3);
+    font-size: 0.85rem;
+    margin-top: 30px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width: 768px) {
+    .footer-container {
+        justify-content: center;   /* center all items on small screens */
+        gap: 20px;
+    }
+
+    .footer-about, .footer-links, .footer-contact {
+        flex: 1 1 100%;            /* full width for stacking */
+        text-align: center;        /* center all content */
+    }
+}
+

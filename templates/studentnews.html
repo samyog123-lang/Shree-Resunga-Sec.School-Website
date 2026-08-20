@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School News | Shree Resunga Secondary School</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Animate.css CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Navbar hover */
+        .nav-link:hover {
+            color: #ff9800;
+        }
+
+        /* Card styling */
+        .news-card {
+            background: #19d72fb6;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Mobile menu toggle */
+        #mobile-menu { display: none; }
+        @media (max-width: 768px) {
+            #mobile-menu { display: block; }
+            #nav-links {
+                display: none;
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+                margin-top: 1rem;
+            }
+            #nav-links.active { display: flex; }
+        }
+    </style>
+</head>
+<body class="bg-yellow-200">
+
+    <!-- NAVBAR -->
+    <nav class="bg-yellow-500 text-black px-6 py-4 flex justify-between items-center sticky top-0 z-50 shadow-md">
+        <div class="flex items-center gap-3">
+            <img src="{{ url_for('static', filename='Images/logo.jpg') }}" alt="Logo" class="w-10 h-10 rounded-full">
+            <span class="text-xl font-semibold">Shree Resunga Secondary School</span>
+        </div>
+        <div class="hidden md:flex gap-6 font-medium" id="nav-links">
+            <a href="{{ url_for('views.student_dashboard') }}" class="nav-link">Home</a>
+            <a href="{{ url_for('views.studentabout_us') }}" class="nav-link">About Us</a>
+            <a href="{{ url_for('views.studentnews') }}" class="nav-link font-bold underline">News</a>
+            <a href="{{ url_for('views.studentGallery') }}" class="nav-link">Gallery</a>
+            <a href="{{ url_for('views.studentcontact') }}" class="nav-link">Contact</a>
+        </div>
+        <button id="mobile-menu" class="md:hidden text-black text-2xl font-bold">
+            ☰
+        </button>
+    </nav>
+
+    <!-- NEWS CONTENT -->
+    <main class="max-w-7xl mx-auto px-4 py-10">
+        <h1 class="text-3xl font-bold mb-8 text-center animate__animated animate__fadeInDown">
+            School News & Updates
+        </h1>
+
+        {% set news_items = [
+            {'title': 'Annual Sports Day 2026', 'desc': 'Students participated in various track and field events.', 'img': 'https://images.unsplash.com/photo-1579758629933-0378a7de733b'},
+            {'title': 'Science Exhibition', 'desc': 'Innovative projects presented by science students.', 'img': 'https://images.unsplash.com/photo-1596495577886-d920f21f5f96'},
+            {'title': 'Art Competition', 'desc': 'Students showcased their artistic talents.', 'img': 'https://images.unsplash.com/photo-1504198453319-5ce911bafcde'},
+            {'title': 'Debate Championship', 'desc': 'Winners of the inter-school debate competition.', 'img': 'https://images.unsplash.com/photo-1581091215363-6e1ff0a66d5c'},
+            {'title': 'Music Fest', 'desc': 'Annual music festival with performances by students.', 'img': 'https://images.unsplash.com/photo-1524253482453-3fed8d2fe12b'},
+        ] %}
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {% for i in range(news_items|length) %}
+            <div class="news-card p-4 animate__animated animate__fadeInUp animate__delay-{{ i%10 }}s">
+                <img src="{{ news_items[i].img }}" alt="{{ news_items[i].title }}" class="w-full h-40 object-cover rounded-lg mb-3" loading="lazy">
+                <h2 class="font-semibold text-lg mb-2">{{ news_items[i].title }}</h2>
+                <p class="text-gray-700 text-sm">{{ news_items[i].desc }}</p>
+                <a href="{{ url_for('views.news_detail', news_id=i+1) }}" class="text-blue-900 font-medium mt-2 inline-block hover:underline">Read More</a>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-yellow-500 text-black text-center py-6 mt-12">
+        &copy; {{ current_year }} Shree Resunga Secondary School. All rights reserved.
+    </footer>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        const mobileBtn = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        mobileBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,5580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Official website of Shree Resunga Secondary School, Resunga Municipality, Gulmi, Nepal."
+    >
+
+    <meta
+        name="theme-color"
+        content="yellow"
+    >
+
+    <title>
+        Shree Resunga Secondary School | Gulmi, Nepal
+    </title>
+
+
+    <!-- =========================================================
+         GOOGLE FONTS
+    ========================================================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =========================================================
+         FONT AWESOME
+    ========================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
+    <!-- =========================================================
+         CSS
+    ========================================================== -->
+
+    <style>
+
+        /* =====================================================
+           ROOT VARIABLES
+        ===================================================== */
+/* =========================================================
+   FULL YELLOW BACKGROUND
+   ========================================================= */
+
+/* Entire website */
+html,
+body {
+    background: #fff200 !important;
+}
+
+/* All major sections */
+.welcome,
+.features,
+.school-life,
+.courses,
+.news,
+.stats,
+.stats-grid {
+    background: #fff200 !important;
+}
+
+/* Mobile stats background */
+@media (max-width: 600px) {
+    .stats {
+        background: #fff200 !important;
+    }
+}
+
+/* Remove light/gray section backgrounds */
+.courses,
+.news {
+    background: #fff200 !important;
+}
+
+/* Navbar */
+.navbar {
+    background: #fff200 !important;
+}
+
+/* Mobile navigation */
+.nav-links {
+    background: #fff200 !important;
+}
+
+/* Keep content cards white for readability */
+.course-card,
+.news-card,
+.feature {
+    background: #ffffff;
+}
+
+/* Stats cards can also be yellow */
+.stat {
+    background: #fff200;
+}
+
+/* Any empty container area */
+section,
+main {
+    background-color: #fff200;
+}
+
+/* Make links/nav readable on yellow */
+.nav-links a {
+    color: #003366;
+}
+
+.nav-links a:hover {
+    background: #ff9800;
+    color: white;
+}
+
+/* Yellow section titles */
+.section-title h2 {
+    color: #003366;
+}
+
+/* Mobile menu shadow */
+.nav-links {
+    box-shadow: 0 15px 25px rgba(0,0,0,0.15);
+}
+        :root {
+
+            --primary: #003b73;
+            --primary-dark: #00264d;
+            --primary-light: #075da8;
+
+            --secondary: #ff9800;
+            --secondary-dark: #e67e00;
+            --secondary-light: #ffb52e;
+
+            --purple: #4b0082;
+
+            --white: #ffffff;
+            --black: #111827;
+
+            --text: #263238;
+            --muted: #6b7280;
+            --light-text: #94a3b8;
+
+            --light-bg: #f5f8fc;
+            --lighter-bg: #f9fbfd;
+
+            --border: #e5e7eb;
+
+            --success: #198754;
+
+            --shadow-sm:
+                0 5px 18px rgba(0, 0, 0, 0.06);
+
+            --shadow-md:
+                0 12px 35px rgba(0, 0, 0, 0.09);
+
+            --shadow-lg:
+                0 25px 60px rgba(0, 0, 0, 0.13);
+
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 22px;
+
+            --transition: all 0.3s ease;
+
+        }
+
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+body {
+    font-family: "Inter", sans-serif;
+    color: #222;
+    background: yellow;
+    line-height: 1.6;
+}
+
+
+        body.menu-open {
+            overflow: hidden;
+        }
+
+
+        img {
+
+            max-width: 100%;
+
+            height: auto;
+
+            display: block;
+
+        }
+
+
+        a {
+
+            text-decoration: none;
+
+            color: inherit;
+
+        }
+
+
+        button,
+        input,
+        textarea,
+        select {
+
+            font-family: inherit;
+
+        }
+
+
+        button {
+
+            cursor: pointer;
+
+        }
+
+
+        ul {
+
+            list-style: none;
+
+        }
+
+
+        .container {
+
+            width: min(92%, 1240px);
+
+            margin: 0 auto;
+
+        }
+
+
+        .section {
+
+            padding: 95px 0;
+
+        }
+
+
+        .section-header {
+
+            text-align: center;
+
+            max-width: 760px;
+
+            margin: 0 auto 55px;
+
+        }
+
+
+        .section-label {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            color: var(--secondary-dark);
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+            text-transform: uppercase;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .section-label::before {
+
+            content: "";
+
+            width: 30px;
+
+            height: 3px;
+
+            border-radius: 10px;
+
+            background: var(--secondary);
+
+        }
+
+
+        .section-title {
+
+            font-family: "Poppins", sans-serif;
+
+            color: var(--primary);
+
+            font-size: clamp(30px, 4vw, 43px);
+
+            line-height: 1.2;
+
+            margin-bottom: 16px;
+
+        }
+
+
+        .section-description {
+
+            color: var(--muted);
+
+            font-size: 16px;
+
+        }
+
+
+        /* =====================================================
+           SCROLL PROGRESS
+        ===================================================== */
+
+        .scroll-progress {
+
+            position: fixed;
+
+            top: 0;
+
+            left: 0;
+
+            width: 0;
+
+            height: 4px;
+
+            background: linear-gradient(
+                90deg,
+                var(--secondary),
+                var(--secondary-light)
+            );
+
+            z-index: 5000;
+
+        }
+
+
+        /* =====================================================
+           TOP BAR
+        ===================================================== */
+
+        .top-bar {
+
+            background: var(--primary-dark);
+
+            color: white;
+
+            font-size: 13px;
+
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+
+        }
+
+
+        .top-content {
+
+            min-height: 42px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+        }
+
+
+        .top-left,
+        .top-right {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 22px;
+
+        }
+
+
+        .top-item {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+        }
+
+
+        .top-bar i {
+
+            color: var(--secondary-light);
+
+        }
+
+
+        .top-right a {
+
+            transition: var(--transition);
+
+        }
+
+
+        .top-right a:hover {
+
+            color: var(--secondary-light);
+
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .navbar {
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 2000;
+
+            background: rgba(255,255,255,0.97);
+
+            backdrop-filter: blur(15px);
+
+            box-shadow:
+                0 5px 25px rgba(0,0,0,0.07);
+
+        }
+
+
+        .nav-container {
+
+            min-height: 80px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 25px;
+
+        }
+
+
+        .brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            flex-shrink: 0;
+
+        }
+
+
+        .brand-logo {
+
+            width: 52px;
+
+            height: 52px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            color: white;
+
+            font-size: 21px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--primary),
+                    var(--secondary)
+                );
+
+            box-shadow:
+                0 8px 20px rgba(0,59,115,0.22);
+
+        }
+
+
+        .brand-text h2 {
+
+            font-family: "Poppins", sans-serif;
+
+            color: var(--primary);
+
+            font-size: 17px;
+
+            line-height: 1.2;
+
+        }
+
+
+        .brand-text span {
+
+            color: var(--muted);
+
+            font-size: 10px;
+
+        }
+
+
+        .nav-links {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 3px;
+
+        }
+
+
+        .nav-links a {
+
+            position: relative;
+
+            display: block;
+
+            padding: 10px 11px;
+
+            color: #374151;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            border-radius: 7px;
+
+            transition: var(--transition);
+
+        }
+
+
+        .nav-links a:hover {
+
+            color: var(--secondary-dark);
+
+            background: #fff5e8;
+
+        }
+
+
+        .nav-apply {
+
+            color: white !important;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--secondary),
+                    #f57c00
+                ) !important;
+
+            padding: 11px 18px !important;
+
+            border-radius: 30px !important;
+
+            box-shadow:
+                0 7px 18px rgba(255,152,0,0.25);
+
+        }
+
+
+        .nav-apply:hover {
+
+            color: white !important;
+
+            transform: translateY(-2px);
+
+        }
+
+
+        .menu-btn {
+
+            display: none;
+
+            width: 44px;
+
+            height: 44px;
+
+            border: none;
+
+            border-radius: 9px;
+
+            background: #edf4fa;
+
+            color: var(--primary);
+
+            font-size: 20px;
+
+        }
+
+
+        /* =====================================================
+           NOTICE
+        ===================================================== */
+
+        .notice {
+
+            background: var(--secondary);
+
+            color: white;
+
+            overflow: hidden;
+
+        }
+
+
+        .notice-inner {
+
+            display: flex;
+
+            align-items: center;
+
+            height: 44px;
+
+        }
+
+
+        .notice-title {
+
+            height: 44px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            background: var(--primary);
+
+            padding: 0 22px;
+
+            font-weight: 800;
+
+            flex-shrink: 0;
+
+            position: relative;
+
+            z-index: 2;
+
+        }
+
+
+        .notice-track {
+
+            overflow: hidden;
+
+            position: relative;
+
+            flex: 1;
+
+        }
+
+
+        .notice-text {
+
+            white-space: nowrap;
+
+            display: inline-block;
+
+            padding-left: 40px;
+
+            font-size: 14px;
+
+            animation: marquee 25s linear infinite;
+
+        }
+
+
+        @keyframes marquee {
+
+            0% {
+
+                transform: translateX(100%);
+
+            }
+
+            100% {
+
+                transform: translateX(-100%);
+
+            }
+
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+
+            min-height: 670px;
+
+            display: flex;
+
+            align-items: center;
+
+            position: relative;
+
+            overflow: hidden;
+
+            color: white;
+
+            background:
+
+                radial-gradient(
+                    circle at 85% 20%,
+                    rgba(255,255,255,0.14),
+                    transparent 28%
+                ),
+
+                radial-gradient(
+                    circle at 15% 90%,
+                    rgba(255,152,0,0.15),
+                    transparent 25%
+                ),
+
+                linear-gradient(
+                    125deg,
+                    #00264d,
+                    #003b73 48%,
+                    #4b0082
+                );
+
+        }
+
+
+        .hero::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 600px;
+
+            height: 600px;
+
+            right: -230px;
+
+            top: -240px;
+
+            border-radius: 50%;
+
+            border: 80px solid rgba(255,255,255,0.04);
+
+        }
+
+
+        .hero::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 350px;
+
+            height: 350px;
+
+            left: -180px;
+
+            bottom: -220px;
+
+            border-radius: 50%;
+
+            background: rgba(255,152,0,0.09);
+
+        }
+
+
+        .hero-grid {
+
+            display: grid;
+
+            grid-template-columns: 1.2fr 0.8fr;
+
+            gap: 60px;
+
+            align-items: center;
+
+            position: relative;
+
+            z-index: 2;
+
+        }
+
+
+        .hero-content {
+
+            max-width: 780px;
+
+        }
+
+
+        .hero-badge {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            padding: 8px 15px;
+
+            margin-bottom: 22px;
+
+            border: 1px solid rgba(255,255,255,0.18);
+
+            border-radius: 30px;
+
+            background: rgba(255,255,255,0.09);
+
+            backdrop-filter: blur(10px);
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+        }
+
+
+        .hero-badge i {
+
+            color: var(--secondary-light);
+
+        }
+
+
+        .hero h1 {
+
+            font-family: "Poppins", sans-serif;
+
+            font-size: clamp(42px, 6vw, 70px);
+
+            line-height: 1.08;
+
+            letter-spacing: -1px;
+
+            margin-bottom: 23px;
+
+        }
+
+
+        .hero h1 span {
+
+            color: var(--secondary-light);
+
+        }
+
+
+        .hero-description {
+
+            max-width: 690px;
+
+            color: rgba(255,255,255,0.83);
+
+            font-size: 17px;
+
+            margin-bottom: 32px;
+
+        }
+
+
+        .hero-buttons {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 14px;
+
+        }
+
+
+        .btn {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 9px;
+
+            min-height: 48px;
+
+            padding: 12px 22px;
+
+            border-radius: 8px;
+
+            font-size: 14px;
+
+            font-weight: 800;
+
+            border: none;
+
+            transition: var(--transition);
+
+        }
+
+
+        .btn-primary {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--secondary),
+                    #f57c00
+                );
+
+            color: white;
+
+            box-shadow:
+                0 9px 25px rgba(255,152,0,0.25);
+
+        }
+
+
+        .btn-primary:hover {
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 14px 30px rgba(255,152,0,0.35);
+
+        }
+
+
+        .btn-outline-light {
+
+            border: 1px solid rgba(255,255,255,0.3);
+
+            color: white;
+
+            background: rgba(255,255,255,0.07);
+
+        }
+
+
+        .btn-outline-light:hover {
+
+            background: white;
+
+            color: var(--primary);
+
+            transform: translateY(-3px);
+
+        }
+
+
+        /* =====================================================
+           HERO VISUAL
+        ===================================================== */
+
+        .hero-visual {
+
+            position: relative;
+
+            min-height: 440px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+
+        .hero-card {
+
+            width: min(100%, 400px);
+
+            min-height: 390px;
+
+            border-radius: 30px;
+
+            padding: 40px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.15),
+                    rgba(255,255,255,0.05)
+                );
+
+            border: 1px solid rgba(255,255,255,0.16);
+
+            backdrop-filter: blur(18px);
+
+            box-shadow:
+                0 30px 70px rgba(0,0,0,0.2);
+
+        }
+
+
+        .hero-school-icon {
+
+            width: 105px;
+
+            height: 105px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 28px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--secondary),
+                    #e65100
+                );
+
+            font-size: 52px;
+
+            margin-bottom: 25px;
+
+            box-shadow:
+                0 18px 35px rgba(0,0,0,0.2);
+
+        }
+
+
+        .hero-card h3 {
+
+            font-family: "Poppins", sans-serif;
+
+            font-size: 27px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .hero-card p {
+
+            color: rgba(255,255,255,0.72);
+
+        }
+
+
+        .floating-card {
+
+            position: absolute;
+
+            padding: 15px 18px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 11px;
+
+            border-radius: 14px;
+
+            background: white;
+
+            color: var(--primary);
+
+            box-shadow: var(--shadow-lg);
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+        }
+
+
+        .floating-card i {
+
+            color: var(--secondary);
+
+            font-size: 20px;
+
+        }
+
+
+        .float-one {
+
+            top: 30px;
+
+            right: -10px;
+
+        }
+
+
+        .float-two {
+
+            bottom: 35px;
+
+            left: -15px;
+
+        }
+
+
+        /* =====================================================
+           STATS
+        ===================================================== */
+
+        .stats {
+
+            position: relative;
+
+            z-index: 20;
+
+            margin-top: -55px;
+
+        }
+
+
+        .stats-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            background: white;
+
+            border-radius: 18px;
+
+            box-shadow: var(--shadow-lg);
+
+            overflow: hidden;
+
+        }
+
+
+        .stat {
+
+            text-align: center;
+
+            padding: 30px 20px;
+
+            border-right: 1px solid var(--border);
+
+            position: relative;
+
+        }
+
+
+        .stat:last-child {
+
+            border-right: none;
+
+        }
+
+
+        .stat i {
+
+            display: block;
+
+            color: var(--secondary);
+
+            font-size: 27px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .stat h3 {
+
+            color: var(--primary);
+
+            font-family: "Poppins", sans-serif;
+
+            font-size: 28px;
+
+            line-height: 1.2;
+
+        }
+
+
+        .stat p {
+
+            color: var(--muted);
+
+            font-size: 13px;
+
+        }
+
+
+        /* =====================================================
+           WELCOME
+        ===================================================== */
+
+        .welcome {
+
+            background: white;
+
+        }
+
+
+        .welcome-grid {
+
+            display: grid;
+
+            grid-template-columns: 0.9fr 1.1fr;
+
+            gap: 70px;
+
+            align-items: center;
+
+        }
+
+
+        .welcome-visual {
+
+            min-height: 460px;
+
+            position: relative;
+
+        }
+
+
+        .welcome-main-card {
+
+            width: 88%;
+
+            min-height: 410px;
+
+            border-radius: 25px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            color: white;
+
+            overflow: hidden;
+
+            position: relative;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--primary),
+                    var(--purple)
+                );
+
+            box-shadow: var(--shadow-lg);
+
+        }
+
+
+        .welcome-main-card::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 280px;
+
+            height: 280px;
+
+            border-radius: 50%;
+
+            top: -130px;
+
+            right: -100px;
+
+            background: rgba(255,152,0,0.16);
+
+        }
+
+
+        .welcome-main-card::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 220px;
+
+            height: 220px;
+
+            border-radius: 50%;
+
+            bottom: -130px;
+
+            left: -100px;
+
+            border: 35px solid rgba(255,255,255,0.05);
+
+        }
+
+
+        .welcome-card-content {
+
+            position: relative;
+
+            z-index: 2;
+
+            padding: 35px;
+
+        }
+
+
+        .welcome-card-content i {
+
+            color: var(--secondary-light);
+
+            font-size: 75px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .welcome-card-content h3 {
+
+            font-family: "Poppins", sans-serif;
+
+            font-size: 30px;
+
+        }
+
+
+        .welcome-card-content p {
+
+            color: rgba(255,255,255,0.72);
+
+        }
+
+
+        .experience-badge {
+
+            position: absolute;
+
+            right: 0;
+
+            bottom: 15px;
+
+            width: 150px;
+
+            height: 150px;
+
+            border-radius: 20px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            text-align: center;
+
+            background: white;
+
+            box-shadow: var(--shadow-lg);
+
+        }
+
+
+        .experience-badge strong {
+
+            font-family: "Poppins", sans-serif;
+
+            font-size: 28px;
+
+            color: var(--secondary-dark);
+
+        }
+
+
+        .experience-badge span {
+
+            color: var(--muted);
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+        }
+
+
+        .welcome-content h2 {
+
+            font-family: "Poppins", sans-serif;
+
+            font-size: clamp(30px, 4vw, 42px);
+
+            color: var(--primary);
+
+            line-height: 1.2;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .welcome-content > p {
+
+            color: var(--muted);
+
+            margin-bottom: 17px;
+
+        }
+
+
+        .check-list {
+
+            margin: 25px 0;
+
+            display: grid;
+
+            gap: 12px;
+
+        }
+
+
+        .check-list li {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            color: #374151;
+
+            font-weight: 600;
+
+        }
+
+
+        .check-list i {
+
+            color: var(--secondary);
+
+        }
+
+
+        /* =====================================================
+           ACADEMICS
+        ===================================================== */
+
+        .academics {
+
+            background: var(--light-bg);
+
+        }
+
+
+        .academic-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 25px;
+
+        }
+
+
+        .academic-card {
+
+            background: white;
+
+            border-radius: 18px;
+
+            padding: 35px 30px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            border: 1px solid var(--border);
+
+            box-shadow: var(--shadow-sm);
+
+            transition: var(--transition);
+
+        }
+
+
+        .academic-card:hover {
+
+            transform: translateY(-8px);
+
+            box-shadow: var(--shadow-lg);
+
+        }
+
+
+        .academic-card::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 5px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--secondary),
+                    var(--primary)
+                );
+
+        }
+
+
+        .academic-icon {
+
+            width: 65px;
+
+            height: 65px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 15px;
+
+            background: #fff3df;
+
+            color: var(--secondary-dark);
+
+            font-size: 28px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .academic-card h3 {
+
+            font-family: "Poppins", sans-serif;
+
+            color: var(--primary);
+
+            font-size: 22px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .academic-card p {
+
+            color: var(--muted);
+
+            font-size: 14px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .academic-link {
+
+            color: var(--primary);
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+        }
+
+
+        .academic-link:hover {
+
+            color: var(--secondary-dark);
+
+        }
+
+
+        /* =====================================================
+           FEATURES
+        ===================================================== */
+
+        .features {
+
+            background: white;
+
+        }
+
+
+        .feature-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 18px;
+
+        }
+
+
+        .feature-card {
+
+            padding: 30px 20px;
+
+            text-align: center;
+
+            border: 1px solid var(--border);
+
+            border-radius: 15px;
+
+            transition: var(--transition);
+
+            background: white;
+
+        }
+
+
+        .feature-card:hover {
+
+            transform: translateY(-6px);
+
+            border-color: rgba(255,152,0,0.45);
+
+            box-shadow: var(--shadow-md);
+
+        }
+
+
+        .feature-card i {
+
+            font-size: 34px;
+
+            color: var(--secondary);
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .feature-card h3 {
+
+            color: var(--primary);
+
+            font-family: "Poppins", sans-serif;
+
+            font-size: 17px;
+
+            margin-bottom: 7px;
+
+        }
+
+
+        .feature-card p {
+
+            color: var(--muted);
+
+            font-size: 13px;
+
+        }
+
+
+        /* =====================================================
+           ACHIEVEMENTS
+        ===================================================== */
+
+        .achievements {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--primary-dark),
+                    var(--primary),
+                    var(--purple)
+                );
+
+            color: white;
+
+            position: relative;
+
+            overflow: hidden;
+
+        }
+
+
+        .achievements::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 450px;
+
+            height: 450px;
+
+            border-radius: 50%;
+
+            right: -200px;
+
+            top: -180px;
+
+            border: 70px solid rgba(255,255,255,0.035);
+
+        }
+
+
+        .achievements .section-label {
+
+            color: var(--secondary-light);
+
+        }
+
+
+        .achievements .section-title {
+
+            color: white;
+
+        }
+
+
+        .achievements .section-description {
+
+            color: rgba(255,255,255,0.7);
+
+        }
+
+
+        .achievement-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 25px;
+
+            position: relative;
+
+            z-index: 2;
+
+        }
+
+
+        .achievement-card {
+
+            padding: 35px 28px;
+
+            text-align: center;
+
+            border-radius: 18px;
+
+            background: rgba(255,255,255,0.07);
+
+            border: 1px solid rgba(255,255,255,0.11);
+
+            backdrop-filter: blur(8px);
+
+            transition: var(--transition);
+
+        }
+
+
+        .achievement-card:hover {
+
+            transform: translateY(-7px);
+
+            background: rgba(255,255,255,0.11);
+
+        }
+
+
+        .achievement-card i {
+
+            font-size: 44px;
+
+            color: var(--secondary-light);
+
+            margin-bottom: 17px;
+
+        }
+
+
+        .achievement-card h3 {
+
+            font-family: "Poppins", sans-serif;
+
+            margin-bottom: 9px;
+
+        }
+
+
+        .achievement-card p {
+
+            color: rgba(255,255,255,0.68);
+
+            font-size: 14px;
+
+        }
+
+
+        /* =====================================================
+           NEWS
+        ===================================================== */
+
+        .news {
+
+            background: var(--light-bg);
+
+        }
+
+
+        .news-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 25px;
+
+        }
+
+
+        .news-card {
+
+            background: white;
+
+            border-radius: 17px;
+
+            overflow: hidden;
+
+            border: 1px solid var(--border);
+
+            box-shadow: var(--shadow-sm);
+
+            transition: var(--transition);
+
+        }
+
+
+        .news-card:hover {
+
+            transform: translateY(-7px);
+
+            box-shadow: var(--shadow-lg);
+
+        }
+
+
+        .news-image {
+
+            height: 190px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            color: white;
+
+            font-size: 55px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--primary),
+                    var(--secondary)
+                );
+
+        }
+
+
+        .news-content {
+
+            padding: 25px;
+
+        }
+
+
+        .news-category {
+
+            color: var(--secondary-dark);
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .news-content h3 {
+
+            font-family: "Poppins", sans-serif;
+
+            color: var(--primary);
+
+            margin: 7px 0;
+
+            font-size: 20px;
+
+        }
+
+
+        .news-content p {
+
+            color: var(--muted);
+
+            font-size: 14px;
+
+            margin-bottom: 17px;
+
+        }
+
+
+        .read-more {
+
+            color: var(--primary);
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+        }
+
+
+        .read-more:hover {
+
+            color: var(--secondary-dark);
+
+        }
+
+
+        .center-button {
+
+            text-align: center;
+
+            margin-top: 38px;
+
+        }
+
+
+        /* =====================================================
+           SCHOOL LIFE
+        ===================================================== */
+
+        .school-life {
+
+            background: white;
+
+        }
+
+
+        .life-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 20px;
+
+        }
+
+
+        .life-card {
+
+            min-height: 235px;
+
+            padding: 28px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: flex-end;
+
+            position: relative;
+
+            overflow: hidden;
+
+            border-radius: 18px;
+
+            color: white;
+
+            transition: var(--transition);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--primary),
+                    var(--purple)
+                );
+
+        }
+
+
+        .life-card:nth-child(2) {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #4b0082,
+                    #e65100
+                );
+
+        }
+
+
+        .life-card:nth-child(3) {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #00695c,
+                    var(--primary)
+                );
+
+        }
+
+
+        .life-card:nth-child(4) {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #e65100,
+                    #ad1457
+                );
+
+        }
+
+
+        .life-card:nth-child(5) {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #00695c,
+                    #4b0082
+                );
+
+        }
+
+
+        .life-card:nth-child(6) {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #6a1b9a,
+                    var(--secondary)
+                );
+
+        }
+
+
+        .life-card:hover {
+
+            transform: translateY(-7px);
+
+            box-shadow: var(--shadow-lg);
+
+        }
+
+
+        .life-card i {
+
+            font-size: 42px;
+
+            color: #ffd166;
+
+            margin-bottom: auto;
+
+        }
+
+
+        .life-card h3 {
+
+            font-family: "Poppins", sans-serif;
+
+            font-size: 21px;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .life-card p {
+
+            color: rgba(255,255,255,0.78);
+
+            font-size: 13px;
+
+        }
+
+
+        /* =====================================================
+           HISTORY
+        ===================================================== */
+
+        .history {
+
+            background: var(--light-bg);
+
+        }
+
+
+        .history-grid {
+
+            display: grid;
+
+            grid-template-columns: 0.7fr 1.3fr;
+
+            gap: 60px;
+
+            align-items: center;
+
+        }
+
+
+        .history-year {
+
+            min-height: 300px;
+
+            border-radius: 25px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--primary),
+                    var(--purple)
+                );
+
+            box-shadow: var(--shadow-lg);
+
+        }
+
+
+        .history-year strong {
+
+            font-family: "Poppins", sans-serif;
+
+            color: var(--secondary-light);
+
+            font-size: 60px;
+
+            line-height: 1;
+
+        }
+
+
+        .history-year span {
+
+            font-size: 15px;
+
+            margin-top: 12px;
+
+            color: rgba(255,255,255,0.75);
+
+        }
+
+
+        .timeline {
+
+            position: relative;
+
+            padding-left: 35px;
+
+        }
+
+
+        .timeline::before {
+
+            content: "";
+
+            position: absolute;
+
+            left: 6px;
+
+            top: 5px;
+
+            bottom: 5px;
+
+            width: 2px;
+
+            background: #d8e2ec;
+
+        }
+
+
+        .timeline-item {
+
+            position: relative;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .timeline-item:last-child {
+
+            margin-bottom: 0;
+
+        }
+
+
+        .timeline-item::before {
+
+            content: "";
+
+            position: absolute;
+
+            left: -35px;
+
+            top: 7px;
+
+            width: 14px;
+
+            height: 14px;
+
+            border-radius: 50%;
+
+            background: var(--secondary);
+
+            border: 3px solid #fff;
+
+            box-shadow: 0 0 0 3px rgba(255,152,0,0.2);
+
+        }
+
+
+        .timeline-item h3 {
+
+            font-family: "Poppins", sans-serif;
+
+            color: var(--primary);
+
+            font-size: 19px;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .timeline-item p {
+
+            color: var(--muted);
+
+            font-size: 14px;
+
+        }
+
+
+        /* =====================================================
+           TESTIMONIAL
+        ===================================================== */
+
+        .testimonials {
+
+            background: white;
+
+        }
+
+
+        .testimonial-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 22px;
+
+        }
+
+
+        .testimonial {
+
+            padding: 30px;
+
+            border-radius: 18px;
+
+            background: var(--lighter-bg);
+
+            border: 1px solid var(--border);
+
+        }
+
+
+        .quote-icon {
+
+            color: var(--secondary);
+
+            font-size: 30px;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .testimonial p {
+
+            color: var(--muted);
+
+            font-size: 14px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .person {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+        }
+
+
+        .person-avatar {
+
+            width: 45px;
+
+            height: 45px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            color: white;
+
+            background: var(--primary);
+
+        }
+
+
+        .person strong {
+
+            display: block;
+
+            color: var(--primary);
+
+            font-size: 14px;
+
+        }
+
+
+        .person span {
+
+            color: var(--muted);
+
+            font-size: 12px;
+
+        }
+
+
+        /* =====================================================
+           ADMISSION CTA
+        ===================================================== */
+
+        .admission-cta {
+
+            padding: 100px 0;
+
+            color: white;
+
+            text-align: center;
+
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #e65100,
+                    var(--secondary),
+                    #f57c00
+                );
+
+        }
+
+
+        .admission-cta::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 400px;
+
+            height: 400px;
+
+            border-radius: 50%;
+
+            right: -170px;
+
+            top: -220px;
+
+            border: 60px solid rgba(255,255,255,0.08);
+
+        }
+
+
+        .admission-cta h2 {
+
+            position: relative;
+
+            font-family: "Poppins", sans-serif;
+
+            font-size: clamp(30px, 5vw, 45px);
+
+            margin-bottom: 14px;
+
+        }
+
+
+        .admission-cta p {
+
+            position: relative;
+
+            max-width: 720px;
+
+            margin: 0 auto 28px;
+
+            color: rgba(255,255,255,0.9);
+
+        }
+
+
+        .btn-white {
+
+            position: relative;
+
+            background: white;
+
+            color: var(--primary);
+
+        }
+
+
+        .btn-white:hover {
+
+            transform: translateY(-3px);
+
+            background: #f5f5f5;
+
+        }
+
+
+        /* =====================================================
+           QUICK LINKS
+        ===================================================== */
+
+        .quick-links {
+
+            background: var(--primary-dark);
+
+            padding: 60px 0;
+
+        }
+
+
+        .quick-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(5, 1fr);
+
+            gap: 13px;
+
+        }
+
+
+        .quick-link {
+
+            min-height: 105px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 8px;
+
+            text-align: center;
+
+            color: white;
+
+            border: 1px solid rgba(255,255,255,0.11);
+
+            border-radius: 12px;
+
+            transition: var(--transition);
+
+        }
+
+
+        .quick-link:hover {
+
+            background: var(--secondary);
+
+            border-color: var(--secondary);
+
+            transform: translateY(-4px);
+
+        }
+
+
+        .quick-link i {
+
+            font-size: 25px;
+
+        }
+
+
+        .quick-link span {
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+
+            background: #071827;
+
+            color: white;
+
+        }
+
+
+        .footer-main {
+
+            padding: 75px 0 50px;
+
+        }
+
+
+        .footer-grid {
+
+            display: grid;
+
+            grid-template-columns: 2fr 1fr 1fr 1.4fr;
+
+            gap: 45px;
+
+        }
+
+
+        .footer-brand h2 {
+
+            font-family: "Poppins", sans-serif;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .footer-brand p {
+
+            color: #aeb9c5;
+
+            font-size: 14px;
+
+            max-width: 430px;
+
+        }
+
+
+        .footer-title {
+
+            color: var(--secondary-light);
+
+            font-family: "Poppins", sans-serif;
+
+            font-size: 17px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .footer-list {
+
+            display: grid;
+
+            gap: 9px;
+
+        }
+
+
+        .footer-list a {
+
+            color: #aeb9c5;
+
+            font-size: 13px;
+
+            transition: var(--transition);
+
+        }
+
+
+        .footer-list a:hover {
+
+            color: var(--secondary-light);
+
+            padding-left: 4px;
+
+        }
+
+
+        .contact-item {
+
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 10px;
+
+            color: #aeb9c5;
+
+            font-size: 13px;
+
+            margin-bottom: 14px;
+
+        }
+
+
+        .contact-item i {
+
+            color: var(--secondary-light);
+
+            margin-top: 5px;
+
+            width: 16px;
+
+        }
+
+
+        .socials {
+
+            display: flex;
+
+            gap: 9px;
+
+            margin-top: 22px;
+
+        }
+
+
+        .socials a {
+
+            width: 39px;
+
+            height: 39px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 50%;
+
+            color: white;
+
+            background: rgba(255,255,255,0.08);
+
+            transition: var(--transition);
+
+        }
+
+
+        .socials a:hover {
+
+            background: var(--secondary);
+
+            transform: translateY(-3px);
+
+        }
+
+
+        .copyright {
+
+            border-top: 1px solid rgba(255,255,255,0.08);
+
+            padding: 20px 0;
+
+            color: #84909d;
+
+            text-align: center;
+
+            font-size: 12px;
+
+        }
+
+
+        /* =====================================================
+           BACK TO TOP
+        ===================================================== */
+
+        .back-top {
+
+            position: fixed;
+
+            right: 22px;
+
+            bottom: 22px;
+
+            width: 46px;
+
+            height: 46px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            display: none;
+
+            align-items: center;
+
+            justify-content: center;
+
+            color: white;
+
+            background: var(--secondary);
+
+            box-shadow: var(--shadow-md);
+
+            z-index: 1500;
+
+        }
+
+
+        .back-top.show {
+
+            display: flex;
+
+        }
+
+
+        .back-top:hover {
+
+            background: var(--primary);
+
+        }
+
+
+        /* =====================================================
+           REVEAL ANIMATION
+        ===================================================== */
+
+        .reveal {
+
+            opacity: 0;
+
+            transform: translateY(25px);
+
+            transition:
+                opacity 0.7s ease,
+                transform 0.7s ease;
+
+        }
+
+
+        .reveal.visible {
+
+            opacity: 1;
+
+            transform: translateY(0);
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE - 1100
+        ===================================================== */
+
+        @media (max-width: 1100px) {
+
+            .nav-links a {
+
+                padding-left: 8px;
+
+                padding-right: 8px;
+
+                font-size: 12px;
+
+            }
+
+
+            .feature-grid {
+
+                grid-template-columns: repeat(2, 1fr);
+
+            }
+
+
+            .quick-grid {
+
+                grid-template-columns: repeat(3, 1fr);
+
+            }
+
+
+            .footer-grid {
+
+                grid-template-columns: 1fr 1fr;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE - 900
+        ===================================================== */
+
+        @media (max-width: 900px) {
+
+            .top-left {
+
+                display: none;
+
+            }
+
+
+            .top-content {
+
+                justify-content: center;
+
+            }
+
+
+            .menu-btn {
+
+                display: block;
+
+            }
+
+
+            .nav-links {
+
+                position: fixed;
+
+                top: 80px;
+
+                left: 0;
+
+                right: 0;
+
+                display: none;
+
+                flex-direction: column;
+
+                align-items: stretch;
+
+                padding: 15px;
+
+                background: white;
+
+                box-shadow: 0 20px 30px rgba(0,0,0,0.12);
+
+                max-height: calc(100vh - 80px);
+
+                overflow-y: auto;
+
+            }
+
+
+            .nav-links.active {
+
+                display: flex;
+
+            }
+
+
+            .nav-links a {
+
+                padding: 13px 15px;
+
+                font-size: 14px;
+
+            }
+
+
+            .nav-apply {
+
+                text-align: center;
+
+                margin-top: 5px;
+
+            }
+
+
+            .hero {
+
+                min-height: auto;
+
+                padding: 90px 0 130px;
+
+            }
+
+
+            .hero-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .hero-visual {
+
+                display: none;
+
+            }
+
+
+            .stats {
+
+                margin-top: -60px;
+
+            }
+
+
+            .welcome-grid,
+            .history-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .academic-grid,
+            .achievement-grid,
+            .news-grid,
+            .life-grid,
+            .testimonial-grid {
+
+                grid-template-columns: repeat(2, 1fr);
+
+            }
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE - 650
+        ===================================================== */
+
+        @media (max-width: 650px) {
+
+            .section {
+
+                padding: 70px 0;
+
+            }
+
+
+            .brand-text h2 {
+
+                font-size: 14px;
+
+            }
+
+
+            .brand-text span {
+
+                font-size: 9px;
+
+            }
+
+
+            .brand-logo {
+
+                width: 45px;
+
+                height: 45px;
+
+                font-size: 18px;
+
+            }
+
+
+            .top-right {
+
+                gap: 13px;
+
+            }
+
+
+            .top-bar {
+
+                font-size: 11px;
+
+            }
+
+
+            .notice-title {
+
+                padding: 0 13px;
+
+                font-size: 12px;
+
+            }
+
+
+            .notice-text {
+
+                font-size: 12px;
+
+            }
+
+
+            .hero {
+
+                padding: 75px 0 120px;
+
+            }
+
+
+            .hero h1 {
+
+                font-size: 42px;
+
+            }
+
+
+            .hero-description {
+
+                font-size: 15px;
+
+            }
+
+
+            .hero-buttons {
+
+                flex-direction: column;
+
+                align-items: stretch;
+
+            }
+
+
+            .btn {
+
+                width: 100%;
+
+            }
+
+
+            .stats-grid {
+
+                grid-template-columns: repeat(2, 1fr);
+
+            }
+
+
+            .stat {
+
+                border-right: 1px solid var(--border);
+
+                border-bottom: 1px solid var(--border);
+
+            }
+
+
+            .stat:nth-child(2),
+            .stat:nth-child(4) {
+
+                border-right: none;
+
+            }
+
+
+            .stat:nth-child(3),
+            .stat:nth-child(4) {
+
+                border-bottom: none;
+
+            }
+
+
+            .welcome-main-card {
+
+                width: 100%;
+
+            }
+
+
+            .experience-badge {
+
+                right: 10px;
+
+            }
+
+
+            .academic-grid,
+            .feature-grid,
+            .achievement-grid,
+            .news-grid,
+            .life-grid,
+            .testimonial-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .quick-grid {
+
+                grid-template-columns: repeat(2, 1fr);
+
+            }
+
+
+            .footer-grid {
+
+                grid-template-columns: 1fr;
+
+                gap: 35px;
+
+            }
+
+
+            .section-title {
+
+                font-size: 30px;
+
+            }
+
+
+            .admission-cta {
+
+                padding: 75px 0;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           REDUCED MOTION
+        ===================================================== */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            html {
+
+                scroll-behavior: auto;
+
+            }
+
+
+            *,
+            *::before,
+            *::after {
+
+                animation-duration: 0.01ms !important;
+
+                animation-iteration-count: 1 !important;
+
+                transition-duration: 0.01ms !important;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         SCROLL PROGRESS
+    ====================================================== -->
+
+    <div
+        class="scroll-progress"
+        id="scrollProgress"
+    ></div>
+
+
+    <!-- =====================================================
+         TOP BAR
+    ====================================================== -->
+
+    <div class="top-bar">
+
+        <div class="container top-content">
+
+            <div class="top-left">
+
+                <span class="top-item">
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    Resunga Municipality, Gulmi, Nepal
+
+                </span>
+
+
+                <span class="top-item">
+
+                    <i class="fa-solid fa-envelope"></i>
+
+                    school@example.com
+
+                </span>
+
+            </div>
+
+
+            <div class="top-right">
+
+                <a href="{{ url_for('auth.login') }}">
+
+                    <i class="fa-solid fa-right-to-bracket"></i>
+
+                    Login
+
+                </a>
+
+
+                <a href="{{ url_for('auth.signup') }}">
+
+                    <i class="fa-solid fa-user-plus"></i>
+
+                    Sign Up
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         NAVBAR
+    ====================================================== -->
+
+    <nav
+        class="navbar"
+        id="navbar"
+    >
+
+        <div class="container nav-container">
+
+
+            <a
+                href="{{ url_for('views.homepage') }}"
+                class="brand"
+                aria-label="Shree Resunga Secondary School Home"
+            >
+
+                <div class="brand-logo">
+
+                    <i class="fa-solid fa-school"></i>
+
+                </div>
+
+
+                <div class="brand-text">
+
+                    <h2>
+                        Shree Resunga Secondary School
+                    </h2>
+
+                    <span>
+                        Resunga Municipality, Gulmi
+                    </span>
+
+                </div>
+
+            </a>
+
+
+
+            <button
+                class="menu-btn"
+                id="menuBtn"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+            >
+
+                <i class="fa-solid fa-bars"></i>
+
+            </button>
+
+
+
+            <ul
+                class="nav-links"
+                id="navLinks"
+            >
+
+                <li>
+                    <a href="{{ url_for('views.homepage') }}">
+                        Home
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="{{ url_for('views.about_us') }}">
+                        About
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="{{ url_for('views.academics') }}">
+                        Academics
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="{{ url_for('views.achievements') }}">
+                        Achievements
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="{{ url_for('views.events') }}">
+                        Events
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="{{ url_for('views.news') }}">
+                        News
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="{{ url_for('views.Gallery') }}">
+                        Gallery
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="{{ url_for('views.contact') }}">
+                        Contact
+                    </a>
+                </li>
+
+
+                <li>
+                    <a
+                        href="{{ url_for('views.admissions') }}"
+                        class="nav-apply"
+                    >
+                        Apply Now
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =====================================================
+         NOTICE BAR
+    ====================================================== -->
+
+    <div class="notice">
+
+        <div class="notice-inner container">
+
+            <div class="notice-title">
+
+                <i class="fa-solid fa-bullhorn"></i>
+
+                Notice
+
+            </div>
+
+
+            <div class="notice-track">
+
+                <div class="notice-text">
+
+                    Welcome to Shree Resunga Secondary School
+                    • Admissions are open
+                    • Science
+                    • Management
+                    • Civil Engineering
+                    • Quality Education for a Better Future
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <section class="hero">
+
+        <div class="container hero-grid">
+
+
+            <div class="hero-content reveal">
+
+                <div class="hero-badge">
+
+                    <i class="fa-solid fa-graduation-cap"></i>
+
+                    Welcome to Shree Resunga Secondary School
+
+                </div>
+
+
+                <h1>
+
+                    Shaping
+
+                    <span>Future</span>
+
+                    Through Education
+
+                </h1>
+
+
+                <p class="hero-description">
+
+                    We are committed to providing quality education,
+                    practical learning and a supportive environment
+                    where students can discover their abilities,
+                    develop confidence and prepare for a successful future.
+
+                </p>
+
+
+                <div class="hero-buttons">
+
+                    <a
+                        href="{{ url_for('views.admissions') }}"
+                        class="btn btn-primary"
+                    >
+
+                        <i class="fa-solid fa-file-signature"></i>
+
+                        Apply for Admission
+
+                    </a>
+
+
+                    <a
+                        href="{{ url_for('views.about_us') }}"
+                        class="btn btn-outline-light"
+                    >
+
+                        <i class="fa-solid fa-circle-info"></i>
+
+                        Explore Our School
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="hero-visual">
+
+                <div class="hero-card">
+
+                    <div class="hero-school-icon">
+
+                        <i class="fa-solid fa-school"></i>
+
+                    </div>
+
+
+                    <h3>
+                        Shree Resunga
+                    </h3>
+
+
+                    <p>
+                        Secondary School
+                    </p>
+
+
+                    <br>
+
+
+                    <small>
+                        Excellence • Discipline • Knowledge
+                    </small>
+
+                </div>
+
+
+                <div class="floating-card float-one">
+
+                    <i class="fa-solid fa-award"></i>
+
+                    <span>
+                        Quality Education
+                    </span>
+
+                </div>
+
+
+                <div class="floating-card float-two">
+
+                    <i class="fa-solid fa-users"></i>
+
+                    <span>
+                        Student Focused
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         STATS
+    ====================================================== -->
+
+    <section class="stats">
+
+        <div class="container">
+
+            <div class="stats-grid">
+
+
+                <div class="stat">
+
+                    <i class="fa-solid fa-calendar-days"></i>
+
+                    <h3>
+                        2025 BS
+                    </h3>
+
+                    <p>
+                        Established
+                    </p>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <i class="fa-solid fa-book-open"></i>
+
+                    <h3>
+                        3+
+                    </h3>
+
+                    <p>
+                        Academic Streams
+                    </p>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <i class="fa-solid fa-users"></i>
+
+                    <h3>
+                        1000+
+                    </h3>
+
+                    <p>
+                        Learners & Community
+                    </p>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <i class="fa-solid fa-certificate"></i>
+
+                    <h3>
+                        ISO
+                    </h3>
+
+                    <p>
+                        Certified Institution
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         WELCOME
+    ====================================================== -->
+
+    <section class="section welcome">
+
+        <div class="container welcome-grid">
+
+
+            <div class="welcome-visual reveal">
+
+                <div class="welcome-main-card">
+
+                    <div class="welcome-card-content">
+
+                        <i class="fa-solid fa-school"></i>
+
+                        <h3>
+                            Shree Resunga
+                        </h3>
+
+                        <p>
+                            Secondary School
+                        </p>
+
+                        <br>
+
+                        <span>
+                            Excellence • Discipline • Knowledge
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="experience-badge">
+
+                    <strong>
+                        2025
+                    </strong>
+
+                    <span>
+                        BS Established
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="welcome-content reveal">
+
+                <div class="section-label">
+                    Welcome
+                </div>
+
+
+                <h2>
+                    A Place to Learn,
+                    Grow and Succeed
+                </h2>
+
+
+                <p>
+
+                    Shree Resunga Secondary School is dedicated
+                    to creating an educational environment where
+                    students can learn with confidence, explore
+                    their interests and develop the knowledge and
+                    skills needed for their future.
+
+                </p>
+
+
+                <p>
+
+                    Education at our school goes beyond textbooks.
+                    We encourage students to participate in academic
+                    activities, sports, cultural programmes,
+                    creative works, community activities and
+                    practical learning.
+
+                </p>
+
+
+                <ul class="check-list">
+
+                    <li>
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                        Quality and inclusive education
+
+                    </li>
+
+
+                    <li>
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                        Experienced and dedicated teachers
+
+                    </li>
+
+
+                    <li>
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                        Practical and modern learning
+
+                    </li>
+
+
+                    <li>
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                        Student-centered environment
+
+                    </li>
+
+
+                    <li>
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                        Academic and extracurricular development
+
+                    </li>
+
+                </ul>
+
+
+                <a
+                    href="{{ url_for('views.about_us') }}"
+                    class="btn btn-primary"
+                >
+
+                    Learn More
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         ACADEMICS
+    ====================================================== -->
+
+    <section class="section academics">
+
+        <div class="container">
+
+
+            <div class="section-header reveal">
+
+                <div class="section-label">
+                    Academic Programs
+                </div>
+
+                <h2 class="section-title">
+                    Explore Our Academic Streams
+                </h2>
+
+                <p class="section-description">
+
+                    Academic opportunities designed to build
+                    strong foundations and prepare students
+                    for higher education, careers and real-world
+                    challenges.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="academic-grid">
+
+
+                <div class="academic-card reveal">
+
+                    <div class="academic-icon">
+
+                        <i class="fa-solid fa-flask"></i>
+
+                    </div>
+
+
+                    <h3>
+                        Science
+                    </h3>
+
+
+                    <p>
+
+                        Build a strong foundation in science,
+                        mathematics and technology through
+                        analytical, theoretical and practical
+                        learning.
+
+                    </p>
+
+
+                    <a
+                        href="{{ url_for('views.academics') }}"
+                        class="academic-link"
+                    >
+
+                        Explore Science
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
+                </div>
+
+
+
+                <div class="academic-card reveal">
+
+                    <div class="academic-icon">
+
+                        <i class="fa-solid fa-chart-line"></i>
+
+                    </div>
+
+
+                    <h3>
+                        Management
+                    </h3>
+
+
+                    <p>
+
+                        Develop knowledge of business,
+                        economics, accounting and management
+                        for future academic and professional
+                        opportunities.
+
+                    </p>
+
+
+                    <a
+                        href="{{ url_for('views.academics') }}"
+                        class="academic-link"
+                    >
+
+                        Explore Management
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
+                </div>
+
+
+
+                <div class="academic-card reveal">
+
+                    <div class="academic-icon">
+
+                        <i class="fa-solid fa-helmet-safety"></i>
+
+                    </div>
+
+
+                    <h3>
+                        Civil Engineering
+                    </h3>
+
+
+                    <p>
+
+                        Gain technical and practical knowledge
+                        related to construction, surveying,
+                        drafting and civil engineering.
+
+                    </p>
+
+
+                    <a
+                        href="{{ url_for('views.academics') }}"
+                        class="academic-link"
+                    >
+
+                        Explore Civil Engineering
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         FEATURES
+    ====================================================== -->
+
+    <section class="section features">
+
+        <div class="container">
+
+
+            <div class="section-header reveal">
+
+                <div class="section-label">
+                    Why Choose Us
+                </div>
+
+                <h2 class="section-title">
+                    Education Beyond Classrooms
+                </h2>
+
+                <p class="section-description">
+
+                    We focus on academic excellence,
+                    practical learning and the overall
+                    development of every learner.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="feature-grid">
+
+
+                <div class="feature-card reveal">
+
+                    <i class="fa-solid fa-chalkboard-user"></i>
+
+                    <h3>
+                        Quality Teaching
+                    </h3>
+
+                    <p>
+                        Dedicated teachers and supportive
+                        learning environments.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card reveal">
+
+                    <i class="fa-solid fa-microscope"></i>
+
+                    <h3>
+                        Practical Learning
+                    </h3>
+
+                    <p>
+                        Learning through experiments,
+                        activities and real applications.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card reveal">
+
+                    <i class="fa-solid fa-person-running"></i>
+
+                    <h3>
+                        Sports
+                    </h3>
+
+                    <p>
+                        Opportunities for physical fitness,
+                        teamwork and competition.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card reveal">
+
+                    <i class="fa-solid fa-palette"></i>
+
+                    <h3>
+                        Creativity
+                    </h3>
+
+                    <p>
+                        Encouraging students to express
+                        ideas and discover their talents.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card reveal">
+
+                    <i class="fa-solid fa-users"></i>
+
+                    <h3>
+                        Community
+                    </h3>
+
+                    <p>
+                        Strong relationships between students,
+                        teachers and guardians.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card reveal">
+
+                    <i class="fa-solid fa-book"></i>
+
+                    <h3>
+                        Library
+                    </h3>
+
+                    <p>
+                        Supporting students with reading
+                        and learning resources.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card reveal">
+
+                    <i class="fa-solid fa-laptop-code"></i>
+
+                    <h3>
+                        Technology
+                    </h3>
+
+                    <p>
+                        Developing digital skills for
+                        the modern world.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card reveal">
+
+                    <i class="fa-solid fa-heart"></i>
+
+                    <h3>
+                        Student Care
+                    </h3>
+
+                    <p>
+                        A safe, respectful and encouraging
+                        environment for learners.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         ACHIEVEMENTS
+    ====================================================== -->
+
+    <section class="section achievements">
+
+        <div class="container">
+
+
+            <div class="section-header reveal">
+
+                <div class="section-label">
+                    Our Journey
+                </div>
+
+                <h2 class="section-title">
+                    Achievements & Milestones
+                </h2>
+
+                <p class="section-description">
+
+                    Celebrating the progress, dedication
+                    and achievements of our school community.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="achievement-grid">
+
+
+                <div class="achievement-card reveal">
+
+                    <i class="fa-solid fa-medal"></i>
+
+                    <h3>
+                        Golden Festival
+                    </h3>
+
+                    <p>
+
+                        The school celebrated its Golden Festival,
+                        marking an important milestone in its
+                        educational journey.
+
+                    </p>
+
+                </div>
+
+
+                <div class="achievement-card reveal">
+
+                    <i class="fa-solid fa-certificate"></i>
+
+                    <h3>
+                        ISO Certified
+                    </h3>
+
+                    <p>
+
+                        The institution continues to focus on
+                        quality and systematic educational
+                        practices.
+
+                    </p>
+
+                </div>
+
+
+                <div class="achievement-card reveal">
+
+                    <i class="fa-solid fa-trophy"></i>
+
+                    <h3>
+                        Student Success
+                    </h3>
+
+                    <p>
+
+                        Students participate in academic,
+                        cultural, sporting and extracurricular
+                        activities.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         NEWS
+    ====================================================== -->
+
+    <section class="section news">
+
+        <div class="container">
+
+
+            <div class="section-header reveal">
+
+                <div class="section-label">
+                    Latest Updates
+                </div>
+
+                <h2 class="section-title">
+                    School News & Notices
+                </h2>
+
+                <p class="section-description">
+
+                    Stay informed about important school
+                    activities, announcements and events.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="news-grid">
+
+
+                <article class="news-card reveal">
+
+                    <div class="news-image">
+
+                        <i class="fa-solid fa-bullhorn"></i>
+
+                    </div>
+
+
+                    <div class="news-content">
+
+                        <div class="news-category">
+                            School Notice
+                        </div>
+
+
+                        <h3>
+                            Admission Information
+                        </h3>
+
+
+                        <p>
+
+                            Find information about school
+                            admission and available academic
+                            programs.
+
+                        </p>
+
+
+                        <a
+                            href="{{ url_for('views.news') }}"
+                            class="read-more"
+                        >
+
+                            Read More
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+
+                <article class="news-card reveal">
+
+                    <div class="news-image">
+
+                        <i class="fa-solid fa-calendar-days"></i>
+
+                    </div>
+
+
+                    <div class="news-content">
+
+                        <div class="news-category">
+                            School Events
+                        </div>
+
+
+                        <h3>
+                            Events & Activities
+                        </h3>
+
+
+                        <p>
+
+                            Discover academic, cultural,
+                            sporting and extracurricular
+                            activities.
+
+                        </p>
+
+
+                        <a
+                            href="{{ url_for('views.events') }}"
+                            class="read-more"
+                        >
+
+                            View Events
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+
+                <article class="news-card reveal">
+
+                    <div class="news-image">
+
+                        <i class="fa-solid fa-images"></i>
+
+                    </div>
+
+
+                    <div class="news-content">
+
+                        <div class="news-category">
+                            Gallery
+                        </div>
+
+
+                        <h3>
+                            School Gallery
+                        </h3>
+
+
+                        <p>
+
+                            Explore school activities,
+                            programmes and memorable moments.
+
+                        </p>
+
+
+                        <a
+                            href="{{ url_for('views.Gallery') }}"
+                            class="read-more"
+                        >
+
+                            View Gallery
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </a>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+
+            <div class="center-button">
+
+                <a
+                    href="{{ url_for('views.news') }}"
+                    class="btn btn-primary"
+                >
+
+                    View All News
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         SCHOOL LIFE
+    ====================================================== -->
+
+    <section class="section school-life">
+
+        <div class="container">
+
+
+            <div class="section-header reveal">
+
+                <div class="section-label">
+                    Student Life
+                </div>
+
+                <h2 class="section-title">
+                    Discover School Life
+                </h2>
+
+                <p class="section-description">
+
+                    Learning, creativity, teamwork and
+                    participation are important parts
+                    of our school community.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="life-grid">
+
+
+                <a
+                    href="{{ url_for('views.sports') }}"
+                    class="life-card reveal"
+                >
+
+                    <i class="fa-solid fa-volleyball"></i>
+
+                    <h3>
+                        Sports
+                    </h3>
+
+                    <p>
+                        Build teamwork, discipline and confidence.
+                    </p>
+
+                </a>
+
+
+
+                <a
+                    href="{{ url_for('views.childclub') }}"
+                    class="life-card reveal"
+                >
+
+                    <i class="fa-solid fa-children"></i>
+
+                    <h3>
+                        Child Club
+                    </h3>
+
+                    <p>
+                        Student participation and leadership.
+                    </p>
+
+                </a>
+
+
+
+                <a
+                    href="{{ url_for('views.community') }}"
+                    class="life-card reveal"
+                >
+
+                    <i class="fa-solid fa-handshake"></i>
+
+                    <h3>
+                        Community
+                    </h3>
+
+                    <p>
+                        Connecting school and community.
+                    </p>
+
+                </a>
+
+
+
+                <a
+                    href="{{ url_for('views.creativeworks') }}"
+                    class="life-card reveal"
+                >
+
+                    <i class="fa-solid fa-paintbrush"></i>
+
+                    <h3>
+                        Creative Works
+                    </h3>
+
+                    <p>
+                        Discover student creativity and talent.
+                    </p>
+
+                </a>
+
+
+
+                <a
+                    href="{{ url_for('views.festivals') }}"
+                    class="life-card reveal"
+                >
+
+                    <i class="fa-solid fa-star"></i>
+
+                    <h3>
+                        Festivals
+                    </h3>
+
+                    <p>
+                        Celebrate culture and traditions.
+                    </p>
+
+                </a>
+
+
+
+                <a
+                    href="{{ url_for('views.tour') }}"
+                    class="life-card reveal"
+                >
+
+                    <i class="fa-solid fa-bus"></i>
+
+                    <h3>
+                        Educational Tours
+                    </h3>
+
+                    <p>
+                        Learn through exploration and experience.
+                    </p>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         HISTORY
+    ====================================================== -->
+
+    <section class="section history">
+
+        <div class="container history-grid">
+
+
+            <div class="history-year reveal">
+
+                <strong>
+                    2025
+                </strong>
+
+                <span>
+                    B.S. Established
+                </span>
+
+            </div>
+
+
+
+            <div class="reveal">
+
+                <div class="section-label">
+                    Our History
+                </div>
+
+
+                <h2 class="section-title">
+                    Growing With Our Community
+                </h2>
+
+
+                <div class="timeline">
+
+
+                    <div class="timeline-item">
+
+                        <h3>
+                            Foundation & Educational Journey
+                        </h3>
+
+                        <p>
+
+                            Shree Resunga Secondary School has
+                            continued its educational journey
+                            with a focus on serving students
+                            and the wider community.
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="timeline-item">
+
+                        <h3>
+                            Expanding Academic Opportunities
+                        </h3>
+
+                        <p>
+
+                            The school provides academic pathways
+                            including Science, Management and
+                            Civil Engineering.
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="timeline-item">
+
+                        <h3>
+                            Commitment to Quality
+                        </h3>
+
+                        <p>
+
+                            The school continues to strengthen
+                            teaching, learning, infrastructure
+                            and student development.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         TESTIMONIALS
+    ====================================================== -->
+
+    <section class="section testimonials">
+
+        <div class="container">
+
+
+            <div class="section-header reveal">
+
+                <div class="section-label">
+                    School Community
+                </div>
+
+                <h2 class="section-title">
+                    What Makes Our Community Special
+                </h2>
+
+                <p class="section-description">
+
+                    A successful school is built through
+                    cooperation between students, teachers,
+                    guardians and the community.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="testimonial-grid">
+
+
+                <div class="testimonial reveal">
+
+                    <div class="quote-icon">
+
+                        <i class="fa-solid fa-quote-left"></i>
+
+                    </div>
+
+
+                    <p>
+
+                        We believe every student deserves
+                        encouragement, guidance and opportunities
+                        to discover their potential.
+
+                    </p>
+
+
+                    <div class="person">
+
+                        <div class="person-avatar">
+
+                            <i class="fa-solid fa-user-tie"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                School Leadership
+                            </strong>
+
+                            <span>
+                                Shree Resunga Secondary School
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="testimonial reveal">
+
+                    <div class="quote-icon">
+
+                        <i class="fa-solid fa-quote-left"></i>
+
+                    </div>
+
+
+                    <p>
+
+                        Learning becomes meaningful when students
+                        participate, ask questions, work together
+                        and connect knowledge with real life.
+
+                    </p>
+
+
+                    <div class="person">
+
+                        <div class="person-avatar">
+
+                            <i class="fa-solid fa-chalkboard-user"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                Teaching Community
+                            </strong>
+
+                            <span>
+                                Dedicated Educators
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="testimonial reveal">
+
+                    <div class="quote-icon">
+
+                        <i class="fa-solid fa-quote-left"></i>
+
+                    </div>
+
+
+                    <p>
+
+                        Our goal is to create a supportive school
+                        community where students can grow academically,
+                        socially and creatively.
+
+                    </p>
+
+
+                    <div class="person">
+
+                        <div class="person-avatar">
+
+                            <i class="fa-solid fa-users"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                School Community
+                            </strong>
+
+                            <span>
+                                Students & Guardians
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         ADMISSION CTA
+    ====================================================== -->
+
+    <section class="admission-cta">
+
+        <div class="container">
+
+            <h2>
+                Start Your Educational Journey
+            </h2>
+
+
+            <p>
+
+                Become a part of the Shree Resunga Secondary
+                School community. Submit your admission
+                application online and take the next step
+                toward your educational future.
+
+            </p>
+
+
+            <a
+                href="{{ url_for('views.admissions') }}"
+                class="btn btn-white"
+            >
+
+                <i class="fa-solid fa-file-signature"></i>
+
+                Apply for Admission
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         QUICK LINKS
+    ====================================================== -->
+
+    <section class="quick-links">
+
+        <div class="container">
+
+            <div class="quick-grid">
+
+
+                <a
+                    href="{{ url_for('views.about_us') }}"
+                    class="quick-link"
+                >
+
+                    <i class="fa-solid fa-school"></i>
+
+                    <span>
+                        About School
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="{{ url_for('views.academics') }}"
+                    class="quick-link"
+                >
+
+                    <i class="fa-solid fa-book"></i>
+
+                    <span>
+                        Academics
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="{{ url_for('views.achievements') }}"
+                    class="quick-link"
+                >
+
+                    <i class="fa-solid fa-trophy"></i>
+
+                    <span>
+                        Achievements
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="{{ url_for('views.Gallery') }}"
+                    class="quick-link"
+                >
+
+                    <i class="fa-solid fa-images"></i>
+
+                    <span>
+                        Gallery
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="{{ url_for('views.contact') }}"
+                    class="quick-link"
+                >
+
+                    <i class="fa-solid fa-phone"></i>
+
+                    <span>
+                        Contact
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="{{ url_for('views.members') }}"
+                    class="quick-link"
+                >
+
+                    <i class="fa-solid fa-users"></i>
+
+                    <span>
+                        Our Members
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="{{ url_for('views.foundingstory') }}"
+                    class="quick-link"
+                >
+
+                    <i class="fa-solid fa-landmark"></i>
+
+                    <span>
+                        Founding Story
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="{{ url_for('views.facilities') }}"
+                    class="quick-link"
+                >
+
+                    <i class="fa-solid fa-building"></i>
+
+                    <span>
+                        Facilities
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="{{ url_for('views.sports') }}"
+                    class="quick-link"
+                >
+
+                    <i class="fa-solid fa-medal"></i>
+
+                    <span>
+                        Sports
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="{{ url_for('views.news') }}"
+                    class="quick-link"
+                >
+
+                    <i class="fa-solid fa-newspaper"></i>
+
+                    <span>
+                        News
+                    </span>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+        <div class="footer-main">
+
+            <div class="container">
+
+                <div class="footer-grid">
+
+
+                    <div class="footer-brand">
+
+                        <h2>
+                            Shree Resunga
+                        </h2>
+
+
+                        <p>
+
+                            Shree Resunga Secondary School is
+                            committed to providing quality education
+                            and developing responsible, skilled and
+                            confident citizens.
+
+                        </p>
+
+
+                        <div class="socials">
+
+                            <a
+                                href="#"
+                                aria-label="Facebook"
+                            >
+
+                                <i class="fa-brands fa-facebook-f"></i>
+
+                            </a>
+
+
+                            <a
+                                href="#"
+                                aria-label="YouTube"
+                            >
+
+                                <i class="fa-brands fa-youtube"></i>
+
+                            </a>
+
+
+                            <a
+                                href="#"
+                                aria-label="Instagram"
+                            >
+
+                                <i class="fa-brands fa-instagram"></i>
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div>
+
+                        <h3 class="footer-title">
+                            Quick Links
+                        </h3>
+
+
+                        <ul class="footer-list">
+
+                            <li>
+                                <a href="{{ url_for('views.homepage') }}">
+                                    Home
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ url_for('views.about_us') }}">
+                                    About Us
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ url_for('views.academics') }}">
+                                    Academics
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ url_for('views.news') }}">
+                                    News
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ url_for('views.contact') }}">
+                                    Contact
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+
+
+                    <div>
+
+                        <h3 class="footer-title">
+                            Students
+                        </h3>
+
+
+                        <ul class="footer-list">
+
+                            <li>
+                                <a href="{{ url_for('auth.login') }}">
+                                    Student Login
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ url_for('auth.signup') }}">
+                                    Create Account
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ url_for('views.admissions') }}">
+                                    Admission
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ url_for('views.sports') }}">
+                                    Sports
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ url_for('views.Gallery') }}">
+                                    Gallery
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+
+
+                    <div>
+
+                        <h3 class="footer-title">
+                            Contact Us
+                        </h3>
+
+
+                        <div class="contact-item">
+
+                            <i class="fa-solid fa-location-dot"></i>
+
+                            <span>
+                                Resunga Municipality,
+                                Gulmi, Nepal
+                            </span>
+
+                        </div>
+
+
+                        <div class="contact-item">
+
+                            <i class="fa-solid fa-phone"></i>
+
+                            <span>
+                                School Office
+                            </span>
+
+                        </div>
+
+
+                        <div class="contact-item">
+
+                            <i class="fa-solid fa-envelope"></i>
+
+                            <span>
+                                school@example.com
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="copyright">
+
+            <div class="container">
+
+                © 2026 Shree Resunga Secondary School.
+
+                All Rights Reserved.
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         BACK TO TOP
+    ====================================================== -->
+
+    <button
+        class="back-top"
+        id="backTop"
+        aria-label="Back to top"
+    >
+
+        <i class="fa-solid fa-arrow-up"></i>
+
+    </button>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+        /* =====================================================
+           MOBILE MENU
+        ===================================================== */
+
+        const menuBtn =
+            document.getElementById("menuBtn");
+
+        const navLinks =
+            document.getElementById("navLinks");
+
+
+        menuBtn.addEventListener("click", function () {
+
+            const isOpen =
+                navLinks.classList.toggle("active");
+
+            document.body.classList.toggle(
+                "menu-open",
+                isOpen
+            );
+
+            menuBtn.setAttribute(
+                "aria-expanded",
+                isOpen
+            );
+
+            menuBtn.innerHTML = isOpen
+                ? '<i class="fa-solid fa-xmark"></i>'
+                : '<i class="fa-solid fa-bars"></i>';
+
+        });
+
+
+        /* =====================================================
+           CLOSE MOBILE MENU
+        ===================================================== */
+
+        document
+            .querySelectorAll(".nav-links a")
+            .forEach(function (link) {
+
+                link.addEventListener(
+                    "click",
+                    function () {
+
+                        navLinks.classList.remove("active");
+
+                        document.body.classList.remove(
+                            "menu-open"
+                        );
+
+                        menuBtn.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+                        menuBtn.innerHTML =
+                            '<i class="fa-solid fa-bars"></i>';
+
+                    }
+                );
+
+            });
+
+
+        /* =====================================================
+           BACK TO TOP
+        ===================================================== */
+
+        const backTop =
+            document.getElementById("backTop");
+
+
+        window.addEventListener(
+            "scroll",
+            function () {
+
+                if (window.scrollY > 500) {
+
+                    backTop.classList.add("show");
+
+                } else {
+
+                    backTop.classList.remove("show");
+
+                }
+
+            }
+        );
+
+
+        backTop.addEventListener(
+            "click",
+            function () {
+
+                window.scrollTo({
+
+                    top: 0,
+
+                    behavior: "smooth"
+
+                });
+
+            }
+        );
+
+
+        /* =====================================================
+           SCROLL PROGRESS
+        ===================================================== */
+
+        const scrollProgress =
+            document.getElementById("scrollProgress");
+
+
+        window.addEventListener(
+            "scroll",
+            function () {
+
+                const scrollTop =
+                    window.scrollY;
+
+                const documentHeight =
+                    document.documentElement.scrollHeight -
+                    window.innerHeight;
+
+                const percentage =
+                    documentHeight > 0
+                        ? (scrollTop / documentHeight) * 100
+                        : 0;
+
+                scrollProgress.style.width =
+                    percentage + "%";
+
+            }
+        );
+
+
+        /* =====================================================
+           REVEAL ON SCROLL
+        ===================================================== */
+
+        const revealElements =
+            document.querySelectorAll(".reveal");
+
+
+        const revealObserver =
+            new IntersectionObserver(
+                function (entries) {
+
+                    entries.forEach(function (entry) {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add(
+                                "visible"
+                            );
+
+                            revealObserver.unobserve(
+                                entry.target
+                            );
+
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.12
+                }
+            );
+
+
+        revealElements.forEach(function (element) {
+
+            revealObserver.observe(element);
+
+        });
+
+
+        /* =====================================================
+           ESC KEY CLOSE MENU
+        ===================================================== */
+
+        document.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (event.key === "Escape") {
+
+                    navLinks.classList.remove("active");
+
+                    document.body.classList.remove(
+                        "menu-open"
+                    );
+
+                    menuBtn.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                    menuBtn.innerHTML =
+                        '<i class="fa-solid fa-bars"></i>';
+
+                }
+
+            }
+        );
+
+    </script>
+
+</body>
+</html>

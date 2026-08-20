@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Shree Resunga Secondary School</title>
+
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+/* Marquee animation */
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+.animate-marquee { animation: marquee 20s linear infinite; }
+
+/* Hero images hover effect */
+.grid-box img { transition: transform 0.5s ease; }
+.grid-box img:hover { transform: scale(1.05); }
+
+/* Course card hover */
+.course-box:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
+
+/* News overlay */
+.news-overlay { transition: all 0.3s ease; }
+.news-card-unique:hover .news-overlay { background: rgba(30,60,114,0.9); }
+
+/* Mobile menu animation */
+.mobile-menu { transition: all 0.3s ease-in-out; }
+</style>
+<!-- Add Alpine.js for interactivity -->
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+</head>
+<body class="bg-yellow-400 font-poppins">
+
+<!-- ================= NAVBAR ================= -->
+<nav class="fixed w-full top-0 z-50 bg-gradient-to-r from-blue-900 via-indigo-900 to-orange-500 shadow-lg">
+  <div class="container mx-auto flex items-center justify-between py-3 px-4 md:px-6">
+    <!-- Logo + Title -->
+    <div class="flex items-center gap-3 md:gap-4">
+      <img src="{{ url_for('static', filename='Images/logo.jpg') }}" alt="Logo"
+           class="h-10 w-10 md:h-12 md:w-12 rounded-full border-2 border-yellow-400 object-cover">
+      <span class="text-yellow-400 font-bold text-sm md:text-2xl tracking-wide drop-shadow-md">
+        Shree Resunga Secondary School
+      </span>
+    </div>
+
+    <!-- Desktop Menu -->
+    <div class="hidden md:flex gap-4 lg:gap-6 items-center">
+      <a href="{{ url_for('views.studentabout_us') }}" class="text-white font-semibold hover:text-yellow-400 transition">About</a>
+      <a href="{{ url_for('views.studentnews') }}" class="text-white font-semibold hover:text-yellow-400 transition">News</a>
+      <a href="{{ url_for('views.studentGallery') }}" class="text-white font-semibold hover:text-yellow-400 transition">Gallery</a>
+      <a href="{{ url_for('views.studentcontact') }}" class="text-white font-semibold hover:text-yellow-400 transition">Contact</a>
+      <a href="{{ url_for('auth.logout') }}" class="text-white font-semibold hover:text-yellow-400 transition">Logout</a>
+    </div>
+
+    <!-- Mobile Hamburger -->
+    <button id="mobileBtn" class="md:hidden flex flex-col justify-center items-center gap-1">
+      <span class="block w-6 h-0.5 bg-white"></span>
+      <span class="block w-6 h-0.5 bg-white"></span>
+      <span class="block w-6 h-0.5 bg-white"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="hidden bg-blue-900 text-white flex flex-col gap-1 px-4 py-4 overflow-hidden transition-all duration-300 max-h-0">
+    <a href="{{ url_for('views.studentabout_us') }}" class="py-2 px-2 rounded hover:bg-blue-800">About</a>
+    <a href="{{ url_for('views.studentnews') }}" class="py-2 px-2 rounded hover:bg-blue-800">News</a>
+    <a href="{{ url_for('views.studentGallery') }}" class="py-2 px-2 rounded hover:bg-blue-800">Gallery</a>
+    <a href="{{ url_for('views.studentcontact') }}" class="py-2 px-2 rounded hover:bg-blue-800">Contact</a>
+    <a href="{{ url_for('auth.logout') }}" class="py-2 px-2 rounded hover:bg-blue-800"Logout</a>
+    <div class="text-center py-2 cursor-pointer hover:bg-blue-800" id="closeMobileMenu">Close ✕</div>
+  </div>
+</nav>
+
+
+<!-- ================= MARQUEE ================= -->
+<div class="mt-16 md:mt-20 bg-gradient-to-r from-yellow-400 via-yellow-300 to-orange-400 overflow-hidden py-2">
+  <p class="whitespace-nowrap animate-marquee font-bold text-blue-900 text-center">
+    📢 Welcome to Shree Resunga Secondary School! Admissions open now! Stay updated with latest news & events.
+  </p>
+</div>
+
+<!-- ================= HERO SECTION ================= -->
+<section class="hero-wrapper container mx-auto flex flex-col md:flex-row gap-6 mt-6 px-4 md:px-6">
+  <!-- Image grid -->
+  <div class="hero-grid grid grid-cols-2 gap-4 md:flex-1">
+    <div class="grid-box overflow-hidden rounded-lg shadow-md"><img src="{{ url_for('static', filename='Images/main.jpg') }}" alt=""></div>
+    <div class="grid-box overflow-hidden rounded-lg shadow-md"><img src="{{ url_for('static', filename='Images/image.jpg') }}" alt=""></div>
+    <div class="grid-box overflow-hidden rounded-lg shadow-md"><img src="{{ url_for('static', filename='Images/image1.jpg') }}" alt=""></div>
+    <div class="grid-box overflow-hidden rounded-lg shadow-md"><img src="{{ url_for('static', filename='Images/bidyarthi.jpg') }}" alt=""></div>
+  </div>
+
+  <!-- Info -->
+  <div class="side-info-box md:flex-1 flex flex-col justify-center">
+    <h2 class="text-blue-900 text-2xl md:text-4xl font-bold mb-4 text-center md:text-left">
+      Welcome to Shree Resunga Secondary School
+    </h2>
+    <p class="text-gray-900 mb-3 text-justify">
+      Shree Resunga Secondary School, established in 2025 BS, is located in Resunga Municipality-2, Udhindhunga, Tamghas, Gulmi. We are committed to providing quality education that nurtures the intellectual, social, and moral development of our students.
+    </p>
+    <ul class="list-disc list-inside mb-3 space-y-1 text-gray-900">
+      <li>Academic excellence with modern teaching methods</li>
+      <li>Holistic development through sports, arts, and extracurricular activities</li>
+      <li>Creating responsible and socially-conscious citizens</li>
+      <li>Safe and inspiring learning environment</li>
+    </ul>
+    <p class="text-gray-900 mb-4 text-justify">
+      Our dedicated teachers, supportive staff, and welcoming community ensure a safe and inspiring learning environment for all students. Join us in shaping a brighter future!
+    </p>
+>
+  </div>
+</section>
+
+<!-- ================= COURSES SECTION ================= -->
+<section id="courses" class="courses-section container mx-auto mt-12 px-4 md:px-6">
+  <h2 class="text-3xl font-bold text-blue-900 mb-6 text-center">Discover Available Courses</h2>
+  <div class="courses-container grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="course-box bg-gradient-to-br from-indigo-900 to-blue-900 text-yellow-400 rounded-lg p-4 text-center shadow-md">
+      <img src="{{ url_for('static', filename='Images/ktakti.jpg') }}" alt="" class="rounded-lg mb-3">
+      <h3 class="font-bold text-xl mb-1">General Courses</h3>
+      <p class="text-sm">Nursery – 8</p>
+    </div>
+    <div class="course-box bg-gradient-to-br from-indigo-900 to-blue-900 text-yellow-400 rounded-lg p-4 text-center shadow-md">
+      <img src="{{ url_for('static', filename='Images/second.jpg') }}" alt="" class="rounded-lg mb-3">
+      <h3 class="font-bold text-xl mb-1">Secondary Level</h3>
+      <p class="text-sm">Classes 9 – 10</p>
+    </div>
+    <div class="course-box bg-gradient-to-br from-indigo-900 to-blue-900 text-yellow-400 rounded-lg p-4 text-center shadow-md">
+      <img src="{{ url_for('static', filename='Images/higher.jpg') }}" alt="" class="rounded-lg mb-3">
+      <h3 class="font-bold text-xl mb-1">Higher Education</h3>
+      <p class="text-sm">Classes 11 – 12</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= NEWS SECTION ================= -->
+<section class="news-unique container mx-auto mt-12 px-4 md:px-6">
+  <h2 class="text-3xl font-bold text-blue-900 mb-6 text-center">Latest News & Announcements</h2>
+  <div class="news-unique-row grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+    <div class="news-card-unique relative rounded-lg overflow-hidden shadow-md">
+      <img src="{{ url_for('static', filename='Images/12tour.jpg') }}" alt="" class="w-full h-48 object-cover">
+      <div class="news-overlay absolute bottom-0 w-full text-center text-yellow-400 bg-blue-900 bg-opacity-80 py-1">12 Tour</div>
+    </div>
+    <div class="news-card-unique relative rounded-lg overflow-hidden shadow-md">
+      <img src="{{ url_for('static', filename='Images/campfire.jpg') }}" alt="" class="w-full h-48 object-cover">
+      <div class="news-overlay absolute bottom-0 w-full text-center text-yellow-400 bg-blue-900 bg-opacity-80 py-1">Scout campfire</div>
+    </div>
+    <div class="news-card-unique relative rounded-lg overflow-hidden shadow-md">
+      <img src="{{ url_for('static', filename='Images/clean.jpg') }}" alt="" class="w-full h-48 object-cover">
+      <div class="news-overlay absolute bottom-0 w-full text-center text-yellow-400 bg-blue-900 bg-opacity-80 py-1">Cleanliness program</div>
+    </div>
+    <div class="news-card-unique relative rounded-lg overflow-hidden shadow-md">
+      <img src="{{ url_for('static', filename='Images/fprograme.jpg') }}" alt="" class="w-full h-48 object-cover">
+      <div class="news-overlay absolute bottom-0 w-full text-center text-yellow-400 bg-blue-900 bg-opacity-80 py-1">Eco Club</div>
+    </div>
+  </div>
+</section>
+<!-- ================= NEWS SLIDER ================= -->
+<section class="news-slider container mx-auto mt-12 px-4 md:px-6" x-data="newsSlider()">
+  <h2 class="text-3xl font-bold text-blue-900 mb-6 text-center">School News Highlights</h2>
+
+  <div class="relative overflow-hidden">
+    <!-- Slider Track -->
+    <div class="flex transition-transform duration-500" :style="{ transform: `translateX(-${currentIndex * 100}%)` }">
+      <!-- Repeat this div for each news item -->
+      <template x-for="news in newsItems" :key="news.title">
+        <div class="flex-shrink-0 w-full md:w-1/3 px-2">
+          <div class="bg-blue-900 rounded-lg overflow-hidden shadow-md">
+            <img :src="news.image" alt="" class="w-full h-48 object-cover">
+            <div class="p-4 text-yellow-400">
+              <h3 class="font-bold text-lg mb-1" x-text="news.title"></h3>
+              <p class="text-sm" x-text="news.description"></p>
+            </div>
+          </div>
+        </div>
+      </template>
+    </div>
+
+    <!-- Prev/Next Buttons -->
+    <button @click="prev()" class="absolute top-1/2 -translate-y-1/2 left-2 bg-yellow-400 text-blue-900 p-2 rounded-full hover:bg-yellow-300 shadow-lg">◀</button>
+    <button @click="next()" class="absolute top-1/2 -translate-y-1/2 right-2 bg-yellow-400 text-blue-900 p-2 rounded-full hover:bg-yellow-300 shadow-lg">▶</button>
+  </div>
+</section>
+<div x-data="bookSearch()" class="container mx-auto mt-6 px-4">
+  <h2 class="text-2xl font-bold text-blue-900 mb-4">Search Books</h2>
+  <div class="flex gap-2 mb-4">
+    <input type="text" x-model="query" placeholder="Enter class or subject..." class="px-3 py-2 border rounded w-full">
+    <button @click="searchBooks()" class="bg-blue-900 text-yellow-400 px-4 py-2 rounded">Search</button>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+    <template x-for="book in books" :key="book.title">
+      <div class="bg-blue-900 text-yellow-400 rounded p-4 shadow">
+        <img :src="book.thumbnail" class="w-full h-48 object-cover rounded mb-2" alt="">
+        <h3 class="font-bold text-lg" x-text="book.title"></h3>
+        <p class="text-sm mb-1" x-text="book.authors"></p>
+        <p class="text-sm mb-2" x-text="book.description"></p>
+        <a :href="book.link" target="_blank" class="bg-yellow-400 text-blue-900 px-3 py-1 rounded hover:bg-yellow-300 inline-block">Preview</a>
+      </div>
+    </template>
+
+    <div x-show="books.length === 0" class="text-center col-span-full text-blue-900 font-semibold">
+      No books found
+    </div>
+  </div>
+</div>
+
+
+<script>
+function bookSearch() {
+  return {
+    query: '',
+    books: [],
+    searchBooks() {
+      if(!this.query) return;
+      fetch(`/api/books?q=${encodeURIComponent(this.query)}`)
+        .then(res => res.json())
+        .then(data => this.books = data)
+        .catch(err => console.error(err));
+    }
+  }
+}
+</script>
+</body>
+</html>

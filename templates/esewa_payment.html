@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Redirecting to eSewa...</title>
+</head>
+<body>
+    <h2>Redirecting to eSewa Payment Gateway...</h2>
+    <form id="esewaForm" method="POST" action="https://esewa.com.np/epay/main">
+        <input type="hidden" name="tAmt" value="{{ tAmt }}">
+        <input type="hidden" name="amt" value="{{ amt }}">
+        <input type="hidden" name="txAmt" value="{{ txAmt }}">
+        <input type="hidden" name="scAmt" value="{{ scAmt }}">
+        <input type="hidden" name="pid" value="{{ pid }}">
+        <input type="hidden" name="su" value="{{ su }}">
+        <input type="hidden" name="fu" value="{{ fu }}">
+        <input type="hidden" name="scd" value="{{ merchant_id }}">
+    </form>
+    <script>
+        document.getElementById("esewaForm").submit();
+    </script>
+</body>
+</html>

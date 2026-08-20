@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ===== SEO TAGS ===== -->
+<title>Academic Records | Shree Resunga Secondary School</title>
+<meta name="description" content="Explore the past SEE and SLC academic records of Shree Resunga Secondary School over the past years.">
+<meta name="keywords" content="Shree Resunga, Academic Records, SEE Results, SLC Results, School Performance">
+<meta name="author" content="Shree Resunga Secondary School">
+
+<!-- ===== STYLES ===== -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/records.css') }}">
+<style>/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+/* ===== BODY ===== */
+body {
+    background-color: #f4f4f6;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    background-color: #004080; /* dark blue */
+    color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.school-logo {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.school-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.back-btn {
+    background-color: #fff;
+    color: #004080;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background-color: #e0e0e0;
+}
+
+/* ===== MARQUEE ===== */
+.marquee-wrapper {
+    width: 100%;
+    overflow: hidden;
+    background-color: #e0f0ff;
+    padding: 10px 0;
+}
+
+.marquee-content {
+    display: inline-block;
+    white-space: nowrap;
+    animation: scroll 20s linear infinite;
+    font-weight: 500;
+    font-size: 1rem;
+    color: #004080;
+}
+
+@keyframes scroll {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* ===== RECORDS SECTION ===== */
+.records-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.records-main-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #004080;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #004080;
+}
+
+/* ===== RECORD GRID ===== */
+.records-block {
+    margin-bottom: 50px;
+}
+
+.records-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+}
+
+/* ===== RECORD CARD ===== */
+.record-card {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.record-card img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    object-fit: cover;
+}
+
+.record-card p {
+    font-weight: 500;
+    font-size: 1rem;
+    color: #004080;
+}
+
+.record-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .school-title {
+        font-size: 1.2rem;
+    }
+    .records-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .school-logo {
+        width: 40px;
+        height: 40px;
+    }
+    .back-btn {
+        font-size: 1rem;
+        padding: 6px 12px;
+    }
+    .records-main-title {
+        font-size: 1.6rem;
+    }
+    .section-title {
+        font-size: 1.3rem;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar">
+    <div class="nav-left">
+        <img src="{{ url_for('static', filename='Images/logo.jpg') }}" alt="School Logo" class="school-logo">
+        <h1 class="school-title">Shree Resunga Secondary School</h1>
+    </div>
+    <!-- Back button dynamic Flask URL -->
+    <button class="back-btn" onclick="window.location.href='{{ url_for('views.studentGallery') }}'">&#8592;</button>
+</nav>
+
+<!-- ===== MARQUEE ===== -->
+<div class="marquee-wrapper">
+    <div class="marquee-content">
+        📢 Welcome to Shree Resunga Secondary School | 🚀 Bright Futures | 🎓 Admissions Open
+    </div>
+</div>
+
+<!-- ================= RECORDS SECTION ================= -->
+<section class="records-container">
+
+    <!-- TITLE -->
+    <h2 class="records-main-title">📘 Academic Records</h2>
+
+    <!-- ===== SEE RECORDS (10 YEARS) ===== -->
+    <div class="records-block">
+        <h3 class="section-title">📚 Past 10 Years – SEE Results</h3>
+        <div class="records-grid">
+            {% for i in range(1, 11) %}
+            <div class="record-card">
+                <img src="{{ url_for('static', filename='Images/see' ~ i ~ '.jpg') }}" alt="SEE Record {{ 2070 + i }}">
+                <p>SEE – {{ 2070 + i }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- ===== SLC RECORDS (4 YEARS) ===== -->
+    <div class="records-block">
+        <h3 class="section-title">🏆 Past 4 Years – SLC Records</h3>
+        <div class="records-grid">
+            {% for i in range(1, 5) %}
+            <div class="record-card">
+                <img src="{{ url_for('static', filename='Images/slc' ~ i ~ '.jpg') }}" alt="SLC Record {{ 2067 + i }}">
+                <p>SLC – {{ 2067 + i }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</section>
+
+<!-- ===== JS ===== -->
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
+
+</body>
+</html>

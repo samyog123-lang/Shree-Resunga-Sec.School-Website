@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shree Resunga Secondary School</title>
+<style>
+/* ================= GLOBAL RESET ================= */
+* { margin:0; padding:0; box-sizing:border-box; font-family:"Poppins", sans-serif; }
+body { background:orangered; overflow-x:hidden; }
+
+/* ================= ANIMATIONS ================= */
+@keyframes slideDown { from{opacity:0; transform:translateY(-50px);} to{opacity:1; transform:translateY(0);} }
+@keyframes fadeInUp { from{opacity:0; transform:translateY(30px);} to{opacity:1; transform:translateY(0);} }
+@keyframes marqueeMove {0%{transform:translateX(100%);}100%{transform:translateX(-100%);} }
+
+/* ================= NAVBAR ================= */
+.navbar {
+    width: 100%;
+    background: linear-gradient(135deg,#003366,#4b0082,#ff9800);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top:0;
+    z-index:999;
+    box-shadow:0 5px 20px rgba(0,0,0,0.3);
+    animation:slideDown 1s ease forwards;
+}
+.nav-left { display:flex; align-items:center; gap:10px; }
+.navbar img { height:50px; width:50px; border-radius:50%; border:2px solid #ffe066; }
+.school-title { color:#ffe066; font-size:20px; font-weight:700; }
+.menu { display:flex; align-items:center; gap:20px; }
+.menu a {
+    color:#fff; font-size:14px; font-weight:500; text-decoration:none; position:relative; transition:0.3s ease;
+}
+.menu a::after {
+    content:""; position:absolute; width:0%; height:3px; background:#ffe066; left:0; bottom:-4px; transition:0.35s ease;
+}
+.menu a:hover::after { width:100%; }
+.hamburger { display:none; flex-direction:column; cursor:pointer; }
+.hamburger span { width:26px; height:3px; background:white; margin:3px 0; transition:0.3s; }
+/* MOBILE MENU */
+.mobile-menu {
+    position:fixed; top:70px; right:-300px; width:max-content; min-width:200px;
+    background:#003366; display:flex; flex-direction:column; padding:0; transition:0.35s ease; z-index:998;
+    overflow:hidden; border-radius:0 0 8px 8px;
+}
+.mobile-menu a { padding:14px 20px; color:white; text-decoration:none; font-weight:600; border-bottom:1px solid rgba(255,255,255,0.1);}
+.mobile-menu a:hover { background:rgba(255,255,255,0.15); }
+.mobile-menu.open { right:0; }
+.mobile-close { padding:14px; text-align:center; background:rgba(255,255,255,0.1); color:#fff; font-weight:700; cursor:pointer; }
+/* HAMBURGER SHOW ON MOBILE */
+@media(max-width:900px) {
+    .menu { display:none; }
+    .hamburger { display:flex; }
+    .school-title { font-size:16px; }
+    .navbar img { height:40px; width:40px; }
+}
+
+/* ================= MARQUEE ================= */
+.marquee-box {
+    background:linear-gradient(90deg,#ffe066,#ffd43b,#ffa94d);
+    padding:10px 0;
+    overflow:hidden;
+    position:relative;
+    animation:slideDown 1s ease 0.5s forwards;
+}
+.marquee-text {
+    display:inline-block; white-space:nowrap; color:#003366; font-weight:700; font-size:16px; 
+    animation:marqueeMove 15s linear infinite;
+}
+
+/* ================= HERO ================= */
+/* ================= HERO ================= */
+.hero-wrapper {
+    display:flex; 
+    justify-content:space-between; 
+    background-color: #ff9800;
+    align-items:flex-start; 
+    padding:40px 30px; 
+    color: white;
+    font-weight: bold;
+    gap:30px; 
+    flex-wrap:wrap;
+}
+
+/* ================= HERO - WELCOME BOX TEXT ================= */
+.side-info-box h2 { 
+    color:#003366; 
+    font-size:clamp(28px, 4vw, 36px); /* responsive font */
+    font-weight:800; 
+    margin-bottom:20px; 
+    position:relative;
+}
+.side-info-box h2::after {
+    content:none;
+    display:block;
+    width:60px;
+    height:4px;
+    background:linear-gradient(90deg,#ffd700,#ffe066);
+    border-radius:2px;
+    margin-top:8px;
+}
+@media(max-width:900px){
+    .learn-btn {
+        display: block;       /* ensures it behaves as a block element */
+        margin: 0 auto;       /* centers horizontally */
+    }
+    .side-info-box h2, 
+    .side-info-box p, 
+    .side-info-box ul li {
+        text-align: center;   /* keeps text centered */
+    }
+}
+.side-info-box p { 
+    font-size:clamp(16px, 2vw, 18px); 
+    line-height:28px; 
+    margin-bottom:20px; 
+    text-align:justify; 
+    position:relative;
+}
+.side-info-box p::first-letter {
+    font-size:2em; 
+    font-weight:bold; 
+    color:#4b0082;
+}
+
+.side-info-box ul { 
+    list-style: disc inside; 
+    margin-bottom:25px; 
+    padding-left:10px;
+}
+.side-info-box ul li { 
+    margin-bottom:10px; 
+    font-size:clamp(15px, 1.8vw, 16px); 
+    position:relative; 
+}
+.side-info-box ul li::before {
+    content:'★';
+    color:#ffd700;
+    display:inline-block;
+    width:20px;
+    margin-left:-20px;
+}
+
+/* ================= HERO - LEARN MORE BUTTON ================= */
+.learn-btn { 
+    padding:14px 30px; 
+    font-size:clamp(14px,2vw,16px); 
+    font-weight:600; 
+    color:#fff; 
+    border:none; 
+    border-radius:12px; 
+    background:linear-gradient(135deg,#4b0082,#003366); 
+    cursor:pointer; 
+    transition: all 0.3s ease; 
+    box-shadow:0 5px 15px rgba(0,0,0,0.3);
+}
+.learn-btn:hover {
+    background:linear-gradient(135deg,#6a0dad,#002244);
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px rgba(0,0,0,0.5);
+}
+
+/* ================= HERO - TEXT ALIGNMENT RESPONSIVE ================= */
+@media(max-width:900px){
+    .side-info-box h2, .side-info-box p, .side-info-box ul li, .learn-btn{
+        text-align:center;
+    }
+    .side-info-box ul{padding-left:0;}
+}
+
+/* Hero grid now slightly smaller to match the larger info box */
+.hero-grid { 
+    flex:1 1 40%; /* reduced width slightly */
+    display:grid; 
+    grid-template-columns:repeat(2,1fr); 
+    gap:20px; 
+    align-items:stretch; 
+}
+
+.learn-btn:hover { transform:translateY(-3px); background:linear-gradient(135deg,#6a0dad,#002244); box-shadow:0 6px 18px rgba(0,0,0,0.3); }
+
+.hero-grid { 
+    flex:1 1 48%; 
+    display:grid; 
+    grid-template-columns:repeat(2,1fr); 
+    gap:20px; 
+    align-items:stretch; 
+}
+.grid-box { height:100%; border-radius:20px; overflow:hidden; box-shadow:0 10px 25px rgba(0,0,0,0.25); transition:transform 0.5s, box-shadow 0.5s; background:#fff; animation:fadeInUp 1s ease forwards; }
+.grid-box img { width:100%; height:100%; object-fit:cover; transition:transform 0.5s; }
+.grid-box:hover { transform:scale(1.05); box-shadow:0 15px 35px rgba(0,0,0,0.35); }
+.grid-box:hover img { transform:scale(1.2); }
+
+/* ================= SECTIONS ================= */
+.section-title { text-align:center; font-size:clamp(2rem,3vw,2.5rem); margin:50px 0 30px; color:#003366; position:relative;}
+.section-title::after { content:''; width:60px; height:4px; background:#ffd700; display:block; margin:10px auto 0; border-radius:2px; }
+
+.section-grid { display:flex; flex-wrap:wrap; justify-content:center; gap:30px; padding:20px 10px; }
+.card {
+    background:linear-gradient(135deg,#4b0082,#003366); color:#fff; padding:30px 20px 50px; border-radius:20px; width:clamp(250px,28%,300px); text-align:center; box-shadow:0 15px 30px rgba(0,0,0,0.3); position:relative; transition:transform 0.5s, box-shadow 0.5s; animation:fadeInUp 1s ease forwards;
+}
+.card:hover { transform:translateY(-10px); box-shadow:0 25px 50px rgba(0,0,0,0.5); }
+.card .circle { width:120px; height:120px; border-radius:50%; overflow:hidden; margin:0 auto 15px; border:4px solid #ffe066; box-shadow:0 8px 20px rgba(0,0,0,0.3); transition:transform 0.5s; }
+.card:hover .circle { transform:scale(1.1); }
+.card .circle img { width:100%; height:100%; object-fit:cover; }
+.card h3 { font-size:1.4rem; font-weight:700; margin-bottom:10px; color:#ffd700; text-shadow:1px 1px 3px rgba(0,0,0,0.5);}
+.card p { font-size:0.95rem; line-height:1.6; color:#f0f0f0; margin-bottom:15px; }
+.card .learn { display:inline-block; text-decoration:none; color:#fff; background:#ffd700; padding:8px 20px; border-radius:25px; font-weight:bold; position:relative; transition:0.3s;}
+.card .learn::after { display: none; }
+.card .learn:hover { background:#ffe066; color:#003366; }
+
+/* RESPONSIVE */
+@media(max-width:1000px) { .card{width:45%;} }
+@media(max-width:700px){
+    .card{width:90%; margin-bottom:20px;} 
+    .hero-wrapper{flex-direction:column;padding:30px 20px;} 
+    .side-info-box{flex:1 1 100%; margin-bottom:20px;} 
+    .hero-grid{grid-template-columns:1fr 1fr; gap:10px;} 
+    .grid-box{height:auto;} 
+    .grid-box img{width:100%;height:auto;display:block;}
+}
+/* ================= FOOTER ================= */
+.footer {
+    background: linear-gradient(135deg,#003366,#4b0082);
+    color: #fff;
+    padding: 50px 20px 20px;
+    font-family: "Poppins", sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.footer-about {
+    flex: 1 1 30%;
+    min-width: 250px;
+}
+.footer-about .footer-logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid #ffd700;
+    margin-bottom: 10px;
+}
+.footer-about h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+.footer-about p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.footer-links, .footer-contact {
+    flex: 1 1 25%;
+    min-width: 200px;
+}
+.footer-links h4, .footer-contact h4 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #ffd700;
+}
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+.footer-links ul li {
+    margin-bottom: 10px;
+}
+.footer-links ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.footer-links ul li a:hover {
+    color: #ffd700;
+}
+
+.footer-contact p {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+.footer-social a {
+    margin-right: 10px;
+    font-size: 1.2rem;
+    color: #fff;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.footer-social a:hover {
+    color: #ffd700;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.3);
+    font-size: 0.85rem;
+}
+
+/* RESPONSIVE FOOTER */
+@media(max-width:900px){
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+    .footer-about, .footer-links, .footer-contact {
+        flex: 1 1 100%;
+    }
+    .footer-links ul li, .footer-contact p {
+        font-size: 1rem;
+    }
+    .footer-about h3 {
+        font-size: 1.3rem;
+    }
+    .footer-links h4, .footer-contact h4 {
+        font-size: 1.1rem;
+    }
+    .footer-social a {
+        font-size: 1.5rem;
+        margin-right: 15px;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-left">
+        <img src="{{ url_for('static', filename='Images/logo.jpg') }}" alt="Logo">
+        <div class="school-title">Shree Resunga Secondary School</div>
+    </div>
+
+   <div class="menu">
+    <!-- Home -->
+    <a href="{% if current_user.is_authenticated %}{{ url_for('views.student_dashboard') }}{% else %}{{ url_for('views.homepage') }}{% endif %}">Home</a>
+
+    <!-- Gallery -->
+    <a href="{% if current_user.is_authenticated %}{{ url_for('views.studentGallery') }}{% else %}{{ url_for('views.Gallery') }}{% endif %}">Gallery</a>
+
+    <!-- News -->
+    <a href="{% if current_user.is_authenticated %}{{ url_for('views.studentnews') }}{% else %}{{ url_for('views.news') }}{% endif %}">News</a>
+
+    <!-- Contact -->
+    <a href="{% if current_user.is_authenticated %}{{ url_for('views.studentcontact') }}{% else %}{{ url_for('views.contact') }}{% endif %}">Contact</a>
+</div>
+
+    <div class="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+    </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+    <a href="{% if current_user.is_authenticated %}{{ url_for('views.student_dashboard') }}{% else %}{{ url_for('views.homepage') }}{% endif %}">Home</a>
+    <a href="{% if current_user.is_authenticated %}{{ url_for('views.studentGallery') }}{% else %}{{ url_for('views.Gallery') }}{% endif %}">Gallery</a>
+    <a href="{% if current_user.is_authenticated %}{{ url_for('views.studentnews') }}{% else %}{{ url_for('views.news') }}{% endif %}">News</a>
+    <a href="{% if current_user.is_authenticated %}{{ url_for('views.studentcontact') }}{% else %}{{ url_for('views.contact') }}{% endif %}">Contact</a>
+    <div class="mobile-close" onclick="toggleMenu()">Close</div>
+</div>
+
+
+<!-- MARQUEE -->
+<div class="marquee-box"><div class="marquee-text">📢 Admission Open for 2079 BS | Register Now for Science, Management & Civil Engineering Streams!</div></div>
+
+<!-- HERO -->
+<section class="hero-wrapper">
+    <div class="side-info-box">
+        <h2>Welcome to Shree Resunga Secondary School</h2>
+        <p>Shree Resunga Secondary School is committed to providing quality education that fosters academic excellence, creativity, and character development. Our mission is to nurture responsible, confident, and compassionate students.</p>
+        <ul><li>Modern learning technologies</li><li>Experienced & trained teachers</li></ul>
+        <button class="learn-btn" onclick="window.location.href='{% if current_user.is_authenticated %}{{ url_for('views.studentintroduction') }}{% else %}{{ url_for('views.introduction') }}{% endif %}'">
+            Learn More
+        </button>
+    </div>
+    <div class="hero-grid">
+        <div class="grid-box">
+            <img src="{{ url_for('static', filename='Images/programs2.jpg') }}" alt="">
+        </div>
+        <div class="grid-box">
+            <img src="{{ url_for('static', filename='Images/volley.jpg') }}" alt="">
+        </div>
+    </div>
+</section>
+
+<!-- ===================== HISTORY ===================== -->
+<section id="history">
+    <h2 class="section-title">History</h2>
+    <div class="section-grid">
+        <div class="card animate">
+            <div class="circle">
+                <img src="{{ url_for('static', filename='Images/history.jpg') }}" alt="">
+            </div>
+            <h3>Founding Story</h3>
+            <p>The school began as a vision of the local community to provide quality education.</p>
+            <a href="{% if current_user.is_authenticated %}{{ url_for('views.studentfoundingstory') }}{% else %}{{ url_for('views.foundingstory') }}{% endif %}" class="learn">Learn More</a>
+        </div>
+
+        <div class="card animate">
+            <div class="circle">
+                <img src="{{ url_for('static', filename='Images/programs2.jpg') }}" alt="">
+            </div>
+            <h3>Milestone</h3>
+            <p>Key events that shaped the school's growth and reputation.</p>
+            <a href="{% if current_user.is_authenticated %}{{ url_for('views.studentmilestone') }}{% else %}{{ url_for('views.milestone') }}{% endif %}" class="learn">Learn More</a>
+        </div>
+
+        <div class="card animate">
+            <div class="circle">
+                <img src="{{ url_for('static',filename='Images/bestscout.jpg') }}" alt="">
+            </div>
+            <h3>Achievements</h3>
+            <p>Academic & extracurricular accomplishments across the years.</p>
+            <a href="{% if current_user.is_authenticated %}{{ url_for('views.studentachievements') }}{% else %}{{ url_for('views.achievements') }}{% endif %}" class="learn">Learn More</a>
+        </div>
+    </div>
+</section>
+
+<section id="programmes">
+    <h2 class="section-title">Programmes</h2>
+    <div class="section-grid">
+        <div class="card animate">
+            <div class="circle"><img src="{{ url_for('static',filename='Images/bestscout.jpg') }}" alt=""></div>
+            <h3>Scouting Programmes</h3>
+            <p>Engaging students in outdoor learning, leadership, and teamwork.</p>
+            <a href="{% if current_user.is_authenticated %}{{ url_for('views.studentscouting') }}{% else %}{{ url_for('views.scouting') }}{% endif %}" class="learn">Learn More</a>
+        </div>
+        <div class="card animate">
+            <div class="circle"><img src="{{ url_for('static',filename='Images/child.jpg') }}" alt=""></div>
+            <h3>Child Club Programmes</h3>
+            <p>Encouraging social skills, creativity, and peer collaboration.</p>
+            <a href="{% if current_user.is_authenticated %}{{ url_for('views.studentchildclub') }}{% else %}{{ url_for('views.childclub') }}{% endif %}" class="learn">Learn More</a>
+        </div>
+        <div class="card animate">
+            <div class="circle"><img src="{{ url_for('static',filename='Images/red.jpg') }}" alt=""></div>
+            <h3>Redcross Programmes</h3>
+            <p>Teaching health awareness, first aid, and humanitarian values.</p>
+            <a href="{% if current_user.is_authenticated %}{{ url_for('views.studentredcross') }}{% else %}{{ url_for('views.redcross') }}{% endif %}" class="learn">Learn More</a>
+        </div>
+    </div>
+</section>
+
+<section id="vision">
+    <h2 class="section-title">Vision</h2>
+    <div class="section-grid">
+        <div class="card animate">
+            <div class="circle"><img src="{{ url_for('static',filename='Images/padhai.jpg') }}" alt=""></div>
+            <h3>Academic Intelligence</h3>
+            <p>Fostering critical thinking and problem-solving skills.</p>
+            <a href="{% if current_user.is_authenticated %}{{ url_for('views.studentacademics') }}{% else %}{{ url_for('views.academics') }}{% endif %}" class="learn">Learn More</a>
+        </div>
+        <div class="card animate">
+            <div class="circle"><img src="{{ url_for('static',filename='Images/programs2.jpg') }}" alt=""></div>
+            <h3>Holistic Growth</h3>
+            <p>Developing emotional, social, and creative capabilities.</p>
+            <a href="{% if current_user.is_authenticated %}{{ url_for('views.studentholistic') }}{% else %}{{ url_for('views.holistic') }}{% endif %}" class="learn">Learn More</a>
+        </div>
+        <div class="card animate">
+            <div class="circle"><img src="{{ url_for('static',filename='Images/programs3.jpg') }}" alt=""></div>
+            <h3>Community Impact</h3>
+            <p>Empowering students to contribute meaningfully to society.</p>
+            <a href="{% if current_user.is_authenticated %}{{ url_for('views.studentcommunity') }}{% else %}{{ url_for('views.community') }}{% endif %}" class="learn">Learn More</a>
+        </div>
+    </div>
+</section>
+
+<section id="others">
+    <h2 class="section-title">Others</h2>
+    <div class="section-grid">
+        <div class="card animate">
+            <div class="circle"><img src="{{ url_for('static',filename='Images/prncpl.jpg') }}" alt=""></div>
+            <h3>Principal's Message</h3>
+            <p>Inspiring students and guiding the school with dedication and vision.</p>
+            <a href="{% if current_user.is_authenticated %}{{ url_for('views.studentprincipalssms') }}{% else %}{{ url_for('views.principalssms') }}{% endif %}" class="learn">Learn More</a>
+        </div>
+        <div class="card animate">
+            <div class="circle"><img src="{{ url_for('static',filename='Images/kursi1.jpg') }}" alt=""></div>
+            <h3>Chairman's Message</h3>
+            <p>Sharing the vision and mission of the school for future leaders.</p>
+            <a href="{% if current_user.is_authenticated %}{{ url_for('views.studentchairmanssms') }}{% else %}{{ url_for('views.chairmanssms') }}{% endif %}" class="learn">Learn More</a>
+        </div>
+        <div class="card animate">
+            <div class="circle"><img src="{{ url_for('static',filename='Images/vice.jpg') }}" alt=""></div>
+            <h3>Vice Principal's Message</h3>
+            <p>Supporting students and staff to ensure smooth academic and extracurricular operations.</p>
+            <a href="{% if current_user.is_authenticated %}{{ url_for('views.studentviceprincipalssms') }}{% else %}{{ url_for('views.viceprincipalssms') }}{% endif %}" class="learn">Learn More</a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-about">
+            <img src="{{url_for('static',filename="Images/logo.jpg")}}" alt="Logo" class="footer-logo">
+            <h3>Shree Resunga Secondary School</h3>
+            <p>Providing quality education and nurturing future leaders with creativity, knowledge, and character.</p>
+        </div>
+        <div class="footer-links">
+    <h4>Quick Links</h4>
+    <ul>
+        <li>
+            <a href="{% if current_user.is_authenticated %}{{ url_for('views.student_dashboard') }}{% else %}{{ url_for('views.student_dashboard') }}{% endif %}">Home</a>
+        </li>
+        <li>
+            <a href="{% if current_user.is_authenticated %}{{ url_for('views.studentabout_us') }}{% else %}{{ url_for('views.studentabout_us') }}{% endif %}">About</a>
+        </li>
+        <li>
+            <a href="{% if current_user.is_authenticated %}{{ url_for('views.studentGallery') }}{% else %}{{ url_for('views.studentGallery') }}{% endif %}">Gallery</a>
+        </li>
+        <li>
+            <a href="{% if current_user.is_authenticated %}{{ url_for('views.studentcontact') }}{% else %}{{ url_for('views.studentcontact') }}{% endif %}">Contact</a>
+        </li>
+    </ul>
+</div>
+
+        <div class="footer-contact">
+            <h4>Contact Us</h4>
+            <p>📍 Resunga, Nepal</p>
+            <p>📞 +977-01-XXXXXXX</p>
+            <p>✉ info@resungasecondary.edu.np</p>
+            <div class="footer-social">
+                <a href="#">🌐</a>
+                <a href="#">📘</a>
+                <a href="#">🐦</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2079 Shree Resunga Secondary School. All rights reserved.</p>
+    </div>
+</footer>
+<script>
+function toggleMenu(){document.getElementById("mobileMenu").classList.toggle("open");}
+
+</script>
+</body>
+</html>

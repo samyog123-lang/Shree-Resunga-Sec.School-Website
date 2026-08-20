@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" x-data="{ mobileMenuOpen: false }">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery Sections | Shree Resunga Secondary School</title>
+
+<!-- SEO meta tags -->
+<meta name="description" content="Explore Shree Resunga Secondary School's gallery sections including events, academics, sports, festivals, creative works, and more.">
+<meta name="keywords" content="School Events, Academic Highlights, Sports Activities, Festivals, Creative Works, Trips, Shree Resunga Secondary School, Gallery">
+<meta name="robots" content="index, follow">
+
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Alpine.js for interactive navbar -->
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+<!-- jQuery for optional future animations -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<!-- Custom CSS -->
+<style>
+  /* Marquee animation */
+  .marquee {
+    white-space: nowrap;
+    display: inline-block;
+    animation: marquee 15s linear infinite;
+  }
+  @keyframes marquee {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+  }
+  .gallery-card {
+  @apply relative group overflow-hidden rounded-xl shadow-lg transform transition-all duration-400 ease-in-out hover:scale-105 hover:rotate-1;
+}
+.gallery-card img {
+  @apply w-full h-56 object-cover transition-transform duration-500 group-hover:scale-110 group-hover:brightness-90 filter brightness-75;
+}
+.gallery-label {
+  @apply absolute bottom-0 w-full bg-black bg-opacity-50 backdrop-blur-sm text-white text-center font-bold py-2 text-sm md:text-base
+           transition-colors group-hover:bg-yellow-400 group-hover:text-black;
+}
+
+</style>
+
+</head>
+<body class="bg-orange-500 font-poppins">
+
+<!-- NAVBAR -->
+<header class="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-blue-900 via-purple-900 to-orange-600 shadow-lg">
+  <div class="max-w-7xl mx-auto flex items-center justify-between p-4">
+    <div class="flex items-center gap-3">
+      <img src="{{ url_for('static', filename='Images/logo.jpg') }}" class="w-14 h-14 rounded-full border-2 border-yellow-400 object-cover" alt="School Logo">
+      <h1 class="text-yellow-400 text-xl md:text-2xl font-extrabold shadow-md">Shree Resunga Secondary School</h1>
+    </div>
+    <!-- Desktop Menu -->
+    <nav class="hidden md:flex gap-6 text-white font-semibold">
+      <a href="{{ url_for('views.teacher_dashboard') }}" class="hover:text-yellow-400 transition">Home</a>
+      <a href="{{ url_for('views.teacherabout_us') }}" class="hover:text-yellow-400 transition">About</a>
+      <a href="{{ url_for('views.admissions') }}" class="hover:text-yellow-400 transition">Admissions</a>
+      <a href="{{ url_for('views.teachernews') }}" class="hover:text-yellow-400 transition">News</a>
+      <a href="{{ url_for('views.teacherGallery') }}" class="hover:text-yellow-400 transition">Gallery</a>
+      <a href="{{ url_for('views.teachercontact') }}" class="hover:text-yellow-400 transition">Contact</a>
+      <a href="{{ url_for('auth.logout') }}" class="hover:text-yellow-400 transition">Logout</a>
+    </nav>
+    <!-- Mobile Hamburger -->
+    <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden text-yellow-400 focus:outline-none">
+      <svg x-show="!mobileMenuOpen" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+      <svg x-show="mobileMenuOpen" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+  <!-- Mobile Menu -->
+  <div x-show="mobileMenuOpen" x-transition class="md:hidden bg-gradient-to-r from-blue-900 via-purple-900 to-orange-600 text-white font-semibold flex flex-col gap-4 p-4">
+    <a href="{{ url_for('views.teacher_dashboard') }}" class="hover:text-yellow-400 transition">Home</a>
+    <a href="{{ url_for('views.teacherabout_us') }}" class="hover:text-yellow-400 transition">About</a>
+    <a href="{{ url_for('views.admissions') }}" class="hover:text-yellow-400 transition">Admissions</a>
+    <a href="{{ url_for('views.teachernews') }}" class="hover:text-yellow-400 transition">News</a>
+    <a href="{{ url_for('views.teacherGallery') }}" class="hover:text-yellow-400 transition">Gallery</a>
+    <a href="{{ url_for('views.teachercontact') }}" class="hover:text-yellow-400 transition">Contact</a>
+  </div>
+</header>
+
+<!-- MARQUEE -->
+<div class="mt-20 bg-yellow-400 py-2 overflow-hidden relative">
+  <div class="marquee text-blue-900 font-bold px-4">
+    📢 Welcome to Shree Resunga Secondary School | 🚀 Bright Futures | 🎓 Admissions Open
+  </div>
+</div>
+<!-- ================= GALLERY GRID ================= -->
+<main class="max-w-7xl mx-auto px-4 py-12">
+
+  <h1 class="text-center text-white text-4xl md:text-5xl font-extrabold drop-shadow-lg mb-12">
+    📸 Gallery Sections | ग्यालरी विभाग
+  </h1>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+    <!-- SCHOOL EVENTS -->
+    <a href="{{ url_for('views.teacherevents') }}" class="gallery-card">
+      <img src="{{ url_for('static', filename='Images/01vision.jpg') }}" alt="School Events Celebration" loading="lazy">
+      <div class="gallery-label">School Events | विद्यालयका कार्यक्रम</div>
+    </a>
+    <a href="{{ url_for('views.teacherevents') }}" class="gallery-card">
+      <img src="{{ url_for('static', filename='Images/op7.jpg') }}" alt="Fun School Events" loading="lazy">
+      <div class="gallery-label">Fun Events & Activities</div>
+    </a>
+
+    <!-- ACADEMIC HIGHLIGHTS -->
+    <a href="{{ url_for('views.teacherGalleryacademics') }}" class="gallery-card">
+      <img src="{{ url_for('static', filename='Images/10latest.jpg') }}" alt="Academic Highlights" loading="lazy">
+      <div class="gallery-label">Academic Highlights | शैक्षिक झलक</div>
+    </a>
+    <a href="{{ url_for('views.teacherGalleryacademics') }}" class="gallery-card">
+      <img src="{{ url_for('static', filename='Images/awards.jpg') }}" alt="Academic Awards" loading="lazy">
+      <div class="gallery-label">Academic Awards & Honors</div>
+    </a>
+
+    <!-- OUR TEAM -->
+    <a href="{{ url_for('views.teacherourteam') }}" class="gallery-card">
+      <img src="{{ url_for('static', filename='Images/logo1.jpg') }}" alt="Our Team" loading="lazy">
+      <div class="gallery-label">Our Team | हाम्रो टिम</div>
+    </a>
+    <a href="{{ url_for('views.teacherourteam') }}" class="gallery-card">
+      <img src="{{ url_for('static', filename='Images/teachers.jpg') }}" alt="Teachers Group" loading="lazy">
+      <div class="gallery-label">Teachers & Staff</div>
+    </a>
+
+    <!-- INFRASTRUCTURE -->
+    <a href="{{ url_for('views.teacherinfastucture') }}" class="gallery-card">
+      <img src="{{ url_for('static', filename='Images/lobcomp.jpg') }}" alt="Infrastructure" loading="lazy">
+      <div class="gallery-label">Infrastructure | पूर्वाधार</div>
+    </a>
+    <a href="{{ url_for('views.teacherinfastucture') }}" class="gallery-card">
+      <img src="{{ url_for('static', filename='Images/hho.jpg') }}" alt="Campus Building" loading="lazy">
+      <div class="gallery-label">Campus Buildings</div>
+    </a>
+
+    <!-- SPORTS ACTIVITIES -->
+    <a href="{{ url_for('views.teachersports') }}" class="gallery-card">
+      <img src="{{ url_for('static', filename='Images/khelnp.jpg') }}" alt="Sports Activities" loading="lazy">
+      <div class="gallery-label">Sports Activities | खेलकुद गतिविधि</div>
+    </a>
+    <a href="{{ url_for('views.teachersports') }}" class="gallery-card">
+      <img src="{{ url_for('static', filename='Images/khelnp.jpg') }}" alt="Sports Event" loading="lazy">
+      <div class="gallery-label">Inter School Sports</div>
+    </a>
+
+    <!-- FESTIVALS & CULTURE -->
+    <a href="{{ url_for('views.teacherfestivals') }}" class="gallery-card">
+      <img src="{{ url_for('static', filename='Images/jamara.jpg') }}" alt="Festivals" loading="lazy">
+      <div class="gallery-label">Festivals | चाडपर्व</div>
+    </a>
+    <a href="{{ url_for('views.teacherfestivals') }}" class="gallery-card">
+      <img src="{{ url_for('static', filename='Images/mandir.jpg') }}" alt="Cultural Festival" loading="lazy">
+      <div class="gallery-label">Cultural Day Celebration</div>
+    </a>
+
+  </div>
+
+</main>
+
+</body>
+</html>

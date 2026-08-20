@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Founding Story | Shree Resunga Secondary School</title>
+
+<!-- SEO Meta Tags -->
+<meta name="description" content="Discover the founding story and history of Shree Resunga Secondary School, from its humble beginnings to modern facilities.">
+<meta name="keywords" content="Shree Resunga Secondary School, History, Founding Story, Education, School, Timeline">
+<meta name="robots" content="index, follow">
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+  body { font-family: 'Poppins', sans-serif; background-color: #eff311; }
+  .navbar { background: linear-gradient(135deg,#003366,#4b0082,#ff9800); }
+  .school-logo { width: 55px; height: 55px; border-radius: 50%; border: 3px solid yellow; object-fit: cover; }
+  .school-title { color: yellow; font-weight: 800; font-size: 1.5rem; text-shadow: 1px 1px 2px black; }
+  .back-btn { background-color: yellow; color: #003366; border: none; border-radius: 50%; width: 40px; height: 40px; font-size: 1.5rem; cursor: pointer; transition: transform 0.3s; }
+  .back-btn:hover { transform: scale(1.1); background: #ffd700; }
+
+  /* Marquee */
+  .marquee-wrapper { background-color: yellow; overflow: hidden; }
+  .marquee-content { white-space: nowrap; display: inline-block; animation: marquee 15s linear infinite; font-weight: bold; color: #003366; padding: 0.5rem 1rem; }
+  @keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+
+  /* Timeline */
+  .timeline { display: flex; flex-direction: column; gap: 2rem; margin: 2rem 0; }
+  .timeline-item { opacity: 0; transform: translateX(-50px); transition: all 0.6s ease-out; }
+  .timeline-content { background: white; padding: 1rem 1.5rem; border-radius: 10px; shadow-lg; }
+  .timeline-content h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; color: #003366; }
+  .timeline-content p { font-size: 1rem; color: #333; }
+
+  /* Old building section */
+  .old-building-container { display: flex; flex-wrap: wrap; gap: 2rem; align-items: center; margin: 3rem 0; }
+  .old-building-image img { width: 100%; max-width: 500px; border-radius: 15px; object-fit: cover; }
+  .old-building-text { flex: 1; }
+  .old-building-text h2 { font-size: 2rem; color: #003366; margin-bottom: 1rem; }
+  .old-building-text p { font-size: 1rem; color: #333; line-height: 1.6; }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar flex items-center justify-between p-4 fixed top-0 left-0 w-full z-50">
+    <div class="flex items-center gap-3">
+        <img src="{{ url_for('static', filename='Images/logo.jpg') }}" alt="School Logo" class="school-logo">
+        <h1 class="school-title">Shree Resunga Secondary School</h1>
+    </div>
+    <button class="back-btn" onclick="window.history.back()">&#8592;</button>
+</nav>
+
+<!-- MARQUEE -->
+<div class="marquee-wrapper mt-20">
+    <div class="marquee-content">
+        📢 Welcome to Shree Resunga Secondary School | 🚀 Bright Futures | 🎓 Admissions Open
+    </div>
+</div>
+
+<!-- PAGE CONTENT -->
+<section class="history-section max-w-7xl mx-auto px-4 py-12">
+    <h2 class="text-3xl md:text-4xl font-extrabold text-center text-[#003366] mb-8">Our Glorious History</h2>
+
+    <div class="timeline">
+        <!-- Timeline Item 1 -->
+        <div class="timeline-item" style="animation-delay: 0s;">
+            <div class="timeline-content">
+                <h3>Founded in 2025 BS</h3>
+                <p>Shree Resunga Secondary School was established as a vision to provide quality education to the local community. From humble beginnings, it has grown to become a beacon of learning and excellence.</p>
+            </div>
+        </div>
+
+        <!-- Timeline Item 2 -->
+        <div class="timeline-item" style="animation-delay: 0.3s;">
+            <div class="timeline-content">
+                <h3>First Graduating Class</h3>
+                <p>The first batch of students graduated with flying colors, laying the foundation for academic rigor and excellence that continues to this day.</p>
+            </div>
+        </div>
+
+        <!-- Timeline Item 3 -->
+        <div class="timeline-item" style="animation-delay: 0.6s;">
+            <div class="timeline-content">
+                <h3>ISO Certification</h3>
+                <p>After decades of consistent performance, the school achieved ISO certification, cementing its status as a trusted institution for high-quality education in the region.</p>
+            </div>
+        </div>
+
+        <!-- Timeline Item 4 -->
+        <div class="timeline-item" style="animation-delay: 0.9s;">
+            <div class="timeline-content">
+                <h3>Modern Facilities</h3>
+                <p>The school now boasts modern classrooms, laboratories, and libraries, ensuring students have access to the best tools for learning and personal growth.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Old School Building Section -->
+<section class="old-building-section max-w-7xl mx-auto px-4">
+    <div class="old-building-container">
+        <div class="old-building-image">
+            <img src="{{ url_for('static', filename='images/history.jpg') }}" alt="Old School Building">
+        </div>
+        <div class="old-building-text">
+            <h2>Our Old School Building</h2>
+            <p>This historic building stands as a symbol of dedication, knowledge, and community. It carries countless memories of students and teachers who helped shape the spirit of Shree Resunga Secondary School.</p>
+        </div>
+    </div>
+</section>
+
+<script>
+// Timeline scroll animation
+const items = document.querySelectorAll('.timeline-item');
+window.addEventListener('scroll', () => {
+    const triggerBottom = window.innerHeight * 0.9;
+    items.forEach(item => {
+        const itemTop = item.getBoundingClientRect().top;
+        if(itemTop < triggerBottom){
+            item.style.opacity = 1;
+            item.style.transform = 'translateX(0)';
+        }
+    });
+});
+</script>
+
+</body>
+</html>

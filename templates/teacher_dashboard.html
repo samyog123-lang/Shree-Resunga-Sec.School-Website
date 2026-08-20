@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Shree Resunga Secondary School</title>
+
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+
+<!-- Add Alpine.js for interactivity -->
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+</head>
+<body class="bg-yellow-400 font-poppins">
+<!-- ================= NAVBAR ================= -->
+<nav class="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-blue-900 via-indigo-900 to-orange-500 shadow-lg">
+  <div class="container mx-auto flex justify-between items-center py-3 px-4 md:px-6">
+    
+    <!-- Logo + Title -->
+    <div class="flex items-center gap-3 md:gap-4">
+      <img src="{{ url_for('static', filename='Images/logo.jpg') }}" 
+           alt="Logo"
+           class="h-10 w-10 md:h-12 md:w-12 rounded-full border-2 border-yellow-400 object-cover">
+      <span class="text-yellow-400 font-bold text-sm md:text-2xl tracking-wide drop-shadow-md">
+        Shree Resunga Secondary School
+      </span>
+    </div>
+
+    <!-- Desktop Menu -->
+    <div class="hidden md:flex gap-4 lg:gap-6 items-center">
+      <a href="{{ url_for('views.teacher_dashboard') }}" class="text-white font-semibold hover:text-yellow-400 transition">Home</a>
+      <a href="{{ url_for('views.teacherabout_us') }}" class="text-white font-semibold hover:text-yellow-400 transition">About</a>
+      <a href="{{ url_for('views.teachernews') }}" class="text-white font-semibold hover:text-yellow-400 transition">News</a>
+      <a href="{{ url_for('views.teacherGallery') }}" class="text-white font-semibold hover:text-yellow-400 transition">Gallery</a>
+      <a href="{{ url_for('views.teachercontact') }}" class="text-white font-semibold hover:text-yellow-400 transition">Contact</a>
+      <a href="{{ url_for('auth.logout') }}" class="text-white font-semibold hover:text-yellow-400 transition">Logout</a>
+    </div>
+
+    <!-- Mobile Hamburger -->
+    <div x-data="{ open: false }" class="md:hidden flex items-center">
+      <button @click="open = !open" class="flex flex-col justify-center items-center gap-1">
+        <span :class="{'rotate-45 translate-y-1.5': open}" class="block w-6 h-0.5 bg-white transition-all"></span>
+        <span :class="{'opacity-0': open}" class="block w-6 h-0.5 bg-white transition-all"></span>
+        <span :class="{'-rotate-45 -translate-y-1.5': open}" class="block w-6 h-0.5 bg-white transition-all"></span>
+      </button>
+
+      <!-- Mobile Menu -->
+      <div x-show="open" x-transition class="absolute top-full right-0 w-64 bg-blue-900 text-white flex flex-col gap-1 py-4 px-4 shadow-lg">
+        <a href="{{ url_for('views.teacher_dashboard') }}" class="py-2 px-2 rounded hover:bg-blue-800">Home</a>
+        <a href="{{ url_for('views.teacherabout_us') }}" class="py-2 px-2 rounded hover:bg-blue-800">About</a>
+        <a href="{{ url_for('views.teachernews') }}" class="py-2 px-2 rounded hover:bg-blue-800">News</a>
+        <a href="{{ url_for('views.teacherGallery') }}" class="py-2 px-2 rounded hover:bg-blue-800">Gallery</a>
+        <a href="{{ url_for('views.teachercontact') }}" class="py-2 px-2 rounded hover:bg-blue-800">Contact</a>
+        <a href="{{ url_for('auth.logout') }}" class="py-2 px-2 rounded hover:bg-blue-800">Logout</a>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+<!-- ================= SPACER ================= -->
+<!-- Push the content down so navbar does not cover it -->
+<div class="h-20 md:h-24"></div>
+
+<!-- ================= MARQUEE ================= -->
+<div class="bg-gradient-to-r from-yellow-400 via-yellow-300 to-orange-400 overflow-hidden py-2">
+  <marquee behavior="scroll" direction="left" class="text-blue-900 font-bold text-center">
+    📢 Welcome to Shree Resunga Secondary School! Admissions open now! Stay updated with latest news & events.
+  </marquee>
+</div>
+
+
+<!-- ================= HERO SECTION ================= -->
+<section class="hero-wrapper container mx-auto flex flex-col md:flex-row gap-6 mt-6 px-4 md:px-6">
+  <!-- Image grid -->
+  <div class="hero-grid grid grid-cols-2 gap-4 md:flex-1">
+    <div class="grid-box overflow-hidden rounded-lg shadow-md"><img src="{{ url_for('static', filename='Images/main.jpg') }}" alt=""></div>
+    <div class="grid-box overflow-hidden rounded-lg shadow-md"><img src="{{ url_for('static', filename='Images/image.jpg') }}" alt=""></div>
+    <div class="grid-box overflow-hidden rounded-lg shadow-md"><img src="{{ url_for('static', filename='Images/image1.jpg') }}" alt=""></div>
+    <div class="grid-box overflow-hidden rounded-lg shadow-md"><img src="{{ url_for('static', filename='Images/bidyarthi.jpg') }}" alt=""></div>
+  </div>
+
+  <!-- Info -->
+  <div class="side-info-box md:flex-1 flex flex-col justify-center">
+    <h2 class="text-blue-900 text-2xl md:text-4xl font-bold mb-4 text-center md:text-left">
+      Welcome to Shree Resunga Secondary School
+    </h2>
+    <p class="text-gray-900 mb-3 text-justify">
+      Shree Resunga Secondary School, established in 2025 BS, is located in Resunga Municipality-2, Udhindhunga, Tamghas, Gulmi. We are committed to providing quality education that nurtures the intellectual, social, and moral development of our students.
+    </p>
+    <ul class="list-disc list-inside mb-3 space-y-1 text-gray-900">
+      <li>Academic excellence with modern teaching methods</li>
+      <li>Holistic development through sports, arts, and extracurricular activities</li>
+      <li>Creating responsible and socially-conscious citizens</li>
+      <li>Safe and inspiring learning environment</li>
+    </ul>
+    <p class="text-gray-900 mb-4 text-justify">
+      Our dedicated teachers, supportive staff, and welcoming community ensure a safe and inspiring learning environment for all students. Join us in shaping a brighter future!
+    </p>
+    <button class="learn-btn bg-gradient-to-r from-blue-900 to-indigo-900 text-yellow-400 font-bold py-2 px-6 rounded hover:scale-105 transition" onclick="window.location.href='{{ url_for('views.teacherintroduction') }}'">
+      Learn More
+    </button>
+  </div>
+</section>
+
+<!-- ================= COURSES SECTION ================= -->
+<section id="courses" class="courses-section container mx-auto mt-12 px-4 md:px-6">
+  <h2 class="text-3xl font-bold text-blue-900 mb-6 text-center">Discover Available Courses</h2>
+  <div class="courses-container grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="course-box bg-gradient-to-br from-indigo-900 to-blue-900 text-yellow-400 rounded-lg p-4 text-center shadow-md">
+      <img src="{{ url_for('static', filename='Images/ktakti.jpg') }}" alt="" class="rounded-lg mb-3">
+      <h3 class="font-bold text-xl mb-1">General Courses</h3>
+      <p class="text-sm">Nursery – 8</p>
+    </div>
+    <div class="course-box bg-gradient-to-br from-indigo-900 to-blue-900 text-yellow-400 rounded-lg p-4 text-center shadow-md">
+      <img src="{{ url_for('static', filename='Images/second.jpg') }}" alt="" class="rounded-lg mb-3">
+      <h3 class="font-bold text-xl mb-1">Secondary Level</h3>
+      <p class="text-sm">Classes 9 – 10</p>
+    </div>
+    <div class="course-box bg-gradient-to-br from-indigo-900 to-blue-900 text-yellow-400 rounded-lg p-4 text-center shadow-md">
+      <img src="{{ url_for('static', filename='Images/higher.jpg') }}" alt="" class="rounded-lg mb-3">
+      <h3 class="font-bold text-xl mb-1">Higher Education</h3>
+      <p class="text-sm">Classes 11 – 12</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= NEWS SECTION ================= -->
+<section class="news-unique container mx-auto mt-12 px-4 md:px-6">
+  <h2 class="text-3xl font-bold text-blue-900 mb-6 text-center">Latest News & Announcements</h2>
+  <div class="news-unique-row grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+    <div class="news-card-unique relative rounded-lg overflow-hidden shadow-md">
+      <img src="{{ url_for('static', filename='Images/12tour.jpg') }}" alt="" class="w-full h-48 object-cover">
+      <div class="news-overlay absolute bottom-0 w-full text-center text-yellow-400 bg-blue-900 bg-opacity-80 py-1">12 Tour</div>
+    </div>
+    <div class="news-card-unique relative rounded-lg overflow-hidden shadow-md">
+      <img src="{{ url_for('static', filename='Images/campfire.jpg') }}" alt="" class="w-full h-48 object-cover">
+      <div class="news-overlay absolute bottom-0 w-full text-center text-yellow-400 bg-blue-900 bg-opacity-80 py-1">Scout campfire</div>
+    </div>
+    <div class="news-card-unique relative rounded-lg overflow-hidden shadow-md">
+      <img src="{{ url_for('static', filename='Images/clean.jpg') }}" alt="" class="w-full h-48 object-cover">
+      <div class="news-overlay absolute bottom-0 w-full text-center text-yellow-400 bg-blue-900 bg-opacity-80 py-1">Cleanliness program</div>
+    </div>
+    <div class="news-card-unique relative rounded-lg overflow-hidden shadow-md">
+      <img src="{{ url_for('static', filename='Images/fprograme.jpg') }}" alt="" class="w-full h-48 object-cover">
+      <div class="news-overlay absolute bottom-0 w-full text-center text-yellow-400 bg-blue-900 bg-opacity-80 py-1">Eco Club</div>
+    </div>
+  </div>
+</section>
+<!-- ================= NEWS SLIDER ================= -->
+<section class="news-slider container mx-auto mt-12 px-4 md:px-6" x-data="newsSlider()">
+  <h2 class="text-3xl font-bold text-blue-900 mb-6 text-center">School News Highlights</h2>
+
+  <div class="relative overflow-hidden">
+    <!-- Slider Track -->
+    <div class="flex transition-transform duration-500" :style="{ transform: `translateX(-${currentIndex * 100}%)` }">
+      <!-- Repeat this div for each news item -->
+      <template x-for="news in newsItems" :key="news.title">
+        <div class="flex-shrink-0 w-full md:w-1/3 px-2">
+          <div class="bg-blue-900 rounded-lg overflow-hidden shadow-md">
+            <img :src="news.image" alt="" class="w-full h-48 object-cover">
+            <div class="p-4 text-yellow-400">
+              <h3 class="font-bold text-lg mb-1" x-text="news.title"></h3>
+              <p class="text-sm" x-text="news.description"></p>
+            </div>
+          </div>
+        </div>
+      </template>
+    </div>
+
+    <!-- Prev/Next Buttons -->
+    <button @click="prev()" class="absolute top-1/2 -translate-y-1/2 left-2 bg-yellow-400 text-blue-900 p-2 rounded-full hover:bg-yellow-300 shadow-lg">◀</button>
+    <button @click="next()" class="absolute top-1/2 -translate-y-1/2 right-2 bg-yellow-400 text-blue-900 p-2 rounded-full hover:bg-yellow-300 shadow-lg">▶</button>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="bg-gradient-to-r from-blue-900 to-indigo-900 mt-12 text-yellow-400 py-8">
+  <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 px-4 md:px-6">
+    <div>
+      <h3 class="text-xl font-bold mb-3">Shree Resunga Secondary School</h3>
+      <p>
+        Since 2025 BS, Shree Resunga Secondary School has been dedicated to providing quality education that fosters intellectual, social, and emotional growth of students. Academic excellence, holistic development, and safe environment for every student are our focus.
+      </p>
+    </div>
+    <div>
+      <h4 class="text-lg font-semibold mb-3">Quick Links</h4>
+      <ul class="space-y-1">
+        <li><a href="{{ url_for('views.teacher_dashboard') }}" class="hover:text-white transition">Home</a></li>
+        <li><a href="{{ url_for('views.teacherabout_us') }}" class="hover:text-white transition">About Us</a></li>
+        <li><a href="{{ url_for('views.admissions') }}" class="hover:text-white transition">Admissions</a></li>
+        <li><a href="{{ url_for('views.teachercontact') }}" class="hover:text-white transition">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="text-center mt-6 text-sm">&copy; 2025 Shree Resunga Secondary School. All rights reserved.</div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+
+    // ================= NEWS SLIDER =================
+    const newsSlider = {
+        currentIndex: 0,
+        newsItems: [
+            { image: "{{ url_for('static', filename='Images/12tour.jpg') }}", title: "12 Tour", description: "Students went on a fun and educational 12th tour." },
+            { image: "{{ url_for('static', filename='Images/campfire.jpg') }}", title: "Scout Campfire", description: "Annual scout campfire held with full participation." },
+            { image: "{{ url_for('static', filename='Images/clean.jpg') }}", title: "Cleanliness Program", description: "Students took part in community cleaning activities." },
+            { image: "{{ url_for('static', filename='Images/fprograme.jpg') }}", title: "Eco Club Program", description: "Eco Club organized environmental awareness programs." }
+        ],
+        sliderContainer: document.querySelector('.news-slider .flex'),
+        init() {
+            this.render();
+            setInterval(() => this.next(), 5000); // auto-slide every 5s
+            this.addControls();
+        },
+        render() {
+            if (!this.sliderContainer) return;
+            this.sliderContainer.innerHTML = '';
+            this.newsItems.forEach(news => {
+                const div = document.createElement('div');
+                div.className = 'flex-shrink-0 w-full md:w-1/3 px-2';
+                div.innerHTML = `
+                    <div class="bg-blue-900 rounded-lg overflow-hidden shadow-md">
+                        <img src="${news.image}" alt="" class="w-full h-48 object-cover">
+                        <div class="p-4 text-yellow-400">
+                            <h3 class="font-bold text-lg mb-1">${news.title}</h3>
+                            <p class="text-sm">${news.description}</p>
+                        </div>
+                    </div>
+                `;
+                this.sliderContainer.appendChild(div);
+            });
+            this.updateTransform();
+        },
+        updateTransform() {
+            if (!this.sliderContainer) return;
+            this.sliderContainer.style.transform = `translateX(-${this.currentIndex * 100}%)`;
+        },
+        next() {
+            this.currentIndex = (this.currentIndex + 1) % this.newsItems.length;
+            this.updateTransform();
+        },
+        prev() {
+            this.currentIndex = (this.currentIndex - 1 + this.newsItems.length) % this.newsItems.length;
+            this.updateTransform();
+        },
+        addControls() {
+            const prevBtn = document.querySelector('.news-slider button:nth-child(2)');
+            const nextBtn = document.querySelector('.news-slider button:nth-child(3)');
+            if (prevBtn) prevBtn.addEventListener('click', () => this.prev());
+            if (nextBtn) nextBtn.addEventListener('click', () => this.next());
+        }
+    };
+
+    newsSlider.init();
+
+});
+</script>
+
+
+</body>
+</html>

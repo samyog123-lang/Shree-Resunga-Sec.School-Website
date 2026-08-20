@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shree Resunga Secondary School | Milestones</title>
+
+<!-- SEO Meta Tags -->
+<meta name="description" content="Explore the major milestones of Shree Resunga Secondary School including academic achievements, infrastructure, and ISO certifications.">
+<meta name="keywords" content="Shree Resunga Secondary School, Milestones, Academic Achievements, SEE Results, ISO Certification, New Building">
+<meta name="robots" content="index, follow">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+/* ===== GLOBAL RESET ===== */
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Roboto',sans-serif; }
+body { 
+    background: orangered; /* Yellow-Red texture */
+    background-attachment: fixed;
+    color:#333; 
+    overflow-x:hidden; 
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:linear-gradient(135deg,#003366,#4b0082,#ff9800);
+    padding:0.7rem 2rem;
+    position:fixed;
+    top:-100px; /* start off top for animation */
+    left:0;
+    height:70px;
+    color:#fff;
+    box-shadow:0 4px 10px rgba(0,0,0,0.15);
+    z-index:1000;
+    animation:slideDownNavbar 1s forwards;
+}
+@keyframes slideDownNavbar { from {top:-100px;} to {top:0;} }
+
+.nav-left { display:flex; align-items:center; gap:0.8rem; }
+.school-logo { width:50px; height:50px; border-radius:50%; object-fit:cover; border:3px solid yellow; animation:logoPulse 2s infinite; }
+@keyframes logoPulse { 0%,100%{transform:scale(1);}50%{transform:scale(1.1);} }
+.school-title { font-weight:700; font-size:1.4rem; line-height:1.2; color:yellow; text-shadow:1px 1px 3px #000; }
+
+.back-btn {
+    background:yellow; color:#003366; border:none;
+    border-radius:50%; width:35px; height:35px;
+    cursor:pointer; font-weight:700; font-size:1.2rem;
+    display:flex; justify-content:center; align-items:center;
+    transition: transform 0.3s, background 0.3s;
+}
+.back-btn:hover { transform:scale(1.1); background:#ffd700; }
+
+/* ===== MARQUEE ===== */
+.marquee-wrapper {
+    width:100%; overflow:hidden; background:#ffd700; color:#003366;
+    font-weight:600; font-size:0.95rem;
+    padding:0.5rem 0; margin-top:70px;
+    border-bottom:2px solid #003366;
+    transform: translateY(-50px);
+    opacity:0;
+    animation:slideDownMarquee 1s forwards 0.5s;
+}
+@keyframes slideDownMarquee { from {transform:translateY(-50px); opacity:0;} to {transform:translateY(0); opacity:1;} }
+
+.marquee-content {
+    display:inline-block; white-space:nowrap;
+    animation:marqueeScroll 15s linear infinite;
+}
+@keyframes marqueeScroll {0%{transform:translateX(100%);}100%{transform:translateX(-100%);}}
+
+/* ===== PAGE HEADING ===== */
+h1 {
+    text-align:center; margin:100px 0 50px 0; font-size:2rem;
+    color:yellow; font-weight:800;
+    text-shadow:2px 2px 5px #000;
+}
+
+/* ===== MILESTONES GRID ===== */
+.milestones {
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap:30px; width:90%; max-width:1200px;
+    margin:auto; padding-bottom:50px;
+}
+.milestones p{
+    color: white;
+    font-weight: 650;
+}
+
+.card {
+    background:yellow; border-radius:15px;
+    color:#333; text-align: center; font-weight:600;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+    overflow:hidden; 
+    transform:translateY(50px) scale(0.95);
+    opacity:0;
+    transition:transform 0.5s, box-shadow 0.3s, opacity 0.5s;
+}
+.card.visible-top, .card.visible-bottom { transform:translateY(0) scale(1); opacity:1; }
+.card img { width:100%; height:200px; object-fit:cover; border-bottom:3px solid yellow; border-radius:0; }
+.card-content { padding:20px; }
+.card-content h2 { font-size:1.3rem; color:green; margin-bottom:10px; }
+.card-content p { font-size:1rem; color:#555; }
+
+.card:hover { transform:translateY(-10px) scale(1.02); box-shadow:0 15px 30px rgba(0,0,0,0.3); }
+
+/* ===== FOOTER ===== */
+footer {
+    width:100%; background:rgba(0,51,102,0.95); color:#fff;
+    padding:30px 0; text-align:center; font-size:0.95rem;
+    overflow:hidden; position:relative;
+}
+.footer-text { display:inline-block; white-space:nowrap; animation:footerScroll 12s linear infinite; }
+@keyframes footerScroll {0%{transform:translateX(100%);}100%{transform:translateX(-100%);}}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+    .school-title { font-size:1.2rem; }
+}
+@media(max-width:600px){
+    .school-title { font-size:1rem; }
+    .back-btn { width:30px; height:30px; font-size:1rem; }
+    h1 { font-size:1.5rem; }
+    .card img { height:160px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="nav-left">
+        <img src="{{ url_for('static', filename='images/logo.jpg') }}" class="school-logo" alt="School Logo">
+        <span class="school-title">Shree Resunga Secondary School</span>
+    </div>
+    <button class="back-btn" onclick="window.location.href='{{ url_for('views.teacherabout_us') }}'">&#8592;</button>
+</nav>
+
+<!-- MARQUEE -->
+<div class="marquee-wrapper">
+    <div class="marquee-content">
+        📢 Welcome to Shree Resunga Secondary School | 🚀 Bright Futures | 🎓 Admissions Open
+    </div>
+</div>
+
+<!-- PAGE HEADING -->
+<h1>OUR SCHOOL MILESTONES</h1>
+
+<!-- MILESTONES GRID -->
+<div class="milestones">
+    <!-- First Row -->
+    <div class="card">
+        <img src="{{ url_for('static', filename='images/2ned (1).jpg') }}" alt="SEE 2nd Position">
+        <div class="card-content">
+            <h2>Nepal’s 2nd Position in SEE – 2074</h2>
+            <p>Our school secured 2nd place nationwide in the SEE examination of 2074.</p>
+        </div>
+    </div>
+    <div class="card">
+        <img src="{{ url_for('static', filename='images/03vision.jpg') }}" alt="Civil Engineering">
+        <div class="card-content">
+            <h2>Establishment of Civil Engineering Program</h2> 
+            <p>Launch of Civil Engineering stream offering career-focused education.</p>
+        </div>
+    </div>
+    <!-- Second Row -->
+    <div class="card">
+        <img src="{{ url_for('static', filename='images/12.jpg') }}" alt="Grade 11 & 12">
+        <div class="card-content">
+            <h2>Introduction of Grade 11 & 12</h2>
+            <p>+2 education allowing students to pursue higher secondary studies locally.</p>
+        </div>
+    </div>
+    <div class="card">
+        <img src="{{ url_for('static', filename='images/gpa4.jpg') }}" alt="Continuous SEE Excellence">
+        <div class="card-content">
+            <h2>Continuous Excellence in SEE Results</h2>
+            <p>Consistently maintaining top-tier SEE performance year after year.</p>
+        </div>
+    </div>
+    <div class="card">
+        <img src="{{ url_for('static', filename='images/wow.jpg') }}" alt="New Building">
+        <div class="card-content">
+            <h2>Construction & Inauguration of New Building</h2>
+            <p>Completion of a new, modern academic building marked a major infrastructure milestone.</p>
+        </div>
+    </div>
+    <div class="card">
+        <img src="{{ url_for('static', filename='images/iso.jpg') }}" alt="ISO Certification">
+        <div class="card-content">
+            <h2>ISO Certification – 2082</h2>
+            <p>Our school received ISO certification, recognizing its commitment to quality education.</p>
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-text">
+        &copy; 2025 Shree Resunga Secondary School | All Rights Reserved
+    </div>
+</footer>
+
+<script>
+// Animate cards on scroll
+const cards = document.querySelectorAll('.card');
+cards.forEach((card,index) => {
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting){
+                if(index<2) card.classList.add('visible-top');
+                else card.classList.add('visible-bottom');
+            }
+        });
+    }, {threshold:0.2});
+    observer.observe(card);
+});
+</script>
+
+</body>
+</html>

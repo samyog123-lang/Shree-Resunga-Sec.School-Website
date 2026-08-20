@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Navbar with Back Button</title>
+<style>
+/* ===== GLOBAL RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+  
+body {
+    background: orangered;
+    color: #003366;
+    overflow-x: hidden;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg,#003366,#4b0082,#ff9800);
+    padding: 0.5rem 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    height: 70px;
+    transform: translateY(-100%);
+    opacity: 0;
+    animation: slideDown 0.7s forwards;
+}
+
+/* LEFT: LOGO + TITLE */
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.school-logo {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: 3px solid yellow;
+    object-fit: cover;
+}
+
+.school-title {
+    color: yellow;
+    font-weight: 800;
+    white-space: nowrap;
+    font-size: 1.5rem;
+    text-shadow: 1px 1px 2px black;
+}
+
+/* BACK BUTTON */
+.back-btn {
+    background-color: yellow;
+    color: #003366;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.back-btn:hover {
+    background-color: #ffd700;
+    transform: scale(1.1);
+}
+
+/* MARQUEE */
+.marquee-wrapper {
+    width: 100%;
+    background: yellow;
+    overflow: hidden;
+    border-top: 2px solid #003366;
+    border-bottom: 2px solid #003366;
+    position: fixed;
+    top: 70px; /* immediately below navbar */
+    left: 0;
+    z-index: 999;
+    transform: translateY(-100%);
+    opacity: 0;
+    animation: slideDown 0.7s forwards 0.2s; /* slight delay after navbar */
+}
+
+.marquee-content {
+    display: inline-block;
+    white-space: nowrap;
+    font-size: 1rem;
+    color: #003366;
+    font-weight: 700;
+    padding: 0.5rem 0;
+    animation: marqueeScroll 12s linear infinite;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes slideDown {
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes marqueeScroll {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width: 700px){
+    .navbar { height: 60px; padding: 0.4rem 0.8rem; }
+    .school-logo { width: 45px; height: 45px; }
+    .school-title { font-size: 1.2rem; }
+    .back-btn { width: 35px; height: 35px; font-size: 1.2rem; }
+    .marquee-wrapper { top: 60px; }
+    .marquee-content { font-size: 0.9rem; }
+}
+
+@media(max-width: 500px){
+    .navbar { height: 55px; padding: 0.3rem 0.6rem; }
+    .school-logo { width: 40px; height: 40px; }
+    .school-title { font-size: 1rem; }
+    .back-btn { width: 30px; height: 30px; font-size: 1rem; }
+    .marquee-wrapper { top: 55px; }
+    .marquee-content { font-size: 0.85rem; }
+}
+/* ================= CHILD CLUB MAIN WRAPPER ================= */
+.childclub-section {
+    padding: 150px 20px 80px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* ===== SECTION HEADING ===== */
+.childclub-title {
+    text-align: center;
+    font-size: 2.6rem;
+    font-weight: 900;
+    color: yellow;
+    text-shadow: 3px 3px 5px black;
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+    animation: fadeInScale 1s forwards;
+    opacity: 0;
+}
+
+/* ===== CONTENT BOXES ===== */
+.childclub-box {
+    background: rgba(0, 0, 0, 0.25);
+    padding: 25px 30px 25px 40px;
+    margin-bottom: 30px;
+    border-left: 10px solid yellow;
+    position: relative;
+    box-shadow: 0 5px 13px rgba(0,0,0,0.4);
+    transform: translateX(-70px);
+    opacity: 0;
+    animation: slideInLeft 0.9s forwards;
+}
+
+/* Stagger effect */
+.childclub-box:nth-child(3) { animation-delay: 0.2s; }
+.childclub-box:nth-child(4) { animation-delay: 0.4s; }
+.childclub-box:nth-child(5) { animation-delay: 0.6s; }
+
+.childclub-box h2 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.childclub-box p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #f3f3f3;
+    text-align: justify;
+}
+
+/* Glowing dot on left line */
+.childclub-box::before {
+    content: "";
+    position: absolute;
+    left: -20px;
+    top: 15px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: yellow;
+    box-shadow: 0 0 12px yellow;
+}
+
+/* ================= IMAGES SECTION ================= */
+.childclub-images {
+    display: flex;
+    gap: 25px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+/* Image card */
+.childclub-img-box {
+    flex: 1;
+    min-width: 300px;
+    background: rgba(0,0,0,0.3);
+    padding: 10px;
+    border-left: 7px solid yellow;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    perspective: 900px;
+    opacity: 0;
+    transform: translateY(60px);
+    animation: fadeSlideUp 1s forwards;
+}
+
+.childclub-img-box:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+/* Image itself */
+.childclub-img-box img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border: 3px solid yellow;
+    box-shadow: 0 0 10px rgba(255,255,0,0.6);
+    transition: transform 0.5s;
+}
+
+/* Hover 3D tilt effect */
+.childclub-img-box:hover img {
+    transform: rotateX(8deg) rotateY(-8deg) scale(1.03);
+}
+
+.childclub-caption {
+    text-align: center;
+    padding: 12px 5px;
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+/* ========== ANIMATIONS ========== */
+@keyframes fadeInScale {
+    to { opacity: 1; transform: scale(1.05); }
+}
+
+@keyframes slideInLeft {
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeSlideUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========== RESPONSIVE ========== */
+@media(max-width: 700px) {
+    .childclub-title { font-size: 2rem; }
+    .childclub-box { padding: 20px 25px 20px 30px; }
+    .childclub-images { flex-direction: column; }
+    .childclub-img-box img { height: 220px; }
+}
+
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-left">
+        <img src="{{ url_for('static', filename='Images/logo.jpg') }}" alt="School Logo" class="school-logo">
+        <h1 class="school-title">Shree Resunga Secondary School</h1>
+    </div>
+    <button class="back-btn" onclick="window.location.href='{{ url_for('views.about_us') }}'">&#8592;</button>
+</nav>
+
+<div class="marquee-wrapper">
+    <div class="marquee-content">
+        📢 Welcome to Shree Resunga Secondary School | 🚀 Bright Futures | 🎓 Admissions Open
+    </div>
+</div>
+
+<section class="childclub-section">
+
+    <h1 class="childclub-title">Child Club Programmes</h1>
+
+    <div class="childclub-box">
+        <h2>What is Child Club?</h2>
+        <p>
+            The Child Club aims to empower students to lead, create, and inspire positive changes within 
+            the school and community. Through different activities, children learn leadership, confidence, 
+            communication, and teamwork skills.
+        </p>
+    </div>
+
+    <div class="childclub-box">
+        <h2>Our Key Objectives</h2>
+        <p>
+            We encourage students to express their creativity, raise awareness on social issues, promote 
+            kindness, and develop a sense of responsibility. The club supports the growth of active, 
+            responsible young leaders.
+        </p>
+    </div>
+
+    <div class="childclub-box">
+        <h2>Activities & Events</h2>
+        <p>
+            Child Club organizes cultural events, talent shows, school cleanliness campaigns, awareness 
+            rallies, celebration programmes, environmental care activities, creative competitions, and 
+            community support tasks.
+        </p>
+    </div>
+
+    <div class="childclub-box">
+        <h2>Student Leadership Roles</h2>
+        <p>
+            Students participate as presidents, vice-presidents, secretaries, event managers, media 
+            coordinators, and discipline members. These roles help them learn discipline, management, 
+            and teamwork.
+        </p>
+    </div>
+
+    <!-- IMAGES SECTION -->
+    <div class="childclub-images">
+
+        <div class="childclub-img-box">
+            <img src="{{ url_for('static', filename='Images/awareness.jpg') }}" alt="Child Club Image 1">
+            <p class="childclub-caption">Students leading awareness programme.</p>
+        </divc:\Users\Global\Downloads\ex.jpg>
+
+        <div class="childclub-img-box">
+            <img src="{{ url_for('static', filename='Images/crea.jpg') }}" alt="Child Club Image 2">
+            <p class="childclub-caption">Creative activities conducted during Child Club events.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<script>
+function goBack() {
+    window.history.back();
+}
+
+</script>
+
+</body>
+</html>

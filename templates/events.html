@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Navbar with Back Button</title>
+<style>
+/* ===== GLOBAL RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+  
+body {
+    background: orangered;
+    color: #003366;
+    overflow-x: hidden;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg,#003366,#4b0082,#ff9800);
+    padding: 0.5rem 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    height: 70px;
+    transform: translateY(-100%);
+    opacity: 0;
+    animation: slideDown 0.7s forwards;
+}
+
+/* LEFT: LOGO + TITLE */
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.school-logo {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: 3px solid yellow;
+    object-fit: cover;
+}
+
+.school-title {
+    color: yellow;
+    font-weight: 800;
+    white-space: nowrap;
+    font-size: 1.5rem;
+    text-shadow: 1px 1px 2px black;
+}
+
+/* BACK BUTTON */
+.back-btn {
+    background-color: yellow;
+    color: #003366;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.back-btn:hover {
+    background-color: #ffd700;
+    transform: scale(1.1);
+}
+
+/* MARQUEE */
+.marquee-wrapper {
+    width: 100%;
+    background: yellow;
+    overflow: hidden;
+    border-top: 2px solid #003366;
+    border-bottom: 2px solid #003366;
+    position: fixed;
+    top: 70px; /* immediately below navbar */
+    left: 0;
+    z-index: 999;
+    transform: translateY(-100%);
+    opacity: 0;
+    animation: slideDown 0.7s forwards 0.2s; /* slight delay after navbar */
+}
+
+.marquee-content {
+    display: inline-block;
+    white-space: nowrap;
+    font-size: 1rem;
+    color: #003366;
+    font-weight: 700;
+    padding: 0.5rem 0;
+    animation: marqueeScroll 12s linear infinite;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes slideDown {
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes marqueeScroll {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width: 700px){
+    .navbar { height: 60px; padding: 0.4rem 0.8rem; }
+    .school-logo { width: 45px; height: 45px; }
+    .school-title { font-size: 1.2rem; }
+    .back-btn { width: 35px; height: 35px; font-size: 1.2rem; }
+    .marquee-wrapper { top: 60px; }
+    .marquee-content { font-size: 0.9rem; }
+}
+
+@media(max-width: 500px){
+    .navbar { height: 55px; padding: 0.3rem 0.6rem; }
+    .school-logo { width: 40px; height: 40px; }
+    .school-title { font-size: 1rem; }
+    .back-btn { width: 30px; height: 30px; font-size: 1rem; }
+    .marquee-wrapper { top: 55px; }
+    .marquee-content { font-size: 0.85rem; }
+}
+
+
+/* ===== IMAGE-TEXT SECTION ===== */
+.section-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    margin: 50px auto;
+    max-width: 1200px;
+    flex-wrap: wrap;
+}
+
+.section-image {
+    flex: 1 1 400px;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    transform: translateX(-50px);
+    opacity: 0;
+    animation: slideInLeft 1s forwards;
+}
+
+.section-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.section-text {
+    flex: 1 1 400px;
+    background: linear-gradient(135deg, #ffe066, #ffd43b, #ffa94d);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    transform: translateX(50px);
+    opacity: 0;
+    animation: slideInRight 1s forwards;
+    animation-delay: 0.3s;
+}
+
+.section-text h2 {
+    font-size: 2rem;
+    color: #003366;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px #fff;
+}
+
+.section-text p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #003366;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes slideInLeft {
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInRight {
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width: 900px) {
+    .section-wrapper {
+        gap: 20px;
+    }
+    .section-text h2 {
+        font-size: 1.7rem;
+    }
+}
+
+@media(max-width: 600px) {
+    .section-wrapper {
+        flex-direction: column;
+    }
+    .section-image, .section-text {
+        flex: 1 1 100%;
+        transform: translateX(0); /* cancel animation offset for stacked layout */
+        animation: none;
+    }
+    .section-text {
+        margin-top: 20px;
+    }
+    .section-text h2 {
+        font-size: 1.5rem;
+    }
+    .section-text p {
+        font-size: 0.95rem;
+    }
+}
+/* ===== SECTION WRAPPER ===== */
+.history-section {
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 40px 20px;
+    position: relative;
+}
+
+/* ===== SECTION TITLE ===== */
+.history-title {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 800;
+    color: #ff9800;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+    margin-bottom: 60px;
+    animation: fadeInDown 1s ease forwards;
+}
+
+@keyframes fadeInDown {
+    0% { opacity: 0; transform: translateY(-50px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== TIMELINE WRAPPER ===== */
+.timeline {
+    position: relative;
+    padding-left: 40px;
+    border-left: 4px solid #003366;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 0;
+    width: 16px;
+    height: 16px;
+    background: #ff9800;
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(255,152,0,0.7);
+}
+
+/* ===== TIMELINE ITEMS ===== */
+.timeline-item {
+    position: relative;
+    margin-bottom: 60px;
+    opacity: 0;
+    transform: translateX(-50px);
+    animation: slideInLeft 1s forwards;
+}
+
+.timeline-item:nth-child(even) {
+    transform: translateX(50px);
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+    text-align: right;
+}
+
+.timeline-content {
+    background: linear-gradient(135deg, #ffe066, #ffd43b, #ffa94d);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+    transition: transform 0.5s ease;
+}
+
+.timeline-content h3 {
+    font-size: 1.8rem;
+    color: #003366;
+    margin-bottom: 10px;
+}
+
+.timeline-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #003366;
+}
+
+/* Hover effect */
+.timeline-content:hover {
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes slideInLeft {
+    0% { opacity: 0; transform: translateX(-50px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+    0% { opacity: 0; transform: translateX(50px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width: 900px){
+    .timeline {
+        padding-left: 20px;
+    }
+    .timeline-content {
+        padding: 20px;
+    }
+    .history-title { font-size: 2.5rem; }
+}
+
+@media(max-width: 600px){
+    .timeline::before {
+        left: -10px;
+    }
+    .timeline-item, .timeline-item:nth-child(even) {
+        transform: translateX(0);
+        text-align: left;
+    }
+    .timeline-content {
+        text-align: left;
+        width: 100%;
+    }
+    .history-title { font-size: 2rem; }
+}
+/* ============================= OLD BUILDING SECTION ============================= */
+
+.old-building-section {
+    width: 100%;
+    padding: 70px 20px;
+    background:yellowgreen;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.old-building-container {
+    width: 100%;
+    max-width: 1100px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    animation: fadeDown 1.2s ease;
+}
+
+/* Image wrapper with glow frame */
+.old-building-image {
+    flex: 1;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    animation: slideInLeft 1.3s ease;
+}
+
+.old-building-image::before {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border-radius: 22px;
+    background: linear-gradient(45deg, #0066ff, #00ddff, #00ffaa);
+    z-index: -1;
+    animation: borderGlow 3s linear infinite;
+}
+
+.old-building-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 20px;
+    transition: transform .6s ease;
+}
+
+/* Hover zoom */
+.old-building-image:hover img {
+    transform: scale(1.05);
+}
+
+/* Text Section */
+.old-building-text {
+    flex: 1;
+    animation: slideInRight 1.3s ease;
+}
+
+.old-building-text h2 {
+    font-size: 36px;
+    margin-bottom: 12px;
+    font-weight: 700;
+    color: #003d99;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.old-building-text p {
+    font-size: 18px;
+    color: #333;
+    line-height: 1.7;
+    text-align: justify;
+}
+
+/* ============================= Responsive ============================= */
+
+@media (max-width: 900px) {
+    .old-building-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .old-building-text h2 {
+        font-size: 28px;
+    }
+
+    .old-building-text p {
+        font-size: 16px;
+    }
+
+    .old-building-image {
+        width: 90%;
+    }
+}
+
+@media (max-width: 500px) {
+    .old-building-text h2 {
+        font-size: 24px;
+    }
+
+    .old-building-text p {
+        font-size: 15px;
+    }
+}
+
+/* ============================= Animations ============================= */
+
+@keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes borderGlow {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+}
+/* ========== DECORATIVE TEXT SECTIONS (UPDATED) ========== */
+
+/* TIMELINE CONTENT */
+.timeline-content {
+    background: linear-gradient(135deg, #fff4d1, #ffe198, #ffc96b);
+    padding: 28px;
+    border-radius: 18px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.18);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    border-left: 6px solid #003366;
+    position: relative;
+}
+
+.timeline-content::before {
+    content: "★";
+    position: absolute;
+    top: -12px;
+    left: -12px;
+    background: #ff9800;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 6px 10px;
+    border-radius: 50%;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.25);
+}
+
+.timeline-content h3 {
+    font-size: 1.9rem;
+    font-weight: 800;
+    color: #002855;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.7);
+}
+
+.timeline-content p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #002040;
+    font-weight: 500;
+}
+
+/* Hover effect */
+.timeline-content:hover {
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 25px 45px rgba(0,0,0,0.3);
+}
+
+
+/* ========== OLD BUILDING TEXT SECTION (DECORATIVE) ========== */
+
+.old-building-text {
+    flex: 1;
+    animation: slideInRight 1.3s ease;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 25px;
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    border: 3px solid rgba(0,0,0,0.1);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.18);
+}
+
+.old-building-text h2 {
+    font-size: 36px;
+    margin-bottom: 15px;
+    font-weight: 800;
+    color: #003d99;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 5px rgba(255,255,255,0.5);
+}
+
+.old-building-text p {
+    font-size: 18px;
+    color: #001a33;
+    font-weight: 500;
+    line-height: 1.75;
+}
+
+
+/* ========== MOBILE RESPONSIVENESS (STRONG IMPROVEMENT) ========== */
+
+@media(max-width: 900px) {
+    .timeline-content h3 {
+        font-size: 1.6rem;
+    }
+    .timeline-content p {
+        font-size: 1rem;
+    }
+    .old-building-text h2 {
+        font-size: 28px;
+    }
+    .old-building-text p {
+        font-size: 16px;
+    }
+}
+
+@media(max-width: 600px) {
+    .timeline-content {
+        padding: 20px;
+        border-left: 5px solid #003366;
+    }
+    .timeline-content h3 {
+        font-size: 1.4rem;
+    }
+    .timeline-content p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .old-building-text {
+        padding: 20px;
+    }
+    .old-building-text h2 {
+        font-size: 24px;
+    }
+    .old-building-text p {
+        font-size: 15px;
+    }
+}
+
+@media(max-width: 450px) {
+    .timeline-content h3 {
+        font-size: 1.25rem;
+    }
+    .timeline-content p {
+        font-size: 0.9rem;
+    }
+    .old-building-text h2 {
+        font-size: 22px;
+        text-align: center;
+    }
+    .old-building-text p {
+        font-size: 14px;
+        text-align: center;
+    }
+}
+/* Ensure section starts below your fixed navbar + marquee */
+#events-section { 
+  background: orangered;
+  padding: 100px 20px 60px; /* ample top padding so it doesn't overlap navbar/marquee */
+  position: relative;
+  overflow: visible;
+}
+
+/* Heading */
+.events-heading {
+  text-align: center;
+  font-size: 2.6rem;
+  color: burlywood;
+  margin-bottom: 40px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: none;
+}
+
+/* Grid wrapper */
+.events-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+/* Each row: two separate cards (image card + text card) */
+.event-row {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* reverse layout for alternating rows */
+.event-row.reverse { flex-direction: row-reverse; }
+
+/* Card shared styles */
+.card {
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.10);
+  transition: transform .35s ease, box-shadow .35s ease;
+  background: #fff;
+  overflow: hidden;
+}
+
+/* Image card (separate box, background-image used so image sits separately) */
+.event-image {
+  flex: 0 0 44%;
+  min-height: 230px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 16px;
+  position: relative;
+  transform: translateY(20px);
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+/* Text card */
+.event-text {
+  flex: 1 1 52%;
+  padding: 26px;
+  background:gold;
+  transform: translateY(20px);
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+/* Headings and paragraphs */
+.event-text h3 {
+  margin: 0 0 10px;
+  color: #003366;
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+.event-text p { margin: 8px 0; color: #0e2433; font-weight: 500; line-height: 1.6; }
+
+/* Hover scale + elevation (Scale / Grow On Hover) */
+.event-row .card:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 28px 60px rgba(0,0,0,0.14); }
+
+/* Glow behind each image (subtle) */
+.event-image::after {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: radial-gradient(circle at 20% 20%, rgba(255,200,60,0.14), transparent 20%),
+              radial-gradient(circle at 80% 80%, rgba(0,150,255,0.06), transparent 10%);
+  z-index: 0;
+  pointer-events: none;
+  filter: blur(30px);
+  transform-origin: center;
+  animation: slowRotate 10s linear infinite;
+}
+
+/* Parallax depth / shadow elevation effect (slight different movement when scrolling via translateZ-like illusion) */
+.section-glow {
+  position: absolute;
+  width: 40vmax;
+  height: 40vmax;
+  right: -12vmax;
+  top: -10vmax;
+  background: radial-gradient(circle at 30% 30%, rgba(255,200,60,0.12), transparent 20%),
+              radial-gradient(circle at 70% 70%, rgba(0,120,255,0.06), transparent 30%);
+  border-radius: 50%;
+  filter: blur(40px);
+  z-index: -1;
+  transform: translateZ(0);
+  animation: floatGlow 12s linear infinite;
+}
+
+/* ===== Animations: Slide/Fade (staggered) ===== */
+/* elements will get .in-view class (script below) to trigger animations */
+.image-anim.in-view { animation: slideFadeInLeft .8s forwards; }
+.text-anim.in-view  { animation: slideFadeInRight .8s forwards; }
+
+/* slight stagger via nth-child */
+.events-grid .event-row:nth-child(1) .image-anim.in-view { animation-delay: 0.12s; }
+.events-grid .event-row:nth-child(1) .text-anim.in-view  { animation-delay: 0.22s; }
+.events-grid .event-row:nth-child(2) .image-anim.in-view { animation-delay: 0.2s; }
+.events-grid .event-row:nth-child(2) .text-anim.in-view  { animation-delay: 0.32s; }
+.events-grid .event-row:nth-child(3) .image-anim.in-view { animation-delay: 0.28s; }
+.events-grid .event-row:nth-child(3) .text-anim.in-view  { animation-delay: 0.4s; }
+.events-grid .event-row:nth-child(4) .image-anim.in-view { animation-delay: 0.36s; }
+.events-grid .event-row:nth-child(4) .text-anim.in-view  { animation-delay: 0.48s; }
+.events-grid .event-row:nth-child(5) .image-anim.in-view { animation-delay: 0.44s; }
+.events-grid .event-row:nth-child(5) .text-anim.in-view  { animation-delay: 0.56s; }
+.events-grid .event-row:nth-child(6) .image-anim.in-view { animation-delay: 0.52s; }
+.events-grid .event-row:nth-child(6) .text-anim.in-view  { animation-delay: 0.64s; }
+.events-grid .event-row:nth-child(7) .image-anim.in-view { animation-delay: 0.6s; }
+.events-grid .event-row:nth-child(7) .text-anim.in-view  { animation-delay: 0.72s; }
+
+@keyframes slideFadeInLeft {
+  0% { opacity: 0; transform: translateX(-40px) scale(0.995); }
+  60% { opacity: 1; transform: translateX(6px) scale(1.01); }
+  100%{ opacity: 1; transform: translateX(0) scale(1); }
+}
+@keyframes slideFadeInRight {
+  0% { opacity: 0; transform: translateX(40px) scale(0.995); }
+  60% { opacity: 1; transform: translateX(-6px) scale(1.01); }
+  100%{ opacity: 1; transform: translateX(0) scale(1); }
+}
+
+/* slow rotate used for subtle glow behind images */
+@keyframes slowRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* rotating glow for the whole section */
+@keyframes floatGlow {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  50% { transform: translateY(-6px) rotate(180deg); opacity: 0.9; }
+  100% { transform: translateY(0) rotate(360deg); opacity: 1; }
+}
+
+/* scale on small hover for text as well */
+.event-text:hover { transform: translateY(-6px) scale(1.01); }
+
+/* RESPONSIVE: stack vertically and keep image & text as separate boxes */
+@media (max-width: 880px) {
+  .event-row, .event-row.reverse { flex-direction: column; gap: 16px; }
+  .event-image { flex-basis: auto; width: 100%; min-height: 200px; }
+  .event-text { width: 100%; }
+  .section-glow { right: -30vw; top: -6vw; width: 60vmax; height: 60vmax; }
+  .events-heading { font-size: 2rem; }
+}
+
+/* smaller mobile tweaks */
+@media (max-width: 480px) {
+  #events-section { padding: 70px 14px 50px; }
+  .events-heading { font-size: 1.75rem; }
+  .event-text h3 { font-size: 1.15rem; }
+  .event-text p { font-size: 0.95rem; }
+  .event-image { min-height: 160px; }
+}
+
+/* FOOTER */
+.site-footer {
+  border-top: 1px solid rgba(0,0,0,0.06);
+  background: linear-gradient(180deg,#ffffff,#fbfbfb);
+  padding: 22px 18px;
+}
+.footer-inner {
+  max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; gap:16px;
+}
+.footer-logo { width:48px; height:48px; border-radius:8px; object-fit:cover; margin-right:12px; }
+.footer-left { display:flex; align-items:center; gap:12px; color:#003149; font-weight:600; }
+.footer-right { color:#334a5a; font-weight:500; }
+
+/* accessibility focus */
+.event-text:focus { outline: 3px solid rgba(0,100,255,0.12); outline-offset:4px; }
+</style>
+</head>
+<body>
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar">
+    <div class="nav-left">
+        <img src="{{ url_for('static', filename='Images/logo.jpg') }}" alt="School Logo" class="school-logo">
+        <h1 class="school-title">Shree Resunga Secondary School</h1>
+    </div>
+    <button class="back-btn" onclick="window.location.href='{{ url_for('views.Gallery') }}'">&#8592;</button>
+</nav>
+
+<div class="marquee-wrapper">
+    <div class="marquee-content">
+        📢 Welcome to Shree Resunga Secondary School | 🚀 Bright Futures | 🎓 Admissions Open
+    </div>
+</div>
+
+<!-- ========================= SCHOOL EVENTS ========================= -->
+<section id="events-section" class="events-section" aria-label="School Events">
+  <h2 class="events-heading">✨ School Events / विद्यालयका कार्यक्रम ✨</h2>
+
+  <div class="events-grid">
+
+    <!-- Event 1 -->
+    <div class="event-row">
+      <div class="event-image card image-anim" style="background-image:url('{{ url_for('static', filename='Images/image1.jpg') }}')" aria-hidden="true"></div>
+      <div class="event-text card text-anim">
+        <h3>Annual Day — वार्षिक उत्सव</h3>
+        <p>On the occasion of our Annual Day, excitement fills the air! Volleyball, Football, Cricket, and Running Athletics — every year, students showcase their skills and team spirit here.</p>
+        <p>वार्षिक उत्सवको अवसरमा यहाँ हरेक वर्ष यहाँ भलिबल, फुटबल, क्रिकेट र दौड जस्ता खेलहरू खेलिने गर्छन्।</p>
+      </div>
+    </div>
+
+    <!-- Event 2 -->
+    <div class="event-row reverse">
+      <div class="event-image card image-anim" style="background-image:url('{{ url_for('static', filename='Images/pradashani.jpg') }}')"></div>
+      <div class="event-text card text-anim">
+        <h3>Science & Project Expo — विज्ञान प्रदर्शनी</h3>
+        <p>The Golden Festival is celebrated once every 50 years, marking a grand milestone in our school’s history.</p>
+        <p>स्वर्ण महोत्सव हरेक ५० वर्षमा एकपटक आयोजना गरिन्छ, जसले हाम्रो विद्यालयको इतिहासमा एक महान उपलब्धि जनाउँछ। भर्खरको स्वर्ण महोत्सव २०८० सालमा सम्पन्न भएको थियो।</p>
+      </div>
+    </div>
+
+    <!-- Event 3 -->
+    <div class="event-row">
+      <div class="event-image card image-anim" style="background-image:url('{{ url_for('static', filename='Images/wow.jpg') }}')"></div>
+      <div class="event-text card text-anim">
+        <h3>Friday Programmes — शुक्रबार कार्यक्रमहरू</h3>
+        <p>Every Friday, our school organizes special programmes including games, cultural activities, and community engagement sessions. Students participate enthusiastically in sports, art, and learning activities.</p>
+        <p>हरेक शुक्रबार, हाम्रो विद्यालयले विशेष कार्यक्रमहरू आयोजना गर्दछ, जसमध्ये खेलकुद, सांस्कृतिक गतिविधिहरू र सामुदायिक सहभागिता सत्रहरू समावेश छन्। विद्यार्थीहरू उत्साहपूर्वक खेलकुद, कला र सिकाइ गतिविधिहरूमा भाग लिन्छन्।</p>
+      </div>
+    </div>
+
+    <!-- Event 4 -->
+    <div class="event-row reverse">
+      <div class="event-image card image-anim" style="background-image:url('{{ url_for('static', filename='Images/eassy.jpg') }}')"></div>
+      <div class="event-text card text-anim">
+        <h3>Essay Competition — निबन्ध प्रतियोगिता</h3>
+        <p>Students showcase their writing skills on various topics, encouraging creativity and critical thinking.</p>
+        <p>विद्यार्थीहरूले विभिन्न विषयमा आफ्नो लेखन कौशल प्रदर्शन गर्छन्, जसले सिर्जनशीलता र आलोचनात्मक सोचलाई प्रोत्साहन गर्छ।</p>
+      </div>
+    </div>
+
+    <!-- Event 5 -->
+    <div class="event-row">
+      <div class="event-image card image-anim" style="background-image:url('{{ url_for('static', filename='Images/qx.jpg') }}')"></div>
+      <div class="event-text card text-anim">
+        <h3>GK Competition — सामान्य ज्ञान प्रतियोगिता</h3>
+        <p>Students test their general knowledge on current affairs, science, and culture through interactive quizzes.</p>
+        <p>विद्यार्थीहरूले अन्तरक्रियात्मक प्रश्नोत्तरमार्फत वर्तमान घटनाक्रम, विज्ञान र संस्कृतिमा आफ्नो सामान्य ज्ञान परिक्षण गर्छन्।</p>
+      </div>
+    </div>
+
+    <!-- Event 6 -->
+    <div class="event-row reverse">
+      <div class="event-image card image-anim" style="background-image:url('{{ url_for('static', filename='Images/std.jpg') }}')"></div>
+      <div class="event-text card text-anim">
+        <h3>Student of the Year — वर्षको उत्कृष्ट विद्यार्थी</h3>
+        <p>Recognizing students for outstanding academic, sports, and extracurricular achievements throughout the year.</p>
+        <p>वर्षभरि उत्कृष्ट शैक्षिक, खेलकुद र अतिरिक्त पाठ्यक्रम उपलब्धिका लागि विद्यार्थीहरूलाई सम्मानित गरिन्छ।</p>
+      </div>
+    </div>
+
+    <!-- Event 7 -->
+    <div class="event-row">
+      <div class="event-image card image-anim" style="background-image:url('{{ url_for('static', filename='Images/02vision.jpg') }}')"></div>
+      <div class="event-text card text-anim">
+        <h3>School Elections — विद्यालय निर्वाचन</h3>
+        <p>Students actively participate in electing representatives, learning leadership and democratic values.</p>
+        <p>विद्यार्थीहरूले प्रतिनिधि चयनमा सक्रिय भाग लिन्छन्, जसले नेतृत्व र लोकतान्त्रिक मूल्य सिकाउँछ।</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="section-glow" aria-hidden="true"></div>
+</section>
+
+<!-- ========================= FOOTER ========================= -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <img src="{{ url_for('static', filename='Images/logo.jpg') }}" alt="School logo" class="footer-logo">
+      <div>
+        <strong>Shree Resunga Secondary School</strong><br>
+        <small>सम्पर्क: info@resunga.edu.np | फोन: +977-1-XXXXX</small>
+      </div>
+    </div>
+    <div class="footer-right">
+      <p>© <span id="year"></span> Shree Resunga Secondary School. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+function goBack() {
+    window.history.back();
+}
+
+(function(){
+    // add "in-view" class when row parts enter viewport -> creates staggered slide/fade
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+        }
+      });
+    }, { threshold: 0.18 });
+
+    document.querySelectorAll('.image-anim, .text-anim').forEach(el => io.observe(el));
+
+    // footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+})();
+</script>
+
+</body>
+</html>

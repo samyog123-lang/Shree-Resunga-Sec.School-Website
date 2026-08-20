@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Navbar with Back Button</title>
+<style>
+/* ===== GLOBAL RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+  
+body {
+    background: orangered;
+    color: #003366;
+    overflow-x: hidden;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg,#003366,#4b0082,#ff9800);
+    padding: 0.5rem 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    height: 70px;
+    transform: translateY(-100%);
+    opacity: 0;
+    animation: slideDown 0.7s forwards;
+}
+
+/* LEFT: LOGO + TITLE */
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.school-logo {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: 3px solid yellow;
+    object-fit: cover;
+}
+
+.school-title {
+    color: yellow;
+    font-weight: 800;
+    white-space: nowrap;
+    font-size: 1.5rem;
+    text-shadow: 1px 1px 2px black;
+}
+
+/* BACK BUTTON */
+.back-btn {
+    background-color: yellow;
+    color: #003366;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.back-btn:hover {
+    background-color: #ffd700;
+    transform: scale(1.1);
+}
+
+/* MARQUEE */
+.marquee-wrapper {
+    width: 100%;
+    background: yellow;
+    overflow: hidden;
+    border-top: 2px solid #003366;
+    border-bottom: 2px solid #003366;
+    position: fixed;
+    top: 70px; /* immediately below navbar */
+    left: 0;
+    z-index: 999;
+    transform: translateY(-100%);
+    opacity: 0;
+    animation: slideDown 0.7s forwards 0.2s; /* slight delay after navbar */
+}
+
+.marquee-content {
+    display: inline-block;
+    white-space: nowrap;
+    font-size: 1rem;
+    color: #003366;
+    font-weight: 700;
+    padding: 0.5rem 0;
+    animation: marqueeScroll 12s linear infinite;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes slideDown {
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes marqueeScroll {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width: 700px){
+    .navbar { height: 60px; padding: 0.4rem 0.8rem; }
+    .school-logo { width: 45px; height: 45px; }
+    .school-title { font-size: 1.2rem; }
+    .back-btn { width: 35px; height: 35px; font-size: 1.2rem; }
+    .marquee-wrapper { top: 60px; }
+    .marquee-content { font-size: 0.9rem; }
+}
+
+@media(max-width: 500px){
+    .navbar { height: 55px; padding: 0.3rem 0.6rem; }
+    .school-logo { width: 40px; height: 40px; }
+    .school-title { font-size: 1rem; }
+    .back-btn { width: 30px; height: 30px; font-size: 1rem; }
+    .marquee-wrapper { top: 55px; }
+    .marquee-content { font-size: 0.85rem; }
+}
+
+/* ===================== INFRASTRUCTURE SECTION ===================== */
+
+.infra-section {
+    margin-top: 140px;
+    padding: 1.5rem;
+}
+
+.infra-title {
+    text-align: center;
+    font-size: 2.3rem;
+    color: yellow;
+    font-weight: 900;
+    text-shadow: 2px 2px 6px black;
+    margin-bottom: 2rem;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+.infra-card {
+    display: flex;
+    gap: 1.5rem;
+    background: rgba(255,255,255,0.15);
+    border-radius: 20px;
+    backdrop-filter: blur(8px);
+    padding: 1rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    animation: slideIn 1.2s ease forwards;
+}
+
+.infra-card.left {
+    flex-direction: row;
+}
+
+.infra-card.right {
+    flex-direction: row-reverse;
+}
+
+.infra-img {
+    width: 45%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 0 15px black;
+    animation: zoomIn 1s ease-in-out;
+}
+
+.infra-text {
+    width: 55%;
+    color: white;
+}
+
+.infra-text h2 {
+    color: yellow;
+    font-size: 1.8rem;
+    text-shadow: 2px 2px 5px black;
+    margin-bottom: 1rem;
+}
+
+.infra-text p {
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+    line-height: 1.4rem;
+}
+
+/* ==== ANIMATIONS ==== */
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* ================== RESPONSIVE ================== */
+@media(max-width: 900px){
+    .infra-card {
+        flex-direction: column !important;
+        text-align: center;
+    }
+    .infra-img {
+        width: 100%;
+        height: 200px;
+    }
+    .infra-text {
+        width: 100%;
+    }
+}
+
+@media(max-width: 500px){
+    .infra-title {
+        font-size: 1.8rem;
+    }
+    .infra-text h2 {
+        font-size: 1.4rem;
+    }
+    .infra-text p {
+        font-size: 0.9rem;
+    }
+}
+
+
+</style>
+</head>
+<body>
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar">
+    <div class="nav-left">
+        <img src="{{ url_for('static', filename='Images/logo.jpg') }}" alt="School Logo" class="school-logo">
+        <h1 class="school-title">Shree Resunga Secondary School</h1>
+    </div>
+    <button class="back-btn" onclick="window.location.href='{{ url_for('views.teacherGallery') }}'">&#8592;</button>
+</nav>
+
+<div class="marquee-wrapper">
+    <div class="marquee-content">
+        📢 Welcome to Shree Resunga Secondary School | 🚀 Bright Futures | 🎓 Admissions Open
+    </div>
+</div>
+
+<section class="infra-section">
+
+    <h1 class="infra-title">🏫 School Infrastructure</h1>
+
+    <!-- ========== 1. BUILDINGS ========== -->
+    <div class="infra-card left">
+        <img src="{{ url_for('static', filename='Images/building.jpg') }}" class="infra-img">
+        <div class="infra-text">
+            <h2>🏢 School Buildings</h2>
+            <p>Our school building is designed with modern architecture that reflects stability, safety, and creativity. Equipped with spacious classrooms, it provides a comfortable learning atmosphere.</p>
+            <p>The well-ventilated rooms, clean corridors, and proper natural lighting make the environment ideal for academic excellence and student engagement.</p>
+            <p>Ensuring safety, the building includes fire-exit points, CCTV monitoring, and earthquake-resistant construction standards.</p>
+        </div>
+    </div>
+
+    <!-- ========== 2. COMPUTER LABS (2 Labs) ========== -->
+    <div class="infra-card right">
+        <img src="{{ url_for('static', filename='Images/computerlab.jpg') }}" class="infra-img">
+        <div class="infra-text">
+            <h2>💻 Computer Labs (2 Labs)</h2>
+            <p>We proudly host two fully-equipped computer labs containing modern desktops, high-speed internet, and digital learning tools for students.</p>
+            <p>The labs are regularly upgraded to make students familiar with the latest software technology and ICT education standards.</p>
+            <p>Each lab is supervised by trained instructors ensuring a safe and supportive learning environment for all students.</p>
+        </div>
+    </div>
+
+    <!-- ========== 3. CIVIL ENGINEERING LAB ========== -->
+    <div class="infra-card left">
+        <img src="{{ url_for('static', filename='Images/civillab.jpg') }}" class="infra-img">
+        <div class="infra-text">
+            <h2>🧱 Civil Engineering Lab</h2>
+            <p>Our Civil Engineering lab provides hands-on technical education with high-quality tools and testing equipment for practical learning.</p>
+            <p>Students learn real-world construction skills such as surveying, material testing, and structural analysis.</p>
+            <p>This lab helps students build confidence and prepares them for technical careers in engineering and architecture.</p>
+        </div>
+    </div>
+
+    <!-- ========== 4. DRAWING LAB ========== -->
+    <div class="infra-card right">
+        <img src="{{ url_for('static', filename='Images/drawinglab.jpg') }}" class="infra-img">
+        <div class="infra-text">
+            <h2>✏️ Drawing Lab</h2>
+            <p>The drawing lab is a creative hub where students practice engineering drawings, sketches, and drafting techniques.</p>
+            <p>Equipped with drawing boards, model samples, and measurement tools, it supports accurate and professional learning.</p>
+            <p>This environment allows students to develop precision, imagination, and technical visualization skills.</p>
+        </div>
+    </div>
+
+    <!-- ========== 5. LIBRARY ========== -->
+    <div class="infra-card left">
+        <img src="{{ url_for('static', filename='Images/library.jpg') }}" class="infra-img">
+        <div class="infra-text">
+            <h2>📚 Library</h2>
+            <p>Our library is a peaceful and resource-rich space filled with academic books, references, journals, and digital learning materials.</p>
+            <p>Designed with comfortable seating and bright interiors, it offers a perfect environment for reading and research.</p>
+            <p>The library promotes self-study habits and helps students explore knowledge beyond textbooks.</p>
+        </div>
+    </div>
+
+    <!-- ========== 6. PHYSICS LAB ========== -->
+    <div class="infra-card right">
+        <img src="{{ url_for('static', filename='Images/physicslab.jpg') }}" class="infra-img">
+        <div class="infra-text">
+            <h2>🔬 Physics Lab</h2>
+            <p>Our physics lab is equipped with modern scientific instruments for experiments in motion, light, electricity, and energy.</p>
+            <p>Students perform practical activities that enhance their understanding of scientific concepts and boost analytical skills.</p>
+            <p>Safety measures and supervision ensure an enjoyable and secure learning experience for all students.</p>
+        </div>
+    </div>
+
+    <!-- ========== 7. SECOND LIBRARY (IF YOU NEED) ========== -->
+    <div class="infra-card left">
+        <img src="{{ url_for('static', filename='Images/library2.jpg') }}" class="infra-img">
+        <div class="infra-text">
+            <h2>📘 Digital Library</h2>
+            <p>The digital library provides e-books, online courses, and computer-based reference materials for advanced learning.</p>
+            <p>Students can access educational videos, online notes, and interactive learning modules easily.</p>
+            <p>It supports modern education through technology and enhances student engagement.</p>
+        </div>
+    </div>
+
+</section>
+
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
+
+
+</script>
+
+</body>
+</html>

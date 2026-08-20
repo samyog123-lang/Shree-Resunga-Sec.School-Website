@@ -1,0 +1,2620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>About Us | Shree Resunga Secondary School</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"Poppins",sans-serif;
+    background:#ffcc33;
+    color:#082b4c;
+    overflow-x:hidden;
+}
+
+a{
+    text-decoration:none;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+button{
+    font-family:inherit;
+}
+
+:root{
+    --blue:#003366;
+    --dark-blue:#001f3f;
+    --blue2:#07579e;
+    --orange:#ff8c00;
+    --orange2:#ff6f00;
+    --yellow:#ffd43b;
+    --light-yellow:#fff3a6;
+    --gold:#ffca28;
+    --cream:#fff8cf;
+    --white:#ffffff;
+    --text:#17324d;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes slideDown{
+    from{
+        opacity:0;
+        transform:translateY(-50px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes floating{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-10px);
+    }
+}
+
+@keyframes marquee{
+    0%{
+        transform:translateX(100%);
+    }
+    100%{
+        transform:translateX(-100%);
+    }
+}
+
+@keyframes pulse{
+    0%,100%{
+        box-shadow:0 0 0 0 rgba(255,152,0,.4);
+    }
+    50%{
+        box-shadow:0 0 0 12px rgba(255,152,0,0);
+    }
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar{
+    width:100%;
+    min-height:82px;
+    padding:12px 4%;
+    background:linear-gradient(
+        135deg,
+        #001f3f,
+        #003366 45%,
+        #07579e
+    );
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    position:sticky;
+    top:0;
+    z-index:9999;
+    box-shadow:0 6px 25px rgba(0,0,0,.35);
+    animation:slideDown .8s ease;
+}
+
+.nav-left{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    min-width:0;
+}
+
+.nav-logo{
+    width:58px;
+    height:58px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid var(--yellow);
+    box-shadow:0 4px 15px rgba(0,0,0,.3);
+    flex-shrink:0;
+}
+
+.school-info{
+    min-width:0;
+}
+
+.school-title{
+    color:#ffe066;
+    font-size:20px;
+    font-weight:800;
+    line-height:1.2;
+}
+
+.school-location{
+    color:#dceeff;
+    font-size:11px;
+    margin-top:4px;
+    letter-spacing:1px;
+}
+
+.menu{
+    display:flex;
+    align-items:center;
+    gap:25px;
+}
+
+.menu a{
+    color:#fff;
+    font-size:14px;
+    font-weight:600;
+    position:relative;
+    padding:8px 0;
+    transition:.3s;
+}
+
+.menu a::after{
+    content:"";
+    position:absolute;
+    width:0;
+    height:3px;
+    left:0;
+    bottom:0;
+    border-radius:5px;
+    background:var(--yellow);
+    transition:.3s;
+}
+
+.menu a:hover{
+    color:var(--yellow);
+}
+
+.menu a:hover::after{
+    width:100%;
+}
+
+.nav-admission{
+    padding:10px 17px !important;
+    border-radius:30px;
+    background:linear-gradient(135deg,#ff9800,#ff6f00);
+    color:white !important;
+    box-shadow:0 5px 15px rgba(255,111,0,.35);
+}
+
+.nav-admission::after{
+    display:none;
+}
+
+.nav-admission:hover{
+    transform:translateY(-2px);
+    color:white !important;
+}
+
+
+/* =========================================================
+   MOBILE NAVIGATION
+========================================================= */
+
+.hamburger{
+    display:none;
+    width:45px;
+    height:42px;
+    border:2px solid #ffd43b;
+    border-radius:10px;
+    cursor:pointer;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:5px;
+}
+
+.hamburger span{
+    width:24px;
+    height:3px;
+    background:white;
+    border-radius:5px;
+}
+
+.mobile-menu{
+    position:fixed;
+    top:82px;
+    right:-320px;
+    width:280px;
+    background:linear-gradient(180deg,#003366,#001f3f);
+    z-index:9998;
+    padding:15px;
+    border-radius:0 0 0 20px;
+    box-shadow:-8px 10px 25px rgba(0,0,0,.35);
+    transition:.35s ease;
+}
+
+.mobile-menu.open{
+    right:0;
+}
+
+.mobile-menu a{
+    display:block;
+    color:white;
+    padding:14px 15px;
+    border-bottom:1px solid rgba(255,255,255,.12);
+    font-weight:600;
+}
+
+.mobile-menu a:hover{
+    background:#07579e;
+    color:#ffd43b;
+    border-radius:10px;
+}
+
+.mobile-close{
+    text-align:center;
+    color:#fff;
+    background:#ff6f00;
+    margin-top:10px;
+    padding:12px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:700;
+}
+
+
+/* =========================================================
+   MARQUEE
+========================================================= */
+
+.marquee-box{
+    width:100%;
+    overflow:hidden;
+    background:linear-gradient(
+        90deg,
+        #ffd43b,
+        #ffb300,
+        #ff9800
+    );
+    border-bottom:4px solid #003366;
+    padding:11px 0;
+}
+
+.marquee-text{
+    display:inline-block;
+    white-space:nowrap;
+    color:#003366;
+    font-weight:800;
+    font-size:15px;
+    animation:marquee 18s linear infinite;
+}
+
+
+/* =========================================================
+   PAGE HERO
+========================================================= */
+
+.about-hero{
+    position:relative;
+    min-height:520px;
+    padding:90px 7%;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(0,31,63,.96),
+            rgba(0,51,102,.92),
+            rgba(255,140,0,.88)
+        );
+    color:white;
+}
+
+.about-hero::before{
+    content:"";
+    position:absolute;
+    width:450px;
+    height:450px;
+    right:-150px;
+    top:-150px;
+    border-radius:50%;
+    background:rgba(255,212,59,.18);
+}
+
+.about-hero::after{
+    content:"";
+    position:absolute;
+    width:300px;
+    height:300px;
+    left:-120px;
+    bottom:-120px;
+    border-radius:50%;
+    background:rgba(255,140,0,.18);
+}
+
+.hero-content{
+    max-width:900px;
+    position:relative;
+    z-index:2;
+    animation:fadeUp 1s ease;
+}
+
+.hero-badge{
+    display:inline-block;
+    padding:8px 18px;
+    border-radius:30px;
+    background:#ffd43b;
+    color:#003366;
+    font-size:13px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    margin-bottom:20px;
+}
+
+.hero-content h1{
+    font-size:clamp(38px,6vw,70px);
+    line-height:1.05;
+    font-weight:900;
+    margin-bottom:22px;
+}
+
+.hero-content h1 span{
+    color:#ffd43b;
+}
+
+.hero-content p{
+    max-width:850px;
+    font-size:18px;
+    line-height:1.9;
+    color:#eef7ff;
+}
+
+.hero-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+    margin-top:30px;
+}
+
+.hero-btn{
+    padding:14px 28px;
+    border-radius:30px;
+    font-weight:800;
+    transition:.3s;
+}
+
+.hero-btn.primary{
+    background:#ff9800;
+    color:white;
+}
+
+.hero-btn.secondary{
+    border:2px solid #ffd43b;
+    color:#ffd43b;
+}
+
+.hero-btn:hover{
+    transform:translateY(-4px);
+    box-shadow:0 10px 25px rgba(0,0,0,.3);
+}
+
+
+/* =========================================================
+   COMMON SECTION
+========================================================= */
+
+.section{
+    padding:85px 5%;
+    position:relative;
+}
+
+.section-light{
+    background:#ffdd55;
+}
+
+.section-cream{
+    background:#fff0a8;
+}
+
+.section-orange{
+    background:linear-gradient(
+        135deg,
+        #ff9800,
+        #ffb300,
+        #ffd43b
+    );
+}
+
+.section-title{
+    text-align:center;
+    color:#003366;
+    font-size:clamp(30px,5vw,46px);
+    font-weight:900;
+    margin-bottom:12px;
+}
+
+.section-subtitle{
+    max-width:800px;
+    margin:0 auto 50px;
+    text-align:center;
+    color:#23415b;
+    font-size:16px;
+    line-height:1.8;
+}
+
+.title-line{
+    width:75px;
+    height:5px;
+    border-radius:10px;
+    background:linear-gradient(90deg,#003366,#ff9800);
+    margin:15px auto 45px;
+}
+
+
+/* =========================================================
+   ABOUT INTRODUCTION
+========================================================= */
+
+.about-intro{
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:1.15fr .85fr;
+    gap:45px;
+    align-items:stretch;
+}
+
+.intro-text{
+    background:#fff3a6;
+    padding:40px;
+    border-radius:28px;
+    border-left:8px solid #003366;
+    box-shadow:0 15px 35px rgba(0,51,102,.18);
+}
+
+.intro-text h2{
+    color:#003366;
+    font-size:30px;
+    margin-bottom:20px;
+}
+
+.intro-text p{
+    color:#25435e;
+    line-height:1.9;
+    margin-bottom:17px;
+    text-align:justify;
+}
+
+.intro-image{
+    min-height:350px;
+    border-radius:28px;
+    overflow:hidden;
+    box-shadow:0 15px 35px rgba(0,51,102,.25);
+    border:6px solid #ff9800;
+}
+
+.intro-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+
+/* =========================================================
+   FEATURE BOXES
+========================================================= */
+
+.feature-grid{
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.feature-card{
+    background:linear-gradient(
+        145deg,
+        #003366,
+        #07579e
+    );
+    color:white;
+    padding:35px 28px;
+    border-radius:25px;
+    box-shadow:0 15px 30px rgba(0,0,0,.2);
+    border-bottom:6px solid #ff9800;
+    transition:.4s;
+}
+
+.feature-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 25px 45px rgba(0,0,0,.3);
+}
+
+.feature-icon{
+    width:70px;
+    height:70px;
+    border-radius:20px;
+    background:#ffd43b;
+    color:#003366;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:32px;
+    margin-bottom:22px;
+}
+
+.feature-card h3{
+    color:#ffd43b;
+    font-size:21px;
+    margin-bottom:12px;
+}
+
+.feature-card p{
+    color:#edf7ff;
+    line-height:1.7;
+}
+
+
+/* =========================================================
+   HISTORY / PROGRAMMES / VISION / OTHERS
+========================================================= */
+
+.cards-grid{
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+}
+
+.info-card{
+    background:linear-gradient(
+        145deg,
+        #003366,
+        #07579e
+    );
+    color:white;
+    border-radius:25px;
+    overflow:hidden;
+    padding:30px 25px 35px;
+    text-align:center;
+    box-shadow:0 15px 35px rgba(0,0,0,.25);
+    border:2px solid rgba(255,212,59,.5);
+    transition:.4s;
+}
+
+.info-card:hover{
+    transform:translateY(-12px);
+    box-shadow:0 25px 50px rgba(0,0,0,.35);
+}
+
+.card-circle{
+    width:145px;
+    height:145px;
+    margin:0 auto 22px;
+    border-radius:50%;
+    overflow:hidden;
+    border:5px solid #ffd43b;
+    box-shadow:0 8px 20px rgba(0,0,0,.3);
+}
+
+.card-circle img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.5s;
+}
+
+.info-card:hover .card-circle img{
+    transform:scale(1.12);
+}
+
+.info-card h3{
+    color:#ffd43b;
+    font-size:22px;
+    margin-bottom:12px;
+}
+
+.info-card p{
+    color:#f1f8ff;
+    font-size:14px;
+    line-height:1.7;
+    margin-bottom:22px;
+}
+
+.learn{
+    display:inline-block;
+    padding:10px 23px;
+    background:#ff9800;
+    color:white;
+    border-radius:30px;
+    font-size:14px;
+    font-weight:800;
+    transition:.3s;
+}
+
+.learn:hover{
+    background:#ffd43b;
+    color:#003366;
+    transform:translateY(-2px);
+}
+
+
+/* =========================================================
+   LEGACY SECTION
+========================================================= */
+
+.legacy{
+    background:
+        linear-gradient(
+            135deg,
+            #002b52,
+            #003366 50%,
+            #07579e
+        );
+    padding:100px 5%;
+    color:white;
+}
+
+.legacy-container{
+    max-width:1200px;
+    margin:auto;
+}
+
+.legacy-header{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.badge{
+    display:inline-block;
+    background:#ffd43b;
+    color:#003366;
+    padding:8px 18px;
+    border-radius:30px;
+    font-size:12px;
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+.legacy-title{
+    font-size:clamp(32px,5vw,50px);
+    font-weight:900;
+    color:#ffd43b;
+    margin:18px 0;
+}
+
+.legacy-text{
+    max-width:900px;
+    margin:auto;
+    color:#e9f5ff;
+    line-height:1.9;
+    text-align:justify;
+    font-size:16px;
+}
+
+.legacy-text + .legacy-text{
+    margin-top:20px;
+}
+
+
+/* =========================================================
+   MATERIAL CARDS
+========================================================= */
+
+.material-grid{
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.material-card{
+    background:#fff3a6;
+    padding:30px;
+    border-radius:25px;
+    border:2px solid #ffb300;
+    border-top:6px solid #ff9800;
+    box-shadow:0 12px 30px rgba(0,0,0,.2);
+    transition:.4s;
+    display:flex;
+    flex-direction:column;
+}
+
+.material-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 25px 45px rgba(0,0,0,.25);
+}
+
+.card-icon{
+    font-size:42px;
+    margin-bottom:18px;
+}
+
+.material-card h3{
+    color:#003366;
+    font-size:22px;
+    margin-bottom:12px;
+}
+
+.material-card p{
+    color:#334b60;
+    line-height:1.7;
+    font-size:14px;
+    flex-grow:1;
+    margin-bottom:25px;
+}
+
+.card-footer{
+    border-top:2px solid #f0c928;
+    padding-top:18px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+}
+
+.card-footer span{
+    font-size:12px;
+    color:#596b7a;
+}
+
+.download-btn{
+    color:#003366;
+    font-weight:800;
+}
+
+.download-btn:hover{
+    color:#ff6f00;
+}
+
+
+/* =========================================================
+   DIGITAL LIBRARY
+========================================================= */
+
+.library{
+    background:#ffcc33;
+    padding:90px 5%;
+}
+
+.tab-wrapper{
+    max-width:800px;
+    margin:0 auto 40px;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.tab-wrapper button{
+    padding:12px 24px;
+    border:none;
+    border-radius:30px;
+    background:#fff3a6;
+    color:#003366;
+    font-weight:800;
+    cursor:pointer;
+    transition:.3s;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+.tab-wrapper button:hover,
+.tab-wrapper button.active{
+    background:#003366;
+    color:#ffd43b;
+}
+
+.library-grid{
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:22px;
+}
+
+.library-card{
+    background:#fff3a6;
+    padding:28px;
+    border-radius:22px;
+    border-top:5px solid #003366;
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+    transition:.35s;
+}
+
+.library-card:hover{
+    transform:translateY(-8px);
+    border-top-color:#ff6f00;
+}
+
+.library-card h3{
+    color:#003366;
+    font-size:19px;
+    margin-bottom:10px;
+}
+
+.library-card p{
+    color:#45596b;
+    font-size:13px;
+    line-height:1.7;
+    margin-bottom:20px;
+}
+
+.library-card .card-footer{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+}
+
+.view-all{
+    max-width:900px;
+    margin:50px auto 0;
+    padding:35px;
+    text-align:center;
+    background:linear-gradient(135deg,#003366,#07579e);
+    border-radius:25px;
+    color:white;
+    box-shadow:0 15px 35px rgba(0,0,0,.25);
+}
+
+.view-all p{
+    margin-bottom:10px;
+}
+
+.primary-btn{
+    display:inline-block;
+    margin-top:15px;
+    padding:14px 30px;
+    background:#ff9800;
+    color:white;
+    border-radius:30px;
+    font-weight:900;
+    transition:.3s;
+}
+
+.primary-btn:hover{
+    background:#ffd43b;
+    color:#003366;
+    transform:scale(1.04);
+}
+
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.stats-section{
+    padding:90px 5%;
+    background:
+        linear-gradient(
+            rgba(0,31,63,.9),
+            rgba(0,51,102,.92)
+        ),
+        url('{{ url_for("static", filename="Images/main.jpg") }}');
+
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+    color:white;
+}
+
+.stats-grid{
+    max-width:1150px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+}
+
+.stat-item{
+    text-align:center;
+    padding:30px 15px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,212,59,.35);
+    border-radius:25px;
+    backdrop-filter:blur(5px);
+    transition:.3s;
+}
+
+.stat-item:hover{
+    transform:translateY(-8px);
+    background:rgba(255,152,0,.15);
+}
+
+.stat-icon{
+    font-size:45px;
+    margin-bottom:10px;
+}
+
+.stat-number{
+    color:#ffd43b;
+    font-size:45px;
+    font-weight:900;
+}
+
+.stat-item p{
+    font-size:14px;
+    font-weight:700;
+    letter-spacing:1px;
+    margin-top:5px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer{
+    background:linear-gradient(
+        135deg,
+        #001f3f,
+        #003366,
+        #07579e
+    );
+    color:white;
+    padding:70px 5% 20px;
+}
+
+.footer-container{
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:1.5fr 1fr 1fr;
+    gap:50px;
+}
+
+.footer-logo{
+    width:70px;
+    height:70px;
+    object-fit:cover;
+    border-radius:50%;
+    border:3px solid #ffd43b;
+    margin-bottom:15px;
+}
+
+.footer-about h3{
+    color:#ffd43b;
+    font-size:21px;
+    margin-bottom:12px;
+}
+
+.footer-about p{
+    line-height:1.7;
+    color:#dceeff;
+    font-size:14px;
+}
+
+.footer h4{
+    color:#ffd43b;
+    font-size:19px;
+    margin-bottom:20px;
+}
+
+.footer-links ul{
+    list-style:none;
+}
+
+.footer-links li{
+    margin-bottom:11px;
+}
+
+.footer-links a{
+    color:#fff;
+    transition:.3s;
+}
+
+.footer-links a:hover{
+    color:#ffd43b;
+    padding-left:5px;
+}
+
+.footer-contact p{
+    margin-bottom:12px;
+    color:#e4f1ff;
+}
+
+.footer-social{
+    display:flex;
+    gap:10px;
+    margin-top:20px;
+}
+
+.footer-social a{
+    width:42px;
+    height:42px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#07579e;
+    border-radius:50%;
+    color:white;
+    transition:.3s;
+}
+
+.footer-social a:hover{
+    background:#ff9800;
+    transform:translateY(-4px);
+}
+
+.footer-bottom{
+    max-width:1200px;
+    margin:50px auto 0;
+    padding-top:20px;
+    border-top:1px solid rgba(255,255,255,.2);
+    text-align:center;
+    color:#cfe4f8;
+    font-size:13px;
+}
+
+
+/* =========================================================
+   RESPONSIVE TABLET
+========================================================= */
+
+@media(max-width:1000px){
+
+    .menu{
+        display:none;
+    }
+
+    .hamburger{
+        display:flex;
+    }
+
+    .about-intro{
+        grid-template-columns:1fr;
+    }
+
+    .feature-grid,
+    .cards-grid,
+    .material-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .library-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .stats-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .footer-container{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .footer-about{
+        grid-column:1/-1;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE MOBILE
+========================================================= */
+
+@media(max-width:650px){
+
+    .navbar{
+        min-height:72px;
+        padding:9px 15px;
+    }
+
+    .nav-logo{
+        width:48px;
+        height:48px;
+    }
+
+    .school-title{
+        font-size:14px;
+    }
+
+    .school-location{
+        font-size:9px;
+    }
+
+    .mobile-menu{
+        top:72px;
+    }
+
+    .marquee-text{
+        font-size:13px;
+    }
+
+    .about-hero{
+        min-height:600px;
+        padding:65px 20px;
+        text-align:center;
+    }
+
+    .hero-content p{
+        font-size:15px;
+        line-height:1.8;
+    }
+
+    .hero-buttons{
+        justify-content:center;
+    }
+
+    .section,
+    .library,
+    .legacy{
+        padding:65px 18px;
+    }
+
+    .feature-grid,
+    .cards-grid,
+    .material-grid,
+    .library-grid,
+    .stats-grid,
+    .footer-container{
+        grid-template-columns:1fr;
+    }
+
+    .intro-text{
+        padding:25px;
+    }
+
+    .intro-text p{
+        text-align:left;
+        font-size:14px;
+    }
+
+    .intro-image{
+        min-height:280px;
+    }
+
+    .card-circle{
+        width:130px;
+        height:130px;
+    }
+
+    .legacy-text{
+        text-align:left;
+        font-size:14px;
+    }
+
+    .footer-about{
+        grid-column:auto;
+    }
+
+    .footer-container{
+        text-align:center;
+    }
+
+    .footer-logo{
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .footer-social{
+        justify-content:center;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL DEVICES
+========================================================= */
+
+@media(max-width:380px){
+
+    .school-title{
+        font-size:12px;
+    }
+
+    .school-location{
+        display:none;
+    }
+
+    .hero-content h1{
+        font-size:35px;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+    }
+
+    .hero-btn{
+        width:100%;
+    }
+
+    .tab-wrapper button{
+        width:100%;
+    }
+
+    .stat-number{
+        font-size:38px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<nav class="navbar">
+
+    <div class="nav-left">
+
+        <img
+            class="nav-logo"
+            src="{{ url_for('static', filename='Images/logo.jpg') }}"
+            alt="Shree Resunga Secondary School Logo"
+        >
+
+        <div class="school-info">
+
+            <div class="school-title">
+                Shree Resunga Secondary School
+            </div>
+
+            <div class="school-location">
+                TAMGHAS, GULMI • NEPAL
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="menu">
+
+        <a href="{{ url_for('views.homepage') }}">
+            Home
+        </a>
+
+        <a href="{{ url_for('views.about_us') }}">
+            About Us
+        </a>
+
+        <a href="{{ url_for('views.admissions') }}" class="nav-admission">
+            Admissions
+        </a>
+
+        <a href="{{ url_for('views.Gallery') }}">
+            Gallery
+        </a>
+
+        <a href="{{ url_for('views.news') }}">
+            News
+        </a>
+
+        <a href="{{ url_for('views.contact') }}">
+            Contact
+        </a>
+
+        <a href="{{ url_for('auth.login') }}">
+            Login
+        </a>
+
+    </div>
+
+
+    <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+</nav>
+
+
+<!-- MOBILE MENU -->
+
+<div class="mobile-menu" id="mobileMenu">
+
+    <a href="{{ url_for('views.homepage') }}">
+        Home
+    </a>
+
+    <a href="{{ url_for('views.about_us') }}">
+        About Us
+    </a>
+
+    <a href="{{ url_for('views.admissions') }}">
+        Admissions
+    </a>
+
+    <a href="{{ url_for('views.Gallery') }}">
+        Gallery
+    </a>
+
+    <a href="{{ url_for('views.news') }}">
+        News
+    </a>
+
+    <a href="{{ url_for('views.contact') }}">
+        Contact
+    </a>
+
+    <a href="{{ url_for('auth.login') }}">
+        Login
+    </a>
+
+    <div class="mobile-close" onclick="toggleMenu()">
+        Close Menu
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     MARQUEE
+===================================================== -->
+
+<div class="marquee-box">
+
+    <div class="marquee-text">
+        📢 Admission Open for 2079 BS &nbsp; | &nbsp;
+        Science • Management • Civil Engineering &nbsp; | &nbsp;
+        Welcome to Shree Resunga Secondary School
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="about-hero">
+
+    <div class="hero-content">
+
+        <span class="hero-badge">
+            About Our Institution
+        </span>
+
+        <h1>
+            Building the
+            <span>Future</span>
+            Through Education
+        </h1>
+
+        <p>
+            Shree Resunga Secondary School is committed to providing
+            quality education that fosters academic excellence,
+            creativity, discipline, leadership, and character development.
+            We nurture responsible, confident, and compassionate students
+            who are prepared to contribute positively to society.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a
+                href="{{ url_for('views.introduction') }}"
+                class="hero-btn primary"
+            >
+                Explore Our School →
+            </a>
+
+            <a
+                href="#history"
+                class="hero-btn secondary"
+            >
+                Our History
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     INTRODUCTION
+===================================================== -->
+
+<section class="section section-light">
+
+    <h2 class="section-title">
+        Who We Are
+    </h2>
+
+    <p class="section-subtitle">
+        A school dedicated to academic excellence, character,
+        innovation, leadership, and community development.
+    </p>
+
+    <div class="title-line"></div>
+
+
+    <div class="about-intro">
+
+        <div class="intro-text">
+
+            <h2>
+                Shree Resunga Secondary School
+            </h2>
+
+            <p>
+                Shree Resunga Secondary School is committed to providing
+                quality education that fosters academic excellence,
+                creativity, and character development.
+            </p>
+
+            <p>
+                Our mission is to nurture responsible, confident,
+                and compassionate students who can face the challenges
+                of the modern world.
+            </p>
+
+            <p>
+                We believe education should go beyond textbooks.
+                Students are encouraged to participate in academic,
+                cultural, sporting, technological, and community-based
+                activities.
+            </p>
+
+            <p>
+                With experienced teachers, modern learning technologies,
+                extracurricular activities, and a supportive learning
+                environment, the school works continuously toward
+                providing meaningful education.
+            </p>
+
+        </div>
+
+
+        <div class="intro-image">
+
+            <img
+                src="{{ url_for('static', filename='Images/main.jpg') }}"
+                alt="Shree Resunga Secondary School"
+            >
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SCHOOL STRENGTHS
+===================================================== -->
+
+<section class="section section-cream">
+
+    <h2 class="section-title">
+        Why Choose Us?
+    </h2>
+
+    <p class="section-subtitle">
+        We combine traditional educational values with modern
+        teaching practices to create an environment where students
+        can learn, grow, and lead.
+    </p>
+
+    <div class="title-line"></div>
+
+
+    <div class="feature-grid">
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                👨‍🏫
+            </div>
+
+            <h3>
+                Experienced Teachers
+            </h3>
+
+            <p>
+                Experienced and trained educators guide students
+                with modern teaching techniques and personalized
+                academic support.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                💻
+            </div>
+
+            <h3>
+                Modern Learning
+            </h3>
+
+            <p>
+                We encourage students to use modern technology,
+                digital learning resources, practical activities,
+                and innovative learning methods.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🏆
+            </div>
+
+            <h3>
+                Holistic Development
+            </h3>
+
+            <p>
+                Academic learning is combined with sports,
+                scouting, clubs, social activities, leadership,
+                creativity, and character development.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     HISTORY
+===================================================== -->
+
+<section class="section section-orange" id="history">
+
+    <h2 class="section-title">
+        History
+    </h2>
+
+    <p class="section-subtitle">
+        Discover the journey, milestones, and achievements
+        that have shaped Shree Resunga Secondary School.
+    </p>
+
+    <div class="title-line"></div>
+
+
+    <div class="cards-grid">
+
+        <div class="info-card">
+
+            <div class="card-circle">
+
+                <img
+                    src="{{ url_for('static', filename='Images/history.jpg') }}"
+                    alt="Founding Story"
+                >
+
+            </div>
+
+            <h3>
+                Founding Story
+            </h3>
+
+            <p>
+                The school began as a vision of the local community
+                to provide quality education.
+            </p>
+
+            <a
+                href="{{ url_for('views.foundingstory') }}"
+                class="learn"
+            >
+                Learn More
+            </a>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <div class="card-circle">
+
+                <img
+                    src="{{ url_for('static', filename='Images/programs2.jpg') }}"
+                    alt="Milestone"
+                >
+
+            </div>
+
+            <h3>
+                Milestone
+            </h3>
+
+            <p>
+                Key events that shaped the school's growth
+                and reputation.
+            </p>
+
+            <a
+                href="{{ url_for('views.milestone') }}"
+                class="learn"
+            >
+                Learn More
+            </a>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <div class="card-circle">
+
+                <img
+                    src="{{ url_for('static', filename='Images/bestscout.jpg') }}"
+                    alt="Achievements"
+                >
+
+            </div>
+
+            <h3>
+                Achievements
+            </h3>
+
+            <p>
+                Academic & extracurricular accomplishments
+                across the years.
+            </p>
+
+            <a
+                href="{{ url_for('views.achievements') }}"
+                class="learn"
+            >
+                Learn More
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PROGRAMMES
+===================================================== -->
+
+<section class="section section-light" id="programmes">
+
+    <h2 class="section-title">
+        Programmes
+    </h2>
+
+    <p class="section-subtitle">
+        Students receive opportunities to develop leadership,
+        teamwork, creativity, social awareness, and responsibility.
+    </p>
+
+    <div class="title-line"></div>
+
+
+    <div class="cards-grid">
+
+        <div class="info-card">
+
+            <div class="card-circle">
+
+                <img
+                    src="{{ url_for('static', filename='Images/bestscout.jpg') }}"
+                    alt="Scouting Programmes"
+                >
+
+            </div>
+
+            <h3>
+                Scouting Programmes
+            </h3>
+
+            <p>
+                Engaging students in outdoor learning,
+                leadership, and teamwork.
+            </p>
+
+            <a
+                href="{{ url_for('views.scouting') }}"
+                class="learn"
+            >
+                Learn More
+            </a>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <div class="card-circle">
+
+                <img
+                    src="{{ url_for('static', filename='Images/child.jpg') }}"
+                    alt="Child Club"
+                >
+
+            </div>
+
+            <h3>
+                Child Club Programmes
+            </h3>
+
+            <p>
+                Encouraging social skills, creativity,
+                and peer collaboration.
+            </p>
+
+            <a
+                href="{{ url_for('views.childclub') }}"
+                class="learn"
+            >
+                Learn More
+            </a>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <div class="card-circle">
+
+                <img
+                    src="{{ url_for('static', filename='Images/red.jpg') }}"
+                    alt="Red Cross"
+                >
+
+            </div>
+
+            <h3>
+                Redcross Programmes
+            </h3>
+
+            <p>
+                Teaching health awareness, first aid,
+                and humanitarian values.
+            </p>
+
+            <a
+                href="{{ url_for('views.redcross') }}"
+                class="learn"
+            >
+                Learn More
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     VISION
+===================================================== -->
+
+<section class="section section-orange" id="vision">
+
+    <h2 class="section-title">
+        Vision
+    </h2>
+
+    <p class="section-subtitle">
+        Our vision focuses on academic intelligence,
+        holistic growth, and meaningful community impact.
+    </p>
+
+    <div class="title-line"></div>
+
+
+    <div class="cards-grid">
+
+        <div class="info-card">
+
+            <div class="card-circle">
+
+                <img
+                    src="{{ url_for('static', filename='Images/padhai.jpg') }}"
+                    alt="Academic Intelligence"
+                >
+
+            </div>
+
+            <h3>
+                Academic Intelligence
+            </h3>
+
+            <p>
+                Fostering critical thinking and problem-solving skills.
+            </p>
+
+            <a
+                href="{{ url_for('views.academics') }}"
+                class="learn"
+            >
+                Learn More
+            </a>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <div class="card-circle">
+
+                <img
+                    src="{{ url_for('static', filename='Images/programs2.jpg') }}"
+                    alt="Holistic Growth"
+                >
+
+            </div>
+
+            <h3>
+                Holistic Growth
+            </h3>
+
+            <p>
+                Developing emotional, social, and creative capabilities.
+            </p>
+
+            <a
+                href="{{ url_for('views.holistic') }}"
+                class="learn"
+            >
+                Learn More
+            </a>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <div class="card-circle">
+
+                <img
+                    src="{{ url_for('static', filename='Images/programs3.jpg') }}"
+                    alt="Community Impact"
+                >
+
+            </div>
+
+            <h3>
+                Community Impact
+            </h3>
+
+            <p>
+                Empowering students to contribute meaningfully
+                to society.
+            </p>
+
+            <a
+                href="{{ url_for('views.community') }}"
+                class="learn"
+            >
+                Learn More
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     OTHERS
+===================================================== -->
+
+<section class="section section-light" id="others">
+
+    <h2 class="section-title">
+        Others
+    </h2>
+
+    <p class="section-subtitle">
+        Meet the leadership voices that help guide the school
+        toward continuous improvement and excellence.
+    </p>
+
+    <div class="title-line"></div>
+
+
+    <div class="cards-grid">
+
+        <div class="info-card">
+
+            <div class="card-circle">
+
+                <img
+                    src="{{ url_for('static', filename='Images/prncpl.jpg') }}"
+                    alt="Principal"
+                >
+
+            </div>
+
+            <h3>
+                Principal's Message
+            </h3>
+
+            <p>
+                Inspiring students and guiding the school
+                with dedication and vision.
+            </p>
+
+            <a
+                href="{{ url_for('views.principalssms') }}"
+                class="learn"
+            >
+                Learn More
+            </a>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <div class="card-circle">
+
+                <img
+                    src="{{ url_for('static', filename='Images/kursi1.jpg') }}"
+                    alt="Chairman"
+                >
+
+            </div>
+
+            <h3>
+                Chairman's Message
+            </h3>
+
+            <p>
+                Sharing the vision and mission of the school
+                for future leaders.
+            </p>
+
+            <a
+                href="{{ url_for('views.chairmanssms') }}"
+                class="learn"
+            >
+                Learn More
+            </a>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <div class="card-circle">
+
+                <img
+                    src="{{ url_for('static', filename='Images/vice.jpg') }}"
+                    alt="Vice Principal"
+                >
+
+            </div>
+
+            <h3>
+                Vice Principal's Message
+            </h3>
+
+            <p>
+                Supporting students and staff to ensure smooth
+                academic and extracurricular operations.
+            </p>
+
+            <a
+                href="{{ url_for('views.viceprincipalssms') }}"
+                class="learn"
+            >
+                Learn More
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     LEGACY
+===================================================== -->
+
+<section class="legacy">
+
+    <div class="legacy-container">
+
+        <div class="legacy-header">
+
+            <span class="badge">
+                About Our Institution
+            </span>
+
+            <h2 class="legacy-title">
+                Legacy of Excellence in Resunga
+            </h2>
+
+            <p class="legacy-text">
+                Founded with a vision to bring quality education
+                to the foothills of Gulmi, Shree Resunga Secondary
+                School has stood as a beacon of academic excellence
+                for decades. We believe that education is more than
+                just textbooks; it is about nurturing curiosity and
+                building character. Our institution provides a safe,
+                inclusive, and stimulating environment where students
+                from diverse backgrounds are encouraged to explore
+                their potential and dream big.
+            </p>
+
+            <p class="legacy-text">
+                While we take pride in our deep-rooted traditions,
+                we are firmly focused on the future. By integrating
+                modern digital classrooms, well-equipped science
+                laboratories, and a robust physical education program,
+                we ensure our students are ready for the challenges
+                of the 21st century. At Resunga, we don't just teach
+                students to pass exams; we inspire them to become
+                innovative leaders, responsible citizens, and
+                compassionate thinkers that Nepal needs for tomorrow.
+            </p>
+
+        </div>
+
+
+        <div class="material-grid">
+
+            <div class="material-card">
+
+                <div class="card-icon">
+                    👨‍🏫
+                </div>
+
+                <h3>
+                    Quality Educators
+                </h3>
+
+                <p>
+                    Our faculty consists of dedicated professionals
+                    who are mentors using modern pedagogical techniques
+                    to ensure personalized attention.
+                </p>
+
+                <div class="card-footer">
+
+                    <a
+                        href="{{ url_for('views.introduction') }}"
+                        class="download-btn"
+                    >
+                        Meet Faculty →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="material-card">
+
+                <div class="card-icon">
+                    📖
+                </div>
+
+                <h3>
+                    Holistic Curriculum
+                </h3>
+
+                <p>
+                    Merging NEB standards with practical skills like
+                    computer literacy, scientific inquiry, and creative
+                    arts for balanced growth.
+                </p>
+
+                <div class="card-footer">
+
+                    <a
+                        href="{{ url_for('views.academics') }}"
+                        class="download-btn"
+                    >
+                        View Courses →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="material-card">
+
+                <div class="card-icon">
+                    🌍
+                </div>
+
+                <h3>
+                    Community Leadership
+                </h3>
+
+                <p>
+                    Instilling integrity and social responsibility,
+                    preparing students to drive positive change in
+                    the Gulmi region and beyond.
+                </p>
+
+                <div class="card-footer">
+
+                    <a
+                        href="{{ url_for('views.community') }}"
+                        class="download-btn"
+                    >
+                        Our Impact →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     DIGITAL LIBRARY
+===================================================== -->
+
+<section class="library">
+
+    <h2 class="section-title">
+        Student Success Hub
+    </h2>
+
+    <p class="section-subtitle">
+        Access premium study materials, past questions,
+        and digital notes curated by our expert faculty
+        to excel in your examinations.
+    </p>
+
+    <div class="title-line"></div>
+
+
+    <div class="tab-wrapper">
+
+        <button class="active">
+            Subject Notes
+        </button>
+
+        <button>
+            Past Questions
+        </button>
+
+        <button>
+            Syllabus 2081
+        </button>
+
+    </div>
+
+
+    <div class="library-grid">
+
+        <div class="library-card">
+
+            <div class="card-icon">
+                📚
+            </div>
+
+            <h3>
+                Class 12 Physics
+            </h3>
+
+            <p>
+                Complete handwritten notes for Optics
+                and Modern Physics chapters.
+            </p>
+
+            <div class="card-footer">
+
+                <span>
+                    PDF • 4.5 MB
+                </span>
+
+                <a href="#" class="download-btn">
+                    Download ↓
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="library-card">
+
+            <div class="card-icon">
+                📐
+            </div>
+
+            <h3>
+                Civil Engineering
+            </h3>
+
+            <p>
+                Standard codes and survey practical
+                manuals for diploma students.
+            </p>
+
+            <div class="card-footer">
+
+                <span>
+                    PDF • 12 MB
+                </span>
+
+                <a href="#" class="download-btn">
+                    Download ↓
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="library-card">
+
+            <div class="card-icon">
+                🧪
+            </div>
+
+            <h3>
+                Chemistry Lab
+            </h3>
+
+            <p>
+                Step-by-step guide for Organic Chemistry
+                qualitative analysis.
+            </p>
+
+            <div class="card-footer">
+
+                <span>
+                    PDF • 2.1 MB
+                </span>
+
+                <a href="#" class="download-btn">
+                    Download ↓
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="library-card">
+
+            <div class="card-icon">
+                💼
+            </div>
+
+            <h3>
+                Management
+            </h3>
+
+            <p>
+                Principles of Accounting - Solved problems
+                from last 5 years.
+            </p>
+
+            <div class="card-footer">
+
+                <span>
+                    PDF • 3.8 MB
+                </span>
+
+                <a href="#" class="download-btn">
+                    Download ↓
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="view-all">
+
+        <p>
+            Can't find what you are looking for?
+        </p>
+
+        <a
+            href="{{ url_for('views.admissions') }}"
+            class="primary-btn"
+        >
+            Browse Full Archive
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     STATS
+===================================================== -->
+
+<section class="stats-section">
+
+    <div class="stats-grid">
+
+        <div class="stat-item">
+
+            <div class="stat-icon">
+                🎓
+            </div>
+
+            <h2 class="stat-number">
+                1500+
+            </h2>
+
+            <p>
+                Students Enrolled
+            </p>
+
+        </div>
+
+
+        <div class="stat-item">
+
+            <div class="stat-icon">
+                🏫
+            </div>
+
+            <h2 class="stat-number">
+                45+
+            </h2>
+
+            <p>
+                Expert Teachers
+            </p>
+
+        </div>
+
+
+        <div class="stat-item">
+
+            <div class="stat-icon">
+                🏆
+            </div>
+
+            <h2 class="stat-number">
+                98%
+            </h2>
+
+            <p>
+                Pass Rate
+            </p>
+
+        </div>
+
+
+        <div class="stat-item">
+
+            <div class="stat-icon">
+                🏢
+            </div>
+
+            <h2 class="stat-number">
+                25+
+            </h2>
+
+            <p>
+                Modern Classrooms
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+    <div class="footer-container">
+
+
+        <div class="footer-about">
+
+            <img
+                src="{{ url_for('static', filename='Images/logo.jpg') }}"
+                alt="School Logo"
+                class="footer-logo"
+            >
+
+            <h3>
+                Shree Resunga Secondary School
+            </h3>
+
+            <p>
+                Providing quality education and nurturing
+                future leaders with creativity, knowledge,
+                discipline, and character.
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <h4>
+                Quick Links
+            </h4>
+
+            <ul>
+
+                <li>
+                    <a href="{{ url_for('views.homepage') }}">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ url_for('views.about_us') }}">
+                        About
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ url_for('views.admissions') }}">
+                        Admissions
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ url_for('views.Gallery') }}">
+                        Gallery
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ url_for('views.news') }}">
+                        News
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ url_for('views.contact') }}">
+                        Contact
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <div class="footer-contact">
+
+            <h4>
+                Contact Us
+            </h4>
+
+            <p>
+                📍 Resunga, Gulmi, Nepal
+            </p>
+
+            <p>
+                📞 +977-01-XXXXXXX
+            </p>
+
+            <p>
+                ✉ info@resungasecondary.edu.np
+            </p>
+
+
+            <div class="footer-social">
+
+                <a href="#">
+                    🌐
+                </a>
+
+                <a href="#">
+                    📘
+                </a>
+
+                <a href="#">
+                    🐦
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>
+            &copy; 2079 Shree Resunga Secondary School.
+            All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+/* =====================================================
+   MOBILE MENU
+===================================================== */
+
+function toggleMenu(){
+
+    const menu = document.getElementById("mobileMenu");
+
+    menu.classList.toggle("open");
+
+}
+
+
+/* Close mobile menu after clicking a link */
+
+document.querySelectorAll(".mobile-menu a").forEach(function(link){
+
+    link.addEventListener("click", function(){
+
+        document
+            .getElementById("mobileMenu")
+            .classList.remove("open");
+
+    });
+
+});
+
+</script>
+
+
+</body>
+</html>

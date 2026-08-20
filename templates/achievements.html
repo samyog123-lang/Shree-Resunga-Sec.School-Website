@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shree Resunga Secondary School | Achievements</title>
+
+<!-- SEO Meta Tags -->
+<meta name="description" content="Explore the achievements of Shree Resunga Secondary School in academics, sports, culture, and community service.">
+<meta name="keywords" content="Shree Resunga Secondary School, Achievements, Academics, Sports, Cultural Awards, Community Service">
+<meta name="robots" content="index, follow">
+
+<style>
+/* ===== GLOBAL RESET ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', sans-serif; }
+body { background: orangered; color: #003366; overflow-x: hidden; padding-top: 140px; }
+@media(max-width:700px){ body { padding-top:120px; } }
+@media(max-width:500px){ body { padding-top:110px; } }
+
+/* ===== NAVBAR ===== */
+.navbar {
+    width: 100%; display: flex; justify-content: space-between; align-items: center;
+    background: linear-gradient(135deg,#003366,#4b0082,#ff9800);
+    padding: 0.5rem 1rem; position: fixed; top: 0; left: 0; z-index: 1000; height: 70px;
+    transform: translateY(-100%); opacity: 0; animation: slideDown 0.7s forwards;
+}
+.nav-left { display: flex; align-items: center; gap: 0.5rem; }
+.school-logo { width: 55px; height: 55px; border-radius: 50%; border: 3px solid yellow; object-fit: cover; }
+.school-title { color: yellow; font-weight: 800; white-space: nowrap; font-size: 1.5rem; text-shadow: 1px 1px 2px black; }
+.back-btn { background-color: yellow; color: #003366; border: none; border-radius: 50%; width: 40px; height: 40px; font-size: 1.5rem; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: transform 0.3s, background-color 0.3s; }
+.back-btn:hover { background-color: #ffd700; transform: scale(1.1); }
+
+/* MARQUEE */
+.marquee-wrapper {
+    width: 100%; background: yellow; overflow: hidden; border-top: 2px solid #003366; border-bottom: 2px solid #003366;
+    position: fixed; top: 70px; left: 0; z-index: 999; transform: translateY(-100%); opacity: 0; animation: slideDown 0.7s forwards 0.2s;
+}
+.marquee-content { display: inline-block; white-space: nowrap; font-size: 1rem; color: #003366; font-weight: 700; padding: 0.5rem 0; animation: marqueeScroll 12s linear infinite; }
+
+/* ANIMATIONS */
+@keyframes slideDown { to { transform: translateY(0); opacity: 1; } }
+@keyframes marqueeScroll { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+
+/* RESPONSIVE NAVBAR/MARQUEE */
+@media(max-width:700px){ .navbar{height:60px;padding:0.4rem 0.8rem;} .school-logo{width:45px;height:45px;} .school-title{font-size:1.2rem;} .back-btn{width:35px;height:35px;font-size:1.2rem;} .marquee-wrapper{top:60px;} .marquee-content{font-size:0.9rem;} }
+@media(max-width:500px){ .navbar{height:55px;padding:0.3rem 0.6rem;} .school-logo{width:40px;height:40px;} .school-title{font-size:1rem;} .back-btn{width:30px;height:30px;font-size:1rem;} .marquee-wrapper{top:55px;} .marquee-content{font-size:0.85rem;} }
+
+/* ==================== ACHIEVEMENTS GRID ==================== */
+.achievements { max-width: 1200px; margin: 0 auto; padding: 50px 20px; }
+.achievements-header { text-align:center; font-size:2.5rem; font-weight:bold; margin-bottom:40px; color:#333; }
+.achievements-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:35px; }
+
+.achievement-box { background: yellow; color: white; padding: 20px; border-radius: 20px; box-shadow: 0 6px 15px rgba(0,0,0,0.2); display: flex; flex-direction: column; align-items: center; transition: transform 0.3s, box-shadow 0.3s; }
+.achievement-box:hover { transform: translateY(-8px); box-shadow: 0 12px 25px rgba(0,0,0,0.3); }
+.achievement-box p { color:black; font-weight:600; }
+
+.achievement-image { width: 100%; overflow: hidden; margin-bottom: 15px; }
+.achievement-image img { width: 100%; display: block; border-radius: 0; opacity: 0; animation: slideInLeft 1s forwards; }
+.achievement-box:nth-child(even) .achievement-image img { animation: slideInRight 1s forwards; }
+
+@keyframes slideInLeft { 0% { transform: translateX(-100px); opacity:0; } 100% { transform: translateX(0); opacity:1; } }
+@keyframes slideInRight { 0% { transform: translateX(100px); opacity:0; } 100% { transform: translateX(0); opacity:1; } }
+
+.achievement-box h3 { font-size:1.5rem; margin-bottom:10px; color:red; text-shadow: 1px 1px 2px rgba(0,0,0,0.4); text-align:center; }
+.achievement-box p { font-size:1rem; line-height:1.5; text-shadow:1px 1px 2px rgba(0,0,0,0.3); text-align:center; }
+
+/* FOOTER */
+.footer { background:#002147; color:white; padding:50px 20px; display:grid; grid-template-columns:repeat(3,1fr); gap:25px; margin-top:40px; }
+.footer-box { padding:20px; background:#003366; border-radius:12px; box-shadow:0 0 10px rgba(0,0,0,0.25); }
+.footer-box h3 { margin-bottom:12px; }
+.footer-box ul li { list-style:none; margin:6px 0; }
+
+/* ANIMATIONS */
+@keyframes leftToRight { from{transform:translateX(-80px);opacity:0;} to{transform:translateX(0);opacity:1;} }
+@keyframes rightToLeft { from{transform:translateX(80px);opacity:0;} to{transform:translateX(0);opacity:1;} }
+.animate-left { animation: leftToRight 0.8s ease-out forwards; }
+.animate-right { animation: rightToLeft 0.8s ease-out forwards; }
+
+/* RESPONSIVE FOOTER */
+@media(max-width:700px){ .footer{grid-template-columns:1fr;text-align:center;} }
+@media(max-width:600px){ .achievement-box h3{font-size:1.3rem;} .achievement-box p{font-size:0.95rem;} .achievements-header{font-size:2rem;} }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="nav-left">
+        <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="School Logo" class="school-logo">
+        <h1 class="school-title">Shree Resunga Secondary School</h1>
+    </div>
+    <button class="back-btn" onclick="window.location.href='{{ url_for('views.about_us') }}'">&#8592;</button>
+</nav>
+
+<!-- MARQUEE -->
+<div class="marquee-wrapper">
+    <div class="marquee-content">
+        📢 Welcome to Shree Resunga Secondary School | 🚀 Bright Futures | 🎓 Admissions Open
+    </div>
+</div>
+
+<!-- ACHIEVEMENTS GRID -->
+<div class="achievements">
+    <h2 class="achievements-header">Our Achievements</h2>
+    <div class="achievements-grid">
+        <!-- Academic Excellence -->
+        <div class="achievement-box">
+            <div class="achievement-image">
+                <img src="{{ url_for('static', filename='images/padhai.jpg') }}" alt="Academic Excellence">
+            </div>
+            <h3>Academic Excellence</h3>
+            <p>Our students consistently achieve top ranks in national and international exams, showcasing their dedication and brilliance.</p>
+        </div>
+
+        <!-- Sports Achievements -->
+        <div class="achievement-box sports-box">
+            <div class="achievement-image">
+                <img src="{{ url_for('static', filename='images/lssoprts.jpg') }}" alt="Sports Achievements">
+            </div>
+            <h3>Sports Achievements</h3>
+            <p>Our school has always been strong in sports. We secured <strong>1st place in the President Running Shield Cup</strong> and continue to excel in football, volleyball, athletics, and martial arts.</p>
+        </div>
+
+        <!-- Cultural Awards -->
+        <div class="achievement-box">
+            <div class="achievement-image">
+                <img src="{{ url_for('static', filename='images/thali.jpg') }}" alt="Cultural Awards">
+            </div>
+            <h3>Cultural Awards</h3>
+            <p>Recognized for outstanding performances in arts, music, and dance.</p>
+        </div>
+
+        <!-- Community Service -->
+        <div class="achievement-box">
+            <div class="achievement-image">
+                <img src="{{ url_for('static', filename='images/red1.jpg') }}" alt="Community Service">
+            </div>
+            <h3>Community Service</h3>
+            <p>Active participation in social initiatives and charity events, creating a positive impact on society.</p>
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-box animate-left">
+        <h3>About Us</h3>
+        <p>Shree Resunga Secondary School is committed to providing quality education and fostering the all-round development of students.</p>
+    </div>
+    <div class="footer-box animate-right">
+        <h3>Quick Links</h3>
+        <ul>
+            <li>Home</li>
+            <li>Admissions</li>
+            <li>Departments</li>
+            <li>Contact Us</li>
+        </ul>
+    </div>
+    <div class="footer-box animate-left">
+        <h3>Contact</h3>
+        <p>Resunga, Gulmi, Nepal</p>
+        <p>Phone: +977-98XXXXXXXX</p>
+        <p>Email: info@resungaschool.edu.np</p>
+    </div>
+</footer>
+
+</body>
+</html>

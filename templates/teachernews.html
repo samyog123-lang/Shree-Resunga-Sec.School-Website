@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en" x-data="{ open: false }">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>School News | Shree Resunga Secondary School</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Alpine.js -->
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+<!-- Animate.css -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+<style>
+    body { font-family: 'Poppins', sans-serif; }
+    .nav-link:hover { color: #ff9800; }
+
+    /* News Card */
+    .news-card {
+        background: #74077ab6;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .news-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+    }
+
+    /* Video Hover Effect */
+    video { filter: brightness(0.95) contrast(1.05); }
+    .video-card:hover video { filter: brightness(1.05); }
+</style>
+</head>
+
+<body class="bg-yellow-400">
+
+<!-- ==================== NAVBAR ==================== -->
+<nav class="bg-blue-700 text-white px-6 py-4 flex justify-between items-center sticky top-0 z-50 shadow-md">
+    <!-- Logo -->
+    <div class="flex items-center gap-3">
+        <img src="{{ url_for('static', filename='Images/logo.jpg') }}" alt="Logo" class="w-10 h-10 rounded-full">
+        <span class="text-xl font-semibold">Shree Resunga Secondary School</span>
+    </div>
+
+    <!-- Desktop Links -->
+    <div class="hidden md:flex gap-6 font-medium">
+        <a href="{{ url_for('views.teacher_dashboard') }}" class="nav-link">Home</a>
+        <a href="{{ url_for('views.teacherabout_us') }}" class="nav-link">About Us</a>
+        <a href="{{ url_for('views.teachernews') }}" class="nav-link font-bold underline">News</a>
+        <a href="{{ url_for('views.teacherGallery') }}" class="nav-link">Gallery</a>
+        <a href="{{ url_for('views.teachercontact') }}" class="nav-link">Contact</a>
+    </div>
+
+    <!-- Mobile Hamburger -->
+    <button @click="open = !open" class="md:hidden text-white text-3xl font-bold focus:outline-none">
+        <span x-show="!open">☰</span>
+        <span x-show="open">✖</span>
+    </button>
+
+    <!-- Mobile Menu -->
+    <div x-show="open" x-cloak
+         @click.away="open = false"
+         x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0 -translate-y-5"
+         x-transition:enter-end="opacity-100 translate-y-0"
+         x-transition:leave="transition ease-in duration-200"
+         x-transition:leave-start="opacity-100 translate-y-0"
+         x-transition:leave-end="opacity-0 -translate-y-5"
+         class="absolute top-full left-0 w-full bg-blue-600 text-center md:hidden shadow-lg border-t border-white/30">
+        <a href="{{ url_for('views.teacher_dashboard') }}" class="block py-4 text-white hover:bg-blue-500 font-semibold border-b border-white/20">Home</a>
+        <a href="{{ url_for('views.teacherabout_us') }}" class="block py-4 text-white hover:bg-blue-500 font-semibold border-b border-white/20">About Us</a>
+        <a href="{{ url_for('views.teachernews') }}" class="block py-4 text-white hover:bg-blue-500 font-semibold border-b border-white/20">News</a>
+        <a href="{{ url_for('views.teacherGallery') }}" class="block py-4 text-white hover:bg-blue-500 font-semibold border-b border-white/20">Gallery</a>
+        <a href="{{ url_for('views.teachercontact') }}" class="block py-4 text-white hover:bg-blue-500 font-semibold">Contact</a>
+    </div>
+</nav>
+
+<!-- ==================== NEWS CONTENT ==================== -->
+<main class="max-w-7xl mx-auto px-4 py-10">
+    <h1 class="text-3xl font-bold mb-8 text-center animate__animated animate__fadeInDown">
+        School News & Updates
+    </h1>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {% for i in range(news_items|length) %}
+        <div class="news-card p-4 animate__animated animate__fadeInUp animate__delay-{{ i%10 }}s">
+            <img src="{{ news_items[i].img }}" alt="{{ news_items[i].title }}" class="w-full h-40 object-cover rounded-lg mb-3" loading="lazy">
+            <h2 class="font-semibold text-lg mb-2">{{ news_items[i].title }}</h2>
+            <p class="text-gray-700 text-sm">{{ news_items[i].desc }}</p>
+            <a href="{{ url_for('views.news_detail', news_id=i+1) }}" class="text-blue-900 font-medium mt-2 inline-block hover:underline">Read More</a>
+        </div>
+        {% endfor %}
+    </div>
+</main>
+
+<!-- ==================== FEATURED NEWS SLIDER ==================== -->
+<section class="max-w-7xl mx-auto px-4 py-16">
+    <h2 class="text-3xl font-bold text-center mb-10">Featured School Highlights</h2>
+    <div class="relative overflow-hidden rounded-2xl shadow-xl">
+        <div id="newsSlider" class="flex transition-transform duration-700">
+            <!-- Your slides -->
+            <div class="min-w-full relative">
+                <img src="{{ url_for('static', filename='images/admissionss.jpg') }}" class="w-full h-[300px] md:h-[450px] object-cover">
+                <div class="absolute inset-0 bg-black/50 flex flex-col justify-center px-6 md:px-16 text-white">
+                    <h3 class="text-2xl md:text-4xl font-bold mb-3">Admissions Open</h3>
+                    <p class="max-w-xl">Admissions are now open for Classes 1 and 2. Parents are encouraged to visit the school for enrollment.</p>
+                </div>
+            </div>
+            <div class="min-w-full relative">
+                <img src="{{ url_for('static', filename='images/bus.jpg') }}" class="w-full h-[300px] md:h-[450px] object-cover">
+                <div class="absolute inset-0 bg-black/50 flex flex-col justify-center px-6 md:px-16 text-white">
+                    <h3 class="text-2xl md:text-4xl font-bold mb-3">2 New School Buses Launched</h3>
+                    <p class="max-w-xl">Our school introduced two new buses to provide safer and more comfortable transport for students.</p>
+                </div>
+            </div>
+            <div class="min-w-full relative">
+                <img src="{{ url_for('static', filename='Images/runnings.jpg') }}" class="w-full h-[300px] md:h-[450px] object-cover">
+                <div class="absolute inset-0 bg-black/50 flex flex-col justify-center px-6 md:px-16 text-white">
+                    <h3 class="text-2xl md:text-4xl font-bold mb-3">Won 2082 Running Shield</h3>
+                    <p class="max-w-xl">Shree Resunga Secondary School proudly secured the Running Shield at the Resunga Municipality level event.</p>
+                </div>
+            </div>
+        </div>
+        <button onclick="prevSlide()" class="absolute left-3 top-1/2 -translate-y-1/2 bg-white/70 px-3 py-2 rounded-full">❮</button>
+        <button onclick="nextSlide()" class="absolute right-3 top-1/2 -translate-y-1/2 bg-white/70 px-3 py-2 rounded-full">❯</button>
+    </div>
+</section>
+
+    <!-- NEWS CONTENT -->
+    <main class="max-w-7xl mx-auto px-4 py-10">
+        <h1 class="text-3xl font-bold mb-8 text-center animate__animated animate__fadeInDown">
+            School News & Updates
+        </h1>
+
+{% set news_items = [
+    {
+        'title': 'Annual Sports Day 2026',
+        'desc': 'Students participated in various track and field events.',
+        'img': url_for('static', filename='images/volley.jpg')
+    },
+    {
+        'title': 'Science Exhibition',
+        'desc': 'Innovative projects presented by science students.',
+        'img': url_for('static', filename='images/pradashani1.jpg')
+    },
+    {
+        'title': 'Art Competition',
+        'desc': 'Students showcased their artistic talents.',
+        'img': url_for('static', filename='images/crea.jpg')
+    },
+    {
+        'title': 'Debate Championship',
+        'desc': 'Winners of the inter-school debate competition.',
+        'img': url_for('static', filename='images/debate.jpg')
+    },
+    {
+        'title': 'Music Fest',
+        'desc': 'Annual music festival with performances by students.',
+        'img': url_for('static', filename='images/music.jpg')
+    }
+] %}
+
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {% for i in range(news_items|length) %}
+            <div class="news-card p-4 animate__animated animate__fadeInUp animate__delay-{{ i%10 }}s">
+                <img src="{{ news_items[i].img }}" alt="{{ news_items[i].title }}" class="w-full h-40 object-cover rounded-lg mb-3" loading="lazy">
+                <h2 class="font-semibold text-lg mb-2">{{ news_items[i].title }}</h2>
+                <p class="text-gray-700 text-sm">{{ news_items[i].desc }}</p>
+                <a href="{{ url_for('views.news_detail', news_id=i+1) }}" class="text-blue-900 font-medium mt-2 inline-block hover:underline">Read More</a>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+<!-- ================= FEATURED NEWS SLIDER ================= -->
+<section class="max-w-7xl mx-auto px-4 py-16">
+    <h2 class="text-3xl font-bold text-center mb-10">Featured School Highlights</h2>
+
+    <div class="relative overflow-hidden rounded-2xl shadow-xl">
+        <div id="newsSlider" class="flex transition-transform duration-700">
+<!-- Slide 1 -->
+<div class="min-w-full relative">
+    <img src="{{ url_for('static', filename='images/admissionss.jpg') }}"
+         alt="Admissions open for Class 1 and Class 2 students at Shree Resunga School"
+         class="w-full h-[300px] md:h-[450px] object-cover">
+    <div class="absolute inset-0 bg-black/50 flex flex-col justify-center px-6 md:px-16 text-white">
+        <h3 class="text-2xl md:text-4xl font-bold mb-3">Admissions Open</h3>
+        <p class="max-w-xl">Admissions are now open for Classes 1 and 2. Parents are encouraged to visit the school for enrollment.</p>
+    </div>
+</div>
+
+            <!-- Slide 1 -->
+            <div class="min-w-full relative">
+                <img src="{{ url_for('static', filename='images/bus.jpg') }}"
+                     alt="Shree Resunga Secondary School launching two new school buses"
+                     class="w-full h-[300px] md:h-[450px] object-cover">
+                <div class="absolute inset-0 bg-black/50 flex flex-col justify-center px-6 md:px-16 text-white">
+                    <h3 class="text-2xl md:text-4xl font-bold mb-3">2 New School Buses Launched</h3>
+                    <p class="max-w-xl">Our school introduced two new buses to provide safer and more comfortable transport for students.</p>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="min-w-full relative">
+                <img src="{{ url_for('static', filename='Images/runnings.jpg') }}"
+                     alt="Students winning 2082 Running Shield at Resunga Municipality competition"
+                     class="w-full h-[300px] md:h-[450px] object-cover">
+                <div class="absolute inset-0 bg-black/50 flex flex-col justify-center px-6 md:px-16 text-white">
+                    <h3 class="text-2xl md:text-4xl font-bold mb-3">Won 2082 Running Shield</h3>
+                    <p class="max-w-xl">Shree Resunga Secondary School proudly secured the Running Shield at the Resunga Municipality level event.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <button onclick="prevSlide()" class="absolute left-3 top-1/2 -translate-y-1/2 bg-white/70 px-3 py-2 rounded-full">❮</button>
+        <button onclick="nextSlide()" class="absolute right-3 top-1/2 -translate-y-1/2 bg-white/70 px-3 py-2 rounded-full">❯</button>
+    </div>
+</section>
+
+
+
+<!-- ================= RECTANGLE NEWS SECTION ================= -->
+<section class="max-w-7xl mx-auto px-4 py-12">
+    <h2 class="text-2xl font-bold mb-8 text-center">More School News</h2>
+
+    <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+            <img src="{{ url_for('static', filename='images/winner.jpeg') }}"
+                 alt="Students winning inter-school quiz competition"
+                 class="h-48 w-full object-cover">
+            <div class="p-5">
+                <h3 class="font-semibold text-lg mb-2">Inter-School Quiz Winners</h3>
+                <p class="text-sm text-gray-600">Our students achieved first position in a district-level quiz competition.</p>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+            <img src="{{ url_for('static', filename='images/library.jpg') }}"
+                 alt="Expanded school library with new books"
+                 class="h-48 w-full object-cover">
+            <div class="p-5">
+                <h3 class="font-semibold text-lg mb-2">Library Expansion</h3>
+                <p class="text-sm text-gray-600">The school library has been upgraded with over 500 new books for students.</p>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+            <img src="{{ url_for('static', filename='images/labs.jpg') }}"
+                 alt="Upgraded computer lab with new computers"
+                 class="h-48 w-full object-cover">
+            <div class="p-5">
+                <h3 class="font-semibold text-lg mb-2">Computer Lab Upgrade</h3>
+                <p class="text-sm text-gray-600">New computers were installed to support modern digital learning.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- ================= CIRCULAR STUDENT HIGHLIGHTS ================= -->
+<section class="max-w-7xl mx-auto px-4 py-12">
+    <h2 class="text-2xl font-bold text-center mb-10">Student Highlights</h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 text-center">
+        <div>
+            <img src="{{ url_for('static', filename='images/gpa4.jpg') }}"
+                 alt="Top SEE scorer from Shree Resunga Secondary School"
+                 class="w-40 h-40 md:w-52 md:h-52 mx-auto rounded-full object-cover shadow-lg">
+            <h3 class="mt-4 font-semibold">Top SEE Scorer</h3>
+        </div>
+
+        <div>
+            <img src="{{ url_for('static', filename='images/winn.jpg') }}"
+                 alt="Best athlete award winner from school sports event"
+                 class="w-40 h-40 md:w-52 md:h-52 mx-auto rounded-full object-cover shadow-lg">
+            <h3 class="mt-4 font-semibold">Best Dancer Award</h3>
+        </div>
+
+        <div>
+            <img src="{{ url_for('static', filename='images/crea.jpg') }}"
+                 alt="Student winning school art competition"
+                 class="w-40 h-40 md:w-52 md:h-52 mx-auto rounded-full object-cover shadow-lg">
+            <h3 class="mt-4 font-semibold">Art Competition Winner</h3>
+        </div>
+    </div>
+</section>
+
+
+<!-- ================= SCHOOL VIDEO HIGHLIGHTS ================= -->
+<section class="max-w-7xl mx-auto px-4 py-16">
+    <h2 class="text-3xl font-bold text-center mb-12">School Video Highlights</h2>
+
+    <div class="video-card bg-black rounded-2xl overflow-hidden shadow-xl transform hover:scale-105 transition duration-300">
+        
+        <!-- Video Card -->
+        {% for v in range(6) %}
+        <div class="bg-black rounded-2xl overflow-hidden shadow-xl transform hover:scale-105 transition duration-300">
+            <div class="relative w-full aspect-video bg-black">
+                <video class="w-full h-full object-cover"
+                       autoplay
+                       muted
+                       loop
+                       playsinline
+                       preload="metadata">
+                    <source src="{{ url_for('static', filename='videos/video' ~ (v+1) ~ '.mp4') }}" type="video/mp4">
+                </video>
+            </div>
+            <div class="p-4 bg-white">
+                <h3 class="font-semibold text-lg">School Activity Video {{ v+1 }}</h3>
+                <p class="text-sm text-gray-600">Highlights from student events and school programs.</p>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-700 text-white text-center py-6 mt-12">
+        &copy; {{ current_year }} Shree Resunga Secondary School. All rights reserved.
+    </footer>
+
+<footer class="bg-blue-700 text-white text-center py-6 mt-12">
+    &copy; {{ current_year }} Shree Resunga Secondary School. All rights reserved.
+</footer>
+
+<script>
+let currentSlide = 0;
+const slider = document.getElementById("newsSlider");
+const totalSlides = slider.children.length;
+
+function showSlide(index) {
+    if(index >= totalSlides) currentSlide = 0;
+    else if(index < 0) currentSlide = totalSlides - 1;
+    else currentSlide = index;
+    slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+}
+function nextSlide() { showSlide(currentSlide + 1); }
+function prevSlide() { showSlide(currentSlide - 1); }
+setInterval(nextSlide, 5000);
+</script>
+
+</body>
+</html>

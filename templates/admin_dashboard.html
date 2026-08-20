@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | School Portal</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Animate.css for smooth animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <style>
+        body {
+            background: linear-gradient(to right, #1f2937, #111827);
+            font-family: 'Poppins', sans-serif;
+        }
+        .quote {
+            font-style: italic;
+            font-size: 1.2rem;
+            color: #fcd34d; /* amber-300 */
+        }
+        .table th, .table td {
+            border-color: #374151; /* gray-700 */
+        }
+        .table tr:hover {
+            background-color: rgba(252, 211, 77, 0.1); /* amber hover */
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="text-white min-h-screen">
+
+    <!-- ---------------- HEADER ---------------- -->
+    <header class="py-6 px-8 bg-gradient-to-r from-indigo-800 to-purple-900 shadow-lg">
+        <h1 class="text-3xl font-bold animate__animated animate__fadeInDown">Welcome, {{ current_user.username }}!</h1>
+        <p class="quote animate__animated animate__fadeInUp animate__delay-1s">
+            "Education is the most powerful weapon which you can use to change the world." – Nelson Mandela
+        </p>
+    </header>
+
+    <main class="p-8 space-y-10">
+        <!-- SUMMARY CARDS -->
+<section class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8 animate__animated animate__fadeIn">
+    <div class="bg-gradient-to-r from-yellow-500 to-yellow-600 p-6 rounded-lg shadow-lg text-center animate__animated animate__pulse animate__infinite animate__slow">
+        <h3 class="text-2xl font-bold">{{ total_students }}</h3>
+        <p>Registered Students</p>
+    </div>
+    <div class="bg-gradient-to-r from-yellow-500 to-yellow-600 p-6 rounded-lg shadow-lg text-center animate__animated animate__pulse animate__infinite animate__slow">
+        <h3 class="text-2xl font-bold">{{ new_students }}</h3>
+        <p>New Registrations Today</p>
+    </div>
+    <div class="bg-gradient-to-r from-yellow-500 to-yellow-600 p-6 rounded-lg shadow-lg text-center animate__animated animate__pulse animate__infinite animate__slow">
+        <h3 class="text-2xl font-bold">{{ total_teachers }}</h3>
+        <p>Registered Teachers</p>
+    </div>
+    <div class="bg-gradient-to-r from-yellow-500 to-yellow-600 p-6 rounded-lg shadow-lg text-center animate__animated animate__pulse animate__infinite animate__slow">
+        <h3 class="text-2xl font-bold">{{ logged_in_students + logged_in_teachers + logged_in_admins }}</h3>
+        <p>Currently Logged-in Users</p>
+    </div>
+</section>
+
+
+        <!-- ---------------- STUDENTS ---------------- -->
+        <section class="animate__animated animate__fadeInLeft">
+            <h2 class="text-2xl font-semibold mb-4 border-b border-amber-400 pb-2">Students</h2>
+            <div class="overflow-x-auto rounded-lg shadow-lg">
+                <table class="table-auto w-full text-left">
+                    <thead class="bg-gray-700 text-amber-300">
+                        <tr>
+                            <th class="px-4 py-2">Name</th>
+                            <th class="px-4 py-2">Email</th>
+                            <th class="px-4 py-2">Class</th>
+                            <th class="px-4 py-2">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for s in students %}
+                        <tr class="hover:bg-gray-600">
+                            <td class="px-4 py-2">{{ s.name }}</td>
+                            <td class="px-4 py-2">{{ s.email }}</td>
+                            <td class="px-4 py-2">{{ s.applying_class }}</td>
+                            <td class="px-4 py-2 space-x-2">
+                                <a href="{{ url_for('admin.view_student', id=s.id) }}" class="px-3 py-1 bg-blue-600 rounded hover:bg-blue-500 transition">View</a>
+                                <form action="{{ url_for('admin.delete_student', id=s.id) }}" method="POST" class="inline">
+                                    <button type="submit" class="px-3 py-1 bg-red-600 rounded hover:bg-red-500 transition">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+<tbody>
+    {% for s in students %}
+    <tr class="hover:bg-gray-600">
+        <td class="px-4 py-2">{{ s.name }}</td>
+        <td class="px-4 py-2">{{ s.email }}</td>
+        <td class="px-4 py-2">{{ s.applying_class }}</td>
+        <td class="px-4 py-2">{{ s.address }}</td>
+        <td class="px-4 py-2">{{ s.contact }}</td>
+        <td class="px-4 py-2">{{ s.previous_batch_year }}</td>
+        <td class="px-4 py-2">{{ s.payment_method }}</td>
+        <td class="px-4 py-2">{{ s.payment_status }}</td>
+        <td class="px-4 py-2">{{ s.amount_paid or 'N/A' }}</td>
+        <td class="px-4 py-2 space-x-2">
+            <a href="{{ url_for('admin.view_student', id=s.id) }}" class="px-3 py-1 bg-blue-600 rounded hover:bg-blue-500 transition">View</a>
+            <form action="{{ url_for('admin.delete_student', id=s.id) }}" method="POST" class="inline">
+                <button type="submit" class="px-3 py-1 bg-red-600 rounded hover:bg-red-500 transition">Delete</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</tbody>
+
+
+        <!-- ---------------- MOTIVATIONAL QUOTE CAROUSEL ---------------- -->
+        <section class="mt-10 animate__animated animate__fadeInUp">
+            <div class="bg-gradient-to-r from-purple-800 to-indigo-900 p-6 rounded-lg shadow-lg text-center">
+                <h3 class="text-xl font-bold mb-2 text-amber-300">Daily Motivation</h3>
+                <p id="quote" class="text-white text-lg">Loading quote...</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ---------------- JS: Quote Rotation ---------------- -->
+    <script>
+        const quotes = [
+            "Education is the most powerful weapon which you can use to change the world. – Nelson Mandela",
+            "The beautiful thing about learning is nobody can take it away from you. – B.B. King",
+            "Success is no accident. It is hard work, perseverance, learning, studying, sacrifice and most of all, love of what you are doing. – Pele",
+            "Your time is limited, so don't waste it living someone else's life. – Steve Jobs",
+            "The expert in anything was once a beginner. – Helen Hayes"
+        ];
+        let i = 0;
+        const quoteEl = document.getElementById('quote');
+
+        function showQuote() {
+            quoteEl.classList.add('animate__fadeOut');
+            setTimeout(() => {
+                quoteEl.innerText = quotes[i];
+                quoteEl.classList.remove('animate__fadeOut');
+                quoteEl.classList.add('animate__fadeIn');
+                i = (i + 1) % quotes.length;
+            }, 500);
+        }
+
+        setInterval(showQuote, 5000); // change every 5s
+        quoteEl.innerText = quotes[0]; // initial
+    </script>
+
+</body>
+</html>

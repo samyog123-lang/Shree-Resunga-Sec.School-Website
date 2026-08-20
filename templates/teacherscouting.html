@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Navbar with Back Button</title>
+<style>
+/* ===== GLOBAL RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+  
+body {
+    background: orangered;
+    color: #003366;
+    overflow-x: hidden;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg,#003366,#4b0082,#ff9800);
+    padding: 0.5rem 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    height: 70px;
+    transform: translateY(-100%);
+    opacity: 0;
+    animation: slideDown 0.7s forwards;
+}
+
+/* LEFT: LOGO + TITLE */
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.school-logo {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: 3px solid yellow;
+    object-fit: cover;
+}
+
+.school-title {
+    color: yellow;
+    font-weight: 800;
+    white-space: nowrap;
+    font-size: 1.5rem;
+    text-shadow: 1px 1px 2px black;
+}
+
+/* BACK BUTTON */
+.back-btn {
+    background-color: yellow;
+    color: #003366;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.back-btn:hover {
+    background-color: #ffd700;
+    transform: scale(1.1);
+}
+
+/* MARQUEE */
+.marquee-wrapper {
+    width: 100%;
+    background: yellow;
+    overflow: hidden;
+    border-top: 2px solid #003366;
+    border-bottom: 2px solid #003366;
+    position: fixed;
+    top: 70px; /* immediately below navbar */
+    left: 0;
+    z-index: 999;
+    transform: translateY(-100%);
+    opacity: 0;
+    animation: slideDown 0.7s forwards 0.2s; /* slight delay after navbar */
+}
+
+.marquee-content {
+    display: inline-block;
+    white-space: nowrap;
+    font-size: 1rem;
+    color: #003366;
+    font-weight: 700;
+    padding: 0.5rem 0;
+    animation: marqueeScroll 12s linear infinite;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes slideDown {
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes marqueeScroll {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width: 700px){
+    .navbar { height: 60px; padding: 0.4rem 0.8rem; }
+    .school-logo { width: 45px; height: 45px; }
+    .school-title { font-size: 1.2rem; }
+    .back-btn { width: 35px; height: 35px; font-size: 1.2rem; }
+    .marquee-wrapper { top: 60px; }
+    .marquee-content { font-size: 0.9rem; }
+}
+
+@media(max-width: 500px){
+    .navbar { height: 55px; padding: 0.3rem 0.6rem; }
+    .school-logo { width: 40px; height: 40px; }
+    .school-title { font-size: 1rem; }
+    .back-btn { width: 30px; height: 30px; font-size: 1rem; }
+    .marquee-wrapper { top: 55px; }
+    .marquee-content { font-size: 0.85rem; }
+}
+/* ===== SCOUTING SECTION WRAPPER ===== */
+.scout-section {
+    padding: 150px 20px 60px; /* pushes below navbar+marquee */
+    max-width: 1000px;
+    margin: auto;
+    color: white;
+}
+
+/* Section Title */
+.scout-title {
+    font-size: 2.4rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 40px;
+    color: yellow;
+    text-shadow: 2px 2px 3px black;
+    letter-spacing: 2px;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+/* ===== TEXT HEAVY CONTENT CONTAINER ===== */
+.scout-box {
+    background: rgba(0,0,0,0.25);
+    padding: 25px 25px 25px 35px;
+    margin-bottom: 25px;
+    border-left: 8px solid yellow;    /* UNIQUE ACCENT */
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    opacity: 0;
+    transform: translateX(-70px);
+    animation: slideFadeIn 0.8s forwards;
+}
+
+/* Stagger animation on multiple boxes */
+.scout-box:nth-child(2) { animation-delay: 0.2s; }
+.scout-box:nth-child(3) { animation-delay: 0.4s; }
+.scout-box:nth-child(4) { animation-delay: 0.6s; }
+
+.scout-box h2 {
+    font-size: 1.7rem;
+    margin-bottom: 10px;
+    color: #fff;
+    font-weight: 800;
+}
+
+.scout-box p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #f5f5f5;
+    text-align: justify;
+}
+
+/* Unique vertical timeline dots */
+.scout-box::before {
+    content: "";
+    position: absolute;
+    left: -16px;
+    top: 15px;
+    width: 15px;
+    height: 15px;
+    background: yellow;
+    border-radius: 50%;
+    box-shadow: 0 0 8px yellow;
+}
+
+/* === Animations === */
+@keyframes slideFadeIn {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width: 600px) {
+    .scout-title { font-size: 1.8rem; }
+    .scout-box { padding: 20px 20px 20px 25px; }
+    .scout-box h2 { font-size: 1.4rem; }
+    .scout-box p { font-size: 0.95rem; }
+}
+/* ===== SCOUT IMAGE SECTION ===== */
+.scout-images {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 10px 20px;
+}
+
+.scout-images-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 900;
+    color: yellow;
+    margin-bottom: 25px;
+    text-shadow: 2px 2px 4px black;
+}
+
+/* Container for 2 images */
+.scout-img-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Each image box */
+.scout-img-box {
+    flex: 1;
+    min-width: 280px;
+    background: rgba(0,0,0,0.25);
+    padding: 10px;
+    border-left: 7px solid yellow;   /* unique accent */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transform: translateY(50px);
+    opacity: 0;
+    animation: fadeSlideUp 0.8s forwards;
+}
+
+.scout-img-box:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+/* Image styling */
+.scout-img-box img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border: 3px solid yellow;
+    box-shadow: 0 0 10px rgba(255,255,0,0.6);
+}
+
+/* Caption */
+.scout-caption {
+    font-size: 1rem;
+    color: white;
+    padding-top: 10px;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* Animation */
+@keyframes fadeSlideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media(max-width: 700px) {
+    .scout-img-row {
+        flex-direction: column;
+    }
+
+    .scout-img-box img {
+        height: 220px;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-left">
+        <img src="{{ url_for('static', filename='Images/logo.jpg') }}" alt="School Logo" class="school-logo">
+        <h1 class="school-title">Shree Resunga Secondary School</h1>
+    </div>
+    <button class="back-btn" onclick="window.location.href='{{ url_for('views.teacherabout_us') }}'">&#8592;</button>
+</nav>
+
+<div class="marquee-wrapper">
+    <div class="marquee-content">
+        📢 Welcome to Shree Resunga Secondary School | 🚀 Bright Futures | 🎓 Admissions Open
+    </div>
+</div>
+<section class="scout-section">
+
+    <h1 class="scout-title">Scouting Programmes</h1>
+
+    <div class="scout-box">
+        <h2>Introduction to Scouting</h2>
+        <p>
+            Our scouting programme helps students develop leadership, discipline, teamwork
+            and real-life survival skills. It encourages students to be active, responsible
+            citizens who contribute positively to society. The programme includes regular
+            training, group activities, community service and skill-based learning.
+        </p>
+    </div>
+
+    <div class="scout-box">
+        <h2>Outdoor Camps & Adventure</h2>
+        <p>
+            Students participate in trekking, camping, rope climbing, first-aid drills,
+            fire safety training and nature exploration. These activities promote confidence,
+            problem-solving and mental toughness while making students love the outdoors.
+        </p>
+    </div>
+
+    <div class="scout-box">
+        <h2>Community Service Activities</h2>
+        <p>
+            Scouts of our school regularly organize cleanliness campaigns, awareness
+            rallies, environmental protection programmes and social support events. These
+            activities help students understand responsibility toward society.
+        </p>
+    </div>
+
+    <div class="scout-box">
+        <h2>Awards & Achievements</h2>
+        <p>
+            Many of our scouts have earned district and regional level awards for excellence
+            in discipline, community service, and leadership tasks. The school is recognized
+            for maintaining an active and dedicated scouting team every year.
+        </p>
+    </div>
+
+</section>
+
+<section class="scout-images">
+
+    <h2 class="scout-images-title">Scouting Activity Photos</h2>
+
+    <div class="scout-img-row">
+
+        <div class="scout-img-box">
+            <img src="{{ url_for('static', filename='Images/prgm.jpg') }}" alt="Scouting Image 1">
+            <p class="scout-caption">Students participating in outdoor programmes.</p>
+        </div>
+
+        <div class="scout-img-box">
+            <img src="{{ url_for('static', filename='Images/nepalscout.jpg') }}" alt="Scouting Image 2">
+            <p class="scout-caption">Leadership and teamwork activities during scouting.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<script>
+function goBack() {
+    window.history.back();
+}
+
+</script>
+
+</body>
+</html>

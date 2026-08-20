@@ -1,0 +1,39 @@
+<div x-data="bookSearch()" class="container mx-auto mt-6 px-4">
+  <h2 class="text-2xl font-bold text-blue-900 mb-4">Search Books</h2>
+  <div class="flex gap-2 mb-4">
+    <input type="text" x-model="query" placeholder="Enter class or subject..." class="px-3 py-2 border rounded w-full">
+    <button @click="searchBooks()" class="bg-blue-900 text-yellow-400 px-4 py-2 rounded">Search</button>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+    <template x-for="book in books" :key="book.title">
+      <div class="bg-blue-900 text-yellow-400 rounded p-4 shadow">
+        <img :src="book.thumbnail" class="w-full h-48 object-cover rounded mb-2" alt="">
+        <h3 class="font-bold text-lg" x-text="book.title"></h3>
+        <p class="text-sm mb-1" x-text="book.authors"></p>
+        <p class="text-sm mb-2" x-text="book.description"></p>
+        <a :href="book.link" target="_blank" class="bg-yellow-400 text-blue-900 px-3 py-1 rounded hover:bg-yellow-300 inline-block">Preview</a>
+      </div>
+    </template>
+
+    <div x-show="books.length === 0" class="text-center col-span-full text-blue-900 font-semibold">
+      No books found
+    </div>
+  </div>
+</div>
+
+<script>
+function bookSearch() {
+  return {
+    query: '',
+    books: [],
+    searchBooks() {
+      if(!this.query) return;
+      fetch(`/api/books?q=${encodeURIComponent(this.query)}`)
+        .then(res => res.json())
+        .then(data => this.books = data)
+        .catch(err => console.error(err));
+    }
+  }
+}
+</script>

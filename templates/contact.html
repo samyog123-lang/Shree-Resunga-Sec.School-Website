@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" x-data="{ open: false, scrolled: false }" @scroll.window="scrolled = (window.pageYOffset > 20)">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Shree Resunga Secondary School</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <style>
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* Animated Mesh Gradient Background */
+        .animated-bg {
+            background: linear-gradient(135deg, #fde047 0%, #facc15 50%, #eab308 100%);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            min-height: 100vh;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Glassmorphism Utility */
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Floating Animation */
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Modern Card Hover */
+        .contact-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .contact-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+<body class="animated-bg text-gray-900">
+
+<nav :class="scrolled ? 'glass py-3' : 'bg-transparent py-6'" class="fixed w-full transition-all duration-300 z-50 px-6 md:px-12">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <div class="flex items-center gap-4 group cursor-pointer">
+            <div class="p-1 bg-white rounded-full shadow-lg group-hover:rotate-12 transition-transform">
+                <img src="{{ url_for('static', filename='Images/logo.jpg') }}" alt="Logo" class="w-12 h-12 rounded-full">
+            </div>
+            <span class="text-xl font-extrabold tracking-tight hidden sm:block">SHREE RESUNGA</span>
+        </div>
+
+        <div class="hidden md:flex gap-8 items-center">
+            <a href="{{ url_for('views.homepage') }}" class="font-semibold hover:text-orange-600 transition-colors">Home</a>
+            <a href="{{ url_for('views.about_us') }}" class="font-semibold hover:text-orange-600 transition-colors">About</a>
+            <a href="{{ url_for('views.news') }}" class="font-semibold hover:text-orange-600 transition-colors">News</a>
+            <a href="{{ url_for('views.Gallery') }}" class="font-semibold hover:text-orange-600 transition-colors">Gallery</a>
+            <a href="{{ url_for('views.contact') }}" class="px-6 py-2 bg-black text-white rounded-full font-bold hover:bg-orange-600 transition-all shadow-lg hover:shadow-orange-200">Contact</a>
+        </div>
+
+        <button @click="open = !open" class="md:hidden text-3xl">
+            <template x-if="!open"><span>☰</span></template>
+            <template x-if="open"><span>✕</span></template>
+        </button>
+    </div>
+
+    <div x-show="open" x-cloak x-transition.opacity class="fixed inset-0 bg-yellow-400 z-40 flex flex-col items-center justify-center gap-8 text-2xl font-bold md:hidden">
+        <a @click="open = false" href="{{ url_for('views.homepage') }}">Home</a>
+        <a @click="open = false" href="{{ url_for('views.about_us') }}">About Us</a>
+        <a @click="open = false" href="{{ url_for('views.news') }}">News</a>
+        <a @click="open = false" href="{{ url_for('views.Gallery') }}">Gallery</a>
+        <a @click="open = false" href="{{ url_for('views.contact') }}">Contact</a>
+    </div>
+</nav>
+
+<section class="pt-32 pb-12 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-5xl md:text-7xl font-extrabold mb-6 animate__animated animate__zoomIn">
+            Let's <span class="text-orange-600">Connect.</span>
+        </h1>
+        <p class="text-lg md:text-xl text-gray-800 font-medium animate__animated animate__fadeIn animate__delay-1s">
+            Have questions? We're here to help you shape the future of your education.
+        </p>
+    </div>
+</section>
+
+<main class="max-w-7xl mx-auto px-6 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {% set contacts = [
+            {'type': 'Facebook', 'info': 'Official Page', 'link': 'https://facebook.com/...', 'icon': 'https://cdn-icons-png.flaticon.com/512/733/733547.png', 'color': 'hover:bg-blue-50'},
+            {'type': 'Email', 'info': 'info@shreeresunga.edu.np', 'link': 'mailto:info@...', 'icon': 'https://cdn-icons-png.flaticon.com/512/732/732200.png', 'color': 'hover:bg-red-50'},
+            {'type': 'Phone', 'info': '+977-01-1234567', 'link': 'tel:079520218', 'icon': 'https://cdn-icons-png.flaticon.com/512/15/15937.png', 'color': 'hover:bg-green-50'},
+            {'type': 'Location', 'info': 'Resunga, Gulmi, Nepal', 'link': '#', 'icon': 'https://cdn-icons-png.flaticon.com/512/684/684908.png', 'color': 'hover:bg-orange-50'}
+        ] %}
+
+        {% for contact in contacts %}
+        <div class="contact-card glass p-8 rounded-3xl flex flex-col items-center text-center shadow-xl animate__animated animate__fadeInUp animate__delay-{{ loop.index0 }}s">
+            <div class="w-20 h-20 mb-6 p-4 bg-white rounded-2xl shadow-inner floating">
+                <img src="{{ contact.icon }}" alt="icon" class="w-full h-full object-contain">
+            </div>
+            <h3 class="text-2xl font-bold mb-2">{{ contact.type }}</h3>
+            <p class="text-gray-600 mb-6 font-medium">{{ contact.info }}</p>
+            <a href="{{ contact.link }}" class="mt-auto px-8 py-2 border-2 border-black rounded-full font-bold hover:bg-black hover:text-white transition-all">
+                Connect
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="mt-24 grid lg:grid-cols-2 gap-12 items-center">
+        <div class="glass p-10 rounded-[3rem] shadow-2xl animate__animated animate__fadeInLeft">
+            <h2 class="text-3xl font-bold mb-8">Send us a Message</h2>
+            <form action="#" class="space-y-6">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-bold mb-2 ml-2">Full Name</label>
+                        <input type="text" class="w-full px-6 py-4 rounded-2xl border-none focus:ring-4 focus:ring-orange-400 bg-white/50" placeholder="John Doe">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold mb-2 ml-2">Email Address</label>
+                        <input type="email" class="w-full px-6 py-4 rounded-2xl border-none focus:ring-4 focus:ring-orange-400 bg-white/50" placeholder="john@example.com">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-bold mb-2 ml-2">Message</label>
+                    <textarea rows="4" class="w-full px-6 py-4 rounded-2xl border-none focus:ring-4 focus:ring-orange-400 bg-white/50" placeholder="How can we help you?"></textarea>
+                </div>
+                <button class="w-full py-4 bg-black text-white rounded-2xl font-bold text-lg hover:bg-orange-600 transition-all transform hover:scale-[1.02] shadow-xl">
+                    Send Inquiry
+                </button>
+            </form>
+        </div>
+
+        <div class="space-y-8 animate__animated animate__fadeInRight">
+            <div class="glass p-8 rounded-3xl">
+                <h4 class="text-xl font-bold mb-2">School Hours</h4>
+                <p class="text-gray-700">Sunday - Friday: 10:00 AM - 4:00 PM</p>
+                <p class="text-gray-700">Saturday: Closed</p>
+            </div>
+            <div class="h-64 rounded-3xl overflow-hidden shadow-2xl glass p-2">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3515.6!2d83.2!3d28.1!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDA2JzAwLjAiTiA4M8KwMTInMDAuMCJF!5e0!3m2!1sen!2snp!4v1625000000000!5m2!1sen!2snp" 
+                    width="100%" height="100%" style="border:0; border-radius: 20px;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="mt-20 glass border-t-0 py-12">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+        <div class="text-center md:text-left">
+            <p class="text-xl font-extrabold">Shree Resunga Secondary School</p>
+            <p class="text-gray-600 text-sm">Empowering minds since [Year]</p>
+        </div>
+        <div class="flex gap-6">
+            <a href="#" class="w-10 h-10 bg-black rounded-full flex items-center justify-center hover:bg-orange-600 transition-colors">
+                <span class="text-white text-xs">FB</span>
+            </a>
+            <a href="#" class="w-10 h-10 bg-black rounded-full flex items-center justify-center hover:bg-orange-600 transition-colors">
+                <span class="text-white text-xs">TW</span>
+            </a>
+        </div>
+        <p class="text-sm font-bold">© {{ current_year }} All Rights Reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Student | Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white min-h-screen p-6 font-poppins">
+
+<div class="max-w-3xl mx-auto bg-gray-800 p-6 rounded-xl shadow-lg animate__animated animate__fadeIn">
+    <h2 class="text-3xl font-bold mb-4 text-amber-400">Student Details</h2>
+    
+    <div class="space-y-3">
+        <p><strong>Name:</strong> {{ student.name }}</p>
+        <p><strong>Email:</strong> {{ student.email }}</p>
+        <p><strong>Contact:</strong> {{ student.contact }}</p>
+        <p><strong>Class Applied:</strong> {{ student.applying_class }}</p>
+        <p><strong>Batch Year:</strong> {{ student.previous_batch_year }}</p>
+        <p><strong>Address:</strong> {{ student.address }}</p>
+        <p><strong>Payment Method:</strong> {{ student.payment_method }}</p>
+        <p><strong>Payment Status:</strong> {{ student.payment_status }}</p>
+        <p><strong>Amount Paid:</strong> {{ student.amount_paid or 'N/A' }}</p>
+        <p><strong>Certificate:</strong>
+            {% if student.certificate_filename %}
+                <a href="{{ url_for('static', filename='uploads/certificates/' + student.certificate_filename) }}"
+                   class="text-blue-400 hover:underline" target="_blank">View/Download</a>
+            {% else %}
+                N/A
+            {% endif %}
+        </p>
+    </div>
+
+    <a href="{{ url_for('admin.admin_dashboard') }}" class="mt-4 inline-block bg-yellow-500 px-4 py-2 rounded hover:bg-yellow-400 transition">Back to Dashboard</a>
+</div>
+</body>
+</html>

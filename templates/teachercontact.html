@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" x-data="{ open: false }">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us | Shree Resunga Secondary School</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Alpine.js for Mobile Menu -->
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+<!-- Animate.css -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+<style>
+    body { font-family: 'Poppins', sans-serif; }
+    .nav-link:hover { color: #ff9800; }
+    .contact-card {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .contact-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+    }
+</style>
+</head>
+<body class="bg-yellow-200">
+
+<!-- ==================== NAVBAR ==================== -->
+<nav class="bg-yellow-500 text-black px-6 py-4 flex justify-between items-center sticky top-0 z-50 shadow-md" x-data="{ open: false }">
+    <!-- Logo -->
+    <div class="flex items-center gap-3">
+        <img src="{{ url_for('static', filename='Images/logo.jpg') }}" alt="Logo" class="w-10 h-10 rounded-full">
+        <span class="text-xl font-semibold">Shree Resunga Secondary School</span>
+    </div>
+
+    <!-- Desktop Links -->
+    <div class="hidden md:flex gap-6 font-medium">
+        <a href="{{ url_for('views.teacher_dashboard') }}" class="nav-link">Home</a>
+        <a href="{{ url_for('views.teacherabout_us') }}" class="nav-link">About Us</a>
+        <a href="{{ url_for('views.teachernews') }}" class="nav-link">News</a>
+        <a href="{{ url_for('views.teacherGallery') }}" class="nav-link">Gallery</a>
+        <a href="{{ url_for('views.teachercontact') }}" class="nav-link font-bold underline">Contact</a>
+    </div>
+
+    <!-- Mobile Hamburger -->
+    <button @click="open = !open" class="md:hidden text-black text-3xl font-bold focus:outline-none">
+        <span x-show="!open">☰</span>
+        <span x-show="open">✖</span>
+    </button>
+
+    <!-- Mobile Menu -->
+    <div x-show="open" x-cloak
+         @click.away="open = false"
+         x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0 -translate-y-5"
+         x-transition:enter-end="opacity-100 translate-y-0"
+         x-transition:leave="transition ease-in duration-200"
+         x-transition:leave-start="opacity-100 translate-y-0"
+         x-transition:leave-end="opacity-0 -translate-y-5"
+         class="absolute top-full left-0 w-full bg-yellow-400 shadow-lg border-t border-black/20 md:hidden z-40">
+        <a href="{{ url_for('views.teacher_dashboard') }}" class="block py-4 text-black font-semibold hover:bg-yellow-300 border-b border-black/20 text-lg">Home</a>
+        <a href="{{ url_for('views.teacherabout_us') }}" class="block py-4 text-black font-semibold hover:bg-yellow-300 border-b border-black/20 text-lg">About Us</a>
+        <a href="{{ url_for('views.teachernews') }}" class="block py-4 text-black font-semibold hover:bg-yellow-300 border-b border-black/20 text-lg">News</a>
+        <a href="{{ url_for('views.teacherGallery') }}" class="block py-4 text-black font-semibold hover:bg-yellow-300 border-b border-black/20 text-lg">Gallery</a>
+        <a href="{{ url_for('views.teachercontact') }}" class="block py-4 text-black font-semibold hover:bg-yellow-300 text-lg">Contact</a>
+    </div>
+</nav>
+
+<!-- ==================== CONTACT CONTENT ==================== -->
+<main class="max-w-5xl mx-auto px-4 py-10">
+    <h1 class="text-3xl font-bold mb-8 text-center animate__animated animate__fadeInDown">
+        Contact Us
+    </h1>
+
+    {% set contacts = [
+        {'type': 'Facebook', 'info': 'Shree Resunga Secondary School', 'link': 'https://www.facebook.com/shreeresungasecondaryschool', 'icon': 'https://cdn-icons-png.flaticon.com/512/733/733547.png'},
+        {'type': 'Email', 'info': 'info@shreeresunga.edu.np', 'link': 'mailto:info@shreeresunga.edu.np', 'icon': 'https://cdn-icons-png.flaticon.com/512/732/732200.png'},
+        {'type': 'Phone', 'info': '+977-01-1234567', 'link': 'tel:+977011234567', 'icon': 'https://cdn-icons-png.flaticon.com/512/15/15937.png'},
+        {'type': 'Address', 'info': 'Resunga, Gulmi, Nepal', 'link': 'https://www.google.com/maps/place/Resunga,+Gulmi,+Nepal', 'icon': 'https://cdn-icons-png.flaticon.com/512/684/684908.png'}
+    ] %}
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {% for contact in contacts %}
+        <div class="contact-card p-6 flex flex-col items-center text-center animate__animated animate__fadeInUp animate__delay-{{ loop.index0 % 10 }}s">
+            <img src="{{ contact.icon }}" alt="{{ contact.type }} icon" class="w-16 h-16 mb-4">
+            <h2 class="font-semibold text-lg mb-2">{{ contact.type }}</h2>
+            <p class="text-gray-700 mb-3">{{ contact.info }}</p>
+            <a href="{{ contact.link }}" target="_blank" class="text-blue-900 font-medium hover:underline">Visit</a>
+        </div>
+        {% endfor %}
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="bg-yellow-500 text-black text-center py-6 mt-12">
+    &copy; {{ current_year }} Shree Resunga Secondary School. All rights reserved.
+</footer>
+
+</body>
+</html>

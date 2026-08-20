@@ -1,0 +1,2469 @@
+<!DOCTYPE html>
+<html lang="en" x-data="{ mobileMenuOpen: false }">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Gallery | Shree Resunga Secondary School
+    </title>
+
+    <meta
+        name="description"
+        content="Explore the gallery of Shree Resunga Secondary School including school events, academics, sports, festivals, infrastructure, teachers and student activities."
+    >
+
+    <meta
+        name="keywords"
+        content="Shree Resunga Secondary School Gallery, School Events, Academic Gallery, Sports, Festivals, Teachers, Infrastructure, Gulmi Nepal"
+    >
+
+    <meta
+        name="robots"
+        content="index, follow"
+    >
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Alpine.js -->
+    <script
+        defer
+        src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js">
+    </script>
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- Google Fonts -->
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        /* =====================================================
+           GLOBAL
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+
+            font-family: "Inter", sans-serif;
+
+            /*
+                ENTIRE PAGE YELLOW
+            */
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #fff700 0%,
+                    #ffd600 45%,
+                    #ffb300 100%
+                );
+
+            min-height: 100vh;
+
+            color: #172033;
+
+            overflow-x: hidden;
+        }
+
+
+        /* =====================================================
+           PAGE BACKGROUND DECORATION
+        ===================================================== */
+
+        body::before {
+
+            content: "";
+
+            position: fixed;
+
+            width: 350px;
+            height: 350px;
+
+            border-radius: 50%;
+
+            background: rgba(255,255,255,0.20);
+
+            top: 120px;
+            left: -150px;
+
+            pointer-events: none;
+
+            z-index: -1;
+        }
+
+        body::after {
+
+            content: "";
+
+            position: fixed;
+
+            width: 450px;
+            height: 450px;
+
+            border-radius: 50%;
+
+            background: rgba(255,255,255,0.15);
+
+            right: -220px;
+            bottom: -150px;
+
+            pointer-events: none;
+
+            z-index: -1;
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .main-navbar {
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+            right: 0;
+
+            z-index: 1000;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #002b5c,
+                    #3b146e,
+                    #e65100
+                );
+
+            box-shadow:
+                0 8px 30px rgba(0,0,0,0.25);
+
+            backdrop-filter: blur(10px);
+        }
+
+
+        .nav-container {
+
+            max-width: 1400px;
+
+            margin: auto;
+
+            padding:
+                12px 25px;
+
+            min-height: 78px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+
+        /* =====================================================
+           BRAND
+        ===================================================== */
+
+        .brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 13px;
+
+            text-decoration: none;
+
+            min-width: 0;
+        }
+
+
+        .brand-logo {
+
+            width: 55px;
+            height: 55px;
+
+            border-radius: 50%;
+
+            object-fit: cover;
+
+            border:
+                3px solid #ffd600;
+
+            box-shadow:
+                0 0 0 3px rgba(255,255,255,0.15),
+                0 6px 20px rgba(0,0,0,0.25);
+        }
+
+
+        .brand-text {
+
+            display: flex;
+
+            flex-direction: column;
+        }
+
+
+        .brand-title {
+
+            color: #ffd600;
+
+            font-family: "Poppins", sans-serif;
+
+            font-size: 18px;
+
+            font-weight: 800;
+
+            line-height: 1.2;
+        }
+
+
+        .brand-subtitle {
+
+            color: rgba(255,255,255,0.85);
+
+            font-size: 11px;
+
+            margin-top: 3px;
+        }
+
+
+        /* =====================================================
+           DESKTOP NAV
+        ===================================================== */
+
+        .desktop-nav {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 5px;
+        }
+
+
+        .desktop-nav a {
+
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            padding:
+                10px 13px;
+
+            border-radius: 8px;
+
+            transition: all 0.3s ease;
+        }
+
+
+        .desktop-nav a:hover {
+
+            background: rgba(255,255,255,0.14);
+
+            color: #ffd600;
+
+            transform: translateY(-2px);
+        }
+
+
+        .desktop-nav .login-btn {
+
+            background: #ffd600;
+
+            color: #172033;
+
+            border-radius: 25px;
+
+            padding:
+                10px 20px;
+        }
+
+
+        .desktop-nav .login-btn:hover {
+
+            background: white;
+
+            color: #e65100;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =====================================================
+           MOBILE BUTTON
+        ===================================================== */
+
+        .mobile-button {
+
+            color: #ffd600;
+
+            background: transparent;
+
+            border: none;
+
+            cursor: pointer;
+
+            padding: 5px;
+        }
+
+
+        /* =====================================================
+           MOBILE MENU
+        ===================================================== */
+
+        .mobile-menu {
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #002b5c,
+                    #3b146e,
+                    #e65100
+                );
+
+            border-top:
+                1px solid rgba(255,255,255,0.15);
+
+            padding: 15px 20px 22px;
+        }
+
+
+        .mobile-menu a {
+
+            display: block;
+
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: 600;
+
+            padding: 13px 15px;
+
+            border-radius: 8px;
+
+            margin-bottom: 5px;
+
+            transition: 0.3s;
+        }
+
+
+        .mobile-menu a:hover {
+
+            background: rgba(255,255,255,0.15);
+
+            color: #ffd600;
+        }
+
+
+        /* =====================================================
+           NOTICE / MARQUEE
+        ===================================================== */
+
+        .notice-wrapper {
+
+            margin-top: 78px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #ff8f00,
+                    #ffc107,
+                    #ff8f00
+                );
+
+            overflow: hidden;
+
+            border-bottom:
+                3px solid rgba(0,0,0,0.08);
+
+            box-shadow:
+                0 4px 15px rgba(0,0,0,0.15);
+        }
+
+
+        .notice {
+
+            max-width: 1400px;
+
+            margin: auto;
+
+            height: 48px;
+
+            display: flex;
+
+            align-items: center;
+        }
+
+
+        .notice-title {
+
+            height: 48px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            background: #002b5c;
+
+            color: white;
+
+            padding:
+                0 22px;
+
+            font-weight: 800;
+
+            white-space: nowrap;
+
+            z-index: 2;
+        }
+
+
+        .notice-title i {
+
+            color: #ffd600;
+        }
+
+
+        .marquee-container {
+
+            overflow: hidden;
+
+            flex: 1;
+        }
+
+
+        .marquee {
+
+            display: inline-block;
+
+            white-space: nowrap;
+
+            color: #172033;
+
+            font-weight: 700;
+
+            animation:
+                marquee 22s linear infinite;
+
+            padding-left: 30px;
+        }
+
+
+        @keyframes marquee {
+
+            from {
+                transform: translateX(100%);
+            }
+
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .gallery-hero {
+
+            max-width: 1400px;
+
+            margin: auto;
+
+            padding:
+                70px 25px 45px;
+
+            text-align: center;
+        }
+
+
+        .hero-icon {
+
+            width: 90px;
+            height: 90px;
+
+            margin:
+                0 auto 20px;
+
+            border-radius: 25px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #002b5c,
+                    #4b0082
+                );
+
+            color: #ffd600;
+
+            font-size: 42px;
+
+            box-shadow:
+                0 15px 35px rgba(0,0,0,0.25);
+
+            transform: rotate(-4deg);
+        }
+
+
+        .gallery-hero h1 {
+
+            font-family: "Poppins", sans-serif;
+
+            color: #002b5c;
+
+            font-size:
+                clamp(35px, 5vw, 58px);
+
+            font-weight: 800;
+
+            line-height: 1.1;
+
+            text-shadow:
+                2px 3px 0 rgba(255,255,255,0.35);
+
+            margin-bottom: 15px;
+        }
+
+
+        .gallery-hero h1 span {
+
+            color: #e65100;
+        }
+
+
+        .gallery-hero p {
+
+            max-width: 800px;
+
+            margin: auto;
+
+            color: #533b00;
+
+            font-size: 16px;
+
+            line-height: 1.8;
+
+            font-weight: 500;
+        }
+
+
+        /* =====================================================
+           GALLERY CONTAINER
+        ===================================================== */
+
+        .gallery-container {
+
+            max-width: 1400px;
+
+            margin: auto;
+
+            padding:
+                20px 25px 80px;
+        }
+
+
+        /* =====================================================
+           CATEGORY GRID
+        ===================================================== */
+
+        .gallery-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 28px;
+        }
+
+
+        /* =====================================================
+           GALLERY CARD
+        ===================================================== */
+
+        .gallery-card {
+
+            position: relative;
+
+            overflow: hidden;
+
+            min-height: 285px;
+
+            border-radius: 22px;
+
+            background: white;
+
+            text-decoration: none;
+
+            box-shadow:
+                0 12px 30px rgba(92,57,0,0.25);
+
+            border:
+                3px solid rgba(255,255,255,0.7);
+
+            transition:
+                transform 0.35s ease,
+                box-shadow 0.35s ease;
+
+            isolation: isolate;
+        }
+
+
+        .gallery-card:hover {
+
+            transform:
+                translateY(-10px)
+                scale(1.015);
+
+            box-shadow:
+                0 25px 50px rgba(72,44,0,0.35);
+        }
+
+
+        /* =====================================================
+           IMAGE
+        ===================================================== */
+
+        .gallery-card img {
+
+            width: 100%;
+
+            height: 285px;
+
+            object-fit: cover;
+
+            display: block;
+
+            transition:
+                transform 0.6s ease,
+                filter 0.6s ease;
+        }
+
+
+        .gallery-card:hover img {
+
+            transform: scale(1.10);
+
+            filter:
+                brightness(0.72)
+                saturate(1.15);
+        }
+
+
+        /* =====================================================
+           OVERLAY
+        ===================================================== */
+
+        .gallery-overlay {
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    to top,
+                    rgba(0,20,45,0.92) 0%,
+                    rgba(0,20,45,0.40) 45%,
+                    transparent 75%
+                );
+
+            z-index: 1;
+
+            transition:
+                background 0.35s ease;
+        }
+
+
+        .gallery-card:hover .gallery-overlay {
+
+            background:
+                linear-gradient(
+                    to top,
+                    rgba(0,43,92,0.95) 0%,
+                    rgba(230,81,0,0.30) 55%,
+                    transparent 85%
+                );
+        }
+
+
+        /* =====================================================
+           CARD CONTENT
+        ===================================================== */
+
+        .gallery-content {
+
+            position: absolute;
+
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            z-index: 2;
+
+            padding: 25px;
+        }
+
+
+        .gallery-icon {
+
+            width: 48px;
+            height: 48px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 14px;
+
+            background:
+                rgba(255,214,0,0.95);
+
+            color: #002b5c;
+
+            font-size: 20px;
+
+            margin-bottom: 12px;
+
+            transition: 0.3s;
+        }
+
+
+        .gallery-card:hover .gallery-icon {
+
+            transform:
+                rotate(-8deg)
+                scale(1.1);
+
+            background: white;
+
+            color: #e65100;
+        }
+
+
+        .gallery-content h2 {
+
+            color: white;
+
+            font-family: "Poppins", sans-serif;
+
+            font-size: 21px;
+
+            font-weight: 800;
+
+            line-height: 1.3;
+
+            margin-bottom: 5px;
+        }
+
+
+        .gallery-content p {
+
+            color:
+                rgba(255,255,255,0.85);
+
+            font-size: 13px;
+
+            font-weight: 500;
+        }
+
+
+        .gallery-arrow {
+
+            position: absolute;
+
+            right: 20px;
+
+            bottom: 25px;
+
+            width: 38px;
+            height: 38px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255,255,255,0.15);
+
+            color: white;
+
+            backdrop-filter: blur(5px);
+
+            transition: 0.3s;
+        }
+
+
+        .gallery-card:hover .gallery-arrow {
+
+            background: #ffd600;
+
+            color: #002b5c;
+
+            transform:
+                translateX(5px);
+        }
+
+
+        /* =====================================================
+           BOTTOM CTA
+        ===================================================== */
+
+        .gallery-cta {
+
+            max-width: 1100px;
+
+            margin:
+                20px auto 0;
+
+            padding:
+                45px 30px;
+
+            text-align: center;
+
+            border-radius: 25px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #002b5c,
+                    #4b0082,
+                    #e65100
+                );
+
+            color: white;
+
+            box-shadow:
+                0 20px 45px rgba(0,0,0,0.25);
+        }
+
+
+        .gallery-cta h2 {
+
+            font-family: "Poppins", sans-serif;
+
+            font-size:
+                clamp(25px, 4vw, 38px);
+
+            font-weight: 800;
+
+            margin-bottom: 10px;
+        }
+
+
+        .gallery-cta p {
+
+            max-width: 700px;
+
+            margin:
+                0 auto 22px;
+
+            color:
+                rgba(255,255,255,0.85);
+        }
+
+
+        .cta-button {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            background: #ffd600;
+
+            color: #172033;
+
+            padding:
+                13px 25px;
+
+            border-radius: 30px;
+
+            font-weight: 800;
+
+            text-decoration: none;
+
+            transition: 0.3s;
+
+            box-shadow:
+                0 8px 20px rgba(0,0,0,0.2);
+        }
+
+
+        .cta-button:hover {
+
+            background: white;
+
+            color: #e65100;
+
+            transform:
+                translateY(-3px);
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+
+            background:
+                #071827;
+
+            color: white;
+
+            margin-top: 30px;
+        }
+
+
+        .footer-main {
+
+            max-width: 1400px;
+
+            margin: auto;
+
+            padding:
+                55px 25px 35px;
+        }
+
+
+        .footer-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                2fr 1fr 1fr 1.5fr;
+
+            gap: 40px;
+        }
+
+
+        .footer-brand h2 {
+
+            font-family: "Poppins", sans-serif;
+
+            color: #ffd600;
+
+            margin-bottom: 12px;
+        }
+
+
+        .footer-brand p {
+
+            color: #aab4c0;
+
+            max-width: 450px;
+
+            font-size: 14px;
+
+            line-height: 1.8;
+        }
+
+
+        .footer-column h3 {
+
+            color: #ffd600;
+
+            margin-bottom: 15px;
+
+            font-size: 17px;
+        }
+
+
+        .footer-column a {
+
+            display: block;
+
+            color: #aab4c0;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            margin-bottom: 9px;
+
+            transition: 0.3s;
+        }
+
+
+        .footer-column a:hover {
+
+            color: #ffd600;
+
+            transform: translateX(4px);
+        }
+
+
+        .contact-line {
+
+            display: flex;
+
+            gap: 10px;
+
+            color: #aab4c0;
+
+            font-size: 14px;
+
+            margin-bottom: 13px;
+        }
+
+
+        .contact-line i {
+
+            color: #ffd600;
+
+            margin-top: 4px;
+        }
+
+
+        .social-links {
+
+            display: flex;
+
+            gap: 10px;
+
+            margin-top: 20px;
+        }
+
+
+        .social-links a {
+
+            width: 40px;
+            height: 40px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255,255,255,0.08);
+
+            color: white;
+
+            transition: 0.3s;
+        }
+
+
+        .social-links a:hover {
+
+            background: #ff9800;
+
+            color: white;
+
+            transform:
+                translateY(-4px);
+        }
+
+
+        .copyright {
+
+            border-top:
+                1px solid rgba(255,255,255,0.08);
+
+            padding:
+                20px 25px;
+
+            text-align: center;
+
+            color: #8793a0;
+
+            font-size: 13px;
+        }
+
+
+        /* =====================================================
+           BACK TO TOP
+        ===================================================== */
+
+        .back-top {
+
+            position: fixed;
+
+            right: 22px;
+
+            bottom: 22px;
+
+            width: 48px;
+            height: 48px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #002b5c,
+                    #e65100
+                );
+
+            color: #ffd600;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 8px 25px rgba(0,0,0,0.3);
+
+            z-index: 900;
+
+            transition: 0.3s;
+        }
+
+
+        .back-top:hover {
+
+            transform:
+                translateY(-5px);
+
+            color: white;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 1150px) {
+
+            .desktop-nav {
+
+                gap: 0;
+            }
+
+            .desktop-nav a {
+
+                padding:
+                    9px 9px;
+
+                font-size: 13px;
+            }
+
+            .gallery-grid {
+
+                grid-template-columns:
+                    repeat(3, 1fr);
+            }
+
+            .footer-grid {
+
+                grid-template-columns:
+                    1fr 1fr;
+            }
+        }
+
+
+        @media (max-width: 900px) {
+
+            .desktop-nav {
+
+                display: none;
+            }
+
+            .mobile-button {
+
+                display: block;
+            }
+
+            .gallery-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+                gap: 20px;
+            }
+
+            .gallery-card,
+            .gallery-card img {
+
+                min-height: 270px;
+
+                height: 270px;
+            }
+
+            .notice-title {
+
+                padding:
+                    0 14px;
+
+                font-size: 13px;
+            }
+        }
+
+
+        @media (min-width: 901px) {
+
+            .mobile-button {
+
+                display: none;
+            }
+        }
+
+
+        @media (max-width: 650px) {
+
+            .nav-container {
+
+                padding:
+                    10px 15px;
+
+                min-height: 70px;
+            }
+
+            .brand-logo {
+
+                width: 48px;
+                height: 48px;
+            }
+
+            .brand-title {
+
+                font-size: 14px;
+            }
+
+            .brand-subtitle {
+
+                font-size: 9px;
+            }
+
+            .notice-wrapper {
+
+                margin-top: 70px;
+            }
+
+            .notice {
+
+                height: 43px;
+            }
+
+            .notice-title {
+
+                height: 43px;
+
+                font-size: 11px;
+
+                padding:
+                    0 10px;
+            }
+
+            .gallery-hero {
+
+                padding:
+                    50px 18px 30px;
+            }
+
+            .hero-icon {
+
+                width: 70px;
+                height: 70px;
+
+                font-size: 30px;
+            }
+
+            .gallery-hero h1 {
+
+                font-size: 34px;
+            }
+
+            .gallery-hero p {
+
+                font-size: 14px;
+            }
+
+            .gallery-container {
+
+                padding:
+                    15px 15px 60px;
+            }
+
+            .gallery-grid {
+
+                grid-template-columns: 1fr;
+
+                gap: 20px;
+            }
+
+            .gallery-card,
+            .gallery-card img {
+
+                height: 290px;
+
+                min-height: 290px;
+            }
+
+            .gallery-content {
+
+                padding: 20px;
+            }
+
+            .gallery-content h2 {
+
+                font-size: 20px;
+            }
+
+            .gallery-cta {
+
+                margin-top: 15px;
+
+                padding:
+                    35px 20px;
+            }
+
+            .footer-grid {
+
+                grid-template-columns: 1fr;
+
+                gap: 30px;
+            }
+
+            .footer-main {
+
+                padding:
+                    45px 20px 30px;
+            }
+        }
+
+
+        @media (max-width: 400px) {
+
+            .brand-title {
+
+                font-size: 12px;
+            }
+
+            .brand-subtitle {
+
+                display: none;
+            }
+
+            .gallery-hero h1 {
+
+                font-size: 30px;
+            }
+
+            .gallery-card,
+            .gallery-card img {
+
+                height: 260px;
+
+                min-height: 260px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<header
+    class="main-navbar"
+    x-data="{ mobileMenuOpen: false }"
+>
+
+    <div class="nav-container">
+
+
+        <!-- BRAND -->
+
+        <a
+            href="{{ url_for('views.homepage') }}"
+            class="brand"
+        >
+
+            <img
+                src="{{ url_for('static', filename='Images/logo.jpg') }}"
+                class="brand-logo"
+                alt="Shree Resunga Secondary School Logo"
+            >
+
+            <div class="brand-text">
+
+                <span class="brand-title">
+                    Shree Resunga Secondary School
+                </span>
+
+                <span class="brand-subtitle">
+                    Resunga Municipality, Gulmi, Nepal
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <!-- DESKTOP NAVIGATION -->
+
+        <nav class="desktop-nav">
+
+            <a href="{{ url_for('views.homepage') }}">
+                Home
+            </a>
+
+            <a href="{{ url_for('views.about_us') }}">
+                About
+            </a>
+
+            <a href="{{ url_for('views.admissions') }}">
+                Admissions
+            </a>
+
+            <a href="{{ url_for('views.news') }}">
+                News
+            </a>
+
+            <a href="{{ url_for('views.Gallery') }}">
+                Gallery
+            </a>
+
+            <a href="{{ url_for('views.contact') }}">
+                Contact
+            </a>
+
+            <a
+                href="{{ url_for('auth.login') }}"
+                class="login-btn"
+            >
+                <i class="fa-solid fa-right-to-bracket"></i>
+                Login
+            </a>
+
+        </nav>
+
+
+        <!-- MOBILE BUTTON -->
+
+        <button
+            @click="mobileMenuOpen = !mobileMenuOpen"
+            class="mobile-button"
+            aria-label="Open navigation menu"
+        >
+
+            <i
+                x-show="!mobileMenuOpen"
+                class="fa-solid fa-bars text-2xl"
+            ></i>
+
+            <i
+                x-show="mobileMenuOpen"
+                class="fa-solid fa-xmark text-2xl"
+            ></i>
+
+        </button>
+
+    </div>
+
+
+    <!-- MOBILE NAVIGATION -->
+
+    <div
+        x-show="mobileMenuOpen"
+        x-transition
+        class="mobile-menu"
+    >
+
+        <a href="{{ url_for('views.homepage') }}">
+            <i class="fa-solid fa-house mr-2"></i>
+            Home
+        </a>
+
+        <a href="{{ url_for('views.about_us') }}">
+            <i class="fa-solid fa-school mr-2"></i>
+            About
+        </a>
+
+        <a href="{{ url_for('views.admissions') }}">
+            <i class="fa-solid fa-file-signature mr-2"></i>
+            Admissions
+        </a>
+
+        <a href="{{ url_for('views.news') }}">
+            <i class="fa-solid fa-newspaper mr-2"></i>
+            News
+        </a>
+
+        <a href="{{ url_for('views.Gallery') }}">
+            <i class="fa-solid fa-images mr-2"></i>
+            Gallery
+        </a>
+
+        <a href="{{ url_for('views.contact') }}">
+            <i class="fa-solid fa-phone mr-2"></i>
+            Contact
+        </a>
+
+        <a href="{{ url_for('auth.login') }}">
+            <i class="fa-solid fa-right-to-bracket mr-2"></i>
+            Login
+        </a>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================================================
+     NOTICE BAR
+========================================================= -->
+
+<div class="notice-wrapper">
+
+    <div class="notice">
+
+        <div class="notice-title">
+
+            <i class="fa-solid fa-bullhorn"></i>
+
+            NOTICE
+
+        </div>
+
+
+        <div class="marquee-container">
+
+            <div class="marquee">
+
+                📢 Welcome to Shree Resunga Secondary School
+                &nbsp; • &nbsp;
+                🎓 Admissions Open
+                &nbsp; • &nbsp;
+                🏆 Excellence in Education
+                &nbsp; • &nbsp;
+                ⚽ Sports & Activities
+                &nbsp; • &nbsp;
+                📚 Quality Learning
+                &nbsp; • &nbsp;
+                🌟 Building Bright Futures
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="gallery-hero">
+
+    <div class="hero-icon">
+
+        <i class="fa-solid fa-images"></i>
+
+    </div>
+
+
+    <h1>
+
+        School
+        <span>Gallery</span>
+
+    </h1>
+
+
+    <p>
+
+        Explore the vibrant life of
+        <strong>Shree Resunga Secondary School</strong>.
+        Discover our academic achievements,
+        school events, sports, festivals,
+        creative works, infrastructure,
+        teachers and unforgettable experiences.
+
+    </p>
+
+</section>
+
+
+
+<!-- =========================================================
+     GALLERY
+========================================================= -->
+
+<main class="gallery-container">
+
+
+    <div class="gallery-grid">
+
+
+        <!-- SCHOOL EVENTS -->
+
+        <a
+            href="{{ url_for('views.events') }}"
+            class="gallery-card"
+        >
+
+            <img
+                src="{{ url_for('static', filename='Images/01vision.jpg') }}"
+                alt="School Events"
+                loading="lazy"
+            >
+
+            <div class="gallery-overlay"></div>
+
+            <div class="gallery-content">
+
+                <div class="gallery-icon">
+
+                    <i class="fa-solid fa-calendar-days"></i>
+
+                </div>
+
+                <h2>
+                    School Events
+                </h2>
+
+                <p>
+                    विद्यालयका कार्यक्रम तथा गतिविधिहरू
+                </p>
+
+            </div>
+
+            <div class="gallery-arrow">
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </div>
+
+        </a>
+
+
+
+        <!-- FUN EVENTS -->
+
+        <a
+            href="{{ url_for('views.events') }}"
+            class="gallery-card"
+        >
+
+            <img
+                src="{{ url_for('static', filename='Images/op7.jpg') }}"
+                alt="Fun Events and Activities"
+                loading="lazy"
+            >
+
+            <div class="gallery-overlay"></div>
+
+            <div class="gallery-content">
+
+                <div class="gallery-icon">
+
+                    <i class="fa-solid fa-face-smile"></i>
+
+                </div>
+
+                <h2>
+                    Fun Events & Activities
+                </h2>
+
+                <p>
+                    विद्यार्थीका रमाइला गतिविधिहरू
+                </p>
+
+            </div>
+
+            <div class="gallery-arrow">
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </div>
+
+        </a>
+
+
+
+        <!-- ACADEMICS -->
+
+        <a
+            href="{{ url_for('views.Galleryacademics') }}"
+            class="gallery-card"
+        >
+
+            <img
+                src="{{ url_for('static', filename='Images/10latest.jpg') }}"
+                alt="Academic Highlights"
+                loading="lazy"
+            >
+
+            <div class="gallery-overlay"></div>
+
+            <div class="gallery-content">
+
+                <div class="gallery-icon">
+
+                    <i class="fa-solid fa-graduation-cap"></i>
+
+                </div>
+
+                <h2>
+                    Academic Highlights
+                </h2>
+
+                <p>
+                    शैक्षिक उपलब्धि तथा झलकहरू
+                </p>
+
+            </div>
+
+            <div class="gallery-arrow">
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </div>
+
+        </a>
+
+
+
+        <!-- AWARDS -->
+
+        <a
+            href="{{ url_for('views.Galleryacademics') }}"
+            class="gallery-card"
+        >
+
+            <img
+                src="{{ url_for('static', filename='Images/awards.jpg') }}"
+                alt="Academic Awards and Honors"
+                loading="lazy"
+            >
+
+            <div class="gallery-overlay"></div>
+
+            <div class="gallery-content">
+
+                <div class="gallery-icon">
+
+                    <i class="fa-solid fa-award"></i>
+
+                </div>
+
+                <h2>
+                    Awards & Honors
+                </h2>
+
+                <p>
+                    पुरस्कार तथा सम्मान
+                </p>
+
+            </div>
+
+            <div class="gallery-arrow">
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </div>
+
+        </a>
+
+
+
+        <!-- OUR TEAM -->
+
+        <a
+            href="{{ url_for('views.ourteam') }}"
+            class="gallery-card"
+        >
+
+            <img
+                src="{{ url_for('static', filename='Images/logo1.jpg') }}"
+                alt="Our School Team"
+                loading="lazy"
+            >
+
+            <div class="gallery-overlay"></div>
+
+            <div class="gallery-content">
+
+                <div class="gallery-icon">
+
+                    <i class="fa-solid fa-users"></i>
+
+                </div>
+
+                <h2>
+                    Our Team
+                </h2>
+
+                <p>
+                    हाम्रो विद्यालय परिवार
+                </p>
+
+            </div>
+
+            <div class="gallery-arrow">
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </div>
+
+        </a>
+
+
+
+        <!-- TEACHERS -->
+
+        <a
+            href="{{ url_for('views.ourteam') }}"
+            class="gallery-card"
+        >
+
+            <img
+                src="{{ url_for('static', filename='Images/teachers.jpg') }}"
+                alt="Teachers and Staff"
+                loading="lazy"
+            >
+
+            <div class="gallery-overlay"></div>
+
+            <div class="gallery-content">
+
+                <div class="gallery-icon">
+
+                    <i class="fa-solid fa-chalkboard-user"></i>
+
+                </div>
+
+                <h2>
+                    Teachers & Staff
+                </h2>
+
+                <p>
+                    शिक्षक तथा कर्मचारी
+                </p>
+
+            </div>
+
+            <div class="gallery-arrow">
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </div>
+
+        </a>
+
+
+
+        <!-- INFRASTRUCTURE -->
+
+        <a
+            href="{{ url_for('views.infastucture') }}"
+            class="gallery-card"
+        >
+
+            <img
+                src="{{ url_for('static', filename='Images/lobcomp.jpg') }}"
+                alt="School Infrastructure"
+                loading="lazy"
+            >
+
+            <div class="gallery-overlay"></div>
+
+            <div class="gallery-content">
+
+                <div class="gallery-icon">
+
+                    <i class="fa-solid fa-building"></i>
+
+                </div>
+
+                <h2>
+                    Infrastructure
+                </h2>
+
+                <p>
+                    विद्यालयका पूर्वाधार
+                </p>
+
+            </div>
+
+            <div class="gallery-arrow">
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </div>
+
+        </a>
+
+
+
+        <!-- CAMPUS -->
+
+        <a
+            href="{{ url_for('views.infastucture') }}"
+            class="gallery-card"
+        >
+
+            <img
+                src="{{ url_for('static', filename='Images/hho.jpg') }}"
+                alt="School Campus Buildings"
+                loading="lazy"
+            >
+
+            <div class="gallery-overlay"></div>
+
+            <div class="gallery-content">
+
+                <div class="gallery-icon">
+
+                    <i class="fa-solid fa-school"></i>
+
+                </div>
+
+                <h2>
+                    Campus Buildings
+                </h2>
+
+                <p>
+                    विद्यालय परिसर तथा भवनहरू
+                </p>
+
+            </div>
+
+            <div class="gallery-arrow">
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </div>
+
+        </a>
+
+
+
+        <!-- SPORTS -->
+
+        <a
+            href="{{ url_for('views.sports') }}"
+            class="gallery-card"
+        >
+
+            <img
+                src="{{ url_for('static', filename='Images/khelnp.jpg') }}"
+                alt="Sports Activities"
+                loading="lazy"
+            >
+
+            <div class="gallery-overlay"></div>
+
+            <div class="gallery-content">
+
+                <div class="gallery-icon">
+
+                    <i class="fa-solid fa-volleyball"></i>
+
+                </div>
+
+                <h2>
+                    Sports Activities
+                </h2>
+
+                <p>
+                    खेलकुद तथा शारीरिक गतिविधि
+                </p>
+
+            </div>
+
+            <div class="gallery-arrow">
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </div>
+
+        </a>
+
+
+
+        <!-- INTER SCHOOL SPORTS -->
+
+        <a
+            href="{{ url_for('views.sports') }}"
+            class="gallery-card"
+        >
+
+            <img
+                src="{{ url_for('static', filename='Images/khelnp.jpg') }}"
+                alt="Inter School Sports"
+                loading="lazy"
+            >
+
+            <div class="gallery-overlay"></div>
+
+            <div class="gallery-content">
+
+                <div class="gallery-icon">
+
+                    <i class="fa-solid fa-trophy"></i>
+
+                </div>
+
+                <h2>
+                    Inter School Sports
+                </h2>
+
+                <p>
+                    अन्तरविद्यालय खेलकुद
+                </p>
+
+            </div>
+
+            <div class="gallery-arrow">
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </div>
+
+        </a>
+
+
+
+        <!-- FESTIVALS -->
+
+        <a
+            href="{{ url_for('views.festivals') }}"
+            class="gallery-card"
+        >
+
+            <img
+                src="{{ url_for('static', filename='Images/jamara.jpg') }}"
+                alt="School Festivals"
+                loading="lazy"
+            >
+
+            <div class="gallery-overlay"></div>
+
+            <div class="gallery-content">
+
+                <div class="gallery-icon">
+
+                    <i class="fa-solid fa-star"></i>
+
+                </div>
+
+                <h2>
+                    Festivals
+                </h2>
+
+                <p>
+                    चाडपर्व तथा सांस्कृतिक कार्यक्रम
+                </p>
+
+            </div>
+
+            <div class="gallery-arrow">
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </div>
+
+        </a>
+
+
+
+        <!-- CULTURAL -->
+
+        <a
+            href="{{ url_for('views.festivals') }}"
+            class="gallery-card"
+        >
+
+            <img
+                src="{{ url_for('static', filename='Images/mandir.jpg') }}"
+                alt="Cultural Day Celebration"
+                loading="lazy"
+            >
+
+            <div class="gallery-overlay"></div>
+
+            <div class="gallery-content">
+
+                <div class="gallery-icon">
+
+                    <i class="fa-solid fa-music"></i>
+
+                </div>
+
+                <h2>
+                    Cultural Celebrations
+                </h2>
+
+                <p>
+                    सांस्कृतिक दिवस तथा उत्सवहरू
+                </p>
+
+            </div>
+
+            <div class="gallery-arrow">
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </div>
+
+        </a>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         CTA
+    ====================================================== -->
+
+    <div class="gallery-cta">
+
+        <h2>
+            Discover More About Our School
+        </h2>
+
+        <p>
+
+            Explore our school, achievements,
+            academic programs, events and
+            student activities.
+
+        </p>
+
+
+        <a
+            href="{{ url_for('views.about_us') }}"
+            class="cta-button"
+        >
+
+            <i class="fa-solid fa-school"></i>
+
+            Explore School
+
+        </a>
+
+    </div>
+
+</main>
+
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+    <div class="footer-main">
+
+        <div class="footer-grid">
+
+
+            <!-- ABOUT -->
+
+            <div class="footer-brand">
+
+                <h2>
+                    Shree Resunga Secondary School
+                </h2>
+
+                <p>
+
+                    Shree Resunga Secondary School is
+                    committed to quality education,
+                    practical learning, discipline,
+                    creativity and the overall development
+                    of students.
+
+                </p>
+
+
+                <div class="social-links">
+
+                    <a href="#" aria-label="Facebook">
+
+                        <i class="fa-brands fa-facebook-f"></i>
+
+                    </a>
+
+                    <a href="#" aria-label="YouTube">
+
+                        <i class="fa-brands fa-youtube"></i>
+
+                    </a>
+
+                    <a href="#" aria-label="Instagram">
+
+                        <i class="fa-brands fa-instagram"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- QUICK LINKS -->
+
+            <div class="footer-column">
+
+                <h3>
+                    Quick Links
+                </h3>
+
+                <a href="{{ url_for('views.homepage') }}">
+                    Home
+                </a>
+
+                <a href="{{ url_for('views.about_us') }}">
+                    About Us
+                </a>
+
+                <a href="{{ url_for('views.academics') }}">
+                    Academics
+                </a>
+
+                <a href="{{ url_for('views.news') }}">
+                    News
+                </a>
+
+                <a href="{{ url_for('views.contact') }}">
+                    Contact
+                </a>
+
+            </div>
+
+
+            <!-- STUDENTS -->
+
+            <div class="footer-column">
+
+                <h3>
+                    Students
+                </h3>
+
+                <a href="{{ url_for('views.admissions') }}">
+                    Admission
+                </a>
+
+                <a href="{{ url_for('auth.login') }}">
+                    Student Login
+                </a>
+
+                <a href="{{ url_for('views.sports') }}">
+                    Sports
+                </a>
+
+                <a href="{{ url_for('views.Gallery') }}">
+                    Gallery
+                </a>
+
+                <a href="{{ url_for('views.events') }}">
+                    Events
+                </a>
+
+            </div>
+
+
+            <!-- CONTACT -->
+
+            <div class="footer-column">
+
+                <h3>
+                    Contact Us
+                </h3>
+
+                <div class="contact-line">
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    <span>
+                        Resunga Municipality,
+                        Gulmi, Nepal
+                    </span>
+
+                </div>
+
+
+                <div class="contact-line">
+
+                    <i class="fa-solid fa-phone"></i>
+
+                    <span>
+                        School Office
+                    </span>
+
+                </div>
+
+
+                <div class="contact-line">
+
+                    <i class="fa-solid fa-envelope"></i>
+
+                    <span>
+                        school@example.com
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="copyright">
+
+        © 2026 Shree Resunga Secondary School.
+        All Rights Reserved.
+
+    </div>
+
+</footer>
+
+
+
+<!-- =========================================================
+     BACK TO TOP
+========================================================= -->
+
+<button
+    class="back-top"
+    id="backTop"
+    aria-label="Back to top"
+>
+
+    <i class="fa-solid fa-arrow-up"></i>
+
+</button>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+    /* =====================================================
+       BACK TO TOP
+    ===================================================== */
+
+    const backTop =
+        document.getElementById("backTop");
+
+
+    window.addEventListener(
+        "scroll",
+        function () {
+
+            if (window.scrollY > 500) {
+
+                backTop.style.opacity = "1";
+                backTop.style.pointerEvents = "auto";
+
+            } else {
+
+                backTop.style.opacity = "0";
+                backTop.style.pointerEvents = "none";
+
+            }
+
+        }
+    );
+
+
+    backTop.addEventListener(
+        "click",
+        function () {
+
+            window.scrollTo({
+
+                top: 0,
+
+                behavior: "smooth"
+
+            });
+
+        }
+    );
+
+</script>
+
+
+</body>
+</html>

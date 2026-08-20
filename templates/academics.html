@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Navbar with Back Button</title>
+<style>
+/* ===== GLOBAL RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+  
+body {
+    background: orangered;
+    color: #003366;
+    overflow-x: hidden;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg,#003366,#4b0082,#ff9800);
+    padding: 0.5rem 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    height: 70px;
+    transform: translateY(-100%);
+    opacity: 0;
+    animation: slideDown 0.7s forwards;
+}
+
+/* LEFT: LOGO + TITLE */
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.school-logo {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: 3px solid yellow;
+    object-fit: cover;
+}
+
+.school-title {
+    color: yellow;
+    font-weight: 800;
+    white-space: nowrap;
+    font-size: 1.5rem;
+    text-shadow: 1px 1px 2px black;
+}
+
+/* BACK BUTTON */
+.back-btn {
+    background-color: yellow;
+    color: #003366;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.back-btn:hover {
+    background-color: #ffd700;
+    transform: scale(1.1);
+}
+
+/* MARQUEE */
+.marquee-wrapper {
+    width: 100%;
+    background: yellow;
+    overflow: hidden;
+    border-top: 2px solid #003366;
+    border-bottom: 2px solid #003366;
+    position: fixed;
+    top: 70px; /* immediately below navbar */
+    left: 0;
+    z-index: 999;
+    transform: translateY(-100%);
+    opacity: 0;
+    animation: slideDown 0.7s forwards 0.2s; /* slight delay after navbar */
+}
+
+.marquee-content {
+    display: inline-block;
+    white-space: nowrap;
+    font-size: 1rem;
+    color: #003366;
+    font-weight: 700;
+    padding: 0.5rem 0;
+    animation: marqueeScroll 12s linear infinite;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes slideDown {
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes marqueeScroll {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width: 700px){
+    .navbar { height: 60px; padding: 0.4rem 0.8rem; }
+    .school-logo { width: 45px; height: 45px; }
+    .school-title { font-size: 1.2rem; }
+    .back-btn { width: 35px; height: 35px; font-size: 1.2rem; }
+    .marquee-wrapper { top: 60px; }
+    .marquee-content { font-size: 0.9rem; }
+}
+
+@media(max-width: 500px){
+    .navbar { height: 55px; padding: 0.3rem 0.6rem; }
+    .school-logo { width: 40px; height: 40px; }
+    .school-title { font-size: 1rem; }
+    .back-btn { width: 30px; height: 30px; font-size: 1rem; }
+    .marquee-wrapper { top: 55px; }
+    .marquee-content { font-size: 0.85rem; }
+}
+/* ================== ACADEMIC PAGE ================== */
+.academic-section {
+  background: orangered;
+  color: white;
+  padding: 180px 20px 80px;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Header */
+.academic-header {
+  text-align: center;
+  margin-bottom: 50px;
+  opacity: 0;
+  animation: fadeInDown 1s forwards;
+}
+
+.academic-header h1 {
+  font-size: 3rem;
+  font-weight: 900;
+  text-shadow: 2px 2px 5px black, 0 0 12px yellow;
+}
+
+.academic-header p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: auto;
+  line-height: 1.6;
+}
+
+/* Floating icons */
+.academic-icons {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 50px;
+  z-index: 0;
+}
+
+.academic-icons .icon {
+  font-size: 3rem;
+  color: yellow;
+  animation: floatIcon 4s ease-in-out infinite;
+}
+
+.academic-icons .icon:nth-child(2) { animation-delay: 0.7s; }
+.academic-icons .icon:nth-child(3) { animation-delay: 1.4s; }
+
+/* Grid layout */
+.academic-grid {
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+/* Text Column */
+.academic-text {
+  flex: 1;
+  min-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.academic-card {
+  background: rgba(255,255,255,0.1);
+  padding: 25px;
+  border-left: 10px solid yellow;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+  opacity: 0;
+  transform: translateX(-50px);
+  animation: slideFadeLeft 1s forwards;
+}
+
+.academic-card:nth-child(2) { animation-delay: 0.3s; }
+
+.academic-card h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.academic-card p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+/* Image Column */
+.academic-images {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.img-box {
+  background: rgba(0,0,0,0.25);
+  padding: 10px;
+  border-left: 8px solid yellow;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  opacity: 0;
+  transform: translateY(60px);
+  perspective: 900px;
+  animation: slideFadeUp 1s forwards;
+}
+
+.img-box:nth-child(2) { animation-delay: 0.3s; }
+
+.img-box img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border: 3px solid yellow;
+  transition: transform 0.5s, box-shadow 0.5s;
+}
+
+.img-box:hover img {
+  transform: scale(1.05) rotateX(5deg) rotateY(-5deg);
+  box-shadow: 0 0 25px yellow;
+}
+
+.img-box p {
+  text-align: center;
+  padding: 10px 5px 0;
+  font-weight: 600;
+}
+
+/* Animations */
+@keyframes fadeInDown { to { opacity:1; transform:translateY(0); } }
+@keyframes floatIcon { 0%,100%{transform:translateY(0)}50%{transform:translateY(-20px) rotate(15deg);} }
+@keyframes slideFadeLeft { to {opacity:1; transform:translateX(0);} }
+@keyframes slideFadeUp { to {opacity:1; transform:translateY(0);} }
+
+/* Responsive */
+@media(max-width:900px){ .academic-grid{ flex-direction: column; } }
+@media(max-width:500px){
+  .academic-header h1{ font-size:2rem; }
+  .academic-header p{ font-size:1rem; }
+  .img-box img{ height:200px; }
+}
+
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-left">
+        <img src="{{ url_for('static', filename='Images/logo.jpg') }}" alt="School Logo" class="school-logo">
+
+        <h1 class="school-title">Shree Resunga Secondary School</h1>
+    </div>
+  <button class="back-btn" onclick="window.location.href='{{ url_for('views.about_us') }}'">&#8592;</button>
+</nav>
+
+<div class="marquee-wrapper">
+    <div class="marquee-content">
+        📢 Welcome to Shree Resunga Secondary School | 🚀 Bright Futures | 🎓 Admissions Open
+    </div>
+</div>
+<section class="academic-section">
+
+  <!-- Section Heading -->
+  <div class="academic-header">
+    <h1>शैक्षिक उपलब्धिहरू / Academic Achievements</h1>
+    <p>हाम्रो विद्यार्थीहरूका उत्कृष्ट उपलब्धिहरू र प्रगतिशील शिक्षा / Our students’ achievements and progressive learning.</p>
+  </div>
+
+  <!-- Floating icons for fun academic vibe -->
+  <div class="academic-icons">
+    <div class="icon">&#127891;</div> <!-- graduation cap -->
+    <div class="icon">&#128218;</div> <!-- book -->
+    <div class="icon">&#128221;</div> <!-- memo -->
+  </div>
+
+  <!-- Content Grid -->
+  <div class="academic-grid">
+
+    <!-- Text Column -->
+    <div class="academic-text">
+      <div class="academic-card">
+        <h2>विद्यार्थी उपलब्धिहरू / Student Achievements</h2>
+<p>
+हाम्रो विद्यालयका विद्यार्थीहरूले जिल्लास्तरीय पुरस्कार जितेका छन्। उत्कृष्ट प्रदर्शन र मेहनतको परिणाम।<br>
+Our students have won **district-level awards**, showing excellence and dedication.
+</p>
+      </div>
+      <div class="academic-card">
+        <h2>शैक्षिक कार्यक्रम / Educational Programmes</h2>
+        <p>विशेष पाठ्यक्रम, विज्ञान, गणित, भाषा, र कला गतिविधिहरू विद्यार्थीहरूको ज्ञान विस्तारका लागि सञ्चालन गरिन्छ।<br>
+           Special courses in science, math, languages, and arts expand student knowledge.
+        </p>
+      </div>
+    </div>
+
+    <!-- Image Column -->
+    <div class="academic-images">
+      <div class="img-box">
+        <img src="{{ url_for('static', filename='Images/pradashani1.jpg') }}" alt="Academic Achievement 1">
+        <p>विद्यार्थीहरू विज्ञान प्रदर्शनीमा / Students at Science Exhibition</p>
+      </div>
+      <div class="img-box">
+        <img src="{{ url_for('static', filename='Images/puraskar.jpg') }}" alt="Academic Achievement 2">
+        <p>पुरस्कार वितरण समारोह / Award Ceremony</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+function goBack() {
+    window.academics.back();
+}
+
+</script>
+
+</body>
+</html>

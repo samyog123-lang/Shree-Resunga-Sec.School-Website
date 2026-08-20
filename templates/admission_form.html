@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Admission | Shree Resunga Secondary School</title>
+
+    <!-- TAILWIND CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- GOOGLE FONT -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- FONT AWESOME -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <style>
+
+        /* =====================================================
+           GLOBAL
+        ===================================================== */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background: #fff200 !important;
+            color: #222;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: "Poppins", sans-serif;
+        }
+
+
+        /* =====================================================
+           SCHOOL COLORS
+        ===================================================== */
+
+        :root {
+            --blue: #003366;
+            --dark-blue: #00264d;
+            --orange: #ff9800;
+            --dark-orange: #e68900;
+            --yellow: #fff200;
+            --light-yellow: #fff8b5;
+            --cream: #fffde7;
+        }
+
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        .school-header {
+            background: var(--yellow);
+            border-bottom: 5px solid var(--orange);
+            box-shadow: 0 5px 20px rgba(0, 51, 102, 0.15);
+        }
+
+        .back-btn {
+            transition: all 0.3s ease;
+            border: 2px solid rgba(0, 51, 102, 0.15);
+            color: var(--blue);
+            background: rgba(255,255,255,0.65);
+        }
+
+        .back-btn:hover {
+            background: var(--orange);
+            color: white;
+            border-color: var(--orange);
+            transform: translateX(-5px);
+        }
+
+        .school-logo {
+            background: linear-gradient(
+                135deg,
+                var(--blue),
+                #4b0082
+            );
+            box-shadow:
+                0 8px 20px rgba(0, 51, 102, 0.25);
+        }
+
+        .admission-badge {
+            background: var(--orange);
+            color: white;
+            box-shadow:
+                0 5px 15px rgba(255, 152, 0, 0.3);
+        }
+
+
+        /* =====================================================
+           MAIN CONTAINER
+        ===================================================== */
+
+        .main-card {
+            background: #fffef0;
+            border: 2px solid rgba(0, 51, 102, 0.08);
+            box-shadow:
+                0 25px 60px rgba(0, 51, 102, 0.18);
+        }
+
+
+        /* =====================================================
+           FORM HEADER
+        ===================================================== */
+
+        .form-header {
+            background:
+                radial-gradient(
+                    circle at 85% 20%,
+                    rgba(255,255,255,0.18),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    135deg,
+                    #003366 0%,
+                    #102c56 45%,
+                    #4b0082 100%
+                );
+        }
+
+        .header-circle-one {
+            background: rgba(255,152,0,0.18);
+        }
+
+        .header-circle-two {
+            border: 45px solid rgba(255,255,255,0.05);
+        }
+
+
+        /* =====================================================
+           FORM SECTIONS
+        ===================================================== */
+
+        .section-heading {
+            color: var(--blue);
+        }
+
+        .section-number {
+            background: var(--orange);
+            box-shadow:
+                0 5px 12px rgba(255,152,0,0.25);
+        }
+
+        .section-line {
+            border-color: rgba(0, 51, 102, 0.12);
+        }
+
+
+        /* =====================================================
+           INPUTS
+        ===================================================== */
+
+        .form-label {
+            color: var(--blue);
+        }
+
+        .form-input {
+            width: 100%;
+            background: #fffde7;
+            border: 2px solid rgba(0, 51, 102, 0.13);
+            color: #222;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--orange);
+            background: white;
+            box-shadow:
+                0 0 0 4px rgba(255,152,0,0.13);
+        }
+
+        .form-input::placeholder {
+            color: #888;
+        }
+
+        select.form-input {
+            cursor: pointer;
+        }
+
+
+        /* =====================================================
+           UPLOAD BOX
+        ===================================================== */
+
+        .upload-box {
+            background:
+                linear-gradient(
+                    135deg,
+                    #fffde7,
+                    #fff9a6
+                );
+
+            border: 2px dashed var(--orange);
+        }
+
+        .upload-title {
+            color: var(--blue);
+        }
+
+        .upload-description {
+            color: #9a7a00;
+        }
+
+        .file-input {
+            color: #666;
+        }
+
+        .file-input::file-selector-button {
+            background: var(--blue);
+            color: white;
+            border: none;
+            padding: 12px 22px;
+            border-radius: 999px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-right: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .file-input::file-selector-button:hover {
+            background: var(--orange);
+        }
+
+
+        /* =====================================================
+           SUBMIT BUTTON
+        ===================================================== */
+
+        .submit-btn {
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff9800,
+                    #e65100
+                );
+
+            color: white;
+
+            box-shadow:
+                0 12px 25px rgba(255,152,0,0.3);
+
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background:
+                linear-gradient(
+                    135deg,
+                    #e68900,
+                    #d84315
+                );
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 18px 35px rgba(230,105,0,0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+
+        /* =====================================================
+           FLASH MESSAGES
+        ===================================================== */
+
+        .flash-success {
+            background: #fff9c4;
+            color: #166534;
+            border-left: 5px solid #16a34a;
+        }
+
+        .flash-danger {
+            background: #fff3cd;
+            color: #b91c1c;
+            border-left: 5px solid #dc2626;
+        }
+
+
+        /* =====================================================
+           PROCESS CARDS
+        ===================================================== */
+
+        .process-card {
+            background: #fffef0;
+            box-shadow:
+                0 10px 30px rgba(0, 51, 102, 0.12);
+
+            transition: all 0.3s ease;
+        }
+
+        .process-card:hover {
+            transform: translateY(-7px);
+            box-shadow:
+                0 18px 35px rgba(0, 51, 102, 0.18);
+        }
+
+        .process-one {
+            border-bottom: 5px solid var(--orange);
+        }
+
+        .process-two {
+            border-bottom: 5px solid #dc2626;
+        }
+
+        .process-three {
+            border-bottom: 5px solid var(--blue);
+        }
+
+        .process-number {
+            background: var(--light-yellow);
+            color: var(--blue);
+        }
+
+        .process-title {
+            color: var(--blue);
+        }
+
+        .process-text {
+            color: #666;
+        }
+
+
+        /* =====================================================
+           FOOTER NOTE
+        ===================================================== */
+
+        .footer-note {
+            color: #756800;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 640px) {
+
+            .school-header {
+                padding: 14px;
+            }
+
+            .form-header {
+                padding: 30px 22px;
+            }
+
+            .form-header h2 {
+                font-size: 30px;
+            }
+
+            .main-card {
+                border-radius: 20px;
+            }
+
+            .form-content {
+                padding: 25px 18px;
+            }
+
+            .submit-btn {
+                font-size: 15px;
+                padding: 17px 10px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body class="min-h-screen">
+
+<!-- =========================================================
+     SCHOOL HEADER
+========================================================= -->
+
+<header class="school-header sticky top-0 z-50">
+
+    <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 py-4
+               flex justify-between items-center gap-4"
+    >
+
+        <!-- LEFT -->
+        <div class="flex items-center gap-4">
+
+            <a
+                href="{{ url_for('views.homepage') }}"
+                class="back-btn flex items-center gap-2
+                       px-4 py-2 rounded-full font-semibold
+                       transition-all"
+            >
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+                <span class="hidden sm:inline">
+                    Back to Home
+                </span>
+
+            </a>
+
+
+            <!-- SCHOOL BRAND -->
+            <div class="hidden md:flex items-center gap-3">
+
+                <div
+                    class="school-logo w-11 h-11 rounded-full
+                           flex items-center justify-center
+                           text-white font-bold"
+                >
+                    <i class="fa-solid fa-school"></i>
+                </div>
+
+                <div>
+
+                    <h1
+                        class="text-blue-900 font-bold
+                               leading-tight text-sm"
+                    >
+                        Shree Resunga Secondary School
+                    </h1>
+
+                    <p
+                        class="text-xs text-gray-600
+                               uppercase tracking-widest
+                               font-semibold"
+                    >
+                        Resunga Municipality, Gulmi
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ADMISSION STATUS -->
+        <div class="hidden sm:block">
+
+            <span
+                class="admission-badge px-5 py-2
+                       rounded-full text-xs
+                       font-bold uppercase
+                       tracking-widest"
+            >
+                <i class="fa-solid fa-circle-check mr-1"></i>
+                Admissions Open
+            </span>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main class="max-w-5xl mx-auto my-10 px-4">
+
+
+    <!-- =====================================================
+         MAIN FORM CARD
+    ====================================================== -->
+
+    <div
+        class="main-card rounded-3xl
+               overflow-hidden"
+    >
+
+
+        <!-- =================================================
+             FORM HEADER
+        ================================================== -->
+
+        <div
+            class="form-header p-8 md:p-12
+                   text-white relative overflow-hidden"
+        >
+
+            <div class="relative z-10">
+
+                <div
+                    class="inline-flex items-center gap-2
+                           bg-white/10 border border-white/20
+                           px-4 py-2 rounded-full
+                           text-sm font-semibold mb-5"
+                >
+
+                    <i class="fa-solid fa-graduation-cap"></i>
+
+                    Shree Resunga Secondary School
+
+                </div>
+
+
+                <h2
+                    class="text-4xl md:text-5xl
+                           font-extrabold tracking-tight"
+                >
+                    Online Admission Form
+                </h2>
+
+
+                <p
+                    class="text-blue-100 mt-3
+                           text-base md:text-lg"
+                >
+                    Begin your educational journey
+                    with Shree Resunga Secondary School.
+                </p>
+
+
+                <div
+                    class="flex flex-wrap gap-3 mt-6"
+                >
+
+                    <span
+                        class="bg-orange-500/90
+                               px-4 py-2 rounded-full
+                               text-sm font-semibold"
+                    >
+                        <i class="fa-solid fa-calendar mr-1"></i>
+                        Academic Session 2081/82
+                    </span>
+
+                    <span
+                        class="bg-white/10
+                               border border-white/20
+                               px-4 py-2 rounded-full
+                               text-sm font-semibold"
+                    >
+                        <i class="fa-solid fa-file-signature mr-1"></i>
+                        Online Application
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- DECORATIVE SHAPES -->
+
+            <div
+                class="header-circle-one absolute
+                       w-72 h-72 rounded-full
+                       -top-24 -right-20"
+            ></div>
+
+            <div
+                class="header-circle-two absolute
+                       w-80 h-80 rounded-full
+                       -bottom-52 -left-32"
+            ></div>
+
+        </div>
+
+
+        <!-- =================================================
+             FORM CONTENT
+        ================================================== -->
+
+        <div class="form-content p-6 md:p-12">
+
+
+            <!-- FLASH MESSAGES -->
+
+            {% for category, msg in get_flashed_messages(with_categories=true) %}
+
+                <div
+                    class="mb-7 p-4 rounded-xl
+                           flex items-start gap-3
+                           {% if category == 'danger' %}
+                           flash-danger
+                           {% else %}
+                           flash-success
+                           {% endif %}"
+                >
+
+                    <i
+                        class="fa-solid
+                        {% if category == 'danger' %}
+                        fa-circle-exclamation
+                        {% else %}
+                        fa-circle-check
+                        {% endif %}
+                        mt-1"
+                    ></i>
+
+                    <div>
+
+                        <span class="font-bold">
+
+                            {% if category == 'danger' %}
+                                Notice:
+                            {% else %}
+                                Success!
+                            {% endif %}
+
+                        </span>
+
+                        {{ msg }}
+
+                    </div>
+
+                </div>
+
+            {% endfor %}
+
+
+            <!-- =================================================
+                 FORM
+            ================================================== -->
+
+            <form
+                action="{{ url_for('views.admissions') }}"
+                method="POST"
+                enctype="multipart/form-data"
+                class="space-y-10"
+            >
+
+
+                <!-- =================================================
+                     SECTION 1
+                ================================================== -->
+
+                <section>
+
+                    <div
+                        class="section-line
+                               border-b pb-4 mb-7"
+                    >
+
+                        <h3
+                            class="section-heading
+                                   font-bold uppercase
+                                   tracking-widest text-sm
+                                   flex items-center gap-3"
+                        >
+
+                            <span
+                                class="section-number
+                                       w-8 h-8
+                                       text-white rounded-full
+                                       flex items-center
+                                       justify-center
+                                       text-xs"
+                            >
+                                1
+                            </span>
+
+                            Student Identity
+
+                        </h3>
+
+                    </div>
+
+
+                    <div
+                        class="grid md:grid-cols-2
+                               gap-7"
+                    >
+
+
+                        <!-- NAME -->
+
+                        <div>
+
+                            <label
+                                class="form-label block
+                                       text-sm font-bold mb-2"
+                            >
+                                Full Name
+                                <span class="text-orange-600">*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                name="name"
+                                placeholder="e.g. RAM BAHADUR THAPA"
+                                required
+                                class="form-input px-4 py-3
+                                       rounded-xl"
+                            >
+
+                            <p
+                                class="text-xs text-gray-500 mt-2"
+                            >
+                                Enter your name in block letters.
+                            </p>
+
+                        </div>
+
+
+                        <!-- EMAIL -->
+
+                        <div>
+
+                            <label
+                                class="form-label block
+                                       text-sm font-bold mb-2"
+                            >
+                                Email Address
+                                <span class="text-orange-600">*</span>
+                            </label>
+
+                            <input
+                                type="email"
+                                name="email"
+                                placeholder="example@email.com"
+                                required
+                                class="form-input px-4 py-3
+                                       rounded-xl"
+                            >
+
+                        </div>
+
+
+                        <!-- ADDRESS -->
+
+                        <div class="md:col-span-2">
+
+                            <label
+                                class="form-label block
+                                       text-sm font-bold mb-2"
+                            >
+                                Permanent Address
+                                <span class="text-orange-600">*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                name="address"
+                                placeholder="Ward No., Municipality/Rural Municipality, District"
+                                required
+                                class="form-input px-4 py-3
+                                       rounded-xl"
+                            >
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     SECTION 2
+                ================================================== -->
+
+                <section>
+
+                    <div
+                        class="section-line
+                               border-b pb-4 mb-7"
+                    >
+
+                        <h3
+                            class="section-heading
+                                   font-bold uppercase
+                                   tracking-widest text-sm
+                                   flex items-center gap-3"
+                        >
+
+                            <span
+                                class="section-number
+                                       w-8 h-8
+                                       text-white rounded-full
+                                       flex items-center
+                                       justify-center
+                                       text-xs"
+                            >
+                                2
+                            </span>
+
+                            Enrollment Details
+
+                        </h3>
+
+                    </div>
+
+
+                    <div
+                        class="grid md:grid-cols-3
+                               gap-7"
+                    >
+
+
+                        <!-- CONTACT -->
+
+                        <div>
+
+                            <label
+                                class="form-label block
+                                       text-sm font-bold mb-2"
+                            >
+                                Contact Number
+                                <span class="text-orange-600">*</span>
+                            </label>
+
+                            <input
+                                type="tel"
+                                name="contact"
+                                placeholder="98XXXXXXXX"
+                                required
+                                class="form-input px-4 py-3
+                                       rounded-xl"
+                            >
+
+                        </div>
+
+
+                        <!-- CLASS -->
+
+                        <div>
+
+                            <label
+                                class="form-label block
+                                       text-sm font-bold mb-2"
+                            >
+                                Applying For Class
+                            </label>
+
+                            <select
+                                name="applying_class"
+                                class="form-input px-4 py-3
+                                       rounded-xl"
+                            >
+
+                                <option>
+                                    Class 11 - Science
+                                </option>
+
+                                <option>
+                                    Class 11 - Management
+                                </option>
+
+                                <option>
+                                    Class 11 - Education
+                                </option>
+
+                                <option>
+                                    Grade 1-10
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- BATCH -->
+
+                        <div>
+
+                            <label
+                                class="form-label block
+                                       text-sm font-bold mb-2"
+                            >
+                                Batch / Year
+                            </label>
+
+                            <input
+                                type="number"
+                                name="batch"
+                                value="2081"
+                                class="form-input px-4 py-3
+                                       rounded-xl"
+                            >
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     SECTION 3 - DOCUMENT
+                ================================================== -->
+
+                <section>
+
+                    <div
+                        class="upload-box
+                               p-7 md:p-9
+                               rounded-2xl text-center"
+                    >
+
+                        <div
+                            class="w-16 h-16
+                                   mx-auto mb-4
+                                   rounded-full
+                                   bg-blue-900
+                                   text-white
+                                   flex items-center
+                                   justify-center
+                                   text-2xl
+                                   shadow-lg"
+                        >
+
+                            <i class="fa-solid fa-file-arrow-up"></i>
+
+                        </div>
+
+
+                        <h3
+                            class="upload-title
+                                   text-lg font-extrabold
+                                   uppercase tracking-wide"
+                        >
+                            Upload SEE / Previous Marksheet
+                        </h3>
+
+
+                        <p
+                            class="text-sm text-gray-600
+                                   mt-2 mb-5"
+                        >
+                            Upload a clear copy of your
+                            academic document.
+                        </p>
+
+
+                        <input
+                            type="file"
+                            name="certificate"
+                            required
+                            accept=".pdf,.jpg,.jpeg,.png"
+                            class="file-input
+                                   block w-full
+                                   text-sm"
+                        >
+
+
+                        <div
+                            class="mt-4
+                                   flex flex-wrap
+                                   justify-center gap-2"
+                        >
+
+                            <span
+                                class="bg-blue-900
+                                       text-white
+                                       px-3 py-1
+                                       rounded-full
+                                       text-xs font-semibold"
+                            >
+                                PDF
+                            </span>
+
+                            <span
+                                class="bg-blue-900
+                                       text-white
+                                       px-3 py-1
+                                       rounded-full
+                                       text-xs font-semibold"
+                            >
+                                JPG
+                            </span>
+
+                            <span
+                                class="bg-blue-900
+                                       text-white
+                                       px-3 py-1
+                                       rounded-full
+                                       text-xs font-semibold"
+                            >
+                                PNG
+                            </span>
+
+                            <span
+                                class="bg-orange-500
+                                       text-white
+                                       px-3 py-1
+                                       rounded-full
+                                       text-xs font-semibold"
+                            >
+                                Max 2MB
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     SUBMIT
+                ================================================== -->
+
+                <div class="pt-2">
+
+                    <button
+                        type="submit"
+                        class="submit-btn w-full
+                               font-bold py-5
+                               rounded-2xl
+                               uppercase
+                               tracking-widest
+                               text-base md:text-lg"
+                    >
+
+                        <i class="fa-solid fa-paper-plane mr-2"></i>
+
+                        Submit Application
+
+                    </button>
+
+
+                    <p
+                        class="text-center
+                               text-xs text-gray-500
+                               mt-4"
+                    >
+                        Please verify all information before
+                        submitting your application.
+                    </p>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         ADMISSION PROCESS
+    ====================================================== -->
+
+    <div class="mt-14">
+
+        <div class="text-center mb-8">
+
+            <span
+                class="text-orange-600
+                       font-bold uppercase
+                       tracking-widest text-xs"
+            >
+                Admission Process
+            </span>
+
+            <h2
+                class="text-3xl
+                       font-extrabold
+                       text-blue-900 mt-2"
+            >
+                What Happens Next?
+            </h2>
+
+        </div>
+
+
+        <div
+            class="grid md:grid-cols-3
+                   gap-6"
+        >
+
+
+            <!-- STEP 1 -->
+
+            <div
+                class="process-card
+                       process-one
+                       p-6 rounded-2xl"
+            >
+
+                <div
+                    class="process-number
+                           w-12 h-12
+                           rounded-full
+                           flex items-center
+                           justify-center
+                           font-extrabold
+                           mb-5"
+                >
+                    01
+                </div>
+
+                <h4
+                    class="process-title
+                           font-bold text-lg mb-2"
+                >
+                    Form Submission
+                </h4>
+
+                <p class="process-text text-sm">
+                    Fill out the online admission form
+                    accurately and submit your application.
+                </p>
+
+            </div>
+
+
+            <!-- STEP 2 -->
+
+            <div
+                class="process-card
+                       process-two
+                       p-6 rounded-2xl"
+            >
+
+                <div
+                    class="w-12 h-12
+                           rounded-full
+                           bg-orange-100
+                           text-orange-700
+                           flex items-center
+                           justify-center
+                           font-extrabold
+                           mb-5"
+                >
+                    02
+                </div>
+
+                <h4
+                    class="process-title
+                           font-bold text-lg mb-2"
+                >
+                    Document Review
+                </h4>
+
+                <p class="process-text text-sm">
+                    The administration will review
+                    your submitted information and documents.
+                </p>
+
+            </div>
+
+
+            <!-- STEP 3 -->
+
+            <div
+                class="process-card
+                       process-three
+                       p-6 rounded-2xl"
+            >
+
+                <div
+                    class="w-12 h-12
+                           rounded-full
+                           bg-blue-100
+                           text-blue-900
+                           flex items-center
+                           justify-center
+                           font-extrabold
+                           mb-5"
+                >
+                    03
+                </div>
+
+                <h4
+                    class="process-title
+                           font-bold text-lg mb-2"
+                >
+                    Final Interaction
+                </h4>
+
+                <p class="process-text text-sm">
+                    Selected candidates may be contacted
+                    for further admission procedures.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         IMPORTANT NOTICE
+    ====================================================== -->
+
+    <div
+        class="mt-12 mb-10
+               bg-blue-900
+               text-white
+               rounded-2xl
+               p-6
+               shadow-xl"
+    >
+
+        <div class="flex items-start gap-4">
+
+            <div
+                class="w-10 h-10
+                       flex-shrink-0
+                       rounded-full
+                       bg-orange-500
+                       flex items-center
+                       justify-center"
+            >
+
+                <i class="fa-solid fa-circle-info"></i>
+
+            </div>
+
+            <div>
+
+                <h3
+                    class="font-bold text-lg mb-1"
+                >
+                    Important Information
+                </h3>
+
+                <p
+                    class="text-sm
+                           text-blue-100
+                           leading-relaxed"
+                >
+                    Please ensure that all information
+                    and documents submitted through this
+                    form are authentic and accurate.
+                    Providing false information may result
+                    in cancellation of the admission
+                    application.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         COPYRIGHT
+    ====================================================== -->
+
+    <p
+        class="text-center
+               footer-note
+               text-xs
+               pb-10"
+    >
+
+        © 2026 Shree Resunga Secondary School.
+        All Rights Reserved.
+
+    </p>
+
+</main>
+
+</body>
+</html>

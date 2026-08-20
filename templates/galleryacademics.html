@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Navbar with Back Button</title>
+<style>
+/* ===== GLOBAL RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+  
+body {
+    background: orangered;
+    color: #003366;
+    overflow-x: hidden;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg,#003366,#4b0082,#ff9800);
+    padding: 0.5rem 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    height: 70px;
+    transform: translateY(-100%);
+    opacity: 0;
+    animation: slideDown 0.7s forwards;
+}
+
+/* LEFT: LOGO + TITLE */
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.school-logo {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: 3px solid yellow;
+    object-fit: cover;
+}
+
+.school-title {
+    color: yellow;
+    font-weight: 800;
+    white-space: nowrap;
+    font-size: 1.5rem;
+    text-shadow: 1px 1px 2px black;
+}
+
+/* BACK BUTTON */
+.back-btn {
+    background-color: yellow;
+    color: #003366;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.back-btn:hover {
+    background-color: #ffd700;
+    transform: scale(1.1);
+}
+
+/* MARQUEE */
+.marquee-wrapper {
+    width: 100%;
+    background: yellow;
+    overflow: hidden;
+    border-top: 2px solid #003366;
+    border-bottom: 2px solid #003366;
+    position: fixed;
+    top: 70px; /* immediately below navbar */
+    left: 0;
+    z-index: 999;
+    transform: translateY(-100%);
+    opacity: 0;
+    animation: slideDown 0.7s forwards 0.2s; /* slight delay after navbar */
+}
+
+.marquee-content {
+    display: inline-block;
+    white-space: nowrap;
+    font-size: 1rem;
+    color: #003366;
+    font-weight: 700;
+    padding: 0.5rem 0;
+    animation: marqueeScroll 12s linear infinite;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes slideDown {
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes marqueeScroll {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width: 700px){
+    .navbar { height: 60px; padding: 0.4rem 0.8rem; }
+    .school-logo { width: 45px; height: 45px; }
+    .school-title { font-size: 1.2rem; }
+    .back-btn { width: 35px; height: 35px; font-size: 1.2rem; }
+    .marquee-wrapper { top: 60px; }
+    .marquee-content { font-size: 0.9rem; }
+}
+
+@media(max-width: 500px){
+    .navbar { height: 55px; padding: 0.3rem 0.6rem; }
+    .school-logo { width: 40px; height: 40px; }
+    .school-title { font-size: 1rem; }
+    .back-btn { width: 30px; height: 30px; font-size: 1rem; }
+    .marquee-wrapper { top: 55px; }
+    .marquee-content { font-size: 0.85rem; }
+}
+/* ===================== RECORDS SECTION CSS ===================== */
+.records-container {
+    margin-top: 140px; /* below navbar + marquee */
+    padding: 2rem 1rem;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.records-main-title {
+    text-align: center;
+    font-size: 2.2rem;
+    color: yellow;
+    font-weight: 900;
+    text-shadow: 2px 2px 5px black;
+    margin-bottom: 2rem;
+}
+
+.records-block {
+    margin-bottom: 3rem;
+}
+
+.section-title {
+    font-size: 1.6rem;
+    color: white;
+    font-weight: 800;
+    text-shadow: 2px 2px 8px black;
+    margin-bottom: 1.5rem;
+    padding-left: 10px;
+}
+
+/* ===== GRID ===== */
+.records-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.2rem;
+}
+
+/* ===== CARD ===== */
+.record-card {
+    background: #003366;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0,0,0,0.6);
+    transition: transform 0.4s, box-shadow 0.4s;
+    animation: zoomIn 0.6s ease-in-out;
+}
+
+.record-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.record-card p {
+    text-align: center;
+    padding: 0.5rem;
+    font-weight: 700;
+    color: yellow;
+}
+
+/* Hover Effects */
+.record-card:hover {
+    transform: scale(1.07);
+    box-shadow: 0 0 25px yellow;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-left">
+        <img src="Images/logo.jpg" alt="School Logo" class="school-logo">
+        <h1 class="school-title">Shree Resunga Secondary School</h1>
+    </div>
+    <button class="back-btn" onclick="window.location.href='{{url_for('views.Gallery')}}'">&#8592;</button>
+</nav>
+
+<div class="marquee-wrapper">
+    <div class="marquee-content">
+        📢 Welcome to Shree Resunga Secondary School | 🚀 Bright Futures | 🎓 Admissions Open
+    </div>
+</div>
+<!-- ===================== RECORDS SECTION ===================== -->
+<section class="records-container">
+
+    <!-- TITLE -->
+    <h2 class="records-main-title">📘 Academic Records</h2>
+
+    <!-- ========== SEE RECORDS (10 YEARS) ========== -->
+    <div class="records-block">
+        <h3 class="section-title">📚 Past 10 Years – SEE Results</h3>
+        <div class="records-grid">
+            <!-- 10 image cards -->
+            <div class="record-card">
+                <img src="Images/see1.jpg" alt="SEE Record">
+                <p>SEE – 2071</p>
+            </div>
+            <div class="record-card">
+                <img src="Images/see2.jpg" alt="SEE Record">
+                <p>SEE – 2072</p>
+            </div>
+            <div class="record-card">
+                <img src="Images/see3.jpg" alt="SEE Record">
+                <p>SEE – 2073</p>
+            </div>
+            <div class="record-card">
+                <img src="Images/see4.jpg" alt="SEE Record">
+                <p>SEE – 2074</p>
+            </div>
+            <div class="record-card">
+                <img src="Images/see5.jpg" alt="SEE Record">
+                <p>SEE – 2075</p>
+            </div>
+            <div class="record-card">
+                <img src="Images/see6.jpg" alt="SEE Record">
+                <p>SEE – 2076</p>
+            </div>
+            <div class="record-card">
+                <img src="Images/see7.jpg" alt="SEE Record">
+                <p>SEE – 2077</p>
+            </div>
+            <div class="record-card">
+                <img src="Images/see8.jpg" alt="SEE Record">
+                <p>SEE – 2078</p>
+            </div>
+            <div class="record-card">
+                <img src="Images/see9.jpg" alt="SEE Record">
+                <p>SEE – 2079</p>
+            </div>
+            <div class="record-card">
+                <img src="Images/see10.jpg" alt="SEE Record">
+                <p>SEE – 2080</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== SLC RECORDS (4 YEARS) ========== -->
+    <div class="records-block">
+        <h3 class="section-title">🏆 Past 4 Years – SLC Records</h3>
+        <div class="records-grid">
+            <!-- 4 image cards -->
+            <div class="record-card">
+                <img src="Images/slc1.jpg" alt="SLC Record">
+                <p>SLC – 2068</p>
+            </div>
+            <div class="record-card">
+                <img src="Images/slc2.jpg" alt="SLC Record">
+                <p>SLC – 2069</p>
+            </div>
+            <div class="record-card">
+                <img src="Images/slc3.jpg" alt="SLC Record">
+                <p>SLC – 2070</p>
+            </div>
+            <div class="record-card">
+                <img src="Images/slc4.jpg" alt="SLC Record">
+                <p>SLC – 2071</p>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<script>
+function goBack() {
+    window.history.back();
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Next Page</title>
+<link rel="stylesheet" href="nextpage.css">
+<style>
+/* ==================== GLOBAL RESET ==================== */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, Helvetica, sans-serif; }
+
+body{
+    background-color: orangered;
+}
+/* ==================== NAVBAR ==================== */
+.navbar {
+    width: 100%;
+    background: linear-gradient(135deg,#003366,#4b0082,#ff9800);
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    animation: navbarSlideDown 0.7s ease forwards;
+    height: 70px; /* FIXED HEIGHT FOR PERFECT ALIGNMENT */
+}
+
+@keyframes navbarSlideDown {
+    from { opacity: 0; transform: translateY(-25px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* LEFT SIDE */
+.nav-left { display: flex; align-items: center; gap: 10px; }
+.school-logo { width: 55px; height: 55px; border-radius: 50%; border: 3px solid yellow; object-fit: cover; }
+.school-title { font-weight: 800; color: yellow; letter-spacing: 0.5px; font-size: 1.5rem; white-space: nowrap; }
+
+/* NAV LINKS */
+.nav-links { display: flex; list-style: none; gap: 25px; }
+.nav-links li a { color: white; text-decoration: none; font-size: 1.1rem; font-weight: 600; position: relative; }
+.nav-links li a::after { content: ""; position: absolute; bottom: -4px; left: 0; width: 0%; height: 2px; background: yellow; transition: 0.3s; }
+.nav-links li a:hover::after { width: 100%; }
+
+/* ==================== HAMBURGER ==================== */
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+.hamburger span { width: 28px; height: 3px; background: white; border-radius: 3px; transition: 0.3s; }
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translateY(7px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translateY(-7px); }
+
+/* ==================== MOBILE MENU ==================== */
+.mobile-menu {
+    position: fixed;
+    top: 70px;
+    right: -220px;
+    width: 200px;
+    background: #003366;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+    border-radius: 0 0 8px 8px;
+    box-shadow: -3px 3px 10px rgba(0,0,0,0.3);
+    transition: right 0.4s ease;
+    z-index: 999;
+}
+
+.mobile-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 12px 15px;
+    transition: 0.3s;
+}
+
+.mobile-menu a:hover { background: rgba(255,255,255,0.1); }
+
+.mobile-menu.open { right: 10px; }
+
+/* ==================== MARQUEE (FINAL FIXED) ==================== */
+.marquee-wrapper {
+    margin-top: 70px;      /* EXACT NAVBAR HEIGHT */
+    width: 100%;
+    background: yellow;
+    overflow: hidden;
+}
+
+.marquee-content {
+    display: inline-block;
+    white-space: nowrap;
+    font-size: 1rem;
+    color: #003366;
+    font-weight: 700;
+    animation: marqueeScroll 13s linear infinite;
+}
+
+@keyframes marqueeScroll {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 900px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+}
+
+@media (max-width: 600px) {
+    .navbar { height: 60px; }
+    .mobile-menu { top: 60px; }
+    .marquee-wrapper { margin-top: 60px; }
+}
+
+@media (max-width: 500px) {
+    .school-title { font-size: 0.9rem; }
+    .school-logo { width: 45px; height: 45px; }
+}
+
+@media (max-width: 450px) {
+    .navbar { height: 55px; }
+    .mobile-menu { top: 55px; }
+    .marquee-wrapper { margin-top: 55px; }
+    .school-title { font-size: 0.8rem; }
+}
+/* ================= INTRO SECTION ================= */
+
+ /* ================= INTRO SECTION (UPDATED) ================= */
+.intro-section {
+    width: 100%;
+    padding: 80px 20px;
+    background: orangered;
+    margin-top: 0;
+}
+
+.intro-container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+/* LEFT TEXT */
+.intro-text h2 {
+    font-size: 2rem;
+    color: #003366;
+    margin-bottom: 15px;
+}
+
+.intro-text p {
+    font-size: 1.05rem;
+    color: white;
+    font-weight: bold;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    background-color: #ff9800;
+}
+
+.readmore-btn {
+    background: #003366;
+    color: white;
+    padding: 10px 18px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.readmore-btn:hover {
+    background: #ff9800;
+    color: black;
+}
+
+/* RIGHT TEXTURE + IMAGE */
+.intro-right {
+    width: 100%;
+    max-width: 450px;
+}
+
+/* Yellow–Red texture background */
+.texture-bg {
+    width: 100%;
+    background: linear-gradient(135deg,#003366,#4b0082,#ff9800);
+    padding: 15px;
+}
+
+/* Principal image on top of texture */
+.texture-bg img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 0;        /* NO BORDER RADIUS */
+    object-fit: cover;
+}
+
+/* ================= ANIMATIONS ================= */
+.animate-left {
+    opacity: 0;
+    transform: translateX(-60px);
+    animation: slideLeft 0.8s ease forwards;
+}
+
+.animate-right {
+    opacity: 0;
+    transform: translateX(60px);
+    animation: slideRight 0.8s ease forwards;
+}
+
+@keyframes slideLeft {
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideRight {
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+    .intro-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .intro-right {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 500px) {
+    .intro-text h2 { font-size: 1.5rem; }
+    .intro-text p { font-size: 0.95rem; }
+    .intro-section { padding: 50px 15px; }
+}
+
+/* ================= FOOTER ================= */
+.footer {
+    background: #003366;
+    color: white;
+    padding: 30px 15px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.footer h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+.footer p {
+    margin-bottom: 5px;
+}
+
+.footer .copy {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+.pdf-box {
+    background: #003366;     /* blue color */
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 25px;
+}
+
+/* YELLOW BACKGROUND BEHIND PDF */
+.pdf-bg {
+    background: yellow;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+</style>
+</head>
+<body>
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar">
+    <div class="nav-left">
+        <img src="{{ url_for('static', filename='Images/logo.jpg') }}" alt="School Logo" class="school-logo">
+        <h1 class="school-title">Shree Resunga Secondary School</h1>
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="{{ url_for('views.homepage') }}">Home</a></li>
+        <li><a href="{{ url_for('views.about_us') }}">About</a></li>
+        <li><a href="{{ url_for('views.Gallery') }}">Gallery</a></li>
+        <li><a href="{{ url_for('views.contact') }}">Contact</a></li>
+    </ul>
+
+    <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</nav>
+
+<!-- MOBILE MENU (Sliding from right) -->
+<div id="mobileMenu" class="mobile-menu">
+    <a href="{{ url_for('views.homepage') }}">Home</a>
+    <a href="{{ url_for('views.about_us') }}">About</a>
+    <a href="{{ url_for('views.Gallery') }}">Gallery</a>
+    <a href="{{ url_for('views.contact') }}">Contact</a>
+</div>
+
+<section class="intro-section">
+    <div class="intro-container">
+
+        <!-- LEFT TEXT -->
+        <div class="intro-text animate-left">
+            <h2>Vice Principal's Message</h2>
+            <p>
+                Shree Resunga Secondary School, established in 2025 BS, is a public and ISO-certified institution dedicated to providing quality education. For decades, we have been a center of academic excellence, fostering strong values, innovation, and holistic development. Our goal is to nurture each student’s intellectual, social, and moral growth in a safe and inspiring learning environment. With experienced teachers and modern facilities, we ensure that every child receives the guidance and support needed to reach their full potential.
+            </p>
+            <p>
+                As Vice Principal, I am committed to working alongside our dedicated staff and the school community to promote creativity, critical thinking, and a love for learning. Beyond academics, we emphasize sports, arts, and extracurricular activities to develop well-rounded individuals. Together, we aim to prepare our students to become responsible, confident, and compassionate citizens ready to thrive in an ever-changing world.
+            </p>
+            <p>
+                With qualified teachers, modern learning resources, and a supportive environment, we ensure every student discovers their highest potential.
+            </p>
+            <button class="readmore-btn">Read More</button>
+        </div>
+
+        <!-- RIGHT IMAGE -->
+        <div class="intro-right animate-right">
+            <div class="texture-bg">
+                <img src="{{ url_for('static', filename='Images/vice.jpg') }}" alt="Vice Principal Image">
+            </div>
+        </div>
+
+    </div>
+</section>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+    <div class="footer-content fade-up">
+        <h3>Shree Resunga Secondary School</h3>
+        <p>Resunga Municipality, Gulmi • Nepal</p>
+        <p>Contact: +977-9800000000 • Email: info@resunga.edu.np</p>
+        <p class="copy">© 2025 SRSS. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script>
+function toggleMenu() {
+    const menu = document.getElementById("mobileMenu");
+    menu.classList.toggle("open");
+}
+function toggleMenu() {
+    const menu = document.getElementById("mobileMenu");
+    menu.classList.toggle("open");
+}
+
+// SHOW PDF + SLIDER ON BUTTON CLICK
+document.querySelector(".readmore-btn").addEventListener("click", function () {
+    document.getElementById("moreSection").style.display = "block";
+});
+
+// SLIDER FUNCTION
+let currentSlide = 0;
+const slides = document.querySelectorAll(".slide");
+
+function showSlides() {
+    slides.forEach((s, i) => {
+        s.classList.remove("active");
+        if (i === currentSlide) s.classList.add("active");
+    });
+
+    currentSlide = (currentSlide + 1) % slides.length;
+}
+
+setInterval(showSlides, 2500);   // Every 2.5 seconds
+</script>
+
+</body>
+</html>

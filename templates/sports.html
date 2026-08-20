@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sports Activities | Shree Resunga Secondary School</title>
+<style>
+/* ===== GLOBAL RESET ===== */
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Arial', sans-serif; }
+body { background: orangered; color:#003366; overflow-x:hidden; }
+
+/* ===== NAVBAR ===== */
+.navbar {
+    width:100%; display:flex; justify-content:space-between; align-items:center;
+    background: linear-gradient(135deg,#003366,#4b0082,#ff9800); padding:0.5rem 1rem;
+    position: fixed; top:0; left:0; z-index:1000; height:70px;
+    transform: translateY(-100%); opacity:0; animation: slideDown 0.7s forwards;
+}
+.nav-left { display:flex; align-items:center; gap:0.5rem; }
+.school-logo { width:55px; height:55px; border-radius:50%; border:3px solid yellow; object-fit:cover; }
+.school-title { color:yellow; font-weight:800; white-space:nowrap; font-size:1.5rem; text-shadow:1px 1px 2px black; }
+.back-btn { background-color:yellow; color:#003366; border:none; border-radius:50%; width:40px; height:40px; font-size:1.5rem; cursor:pointer; display:flex; justify-content:center; align-items:center; transition: transform 0.3s, background-color 0.3s;}
+.back-btn:hover { background-color:#ffd700; transform:scale(1.1); }
+
+/* MARQUEE */
+.marquee-wrapper {
+    width:100%; background:yellow; overflow:hidden; border-top:2px solid #003366; border-bottom:2px solid #003366;
+    position:fixed; top:70px; left:0; z-index:999; transform:translateY(-100%); opacity:0; animation:slideDown 0.7s forwards 0.2s;
+}
+.marquee-content { display:inline-block; white-space:nowrap; font-size:1rem; color:#003366; font-weight:700; padding:0.5rem 0; animation:marqueeScroll 12s linear infinite; }
+
+/* ANIMATIONS */
+@keyframes slideDown { to { transform:translateY(0); opacity:1; } }
+@keyframes marqueeScroll { 0%{transform:translateX(100%);} 100%{transform:translateX(-100%);} }
+
+/* SPORTS SECTIONS */
+:root { --overlay: rgba(0,0,0,0.55); --text-light:#f5f5f5; --glow:0px 0px 15px rgba(255,255,0,0.8);}
+.sports-master { width:100%; padding-top:150px; }
+.sport-panel { width:100%; min-height:100vh; background-size:cover; background-position:center; position:relative; display:flex; justify-content:center; align-items:center; overflow:hidden; }
+.sport-panel::before { content:""; position:absolute; inset:0; background:var(--overlay); animation:fadeIn 1s ease forwards; }
+.sport-content { position:relative; width:100%; max-width:1000px; padding:60px 20px; text-align:center; color:var(--text-light); transform:translateY(50px); opacity:0; animation:riseUp 1.2s ease forwards; }
+.sport-title { font-size:3rem; font-weight:900; color:yellow; text-shadow:2px 2px 20px black; margin-bottom:20px; animation:glow 2s infinite alternate ease-in-out; }
+.sport-img { width:160px; display:block; margin:0 auto 25px; filter:drop-shadow(0px 5px 10px black); opacity:0; transform:scale(0.7); animation:popIn 1s ease forwards 0.3s; }
+.sport-desc { font-size:1.25rem; line-height:1.9rem; max-width:800px; margin:0 auto; opacity:0; animation:fadeIn 1.2s forwards 0.5s; }
+
+@keyframes fadeIn { 0%{opacity:0;} 100%{opacity:1;} }
+@keyframes riseUp { 0%{opacity:0; transform:translateY(70px);} 100%{opacity:1; transform:translateY(0);} }
+@keyframes popIn { 0%{opacity:0; transform:scale(0.5);} 100%{opacity:1; transform:scale(1);} }
+@keyframes glow { from{text-shadow:0 0 10px yellow;} to{text-shadow:0 0 25px yellow;} }
+
+/* RESPONSIVE */
+@media(max-width:700px){ .sport-title{font-size:2.3rem;} .sport-desc{font-size:1.05rem;} .sport-img{width:120px;} }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-left">
+        <img src="{{ url_for('static', filename='Images/logo.jpg') }}" alt="School Logo" class="school-logo">
+        <h1 class="school-title">Shree Resunga Secondary School</h1>
+    </div>
+    <button class="back-btn" onclick="window.location.href='{{ url_for('views.Gallery') }}'">&#8592;</button>
+</nav>
+
+<div class="marquee-wrapper">
+    <div class="marquee-content">
+        📢 Welcome to Shree Resunga Secondary School | 🚀 Bright Futures | 🎓 Admissions Open
+    </div>
+</div>
+
+<div class="sports-master">
+
+    <!-- VOLLEYBALL -->
+    <section class="sport-panel" style="background-image:url('{{ url_for('static', filename='Images/ball.jpg') }}')">
+        <div class="sport-content">
+            <h2 class="sport-title">Volleyball</h2>
+            <p class="sport-desc">
+                Volleyball builds teamwork, fast reflexes and excellent coordination.
+                Our players shine in inter-school and district-level competitions,
+                showcasing strength, unity and spirit.
+            </p>
+        </div>
+    </section>
+
+    <!-- FOOTBALL -->
+    <section class="sport-panel" style="background-image:url('{{ url_for('static', filename='Images/foot.jpg') }}')">
+        <div class="sport-content">
+            <h2 class="sport-title">Football</h2>
+            <p class="sport-desc">
+                Football enhances stamina, strategy and discipline.
+                Our school conducts regular matches and training sessions that help
+                students grow as leaders on and off the field.
+            </p>
+        </div>
+    </section>
+
+    <!-- RUNNING -->
+    <section class="sport-panel" style="background-image:url('{{ url_for('static', filename='Images/running.jpg') }}')">
+        <div class="sport-content">
+            <h2 class="sport-title">Running & Athletics</h2>
+            <p class="sport-desc">
+                From sprinting to relay races, athletics pushes students to challenge
+                their limits. Our track programs focus on endurance, focus and
+                confidence-building.
+            </p>
+        </div>
+    </section>
+
+</div>
+
+<script>
+function goBack() { window.history.back(); }
+</script>
+
+</body>
+</html>
